@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="theme-dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NLP Prototype - Algorithmic Justice</title>
+    <link rel="icon" href="data:," >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+    </style>
+  </head>
+  <body>
+    <section class="section" id="app">
+      <div class="container is-fluid">
+        <div class="columns">
+          <div class="column">
+          </div>
+          <div class="column">
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const { createApp } = Vue;
+
+      async function loadJson(url) {
+        let ret = {}
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            console.log(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          ret = data
+        } catch (err) {
+          console.error('Error loading JSON:', err);
+        }
+        return ret
+      }
+
+      createApp({
+        data() {
+          return {
+            message: 'Hello Vue!',
+          }
+        },
+        async mounted() {
+        },
+        computed: {
+          clipDisplayUnits() {
+            let ret = this.clipUnits
+            ret.sort((a, b) => a.start.localeCompare(b.start))
+            let pLast = null
+            for (let p of ret) {
+              p.current = (this.videoCurrentTime + 5) > this.getSecondsFromTimeCode(p.start)
+              if (pLast && p.current) {
+                pLast.current = false
+              }
+              pLast = p
+            }
+            return ret
+          },
+        },
+        methods: {
+          requestVideoJumpToSelectedFeature(play=false) {
+            if (this.selectedFeature) {
+              this.requestVideoJumpInTimeCode(this.selectedFeature.video_start, play)
+            }
+          },
+        }
+      }).mount('#app')
+    </script>
+  </body>
+</html>
