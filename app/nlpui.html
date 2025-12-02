@@ -8,21 +8,83 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <style>
+      .longtext {
+        height: 70vh;
+      }
+      .is-responding {
+        opacity: 0.5;
+      }
+      .passage {
+        background-color: yellow;
+        color: black;
+      }
     </style>
   </head>
   <body>
     <section class="section" id="app">
-      <div class="container is-fluid">
+      <div class="container is-fluid" :class="{'container': true, 'is-fluid': true, 'is-responding': isResponding}">
         <div class="columns">
           <div class="column">
+            <br>
+            <br>
+            <br>
+            <p>Defendent's statement:</p>
+            <textarea class="textarea longtext">
+              {{ statement }}
+            </textarea>
           </div>
           <div class="column">
+            <p>Magistrate's question</p>
+            <input  class="input" type="text" v-model="question" @keyup.enter="onQuestionEnter()">
+            <br>
+            <br>
+            <p>Large language model's response:</p>
+            <!-- <textarea class="textarea longtext">
+              {{ higlightedText }}
+            </textarea> -->
+            <div class="highlighted-text" v-html="higlightedText">
+            </div>
           </div>
         </div>
       </div>
     </section>
     <script>
       const { createApp } = Vue;
+
+      const TEMPLATE = `TASK:
+You'll find below a STATEMENT and a QUESTION related to it.
+The STATEMENT is a plea from a road offender.
+The QUESTION is from a magistrate trying to quickly find clues in the STATEMENT.
+Generate a response in valid JSON. 
+You response should contain a list of relevant passages from the statement
+and one very short sentence to explain your selection.
+The response is therefore an array of passage objects. 
+Each passage object has two keys: 
+* 'passage': it must be exactly as it occurs in the statement, it can be part of a sentence
+* 'reason': reason for selecting that passage
+
+Try to be optimal in your selection. 
+Find all relevant passages but only include fragments of sentences which pertains to the question.
+Make sure your selection and reason are logically rigorous and impartial.
+Avoid overlapping passages.
+
+STATEMENT:
+{STATEMENT}
+
+QUESTION:
+{QUESTION}
+
+RESPONSE:
+`
+
+      const MODEL_SERVICE_URL = "http://localhost:11435/api/generate"
+
+      const STATEMENT = "I fully acknowledge that I failed to give way at the mini-roundabout on Deansgate, and I deeply regret the momentary lapse in concentration that led to this incident. The conditions that evening were challenging: heavy rain reduced visibility, and my sat-nav—usually reliable—was malfunctioning, which distracted me as I approached the junction. While I am familiar with the area, the hired vehicle’s unfamiliar braking system required more force than I anticipated, causing me to hesitate just as I needed to react. I accept that, regardless of these factors, the responsibility for safe driving lies with me, and I should have been more vigilant.\n\nMy driving record speaks to my commitment to road safety. In twelve years of driving, I have never received a penalty or been involved in an accident. I have always prided myself on my attentiveness, especially in urban areas, and I am genuinely upset that my standards slipped on this occasion. I immediately reported the sat-nav issue to the hire company and have since invested in a more reliable model. I also took the initiative to revisit the Highway Code, particularly the sections on roundabouts and priority rules, to ensure my understanding is up to date.\n\nI want to be clear that I do not seek to excuse my actions, but to provide context. The combination of fatigue after a long workday, the technical issue with the sat-nav, and the unfamiliar vehicle created a perfect storm for error. I have learned from this experience and have already taken steps to mitigate such risks in the future, including planning more frequent breaks on long drives and familiarizing myself with any hired vehicle’s controls before setting off.\n\nGiven my previously unblemished record and the proactive measures I have taken, I respectfully ask the magistrates to consider this a one-off error rather than a pattern of reckless behaviour. I would welcome the opportunity to attend a driver improvement course to further reinforce my knowledge and skills. I hope you will recognize my genuine remorse and the evidence of my otherwise responsible driving history in your deliberations."
+
+      // const MODEL = "gemma3:12b" // can't disable thinking, which takes a lot of tokens and time
+      const MODEL = "gemma3:4b"
+
+      const CONTEXT_LENGTH = 4000
 
       async function loadJson(url) {
         let ret = {}
@@ -42,12 +104,32 @@
       createApp({
         data() {
           return {
-            message: 'Hello Vue!',
+            question: 'find factual evidences',
+            template: TEMPLATE,
+            statement: STATEMENT,
+            response: '',
+            isResponding: false,
           }
         },
         async mounted() {
+          this.sendPrompt()
         },
         computed: {
+          higlightedText() {
+            let ret = STATEMENT
+            for (let highlight of this.highlights) {
+              ret = ret.replace(highlight.passage, `<span class="passage" title="${highlight.reason}">${highlight.passage}</span>`)
+            }
+            return ret
+          },
+          highlights() {
+            let ret = []
+            let res = this.response.replace('```json', '').replace('```', '').trim()
+            if (res.startsWith('[') && res.endsWith(']')) {
+              ret = JSON.parse(res)
+            }
+            return ret
+          },
           clipDisplayUnits() {
             let ret = this.clipUnits
             ret.sort((a, b) => a.start.localeCompare(b.start))
@@ -68,6 +150,53 @@
               this.requestVideoJumpInTimeCode(this.selectedFeature.video_start, play)
             }
           },
+          async onQuestionEnter() {
+            await this.sendPrompt()
+          },
+          async sendPrompt() {
+            // const prompt = document.getElementById("promptInput").value;
+            // const responseElement = document.getElementById("response");
+            // responseElement.textContent = "Loading...";
+            let prompt = 'hello'
+
+            this.isResponding = true
+
+            prompt = TEMPLATE
+            prompt = prompt.replace('{STATEMENT}', STATEMENT)
+            prompt = prompt.replace('{QUESTION}', this.question)
+
+            try {
+              const res = await fetch(MODEL_SERVICE_URL, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  model: MODEL, // Replace with your downloaded model name
+                  prompt: prompt,
+                  stream: false, // Set to true for streaming response
+                  options: {
+                    "num_ctx": CONTEXT_LENGTH,
+                    think: false,
+                  }             
+                }),
+              });
+
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+              }
+
+              const data = await res.json();
+              // responseElement.textContent = data.response;
+              console.log(data)
+              this.response = data.response
+            } catch (error) {
+              // responseElement.textContent = "Error: " + error.message;
+              console.log(`ERROR: ${error.message}`)
+            }
+
+            this.isResponding = false
+          }
         }
       }).mount('#app')
     </script>
