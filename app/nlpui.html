@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="theme-dark">
+<html class="theme-light">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,16 +7,22 @@
     <link rel="icon" href="data:," >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
     <style>
       .longtext {
         height: 70vh;
       }
-      .is-responding {
+      .is-responding .highlighted-text {
         opacity: 0.5;
       }
       .passage {
-        background-color: yellow;
+        background-color: orange;
         color: black;
+        padding: 0.2em;
+      }
+      .invisible {
+        visibility: hidden;
       }
     </style>
   </head>
@@ -24,32 +30,47 @@
     <section class="section" id="app">
       <div class="container is-fluid" :class="{'container': true, 'is-fluid': true, 'is-responding': isResponding}">
         <div class="columns">
-          <div class="column">
+          <!-- <div class="column">
             <br>
             <br>
             <br>
-            <p>Defendent's statement:</p>
+            <p>Defendant's statement:</p>
             <textarea class="textarea longtext">
               {{ statement }}
             </textarea>
-          </div>
+          </div> -->
           <div class="column">
-            <p>Magistrate's question</p>
+            <h2 class="title is-3">Magistrate's question</h2>
             <input  class="input" type="text" v-model="question" @keyup.enter="onQuestionEnter()">
             <br>
             <br>
-            <p>Large language model's response:</p>
+            <p :class="['notification', 'is-light', `is-${message.level}`, `${message.content ? '' : 'in'}visible`]">{{ message.content }}</p>
+            <br>
+            <h2 class="title is-3">Defendant's statement (with LLM's highlights)</h2>
             <!-- <textarea class="textarea longtext">
               {{ higlightedText }}
             </textarea> -->
             <div class="highlighted-text" v-html="higlightedText">
+            </div>
+            <br>
+            <div class="settings">
+              <h4 class="title is-4">Settings</h4>
+              <ul>
+                <li>Model:
+                  <select v-model="settings.model" @change="updateQueryString()">
+                    <option v-for="model in modelsList">{{model}}</option>
+                  </select>
+                </li>
+                <li>Context: {{settings.contextLength}}</li>
+                <li>Ollama: {{settings.serviceUrl}}</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
     <script>
-      const { createApp } = Vue;
+      const { createApp, nextTick } = Vue;
 
       const TEMPLATE = `TASK:
 You'll find below a STATEMENT and a QUESTION related to it.
@@ -77,12 +98,14 @@ QUESTION:
 RESPONSE:
 `
 
-      const MODEL_SERVICE_URL = "http://localhost:11435/api/generate"
+      const MODEL_SERVICE_URL = "http://localhost:11436/api/generate"
 
       const STATEMENT = "I fully acknowledge that I failed to give way at the mini-roundabout on Deansgate, and I deeply regret the momentary lapse in concentration that led to this incident. The conditions that evening were challenging: heavy rain reduced visibility, and my sat-nav—usually reliable—was malfunctioning, which distracted me as I approached the junction. While I am familiar with the area, the hired vehicle’s unfamiliar braking system required more force than I anticipated, causing me to hesitate just as I needed to react. I accept that, regardless of these factors, the responsibility for safe driving lies with me, and I should have been more vigilant.\n\nMy driving record speaks to my commitment to road safety. In twelve years of driving, I have never received a penalty or been involved in an accident. I have always prided myself on my attentiveness, especially in urban areas, and I am genuinely upset that my standards slipped on this occasion. I immediately reported the sat-nav issue to the hire company and have since invested in a more reliable model. I also took the initiative to revisit the Highway Code, particularly the sections on roundabouts and priority rules, to ensure my understanding is up to date.\n\nI want to be clear that I do not seek to excuse my actions, but to provide context. The combination of fatigue after a long workday, the technical issue with the sat-nav, and the unfamiliar vehicle created a perfect storm for error. I have learned from this experience and have already taken steps to mitigate such risks in the future, including planning more frequent breaks on long drives and familiarizing myself with any hired vehicle’s controls before setting off.\n\nGiven my previously unblemished record and the proactive measures I have taken, I respectfully ask the magistrates to consider this a one-off error rather than a pattern of reckless behaviour. I would welcome the opportunity to attend a driver improvement course to further reinforce my knowledge and skills. I hope you will recognize my genuine remorse and the evidence of my otherwise responsible driving history in your deliberations."
 
       // const MODEL = "gemma3:12b" // can't disable thinking, which takes a lot of tokens and time
       const MODEL = "gemma3:4b"
+
+      const DEFAULT_QUESTION = 'find factual statements'
 
       const CONTEXT_LENGTH = 4000
 
@@ -104,22 +127,39 @@ RESPONSE:
       createApp({
         data() {
           return {
-            question: 'find factual evidences',
+            question: DEFAULT_QUESTION,
             template: TEMPLATE,
             statement: STATEMENT,
             response: '',
             isResponding: false,
+            message: {
+              content: '',
+              level: 'info',
+            },
+            settings: {
+              model: MODEL,
+              contextLength: CONTEXT_LENGTH,
+              serviceUrl: MODEL_SERVICE_URL
+            },
+            modelsList: [],
           }
         },
         async mounted() {
+          this.fetchModelsList()
+
+          const params = new URLSearchParams(window.location.search);
+          this.question = params.get('q') ?? DEFAULT_QUESTION;
+          this.settings.model = params.get('model') ?? MDOEL;
+
           this.sendPrompt()
         },
         computed: {
           higlightedText() {
             let ret = STATEMENT
             for (let highlight of this.highlights) {
-              ret = ret.replace(highlight.passage, `<span class="passage" title="${highlight.reason}">${highlight.passage}</span>`)
+              ret = ret.replaceAll(highlight.passage, `<span class="passage" data-tippy-content="${highlight.reason}">${highlight.passage}</span>`)
             }
+            ret = ret.replaceAll('\n', '<br>')
             return ret
           },
           highlights() {
@@ -145,6 +185,11 @@ RESPONSE:
           },
         },
         methods: {
+          async fetchModelsList() {
+            let ret = ['gemma3:4b', 'gemma3:12b', 'gemma3:27b', 'qwen3:4b', 'qwen3:8b', 'gpt-oss:20b']
+            this.modelsList = ret
+            return ret
+          },
           requestVideoJumpToSelectedFeature(play=false) {
             if (this.selectedFeature) {
               this.requestVideoJumpInTimeCode(this.selectedFeature.video_start, play)
@@ -153,11 +198,21 @@ RESPONSE:
           async onQuestionEnter() {
             await this.sendPrompt()
           },
+          updateQueryString() {
+            const url = new URL(window.location);
+            url.searchParams.set('q', this.question);
+            url.searchParams.set('model', this.settings.model);
+            window.history.replaceState({}, '', url);
+          },
           async sendPrompt() {
             // const prompt = document.getElementById("promptInput").value;
             // const responseElement = document.getElementById("response");
             // responseElement.textContent = "Loading...";
             let prompt = 'hello'
+
+            this.setMessage('Language model is processing your question...')
+
+            this.updateQueryString()
 
             this.isResponding = true
 
@@ -172,7 +227,7 @@ RESPONSE:
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  model: MODEL, // Replace with your downloaded model name
+                  model: this.settings.model, // Replace with your downloaded model name
                   prompt: prompt,
                   stream: false, // Set to true for streaming response
                   options: {
@@ -183,19 +238,40 @@ RESPONSE:
               });
 
               if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
+                this.setMessage(`Processing error (${res.status}), is the connection to Ollama established?`, 'danger')
               }
+              
+              if (res.status == '404' || res.status == '200') {
+                const data = await res.json();
+                // responseElement.textContent = data.response;
+                console.log(data)
 
-              const data = await res.json();
-              // responseElement.textContent = data.response;
-              console.log(data)
-              this.response = data.response
+                if (data?.error) {
+                  this.setMessage(`Ollama error (${data.error}).`, 'danger')
+                }
+
+                this.response = data?.response || ''
+              }
             } catch (error) {
               // responseElement.textContent = "Error: " + error.message;
               console.log(`ERROR: ${error.message}`)
+              this.setMessage(`Processing error (${error.message}), is the connection to Ollama established?`, 'danger')
+            }
+
+            nextTick(() => {
+              tippy('[data-tippy-content]');
+            })
+
+            if (this.message.level === 'info') {
+              this.setMessage('')
             }
 
             this.isResponding = false
+          },
+          setMessage(message, level='info') {
+            // levels: info|success|warning|danger
+            this.message.content = message
+            this.message.level = level
           }
         }
       }).mount('#app')
