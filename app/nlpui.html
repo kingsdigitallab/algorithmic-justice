@@ -35,7 +35,7 @@
           <ul>
             <li v-for="(tab, tabKey) in tabs" @click="onClickTab(tabKey)" :class="{'is-active': tabKey === selectedTab}">
               <a>
-                <span v-if="!isServiceWorking && tabKey == 'settings'" class="icon is-small"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+                <span v-if="!isReadyForQuestions && tabKey == 'settings'" class="icon is-small"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
                 {{ tab.title }}
               </a>
             </li>
@@ -48,9 +48,11 @@
               <div class="field-body">
                 <div class="field">
                   <p class="control">
-                    <select v-if="setting.type == 'select'" :id="`stg-${settingKey}`" class="select"  v-model="setting.value" @change="onChangedSetting(settingKey)">
-                      <option v-for="option in setting.lookupMethod()">{{ option }}</option>
-                    </select>
+                    <div v-if="setting.type == 'select'" :class="['select', getInputClass(settingKey)]">
+                      <select :id="`stg-${settingKey}`" v-model="setting.value" @change="onChangedSetting(settingKey)">
+                        <option v-for="option in setting.lookupMethod()">{{ option }}</option>
+                      </select>
+                    </div>
                     <textarea v-if="setting.type == 'textarea'" :id="`stg-${settingKey}`" :type="setting.type" class="textarea" v-model="setting.value" @change="onChangedSetting(settingKey)"></textarea>
                     <input v-if="['text', 'password', ''].includes(setting.type ?? '')" :id="`stg-${settingKey}`" :type="setting.type" :class="['input', getInputClass(settingKey)]" v-model="setting.value" @change="onChangedSetting(settingKey)">
                   </p>
@@ -62,18 +64,16 @@
         <div v-show="selectedTab == 'highlighter'" id="tab-highlighter">
           <div class="block">
             <h2 class="title is-3">Magistrate's question</h2>
-
             <div class="field has-addons">
               <div class="control is-expanded">
-                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onQuestionEnter()">
+                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onQuestionEnter()" :disabled="!isReadyForQuestions">
               </div>
               <div class="control">
-                <button class="button is-info" @click="onQuestionEnter()">
+                <button class="button is-info" @click.stop.prevent="onQuestionEnter()" :disabled="!isReadyForQuestions">
                   Ask
                 </button>
               </div>
             </div>
-            
           </div>
           <div class="block">
             <h2 class="title is-3">Defendant's statement (with LLM's highlights)</h2>

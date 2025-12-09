@@ -103,11 +103,20 @@ createApp({
       }
       return ret
     },
+    isReadyForQuestions() {
+      return this.isServiceWorking && this.isSelectedModelAvailable
+    },
+    isSelectedModelAvailable() {
+      return this.modelsList.includes(this.settings.model.value)
+    },
   },
   methods: {
     getInputClass(settingKey) {
       let ret = 'is-normal'
       if (settingKey == 'serviceUrl' && !this.isServiceWorking) {
+        ret = 'is-danger'
+      }
+      if (settingKey == 'model' && !this.isSelectedModelAvailable) {
         ret = 'is-danger'
       }
       return ret
@@ -156,7 +165,7 @@ createApp({
         this.setMessage(`Can't access the model (401), is your API key valid? (check Settings tab)`, 'danger')
       }
 
-      if (res?.status == '404' || res?.status == '200') {
+      if ([200, 404, 400].includes(res?.status)) {
         try {
           const data = await res.json();
 
@@ -165,6 +174,12 @@ createApp({
           } else {
             if (res?.status == '200') {
               ret = data
+            } else {
+              if (data.detail) {
+                this.setMessage(`Processing error (${data.detail}).`, 'danger')
+              } else {
+                this.setMessage(`Processing error (unknown).`, 'danger')
+              }
             }
           }
         } catch (error) {
