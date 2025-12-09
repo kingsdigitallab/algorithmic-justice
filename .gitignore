@@ -21,6 +21,7 @@ yarn-error.log*
 
 # Next.js
 .next
+tmp
 
 # SvelteKit
 /.svelte-kit

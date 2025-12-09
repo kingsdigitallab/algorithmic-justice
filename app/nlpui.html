@@ -29,30 +29,42 @@
   <body>
     <section class="section" id="app">
       <div class="container is-fluid" :class="{'container': true, 'is-fluid': true, 'is-responding': isResponding}">
-        <div class="columns">
-          <!-- <div class="column">
-            <br>
-            <br>
-            <br>
-            <p>Defendant's statement:</p>
-            <textarea class="textarea longtext">
-              {{ statement }}
-            </textarea>
-          </div> -->
-          <div class="column">
+        <p :class="['notification', 'is-light', `is-${message.level}`, `${message.content ? '' : 'in'}visible`]">{{ message.content }}</p>
+        <div class="tabs is-medium">
+          <ul>
+            <li v-for="(tab, tabKey) in tabs" @click="onClickTab(tabKey)" :class="{'is-active': tabKey === selectedTab}"><a>{{ tab.title }}</a></li>
+          </ul>
+        </div>
+        <div v-show="selectedTab == 'settings'" id="tab-settings">
+          <form class="form">
+            <div v-for="(setting, settingKey) in settings" class="field">
+              <!-- <div class="field-label is-normal"> -->
+                <label class="label" :for="`stg-${settingKey}`">{{ setting.label }}:</label>
+              <!-- </div> -->
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <select v-if="setting.type == 'select'" :id="`stg-${settingKey}`" class="select"  v-model="setting.value" @change="onChangedSetting(settingKey)">
+                      <option v-for="option in setting.lookupMethod()">{{ option }}</option>
+                    </select>
+                    <textarea v-if="setting.type == 'textarea'" :id="`stg-${settingKey}`" :type="setting.type" class="textarea" v-model="setting.value" @change="onChangedSetting(settingKey)"></textarea>
+                    <input v-if="['text', 'password', ''].includes(setting.type ?? '')" :id="`stg-${settingKey}`" :type="setting.type" class="input is-normal" v-model="setting.value" @change="onChangedSetting(settingKey)">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div v-show="selectedTab == 'highlighter'" id="tab-highlighter">
+          <div class="block">
             <h2 class="title is-3">Magistrate's question</h2>
-            <input  class="input" type="text" v-model="question" @keyup.enter="onQuestionEnter()">
-            <br>
-            <br>
-            <p :class="['notification', 'is-light', `is-${message.level}`, `${message.content ? '' : 'in'}visible`]">{{ message.content }}</p>
-            <br>
+            <input  class="input" type="text" v-model="settings.question.value" @keyup.enter="onQuestionEnter()">
+          </div>
+          <div class="block">
             <h2 class="title is-3">Defendant's statement (with LLM's highlights)</h2>
-            <!-- <textarea class="textarea longtext">
-              {{ higlightedText }}
-            </textarea> -->
             <div class="highlighted-text" v-html="higlightedText">
             </div>
-            <br>
+            <!-- <br>
             <div class="settings">
               <h4 class="title is-4">Settings</h4>
               <ul>
@@ -64,217 +76,12 @@
                 <li>Context: {{settings.contextLength}}</li>
                 <li>Ollama: {{settings.serviceUrl}}</li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </section>
-    <script>
-      const { createApp, nextTick } = Vue;
-
-      const TEMPLATE = `TASK:
-You'll find below a STATEMENT and a QUESTION related to it.
-The STATEMENT is a plea from a road offender.
-The QUESTION is from a magistrate trying to quickly find clues in the STATEMENT.
-Generate a response in valid JSON. 
-You response should contain a list of relevant passages from the statement
-and one very short sentence to explain your selection.
-The response is therefore an array of passage objects. 
-Each passage object has two keys: 
-* 'passage': it must be exactly as it occurs in the statement, it can be part of a sentence
-* 'reason': reason for selecting that passage
-
-Try to be optimal in your selection. 
-Find all relevant passages but only include fragments of sentences which pertains to the question.
-Make sure your selection and reason are logically rigorous and impartial.
-Avoid overlapping passages.
-
-STATEMENT:
-{STATEMENT}
-
-QUESTION:
-{QUESTION}
-
-RESPONSE:
-`
-
-      const MODEL_SERVICE_URL = "http://localhost:11436/api/generate"
-
-      const STATEMENT = "I fully acknowledge that I failed to give way at the mini-roundabout on Deansgate, and I deeply regret the momentary lapse in concentration that led to this incident. The conditions that evening were challenging: heavy rain reduced visibility, and my sat-nav—usually reliable—was malfunctioning, which distracted me as I approached the junction. While I am familiar with the area, the hired vehicle’s unfamiliar braking system required more force than I anticipated, causing me to hesitate just as I needed to react. I accept that, regardless of these factors, the responsibility for safe driving lies with me, and I should have been more vigilant.\n\nMy driving record speaks to my commitment to road safety. In twelve years of driving, I have never received a penalty or been involved in an accident. I have always prided myself on my attentiveness, especially in urban areas, and I am genuinely upset that my standards slipped on this occasion. I immediately reported the sat-nav issue to the hire company and have since invested in a more reliable model. I also took the initiative to revisit the Highway Code, particularly the sections on roundabouts and priority rules, to ensure my understanding is up to date.\n\nI want to be clear that I do not seek to excuse my actions, but to provide context. The combination of fatigue after a long workday, the technical issue with the sat-nav, and the unfamiliar vehicle created a perfect storm for error. I have learned from this experience and have already taken steps to mitigate such risks in the future, including planning more frequent breaks on long drives and familiarizing myself with any hired vehicle’s controls before setting off.\n\nGiven my previously unblemished record and the proactive measures I have taken, I respectfully ask the magistrates to consider this a one-off error rather than a pattern of reckless behaviour. I would welcome the opportunity to attend a driver improvement course to further reinforce my knowledge and skills. I hope you will recognize my genuine remorse and the evidence of my otherwise responsible driving history in your deliberations."
-
-      // const MODEL = "gemma3:12b" // can't disable thinking, which takes a lot of tokens and time
-      const MODEL = "gemma3:4b"
-
-      const DEFAULT_QUESTION = 'find factual statements'
-
-      const CONTEXT_LENGTH = 4000
-
-      async function loadJson(url) {
-        let ret = {}
-        try {
-          const response = await fetch(url);
-          if (!response.ok) {
-            console.log(`HTTP error! status: ${response.status}`);
-          }
-          const data = await response.json();
-          ret = data
-        } catch (err) {
-          console.error('Error loading JSON:', err);
-        }
-        return ret
-      }
-
-      createApp({
-        data() {
-          return {
-            question: DEFAULT_QUESTION,
-            template: TEMPLATE,
-            statement: STATEMENT,
-            response: '',
-            isResponding: false,
-            message: {
-              content: '',
-              level: 'info',
-            },
-            settings: {
-              model: MODEL,
-              contextLength: CONTEXT_LENGTH,
-              serviceUrl: MODEL_SERVICE_URL
-            },
-            modelsList: [],
-          }
-        },
-        async mounted() {
-          this.fetchModelsList()
-
-          const params = new URLSearchParams(window.location.search);
-          this.question = params.get('q') ?? DEFAULT_QUESTION;
-          this.settings.model = params.get('model') ?? MDOEL;
-
-          this.sendPrompt()
-        },
-        computed: {
-          higlightedText() {
-            let ret = STATEMENT
-            for (let highlight of this.highlights) {
-              ret = ret.replaceAll(highlight.passage, `<span class="passage" data-tippy-content="${highlight.reason}">${highlight.passage}</span>`)
-            }
-            ret = ret.replaceAll('\n', '<br>')
-            return ret
-          },
-          highlights() {
-            let ret = []
-            let res = this.response.replace('```json', '').replace('```', '').trim()
-            if (res.startsWith('[') && res.endsWith(']')) {
-              ret = JSON.parse(res)
-            }
-            return ret
-          },
-          clipDisplayUnits() {
-            let ret = this.clipUnits
-            ret.sort((a, b) => a.start.localeCompare(b.start))
-            let pLast = null
-            for (let p of ret) {
-              p.current = (this.videoCurrentTime + 5) > this.getSecondsFromTimeCode(p.start)
-              if (pLast && p.current) {
-                pLast.current = false
-              }
-              pLast = p
-            }
-            return ret
-          },
-        },
-        methods: {
-          async fetchModelsList() {
-            let ret = ['gemma3:4b', 'gemma3:12b', 'gemma3:27b', 'qwen3:4b', 'qwen3:8b', 'gpt-oss:20b']
-            this.modelsList = ret
-            return ret
-          },
-          requestVideoJumpToSelectedFeature(play=false) {
-            if (this.selectedFeature) {
-              this.requestVideoJumpInTimeCode(this.selectedFeature.video_start, play)
-            }
-          },
-          async onQuestionEnter() {
-            await this.sendPrompt()
-          },
-          updateQueryString() {
-            const url = new URL(window.location);
-            url.searchParams.set('q', this.question);
-            url.searchParams.set('model', this.settings.model);
-            window.history.replaceState({}, '', url);
-          },
-          async sendPrompt() {
-            // const prompt = document.getElementById("promptInput").value;
-            // const responseElement = document.getElementById("response");
-            // responseElement.textContent = "Loading...";
-            let prompt = 'hello'
-
-            this.setMessage('Language model is processing your question...')
-
-            this.updateQueryString()
-
-            this.isResponding = true
-
-            prompt = TEMPLATE
-            prompt = prompt.replace('{STATEMENT}', STATEMENT)
-            prompt = prompt.replace('{QUESTION}', this.question)
-
-            try {
-              const res = await fetch(MODEL_SERVICE_URL, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  model: this.settings.model, // Replace with your downloaded model name
-                  prompt: prompt,
-                  stream: false, // Set to true for streaming response
-                  options: {
-                    "num_ctx": CONTEXT_LENGTH,
-                    think: false,
-                  }             
-                }),
-              });
-
-              if (!res.ok) {
-                this.setMessage(`Processing error (${res.status}), is the connection to Ollama established?`, 'danger')
-              }
-              
-              if (res.status == '404' || res.status == '200') {
-                const data = await res.json();
-                // responseElement.textContent = data.response;
-                console.log(data)
-
-                if (data?.error) {
-                  this.setMessage(`Ollama error (${data.error}).`, 'danger')
-                }
-
-                this.response = data?.response || ''
-              }
-            } catch (error) {
-              // responseElement.textContent = "Error: " + error.message;
-              console.log(`ERROR: ${error.message}`)
-              this.setMessage(`Processing error (${error.message}), is the connection to Ollama established?`, 'danger')
-            }
-
-            nextTick(() => {
-              tippy('[data-tippy-content]');
-            })
-
-            if (this.message.level === 'info') {
-              this.setMessage('')
-            }
-
-            this.isResponding = false
-          },
-          setMessage(message, level='info') {
-            // levels: info|success|warning|danger
-            this.message.content = message
-            this.message.level = level
-          }
-        }
-      }).mount('#app')
-    </script>
+    <script src="settings.js"></script>
+    <script src="nlpui.js"></script>
   </body>
 </html>
