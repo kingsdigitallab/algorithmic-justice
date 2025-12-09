@@ -1,8 +1,14 @@
 # Algorithmic Justice
 
-KDL components for the Algorithmic Justice research project
+KDL components for the Algorithmic Justice research project.
 
-## Set up
+[Experimental interface](https://kingsdigitallab.github.io/algorithmic-justice/nlpui.html).
+
+# Local set up
+
+First clone this repository.
+
+## Install dependencies
 
 ```bash
 cd app
