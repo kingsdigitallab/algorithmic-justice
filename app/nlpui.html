@@ -43,20 +43,27 @@
         </div>
         <div v-show="selectedTab == 'settings'" id="tab-settings">
           <form class="form">
-            <div v-for="(setting, settingKey) in settings" class="field">
-              <label class="label" :for="`stg-${settingKey}`">{{ setting.label }}:</label>
-              <div class="field-body">
-                <div class="field">
-                  <p class="control">
-                    <div v-if="setting.type == 'select'" :class="['select', getInputClass(settingKey)]">
-                      <select :id="`stg-${settingKey}`" v-model="setting.value" @change="onChangedSetting(settingKey)">
-                        <option v-for="option in setting.lookupMethod()">{{ option }}</option>
-                      </select>
-                    </div>
-                    <textarea v-if="setting.type == 'textarea'" :id="`stg-${settingKey}`" :type="setting.type" class="textarea" v-model="setting.value" @change="onChangedSetting(settingKey)"></textarea>
-                    <input v-if="['text', 'password', ''].includes(setting.type ?? '')" :id="`stg-${settingKey}`" :type="setting.type" :class="['input', getInputClass(settingKey)]" v-model="setting.value" @change="onChangedSetting(settingKey)">
-                  </p>
+            <div class="block">
+              <div v-for="(setting, settingKey) in settings" class="field">
+                <label class="label" :for="`stg-${settingKey}`">{{ setting.label }}:</label>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <div v-if="setting.type == 'select'" :class="['select', getInputClass(settingKey)]">
+                        <select :id="`stg-${settingKey}`" v-model="setting.value" @change="onChangedSetting(settingKey)">
+                          <option v-for="option in setting.lookupMethod()">{{ option }}</option>
+                        </select>
+                      </div>
+                      <textarea v-if="setting.type == 'textarea'" :id="`stg-${settingKey}`" :type="setting.type" class="textarea" v-model="setting.value" @change="onChangedSetting(settingKey)"></textarea>
+                      <input v-if="['text', 'password', ''].includes(setting.type ?? '')" :id="`stg-${settingKey}`" :type="setting.type" :class="['input', getInputClass(settingKey)]" v-model="setting.value" @change="onChangedSetting(settingKey)" autocomplete="off" >
+                    </p>
+                  </div>
                 </div>
+              </div>
+            </div>
+            <div class="block">
+              <div class="control">
+                <a class="button is-warning" @click="resetAllSettings()">Reset all settings</a>
               </div>
             </div>
           </form>
@@ -66,7 +73,7 @@
             <h2 class="title is-3">Magistrate's question</h2>
             <div class="field has-addons">
               <div class="control is-expanded">
-                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onQuestionEnter()" :disabled="!isReadyForQuestions">
+                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onQuestionEnter()" :disabled="!isReadyForQuestions" autocomplete="off" >
               </div>
               <div class="control">
                 <button class="button is-info" @click.stop.prevent="onQuestionEnter()" :disabled="!isReadyForQuestions">

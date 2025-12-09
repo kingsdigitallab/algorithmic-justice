@@ -55,8 +55,8 @@ createApp({
           'title': 'Settings',
         }
       },
-      // selectedTab: 'highlighter',
-      selectedTab: 'settings',
+      selectedTab: 'highlighter',
+      // selectedTab: 'settings',
     }
   },
   async mounted() {
@@ -268,19 +268,11 @@ createApp({
     async onQuestionEnter() {
       await this.sendPrompt()
     },
-    updateQueryString() {
-      // const url = new URL(window.location);
-      // url.searchParams.set('q', this.settings.question.value);
-      // url.searchParams.set('model', this.settings.model.value);
-      // window.history.replaceState({}, '', url);
-    },
     async sendPrompt() {
       // const prompt = document.getElementById("promptInput").value;
       // const responseElement = document.getElementById("response");
       // responseElement.textContent = "Loading...";
       let prompt = 'hello'
-
-      this.updateQueryString()
 
       this.isResponding = true
       this.response = ''
@@ -356,6 +348,12 @@ createApp({
       // levels: info|success|warning|danger
       this.message.content = message
       this.message.level = level
-    }
+    },
+    resetAllSettings() {
+      for (let [settingKey, setting] of Object.entries(this.settings)) {
+        setting.value = setting.default
+        this.onChangedSetting(settingKey)
+      }
+    },
   }
 }).mount('#app')
