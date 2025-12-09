@@ -62,7 +62,18 @@
         <div v-show="selectedTab == 'highlighter'" id="tab-highlighter">
           <div class="block">
             <h2 class="title is-3">Magistrate's question</h2>
-            <input  class="input" type="text" v-model="settings.question.value" @keyup.enter="onQuestionEnter()">
+
+            <div class="field has-addons">
+              <div class="control is-expanded">
+                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onQuestionEnter()">
+              </div>
+              <div class="control">
+                <button class="button is-info" @click="onQuestionEnter()">
+                  Ask
+                </button>
+              </div>
+            </div>
+            
           </div>
           <div class="block">
             <h2 class="title is-3">Defendant's statement (with LLM's highlights)</h2>
