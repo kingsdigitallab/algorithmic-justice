@@ -52,7 +52,7 @@
                       <option v-for="option in setting.lookupMethod()">{{ option }}</option>
                     </select>
                     <textarea v-if="setting.type == 'textarea'" :id="`stg-${settingKey}`" :type="setting.type" class="textarea" v-model="setting.value" @change="onChangedSetting(settingKey)"></textarea>
-                    <input v-if="['text', 'password', ''].includes(setting.type ?? '')" :id="`stg-${settingKey}`" :type="setting.type" class="input is-normal" v-model="setting.value" @change="onChangedSetting(settingKey)">
+                    <input v-if="['text', 'password', ''].includes(setting.type ?? '')" :id="`stg-${settingKey}`" :type="setting.type" :class="['input', getInputClass(settingKey)]" v-model="setting.value" @change="onChangedSetting(settingKey)">
                   </p>
                 </div>
               </div>

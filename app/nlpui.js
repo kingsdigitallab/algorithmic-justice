@@ -105,6 +105,13 @@ createApp({
     },
   },
   methods: {
+    getInputClass(settingKey) {
+      let ret = 'is-normal'
+      if (settingKey == 'serviceUrl' && !this.isServiceWorking) {
+        ret = 'is-danger'
+      }
+      return ret
+    },
     getModelsList() {
       return this.modelsList
     },
@@ -150,13 +157,18 @@ createApp({
       }
 
       if (res?.status == '404' || res?.status == '200') {
-        const data = await res.json();
-        if (data?.error?.message) {
-          this.setMessage(`Processing error (${data.error.message}).`, 'danger')
-        } else {
-          if (res?.status == '200') {
-            ret = data
+        try {
+          const data = await res.json();
+
+          if (data?.error?.message) {
+            this.setMessage(`Processing error (${data.error.message}).`, 'danger')
+          } else {
+            if (res?.status == '200') {
+              ret = data
+            }
           }
+        } catch (error) {
+          this.setMessage(`Processing error (${error.message}). Check address or access to model server in the Settings tab.`, 'danger')
         }
         // responseElement.textContent = data.response;
         // console.log(data)
@@ -199,7 +211,7 @@ createApp({
     onClickTab(tabKey) {
       this.selectedTab = tabKey
     },
-    onChangedSetting(settingKey) {
+    async onChangedSetting(settingKey) {
       let setting = this.settings[settingKey]
       if (!setting.value) {
         setting.value = setting.default
@@ -210,6 +222,10 @@ createApp({
         window.history.replaceState({}, '', url);
       } else {
         sessionStorage.setItem(settingKey, setting.value)
+      }
+
+      if (settingKey === 'serviceUrl') {
+        await this.initService()
       }
     },
     // async fetchModelsListOLD() {
