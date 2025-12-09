@@ -226,7 +226,7 @@ createApp({
     onClickTab(tabKey) {
       this.selectedTab = tabKey
     },
-    async onChangedSetting(settingKey) {
+    async onChangedSetting(settingKey, dontInitService=false) {
       let setting = this.settings[settingKey]
       if (!setting.value) {
         setting.value = setting.default
@@ -239,7 +239,7 @@ createApp({
         sessionStorage.setItem(settingKey, setting.value)
       }
 
-      if (settingKey === 'serviceUrl') {
+      if (!dontInitService && settingKey === 'serviceUrl' || settingKey === 'apiKey') {
         await this.initService()
       }
     },
@@ -349,11 +349,13 @@ createApp({
       this.message.content = message
       this.message.level = level
     },
-    resetAllSettings() {
+    async resetAllSettings() {
       for (let [settingKey, setting] of Object.entries(this.settings)) {
         setting.value = setting.default
-        this.onChangedSetting(settingKey)
+        await this.onChangedSetting(settingKey, true)
       }
+
+      await this.initService()
     },
   }
 }).mount('#app')
