@@ -78,8 +78,8 @@ const SETTINGS = {
     lookup: 'getModelsList',
   },
   serviceUrl: {
-    //default: "https://ai.create.kcl.ac.uk/api/",
-    default: "http://localhost:11434/v1",
+    default: "https://ai.create" + ".kcl.ac.uk/api/",
+    // default: "http://localhost:11434/v1",
     inQueryString: true,
   },
   apiKey: {

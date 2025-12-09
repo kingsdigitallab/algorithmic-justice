@@ -6,6 +6,7 @@
     <title>NLP Prototype - Algorithmic Justice</title>
     <link rel="icon" href="data:," >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
@@ -32,15 +33,18 @@
         <p :class="['notification', 'is-light', `is-${message.level}`, `${message.content ? '' : 'in'}visible`]">{{ message.content }}</p>
         <div class="tabs is-medium">
           <ul>
-            <li v-for="(tab, tabKey) in tabs" @click="onClickTab(tabKey)" :class="{'is-active': tabKey === selectedTab}"><a>{{ tab.title }}</a></li>
+            <li v-for="(tab, tabKey) in tabs" @click="onClickTab(tabKey)" :class="{'is-active': tabKey === selectedTab}">
+              <a>
+                <span v-if="!isServiceWorking && tabKey == 'settings'" class="icon is-small"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+                {{ tab.title }}
+              </a>
+            </li>
           </ul>
         </div>
         <div v-show="selectedTab == 'settings'" id="tab-settings">
           <form class="form">
             <div v-for="(setting, settingKey) in settings" class="field">
-              <!-- <div class="field-label is-normal"> -->
-                <label class="label" :for="`stg-${settingKey}`">{{ setting.label }}:</label>
-              <!-- </div> -->
+              <label class="label" :for="`stg-${settingKey}`">{{ setting.label }}:</label>
               <div class="field-body">
                 <div class="field">
                   <p class="control">
@@ -64,19 +68,6 @@
             <h2 class="title is-3">Defendant's statement (with LLM's highlights)</h2>
             <div class="highlighted-text" v-html="higlightedText">
             </div>
-            <!-- <br>
-            <div class="settings">
-              <h4 class="title is-4">Settings</h4>
-              <ul>
-                <li>Model:
-                  <select v-model="settings.model" @change="updateQueryString()">
-                    <option v-for="model in modelsList">{{model}}</option>
-                  </select>
-                </li>
-                <li>Context: {{settings.contextLength}}</li>
-                <li>Ollama: {{settings.serviceUrl}}</li>
-              </ul>
-            </div> -->
           </div>
         </div>
       </div>

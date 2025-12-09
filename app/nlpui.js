@@ -64,15 +64,9 @@ createApp({
 
     this.initService()
     
-    // this.fetchModelsList()
-
-    // this.apiKey = sessionStorage.getItem('apiKey') ?? '';
-
-    // const params = new URLSearchParams(window.location.search);
-    // this.question = params.get('q') ?? DEFAULT_QUESTION;
-    // this.settings.model = params.get('model') ?? this.settings.model;
-
-    // this.sendPrompt()
+    if (this.isServiceWorking) {
+      this.sendPrompt()
+    }
   },
   computed: {
     settingsFiltered() {
@@ -115,7 +109,7 @@ createApp({
       return this.modelsList
     },
     async initService() {
-      let res = this.fetchModelsList()
+      let res = await this.fetchModelsList()
       this.isServiceWorking = (res && res?.length > 0)
     },
     async sendToService(path, body) {
