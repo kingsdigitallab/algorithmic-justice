@@ -220,9 +220,6 @@ createApp({
         }
       }
     },
-    onChangeApiKey() {
-      // sessionStorage.setItem('apiKey', this.apiKey)
-    },
     onClickTab(tabKey) {
       this.selectedTab = tabKey
     },
@@ -243,14 +240,6 @@ createApp({
         await this.initService()
       }
     },
-    // async fetchModelsListOLD() {
-    //   let ret = ['gemma3:4b', 'gemma3:12b', 'gemma3:27b', 'qwen3:4b', 'qwen3:8b', 'gpt-oss:20b']
-    //   if (INFERRENCE_BACKEND == 'openwebui') {
-    //     ret = ['qwen3', 'gpt-oss:20b']
-    //   }
-    //   this.modelsList = ret
-    //   return ret
-    // },
     async fetchModelsList() {
       let ret = []
       let res = await this.sendToService('models')
@@ -260,12 +249,9 @@ createApp({
       this.modelsList = ret
       return ret
     },
-    requestVideoJumpToSelectedFeature(play=false) {
-      if (this.selectedFeature) {
-        this.requestVideoJumpInTimeCode(this.selectedFeature.video_start, play)
-      }
-    },
     async onQuestionEnter() {
+      this.onChangedSetting('question')
+
       await this.sendPrompt()
     },
     async sendPrompt() {
