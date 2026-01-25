@@ -17,6 +17,8 @@ If you are a KDL member of staff you can generate your own API Key like this:
 6. copy the key and paste it in a private place for future referrence. Do not share it with anyone
 7. Now you can paste that API Key in the Settings Tab of [the natural language processing application](https://kingsdigitallab.github.io/algorithmic-justice/nlpui.html) developped by KDL
 
+If everything goes well, you can return to the 'Highlighter' tab and ask a question to the language model.
+
 # Local set up
 
 First clone this repository.
