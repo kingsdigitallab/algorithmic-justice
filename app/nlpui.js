@@ -1,3 +1,25 @@
+/*
+TODO:
+
+Questionnaire (MVP):
+DONE populate json file
+DONE load json file
+DONE show content on the tab
+DONE magistrate choices: yes, no, undetermined, ask ai
+. buttons to get one LLM response at a time
+. only if not in data model already
+. show responses
+. button to export questionnaire data to json format
+. garbage collect the responses from the data
+. add question numbers
+. more space bw buttons
+. aknowledge yes/no/undet answers
+
+Questionnaire (Edit):
+. add an edit switch in the settings (only if token is valid)
+. edit statement
+. edit questions
+*/
 const { createApp, nextTick } = window.Vue;
 
 // const INFERRENCE_URL = "http://localhost:11436/api/"
@@ -48,6 +70,9 @@ createApp({
       settings: window.SETTINGS,
       modelsList: [],
       tabs: {
+        'questionnaire': {
+          'title': 'Questionnaire',
+        },
         'highlighter': {
           'title': 'Highlighter',
         },
@@ -55,7 +80,27 @@ createApp({
           'title': 'Settings',
         }
       },
-      selectedTab: 'highlighter',
+      selectedTab: 'questionnaire',
+      questionnaire: {
+        statement: '',
+        questions: [
+          '',
+        ],
+        responses: [
+          {
+            question: '',
+            answer: '',
+            reason: '',
+            highlights: [
+                {
+                  passage: '',
+                  reason: '',
+                },
+            ],
+          }
+        ],
+        model: '',
+      }
       // selectedTab: 'settings',
     }
   },
@@ -63,6 +108,8 @@ createApp({
     this.initSettings()
 
     this.initService()
+
+    await this.loadQuestionnaire()
     
     if (this.isServiceWorking) {
       this.sendPrompt()
@@ -111,6 +158,12 @@ createApp({
     },
   },
   methods: {
+    async loadQuestionnaire() {
+      let res = await loadJson('data/pleas/questionnaire.json')
+      if (res) {
+        this.questionnaire = res
+      }
+    },
     getInputClass(settingKey) {
       let ret = 'is-normal'
       if (settingKey == 'serviceUrl' && !this.isServiceWorking) {

@@ -1,0 +1,32 @@
+{
+  "statement": "The rain was coming down heavily on Tuesday afternoon, 14th October, as I approached the junction of St. Mary's Road and Oak Avenue. The visibility was poor, reduced to just a few car lengths, and the road surface was slick from the downpour. I was driving my silver Honda Civic, travelling at the speed limit of 30 mph, when the traffic light ahead changed from green to amber. Given the poor visibility and the distance I was from the stop line, I misjudged how much time I had to stop safely. I pressed the brakes firmly, but the wet road meant the car took longer to slow than it usually would, and I found myself rolling across the stop line just as the light turned red.\n\nThe car in front of me, a blue Ford Focus driven by a woman I later spoke to, had also been slowing down for the red light. I was unable to stop in time and gently made contact with her rear bumper. There was no impact to her vehicle that would cause damage beyond a small dent on the left rear corner, and neither of us sustained any injuries. I immediately pulled over to the side, turned on my hazard lights, and approached her to apologise and exchange details. I was deeply distressed about the collision, especially given the weather conditions, and assured her I would take full responsibility for the damage.\n\nI have been driving for over 15 years with a clean licence, no previous points or offences. The incident occurred at precisely 14:30 on that Tuesday, as recorded by the traffic camera at the junction. I was returning home after dropping my daughter off at her after-school club, which was running late, adding to the slight pressure I felt to get home, though I absolutely accept that is no excuse for not stopping safely. The rain was the primary factor that made the light change harder to judge and the stopping distance longer than normal.\n\nI am truly sorry for causing this avoidable incident and the inconvenience it has caused both the police and the other driver. The minor collision was entirely my fault due to my misjudgement in the adverse weather, and I take full responsibility. I have already contacted the other driver to arrange for the repair of her bumper, and I am prepared to cover all costs. Given my clean driving record and the specific, unavoidable circumstances of the heavy rain, I respectfully ask the magistrates to consider this as a mitigating factor and to waive the points on my licence, as the fine alone is already a significant hardship for my family.",
+  "options": [
+    "yes", "no", "undetermined"
+  ],
+  "parts": [
+    {
+      "question": "Did an emergency vehicle appear to wish to pass?",
+      "magistrate": {
+        "answer": "",
+        "asked_ai": false
+      },
+      "gemma3n:latest": {
+        "answer": "answer 1",
+        "reason": "reason 1",
+        "highlights": [
+          {
+            "passage": "statement",
+            "reason": "reason A"
+          }
+        ]
+      }
+    },
+    {
+      "question": "Did the driver take action to try to avoid a collision?",
+      "magistrate": {
+        "answer": "",
+        "asked_ai": false
+      }
+    }
+  ]
+}   
