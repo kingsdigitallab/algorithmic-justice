@@ -44,6 +44,18 @@ function camelToSpaceCase(str) {
       .replace(/^./, (match) => match.toUpperCase());
 }
 
+// Source - https://stackoverflow.com/a
+// Posted by esmiralha, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-01-27, License - CC BY-SA 4.0
+const generateHash = (string) => {
+  let hash = 0;
+  for (const char of string) {
+    hash = (hash << 5) - hash + char.charCodeAt(0);
+    hash |= 0; // Constrain to 32bit integer
+  }
+  return hash;
+};
+
 async function loadJson(url) {
   let ret = {}
   try {
@@ -209,6 +221,13 @@ createApp({
       let res = await loadJson('data/pleas/questionnaire.json')
       if (res) {
         this.questionnaire = res
+        // reset all the magistrate metadata
+        for (let part of res.parts) {
+          part.magistrate = {
+            answer: "",
+            askedAI: false,
+          }
+        }
       }
     },
     getInputClass(settingKey) {
@@ -404,12 +423,15 @@ createApp({
 
       let cachedResponse = part[this.settings.model.value]
 
-      if (!cachedResponse?.answer) {
+      let inputHash = generateHash(`${prompt}`)
+
+      if (!cachedResponse?.answer || cachedResponse?.inputHash !== inputHash) {
         let res = await this.sendPrompt(prompt)
 
         let structuredResponse = this.getObjectFromLLMResponse(res, true)
 
         if (structuredResponse?.answer) {
+          structuredResponse.inputHash = inputHash
           part[this.settings.model.value] = structuredResponse
         } else {
           delete part[this.settings.model.value]

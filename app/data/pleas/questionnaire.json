@@ -1,39 +1,177 @@
 {
   "statement": "The rain was coming down heavily on Tuesday afternoon, 14th October, as I approached the junction of St. Mary's Road and Oak Avenue. The visibility was poor, reduced to just a few car lengths, and the road surface was slick from the downpour. I was driving my silver Honda Civic, travelling at the speed limit of 30 mph, when the traffic light ahead changed from green to amber. Given the poor visibility and the distance I was from the stop line, I misjudged how much time I had to stop safely. I pressed the brakes firmly, but the wet road meant the car took longer to slow than it usually would, and I found myself rolling across the stop line just as the light turned red.\n\nThe car in front of me, a blue Ford Focus driven by a woman I later spoke to, had also been slowing down for the red light. I was unable to stop in time and gently made contact with her rear bumper. There was no impact to her vehicle that would cause damage beyond a small dent on the left rear corner, and neither of us sustained any injuries. I immediately pulled over to the side, turned on my hazard lights, and approached her to apologise and exchange details. I was deeply distressed about the collision, especially given the weather conditions, and assured her I would take full responsibility for the damage.\n\nI have been driving for over 15 years with a clean licence, no previous points or offences. The incident occurred at precisely 14:30 on that Tuesday, as recorded by the traffic camera at the junction. I was returning home after dropping my daughter off at her after-school club, which was running late, adding to the slight pressure I felt to get home, though I absolutely accept that is no excuse for not stopping safely. The rain was the primary factor that made the light change harder to judge and the stopping distance longer than normal.\n\nI am truly sorry for causing this avoidable incident and the inconvenience it has caused both the police and the other driver. The minor collision was entirely my fault due to my misjudgement in the adverse weather, and I take full responsibility. I have already contacted the other driver to arrange for the repair of her bumper, and I am prepared to cover all costs. Given my clean driving record and the specific, unavoidable circumstances of the heavy rain, I respectfully ask the magistrates to consider this as a mitigating factor and to waive the points on my licence, as the fine alone is already a significant hardship for my family.",
   "options": [
-    "yes", "no", "undetermined"
+    "yes",
+    "no",
+    "undetermined"
   ],
   "parts": [
     {
       "question": "Did an emergency vehicle appear to wish to pass?",
       "magistrate": {
         "answer": "",
-        "askedAI": false
+        "askedAI": true
       },
-      "gemma3n:latest": {
+      "qwen3:4b": {
+        "highlights": [],
+        "reasoning": "The statement contains no mention of emergency vehicles or any attempt by vehicles to pass in emergency situations, indicating no evidence of such an event.",
         "answer": "no",
-        "reasoning": "reason 1",
+        "inputHash": 827702912
+      },
+      "gpt-oss:20b": {
+        "highlights": [],
+        "reasoning": "The statement contains no mention of an emergency vehicle appearing or attempting to pass, so there is no evidence to confirm or refute the claim.",
+        "answer": "undetermined",
+        "inputHash": 827702912
+      },
+      "qwen3:30b": {
+        "highlights": [],
+        "reasoning": "The statement contains no mention of an emergency vehicle or any attempt by such a vehicle to pass.",
+        "answer": "no",
+        "inputHash": 827702912
+      },
+      "gemma3:4b": {
         "highlights": [
           {
-            "passage": "statement",
-            "reason": "reason A"
+            "passage": "I was returning home after dropping my daughter off at her after-school club, which was running late, adding to the slight pressure I felt to get home",
+            "reason": "This passage indicates a personal urgency and pressure to arrive home."
+          },
+          {
+            "passage": "The rain was the primary factor that made the light change harder to judge and the stopping distance longer than normal.",
+            "reason": "This highlights the external factor (rain) that contributed to the driver's difficulty."
           }
-        ]
+        ],
+        "reasoning": "The statement reveals the driver's rushed return home due to a late after-school club pickup and attributes the incident to the challenging weather conditions, suggesting a potential, albeit indirect, desire to quickly reach their destination.",
+        "answer": "undetermined",
+        "inputHash": 827702912
       }
     },
     {
       "question": "Did the driver take action to try to avoid a collision?",
       "magistrate": {
         "answer": "",
-        "askedAI": false
+        "askedAI": true
+      },
+      "qwen3:4b": {
+        "highlights": [
+          {
+            "passage": "I pressed the brakes firmly",
+            "reason": "This action was taken by the driver to try to stop the car and avoid the collision, as explicitly stated in the statement."
+          }
+        ],
+        "reasoning": "The driver's statement confirms that pressing the brakes firmly was an intentional action taken to stop the car and avoid the collision, despite misjudging the stopping time.",
+        "answer": "yes",
+        "inputHash": 1746315168
+      },
+      "gpt-oss:20b": {
+        "highlights": [
+          {
+            "passage": "I pressed the brakes firmly",
+            "reason": "Shows an attempt to stop and avoid collision"
+          },
+          {
+            "passage": "I was unable to stop in time and gently made contact with her rear bumper",
+            "reason": "Acknowledges failed attempt but confirms a stopping attempt"
+          }
+        ],
+        "reasoning": "The driver explicitly reports braking firmly in an effort to stop before the stop line, indicating an action taken to avoid a collision.",
+        "answer": "yes",
+        "inputHash": 1746315168
+      },
+      "qwen3:30b": {
+        "highlights": [
+          {
+            "passage": "I pressed the brakes firmly",
+            "reason": "Directly describes the driver's immediate action to avoid collision upon seeing the amber light"
+          }
+        ],
+        "reasoning": "The driver took proactive action by pressing the brakes firmly to stop, which aligns with avoiding a collision despite the wet road conditions.",
+        "answer": "yes",
+        "inputHash": 1746315168
+      },
+      "gemma3:4b": {
+        "highlights": [
+          {
+            "passage": "I pressed the brakes firmly, but the wet road meant the car took longer to slow than it usually would",
+            "reason": "Describes a deliberate action taken to reduce speed."
+          },
+          {
+            "passage": "I was unable to stop in time and gently made contact with her rear bumper.",
+            "reason": "Indicates an attempt to avoid a collision, despite the circumstances."
+          }
+        ],
+        "reasoning": "The statement details the driver's actions of braking firmly and attempting to stop, demonstrating a conscious effort to avoid hitting the other vehicle.",
+        "answer": "yes",
+        "inputHash": 1746315168
       }
     },
     {
       "question": "Was due care not taken due to adverse weather?",
       "magistrate": {
         "answer": "",
-        "askedAI": false
+        "askedAI": true
+      },
+      "gpt-oss:20b": {
+        "highlights": [
+          {
+            "passage": "I misjudged how much time I had to stop safely",
+            "reason": "Explicit acknowledges failure to take due care because of weather"
+          },
+          {
+            "passage": "The rain was the primary factor that made the light change harder to judge and the stopping distance longer than normal",
+            "reason": "Cites adverse weather as causal factor for insufficient due care"
+          },
+          {
+            "passage": "The visibility was poor, reduced to just a few car lengths",
+            "reason": "Describes weather condition impacting driver’s ability to behave duely"
+          },
+          {
+            "passage": "The road surface was slick from the downpour",
+            "reason": "Shows slippery conditions contributing to loss of control"
+          },
+          {
+            "passage": "I pressed the brakes firmly, but the wet road meant the car took longer to slow than it usually would, and I found myself rolling across the stop line just as the light turned red",
+            "reason": "Directly links wet road to failure to stop safely"
+          },
+          {
+            "passage": "Given the poor visibility and the distance I was from the stop line, I misjudged how much time I had to stop safely",
+            "reason": "Combines poor visibility with misjudgement, highlighting due care issue due to weather"
+          }
+        ],
+        "reasoning": "The statement explicitly cites poor visibility, slick conditions, and misjudgement caused by heavy rain as reasons for failing to stop in time, indicating that due care was not taken because of adverse weather.",
+        "answer": "yes",
+        "inputHash": -1933408307
+      },
+      "qwen3:30b": {
+        "highlights": [
+          {
+            "passage": "The rain was the primary factor that made the light change harder to judge and the stopping distance longer than normal.",
+            "reason": "This directly admits that adverse weather (rain) was the primary cause of the misjudgment, confirming due care was not taken because of the weather conditions."
+          }
+        ],
+        "reasoning": "The offender explicitly states the rain was the primary factor causing the misjudgment of stopping distance and light changes, directly linking the failure to exercise due care to the adverse weather.",
+        "answer": "yes",
+        "inputHash": -1933408307
+      },
+      "gemma3:4b": {
+        "highlights": [
+          {
+            "passage": "The visibility was poor, reduced to just a few car lengths, and the road surface was slick from the downpour.",
+            "reason": "Directly states poor visibility and a slippery road surface, key indicators of adverse weather conditions."
+          },
+          {
+            "passage": "The rain was the primary factor that made the light change harder to judge and the stopping distance longer than normal.",
+            "reason": "Explicitly identifies rain as the reason for the difficulty in judging the light and increasing stopping distance."
+          },
+          {
+            "passage": "I misjudged how much time I had to stop safely.",
+            "reason": "Acknowledges a mistake in assessing the situation due to the challenging conditions."
+          }
+        ],
+        "reasoning": "The highlights demonstrate that the statement clearly outlines poor visibility, a slippery road surface, and a misjudgment of stopping distance, all stemming from the adverse weather conditions.",
+        "answer": "yes",
+        "inputHash": -1933408307
       }
     }
   ]
-}   
+}
