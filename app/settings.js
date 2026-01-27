@@ -1,3 +1,31 @@
+const DEFAULT_TEMPLATE_QUESTIONNAIRE = `TASK:
+You'll find below a STATEMENT and a QUESTION related to it.
+The STATEMENT is a plea from a road offender.
+The QUESTION is from a magistrate trying to quickly find clues in the STATEMENT.
+Generate a response in valid JSON. 
+You response should be an object with the following properties:
+* \`highlights\`: an array of relevant highlight objects extracted from the STATEMENT; 
+* \`reasoning\`: one sentence to summarise the reasoning to answer the QUESTION from the highlights;
+* \`answer\`: the actual answer, it can only be either "yes", "no", or "undetermined" and nothing else.
+
+Only answer with "yes" or "no" if confident based on the evidence from the highlights. 
+Otherwise, answer "undetermined" and explain why in the "reasoning" property.
+
+Each highlight object has two keys: 
+* 'passage': it must be exactly as it occurs in the statement, it can be part of a sentence
+* 'reason': reason for selecting that passage
+
+Avoid overlapping highlights. Make sure all highlights are relevant to the question. It is acceptable to return no highlight (i.e. an empty array).
+
+STATEMENT:
+{STATEMENT}
+
+QUESTION:
+{QUESTION}
+
+RESPONSE:
+`
+
 const DEFAULT_TEMPLATE = `TASK:
 You'll find below a STATEMENT and a QUESTION related to it.
 The STATEMENT is a plea from a road offender.
@@ -78,9 +106,11 @@ const SETTINGS = {
     lookup: 'getModelsList',
   },
   serviceUrl: {
-    default: "https://ai.create" + ".kcl.ac.uk/api/",
+    default: "CACHED",
+    // default: "https://ai.create" + ".kcl.ac.uk/api/",
     // default: "http://localhost:11434/v1",
     inQueryString: true,
+    lookup: ['CACHED', 'http://localhost:11434/v1', "https://ai.create" + ".kcl.ac.uk/api/"],
   },
   apiKey: {
     default: '',
@@ -95,6 +125,10 @@ const SETTINGS = {
   },
   template: {
     default: DEFAULT_TEMPLATE,
+    type: 'textarea',
+  },
+  templateQuestionnaire: {
+    default: DEFAULT_TEMPLATE_QUESTIONNAIRE,
     type: 'textarea',
   },
 }

@@ -8,11 +8,11 @@
       "question": "Did an emergency vehicle appear to wish to pass?",
       "magistrate": {
         "answer": "",
-        "asked_ai": false
+        "askedAI": false
       },
       "gemma3n:latest": {
-        "answer": "answer 1",
-        "reason": "reason 1",
+        "answer": "no",
+        "reasoning": "reason 1",
         "highlights": [
           {
             "passage": "statement",
@@ -25,7 +25,14 @@
       "question": "Did the driver take action to try to avoid a collision?",
       "magistrate": {
         "answer": "",
-        "asked_ai": false
+        "askedAI": false
+      }
+    },
+    {
+      "question": "Was due care not taken due to adverse weather?",
+      "magistrate": {
+        "answer": "",
+        "askedAI": false
       }
     }
   ]

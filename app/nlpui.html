@@ -62,8 +62,9 @@
               </div>
             </div>
             <div class="block">
-              <div class="control">
+              <div class="buttons">
                 <a class="button is-warning" @click="resetAllSettings()">Reset all settings</a>
+                <a class="button" @click="copyQuestionnaireToClipboard()">Copy questionnaire to clipboard</a>
               </div>
             </div>
           </form>
@@ -74,13 +75,23 @@
               <h2 class="title is-3">Questions for magistrate</h2>
               <div class="block" v-for="part in questionnaire.parts">
                 <h3 class="title is-4">{{ part.question }}</h3>
-                <div>
+                <div class="buttons">
                   Magistrate answer:
-                  <a class="button" v-for="option in questionnaire.options">{{option}}</a>
+                  <a :class="{button: true, 'is-primary': part?.magistrate?.answer === option}" v-for="option in questionnaire.options" @click="onClickMagistrateOption(part, option)">{{option}}</a>
                 </div>
-                <div>
+
+                <div v-if="canShowLLMResponseForQuestionnaire(part)">
+                  <div class="buttons">
+                    AI Assistant answer:
+                    <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(part).answer }}</a>
+                  </div>
+                  <p>Explanation:<br>
+                    {{ getLLMResponseToQuestionnaire(part).reasoning }}
+                  </p>
+                </div>
+                <div v-else class="buttons">
                   AI Assistant answer:
-                  <a class="button">Ask</a>
+                  <a class="button" @click="sendQuestionnairePrompt(part)">Ask</a>
                 </div>
               </div>
             </div>
@@ -96,10 +107,10 @@
             <h2 class="title is-3">Magistrate's question</h2>
             <div class="field has-addons">
               <div class="control is-expanded">
-                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onQuestionEnter()" :disabled="!isReadyForQuestions" autocomplete="off" >
+                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onHighlightQuestionEnter()" :disabled="!isReadyForQuestions" autocomplete="off" >
               </div>
               <div class="control">
-                <button class="button is-info" @click.stop.prevent="onQuestionEnter()" :disabled="!isReadyForQuestions">
+                <button class="button is-info" @click.stop.prevent="onHighlightQuestionEnter()" :disabled="!isReadyForQuestions">
                   Ask
                 </button>
               </div>

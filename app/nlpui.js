@@ -4,21 +4,26 @@ TODO:
 Questionnaire (MVP):
 DONE populate json file
 DONE load json file
+S reset magistrate answer on load
+DONE aknowledge yes/no/under answers
 DONE show content on the tab
 DONE magistrate choices: yes, no, undetermined, ask ai
-. buttons to get one LLM response at a time
-. only if not in data model already
-. show responses
-. button to export questionnaire data to json format
-. garbage collect the responses from the data
+DONE buttons to get one LLM response at a time
+M. CACHING! Seek LLM answer only if not in data already
+DONE show answer
+DONE. show reason
+. show highlights
+S button to export questionnaire data to json format
 . add question numbers
-. more space bw buttons
-. aknowledge yes/no/undet answers
+DONE more space b/w buttons
 
 Questionnaire (Edit):
 . add an edit switch in the settings (only if token is valid)
 . edit statement
 . edit questions
+
+Scoring algorithm?
+. should we show the scores?
 */
 const { createApp, nextTick } = window.Vue;
 
@@ -107,13 +112,13 @@ createApp({
   async mounted() {
     this.initSettings()
 
-    this.initService()
-
     await this.loadQuestionnaire()
+
+    await this.initService()
     
-    if (this.isServiceWorking) {
-      this.sendPrompt()
-    }
+    // if (this.isServiceWorking) {
+    //   this.sendHighlightPrompt()
+    // }
   },
   computed: {
     settingsFiltered() {
@@ -123,19 +128,22 @@ createApp({
     },
     higlightedText() {
       let ret = this.settings.statement?.value ?? ''
+      let invalidPassages = 0
       for (let highlight of this.highlights) {
+        let lengthBefore = ret.length
         ret = ret.replaceAll(highlight.passage, `<span class="passage" data-tippy-content="${highlight.reason}">${highlight.passage}</span>`)
+        if (lengthBefore === ret.length) {
+          invalidPassages += 1
+        }
       }
       ret = ret.replaceAll('\n', '<br>')
+      if (invalidPassages) {
+        this.setMessage(`${invalidPassages} passage(s) returned by the LLM are not verbatim`, 'danger')
+      }
       return ret
     },
     highlights() {
-      let ret = []
-      let res = this.response.replace('```json', '').replace('```', '').trim()
-      if (res.startsWith('[') && res.endsWith(']')) {
-        ret = JSON.parse(res)
-      }
-      return ret
+      return this.getArrayFromLLMResponse(this.response)
     },
     clipDisplayUnits() {
       let ret = this.clipUnits
@@ -158,6 +166,45 @@ createApp({
     },
   },
   methods: {
+    getLLMResponseToQuestionnaire(part) {
+      return part[this.settings.model.value]
+    },
+    canShowLLMResponseForQuestionnaire(part) {
+      // only show if the response for that part exists
+      // AND 
+      // the magistrate asked to see it
+      return part?.magistrate?.askedAI && part[this.settings.model.value]?.answer
+    },
+    getArrayFromLLMResponse(response) {
+      return this.getArrayOrObjectFromLLMResponse(response)
+    },
+    getObjectFromLLMResponse(response) {
+      return this.getArrayOrObjectFromLLMResponse(response, true)
+    },
+    getArrayOrObjectFromLLMResponse(response, isObject=false) {
+      let ret = isObject ? {} : []
+      if (response) {
+        let res = response.replace('```json', '').replace('```', '').trim()
+        let bracketPairs = [
+          ['[', ']'],
+          ['{', '}']
+        ]
+        let bracketPair = bracketPairs[isObject ? 1 : 0]
+        let isWellFormed = false
+        if (res.startsWith(bracketPair[0]) && res.endsWith(bracketPair[1])) {
+          try {
+            ret = JSON.parse(res)
+            isWellFormed = true
+          } catch (error) {
+            console.log(error.message)
+          }
+        }
+        if (!isWellFormed) {
+          this.setMessage(`Response from LLM is malformed`, 'danger')
+        }
+      }
+      return ret
+    },
     async loadQuestionnaire() {
       let res = await loadJson('data/pleas/questionnaire.json')
       if (res) {
@@ -178,8 +225,23 @@ createApp({
       return this.modelsList
     },
     async initService() {
+      this.setMessage('')
       let res = await this.fetchModelsList()
       this.isServiceWorking = (res && res?.length > 0)
+      
+      this.updateModelsListFromCachedResponses()
+    },
+    updateModelsListFromCachedResponses() {
+      // even if no model engine is available 
+      // we want the user to access the cached responses
+      for (let part of this.questionnaire.parts) {
+        let cachedModels = Object.keys(part).filter(p => !(['question', 'magistrate'].includes(p)))
+        for (let model of cachedModels) {
+          if (!this.modelsList.includes(model)) {
+            this.modelsList.push(model)
+          }
+        }
+      }
     },
     async sendToService(path, body) {
       let ret = {}
@@ -203,43 +265,49 @@ createApp({
         requestInit.method = 'POST'
       }
       let fullPath = this.settings.serviceUrl.value.replace(/\/+$/, '');
-      fullPath += '/' + path.replace(/^\/+/, '');
-      try {
-        res = await fetch(fullPath, requestInit);
-      } catch (error) {
-        this.setMessage(`Processing error (${error.message}). Check address or access to model server (${this.settings.serviceUrl.value}).`, 'danger')
-      }
 
-      if (!res.ok && res?.status) {
-        this.setMessage(`Processing error (${res.status}). Check address or access to model server (${this.settings.serviceUrl.value}).`, 'danger')
-      }
-
-      if (res?.status == '401') {
-        this.setMessage(`Can't access the model (401), is your API key valid? (check Settings tab)`, 'danger')
-      }
-
-      if ([200, 404, 400].includes(res?.status)) {
+      if (!fullPath.includes('/')) {
+        // dummy path, e.g. 'CACHED'
+        this.setMessage('No model service selected', 'warning')
+      } else {
+        fullPath += '/' + path.replace(/^\/+/, '');
         try {
-          const data = await res.json();
+          res = await fetch(fullPath, requestInit);
+        } catch (error) {
+          this.setMessage(`Processing error (${error.message}). Check address or access to model server (${this.settings.serviceUrl.value}).`, 'danger')
+        }
 
-          if (data?.error?.message) {
-            this.setMessage(`Processing error (${data.error.message}).`, 'danger')
-          } else {
-            if (res?.status == '200') {
-              ret = data
+        if (!res.ok && res?.status) {
+          this.setMessage(`Processing error (${res.status}). Check address or access to model server (${this.settings.serviceUrl.value}).`, 'danger')
+        }
+
+        if (res?.status == '401') {
+          this.setMessage(`Can't access the model (401), is your API key valid? (check Settings tab)`, 'danger')
+        }
+
+        if ([200, 404, 400].includes(res?.status)) {
+          try {
+            const data = await res.json();
+
+            if (data?.error?.message) {
+              this.setMessage(`Processing error (${data.error.message}).`, 'danger')
             } else {
-              if (data.detail) {
-                this.setMessage(`Processing error (${data.detail}).`, 'danger')
+              if (res?.status == '200') {
+                ret = data
               } else {
-                this.setMessage(`Processing error (unknown).`, 'danger')
+                if (data.detail) {
+                  this.setMessage(`Processing error (${data.detail}).`, 'danger')
+                } else {
+                  this.setMessage(`Processing error (unknown).`, 'danger')
+                }
               }
             }
+          } catch (error) {
+            this.setMessage(`Processing error (${error.message}). Check address or access to model server in the Settings tab.`, 'danger')
           }
-        } catch (error) {
-          this.setMessage(`Processing error (${error.message}). Check address or access to model server in the Settings tab.`, 'danger')
+          // responseElement.textContent = data.response;
+          // console.log(data)
         }
-        // responseElement.textContent = data.response;
-        // console.log(data)
       }
 
       if (this.message.level === 'info') {
@@ -263,7 +331,11 @@ createApp({
           setting.label = camelToSpaceCase(settingKey)
         }
         if (setting?.lookup) {
-          setting.lookupMethod = this[setting.lookup]
+          if (Array.isArray(setting.lookup)) {
+            setting.lookupMethod = () => setting.lookup
+          } else {
+            setting.lookupMethod = this[setting.lookup]
+          }
           setting.type = 'select'
         }
         if (setting.inQueryString) {
@@ -292,33 +364,69 @@ createApp({
       if (!dontInitService && settingKey === 'serviceUrl' || settingKey === 'apiKey') {
         await this.initService()
       }
+
+      if (settingKey === 'model') {
+        // hide the LLM response to all parts of the questionnaire
+        for (let part of this.questionnaire.parts) {
+          part.magistrate.askedAI = false
+        }
+      }
     },
     async fetchModelsList() {
       let ret = []
-      let res = await this.sendToService('models')
-      if (res?.data) {
-        ret = res.data.map(modelInfo => modelInfo.id)
+      if (this.settings.serviceUrl.value.includes('/')) {
+        let res = await this.sendToService('models')
+        if (res?.data) {
+          ret = res.data.map(modelInfo => modelInfo.id)
+        }
       }
       this.modelsList = ret
       return ret
     },
-    async onQuestionEnter() {
+    async onHighlightQuestionEnter() {
       this.onChangedSetting('question')
 
-      await this.sendPrompt()
+      await this.sendHighlightPrompt()
     },
-    async sendPrompt() {
-      // const prompt = document.getElementById("promptInput").value;
-      // const responseElement = document.getElementById("response");
-      // responseElement.textContent = "Loading...";
-      let prompt = 'hello'
+    async sendHighlightPrompt() {
+      let prompt = this.settings.template.value
+      prompt = prompt.replace('{STATEMENT}', this.settings.statement.value)
+      prompt = prompt.replace('{QUESTION}', this.settings.question.value)
+
+      let res = await this.sendPrompt(prompt)
+
+      this.response = res
+    },
+    async sendQuestionnairePrompt(part) {
+      let prompt = this.settings.templateQuestionnaire.value
+      prompt = prompt.replace('{STATEMENT}', this.questionnaire.statement)
+      prompt = prompt.replace('{QUESTION}', part.question)
+
+      let cachedResponse = part[this.settings.model.value]
+
+      if (!cachedResponse?.answer) {
+        let res = await this.sendPrompt(prompt)
+
+        let structuredResponse = this.getObjectFromLLMResponse(res, true)
+
+        if (structuredResponse?.answer) {
+          part[this.settings.model.value] = structuredResponse
+        } else {
+          delete part[this.settings.model.value]
+        }
+      } else {
+        console.log('Response already cached')
+      }
+      
+      if (part[this.settings.model.value]?.answer) {
+        part.magistrate.askedAI = true
+      }
+    },
+    async sendPrompt(prompt) {
+      let ret = ''
 
       this.isResponding = true
       this.response = ''
-
-      prompt = this.settings.template.value
-      prompt = prompt.replace('{STATEMENT}', this.settings.statement.value)
-      prompt = prompt.replace('{QUESTION}', this.settings.question.value)
 
       // let generate_url = this.settings.serviceUrl.value
       let generate_url = ''
@@ -370,11 +478,12 @@ createApp({
       // } else {
       //   this.response = data?.choices[0]?.message?.content || ''
       // }
-        
+      
       if (this.message.level === 'info') {
-        this.response = res?.choices[0]?.message?.content || ''
+        // this.response = res?.choices[0]?.message?.content || ''
+        ret = res?.choices[0]?.message?.content || ''
       } else {
-        this.response = ''
+        // this.response = ''
       }
 
       nextTick(() => {
@@ -382,6 +491,8 @@ createApp({
       })
 
       this.isResponding = false
+
+      return ret
     },
     setMessage(message, level='info') {
       // levels: info|success|warning|danger
@@ -396,5 +507,14 @@ createApp({
 
       await this.initService()
     },
+    async copyQuestionnaireToClipboard() {
+      await this.copyToClipboard(JSON.stringify(this.questionnaire, null, 2))
+    },
+    async copyToClipboard(content) {
+      await navigator.clipboard.writeText(content);
+    },
+    onClickMagistrateOption(part, option) {
+      part.magistrate.answer = option
+    }
   }
 }).mount('#app')
