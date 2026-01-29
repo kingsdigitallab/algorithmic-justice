@@ -39,6 +39,8 @@ const INFERRENCE_BACKEND = 'openai'
 
 const CONTEXT_LENGTH = 4000
 
+const DELAY_IN_SECONDS_FOR_CACHED_RESPONSES = 2
+
 function camelToSpaceCase(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1 $2')
       .replace(/^./, (match) => match.toUpperCase());
@@ -69,6 +71,11 @@ async function loadJson(url) {
     console.error('Error loading JSON:', err);
   }
   return ret
+}
+
+function delay(seconds) {
+  // usage: await delay(2000)
+  return new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }
 
 createApp({
@@ -154,6 +161,25 @@ createApp({
       }
       return ret
     },
+    highlightedQuestionnaireStatement() {
+      let ret = this.questionnaire?.statement ?? ''
+      let invalidPassages = 0
+      let highlightedPart = this.questionnaire?.selectedPart
+      if (highlightedPart && highlightedPart[this.settings.model.value]) {
+        for (let highlight of highlightedPart[this.settings.model.value]?.highlights ?? []) {
+          let lengthBefore = ret.length
+          ret = ret.replaceAll(highlight.passage, `<span class="passage" data-tippy-content="${highlight.reason}">${highlight.passage}</span>`)
+          if (lengthBefore === ret.length) {
+            invalidPassages += 1
+          }
+        }
+      }
+      ret = ret.replaceAll('\n', '<br>')
+      if (invalidPassages) {
+        this.setMessage(`${invalidPassages} passage(s) returned by the LLM are not verbatim`, 'warning')
+      }
+      return ret
+    },
     highlights() {
       return this.getArrayFromLLMResponse(this.response)
     },
@@ -228,6 +254,7 @@ createApp({
             askedAI: false,
           }
         }
+        this.questionnaire.selectedPart = null
       }
     },
     getInputClass(settingKey) {
@@ -389,6 +416,7 @@ createApp({
         for (let part of this.questionnaire.parts) {
           part.magistrate.askedAI = false
         }
+        this.questionnaire.selectedPart = null
       }
     },
     async fetchModelsList() {
@@ -437,11 +465,17 @@ createApp({
           delete part[this.settings.model.value]
         }
       } else {
+        this.isResponding = true
+        this.setMessage(`Model server is processing your request...`)
+        await delay(DELAY_IN_SECONDS_FOR_CACHED_RESPONSES)
+        this.setMessage('')
+        this.isResponding = false
         console.log('Response already cached')
       }
       
       if (part[this.settings.model.value]?.answer) {
         part.magistrate.askedAI = true
+        this.questionnaire.selectedPart = part
       }
     },
     async sendPrompt(prompt) {
@@ -537,6 +571,9 @@ createApp({
     },
     onClickMagistrateOption(part, option) {
       part.magistrate.answer = option
-    }
+    },
+    onClickShowHighlights(part) {
+      this.questionnaire.selectedPart = part
+    },
   }
 }).mount('#app')

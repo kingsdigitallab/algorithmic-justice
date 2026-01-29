@@ -101,7 +101,7 @@ const SETTINGS = {
   },
   model: {
     // default: "gpt-oss:20b",
-    default: "gemma3n:latest",
+    default: "gpt-oss:20b",
     inQueryString: true,
     lookup: 'getModelsList',
   },

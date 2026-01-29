@@ -25,6 +25,13 @@
       .invisible {
         visibility: hidden;
       }
+      .move-right {
+        margin-left: auto;
+      }
+      .highlights-indicator {
+        background-color: #FFD580;
+        color: black;
+      }
     </style>
   </head>
   <body>
@@ -84,6 +91,8 @@
                   <div class="buttons">
                     AI Assistant answer:
                     <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(part).answer }}</a>
+                    <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedPart !== part" @click="onClickShowHighlights(part)">Show highlights ⇨</button>
+                    <span class="highlights-indicator move-right" v-else>AI Assistant's highlights ⇨</span>
                   </div>
                   <p>Explanation:<br>
                     {{ getLLMResponseToQuestionnaire(part).reasoning }}
@@ -91,13 +100,13 @@
                 </div>
                 <div v-else class="buttons">
                   AI Assistant answer:
-                  <a class="button" @click="sendQuestionnairePrompt(part)">Ask</a>
+                  <button class="button" :disabled="isResponding" @click="sendQuestionnairePrompt(part)">Ask</button>
                 </div>
               </div>
             </div>
             <div class="column">
               <h2 class="title is-3">Defendant's statement</h2>
-              <div class="highlighted-text" v-html="questionnaire.statement">
+              <div class="highlighted-text" v-html="highlightedQuestionnaireStatement">
               </div>
             </div>
           </div>
