@@ -100,7 +100,7 @@ const SETTINGS = {
     inQueryString: true,
   },
   model: {
-    default: "qwen:30b",
+    default: "qwen3:30b",
     // default: "gpt-oss:20b",
     inQueryString: true,
     lookup: 'getModelsList',
