@@ -7,46 +7,6 @@
   ],
   "parts": [
     {
-      "question": "Did an emergency vehicle appear to wish to pass?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "qwen3:4b": {
-        "highlights": [],
-        "reasoning": "The statement contains no mention of emergency vehicles or any attempt by vehicles to pass in emergency situations, indicating no evidence of such an event.",
-        "answer": "no",
-        "inputHash": 827702912
-      },
-      "gpt-oss:20b": {
-        "highlights": [],
-        "reasoning": "The statement contains no mention of an emergency vehicle appearing or attempting to pass, so there is no evidence to confirm or refute the claim.",
-        "answer": "undetermined",
-        "inputHash": 827702912
-      },
-      "qwen3:30b": {
-        "highlights": [],
-        "reasoning": "The statement contains no mention of an emergency vehicle or any attempt by such a vehicle to pass.",
-        "answer": "no",
-        "inputHash": 827702912
-      },
-      "gemma3:4b": {
-        "highlights": [
-          {
-            "passage": "I was returning home after dropping my daughter off at her after-school club, which was running late, adding to the slight pressure I felt to get home",
-            "reason": "This passage indicates a personal urgency and pressure to arrive home."
-          },
-          {
-            "passage": "The rain was the primary factor that made the light change harder to judge and the stopping distance longer than normal.",
-            "reason": "This highlights the external factor (rain) that contributed to the driver's difficulty."
-          }
-        ],
-        "reasoning": "The statement reveals the driver's rushed return home due to a late after-school club pickup and attributes the incident to the challenging weather conditions, suggesting a potential, albeit indirect, desire to quickly reach their destination.",
-        "answer": "undetermined",
-        "inputHash": 827702912
-      }
-    },
-    {
       "question": "Did the driver take action to try to avoid a collision?",
       "magistrate": {
         "answer": "",
@@ -103,6 +63,46 @@
         "reasoning": "The statement details the driver's actions of braking firmly and attempting to stop, demonstrating a conscious effort to avoid hitting the other vehicle.",
         "answer": "yes",
         "inputHash": 1746315168
+      }
+    },
+    {
+      "question": "Did an emergency vehicle appear to wish to pass?",
+      "magistrate": {
+        "answer": "",
+        "askedAI": true
+      },
+      "qwen3:4b": {
+        "highlights": [],
+        "reasoning": "The statement contains no mention of emergency vehicles or any attempt by vehicles to pass in emergency situations, indicating no evidence of such an event.",
+        "answer": "no",
+        "inputHash": 827702912
+      },
+      "gpt-oss:20b": {
+        "highlights": [],
+        "reasoning": "The statement contains no mention of an emergency vehicle appearing or attempting to pass, so there is no evidence to confirm or refute the claim.",
+        "answer": "undetermined",
+        "inputHash": 827702912
+      },
+      "qwen3:30b": {
+        "highlights": [],
+        "reasoning": "The statement contains no mention of an emergency vehicle or any attempt by such a vehicle to pass.",
+        "answer": "no",
+        "inputHash": 827702912
+      },
+      "gemma3:4b": {
+        "highlights": [
+          {
+            "passage": "I was returning home after dropping my daughter off at her after-school club, which was running late, adding to the slight pressure I felt to get home",
+            "reason": "This passage indicates a personal urgency and pressure to arrive home."
+          },
+          {
+            "passage": "The rain was the primary factor that made the light change harder to judge and the stopping distance longer than normal.",
+            "reason": "This highlights the external factor (rain) that contributed to the driver's difficulty."
+          }
+        ],
+        "reasoning": "The statement reveals the driver's rushed return home due to a late after-school club pickup and attributes the incident to the challenging weather conditions, suggesting a potential, albeit indirect, desire to quickly reach their destination.",
+        "answer": "undetermined",
+        "inputHash": 827702912
       }
     },
     {

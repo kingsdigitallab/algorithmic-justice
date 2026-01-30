@@ -92,7 +92,14 @@
                     AI Assistant answer:
                     <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(part).answer }}</a>
                     <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedPart !== part" @click="onClickShowHighlights(part)">Show highlights ⇨</button>
-                    <span class="highlights-indicator move-right" v-else>AI Assistant's highlights ⇨</span>
+                    <span class="highlights-indicator move-right" v-else>
+                      <template v-if="getLLMResponseToQuestionnaire(part).highlights.length">
+                        AI Assistant's highlights ⇨
+                      </template>
+                      <template v-else>
+                        AI Assistant has no highlights
+                      </template>
+                    </span>
                   </div>
                   <p>Explanation:<br>
                     {{ getLLMResponseToQuestionnaire(part).reasoning }}
