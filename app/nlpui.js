@@ -564,6 +564,7 @@ createApp({
       await this.initService()
     },
     async copyQuestionnaireToClipboard() {
+      this.questionnaire.selectedPart = null
       await this.copyToClipboard(JSON.stringify(this.questionnaire, null, 2))
     },
     async copyToClipboard(content) {
