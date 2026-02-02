@@ -86,6 +86,176 @@
         "answer": "undetermined",
         "inputHash": 1331223804
       }
+    },
+    {
+      "question": "Did previous traffic offences include running red lights?",
+      "magistrate": {
+        "answer": "",
+        "askedAI": true
+      },
+      "qwen3:30b": {
+        "highlights": [],
+        "reasoning": "The statement describes a single incident involving red light movement for emergency vehicles but contains no reference to previous traffic offences at all.",
+        "answer": "undetermined",
+        "inputHash": -2049890812
+      },
+      "gpt-oss:20b": {
+        "highlights": [
+          {
+            "passage": "I received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points.",
+            "reason": "states an offence occurred but does not specify the nature or whether it was a prior offence or running a red light"
+          }
+        ],
+        "reasoning": "The statement contains no reference to any previous traffic offences or to running red lights, so the information is insufficient to confirm such a claim.",
+        "answer": "undetermined",
+        "inputHash": -2049890812
+      }
+    },
+    {
+      "question": "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
+      "magistrate": {
+        "answer": "",
+        "askedAI": true
+      },
+      "qwen3:30b": {
+        "highlights": [],
+        "reasoning": "The statement contains no mention of snow, adverse weather, low speed as a cause of the incident, or a minor technical slide, so none of the listed factors contributed to the offence.",
+        "answer": "no",
+        "inputHash": 1090801730
+      },
+      "gpt-oss:20b": {
+        "highlights": [
+          {
+            "passage": "Traffic was very dense and slow moving.",
+            "reason": "Mentions slow-moving traffic, but does not specify the vehicle’s own speed or a technical slide."
+          }
+        ],
+        "reasoning": "The statement gives no indication of snow, adverse weather, a technical slide, or that the driver’s own speed was low; thus the claim cannot be verified.",
+        "answer": "undetermined",
+        "inputHash": 1090801730
+      }
+    },
+    {
+      "question": "Was there a long red light (normally a prerequisite for...)?",
+      "magistrate": {
+        "answer": "",
+        "askedAI": true
+      },
+      "qwen3:30b": {
+        "highlights": [
+          {
+            "passage": "As they came behind me, the lights cycled to red",
+            "reason": "Describes the lights turning red during the emergency vehicles' approach, indicating a normal traffic light cycle, not a prolonged red."
+          },
+          {
+            "passage": "when the lights changed to green again, so I moved forward",
+            "reason": "Shows the lights reverted to green quickly after the emergency vehicles passed, confirming the red phase was brief."
+          }
+        ],
+        "reasoning": "The lights cycled to red briefly during the emergency vehicles' passage and changed to green immediately after, indicating no prolonged red light.",
+        "answer": "no",
+        "inputHash": 1545617459
+      },
+      "gpt-oss:20b": {
+        "highlights": [
+          {
+            "passage": "As they came behind me, the lights cycled to red.",
+            "reason": "Shows that a red light was displayed but does not state its duration."
+          },
+          {
+            "passage": "when the lights changed to green again, so I moved forward to continue my journey.",
+            "reason": "Indicates the red light was not sustained until the next traffic signal cycle; it switched back to green, implying a relatively brief red."
+          }
+        ],
+        "reasoning": "The statement only records that the traffic lights switched to red and then back to green, with no indication that the red illumination was prolonged, making it unclear whether a long red light occurred.",
+        "answer": "undetermined",
+        "inputHash": 1545617459
+      }
+    },
+    {
+      "question": "Was blame wrongly placed on others?",
+      "magistrate": {
+        "answer": "",
+        "askedAI": true
+      },
+      "qwen3:30b": {
+        "highlights": [
+          {
+            "passage": "I moved just past the white line to allow both emergency vehicles to pass",
+            "reason": "Demonstrates the offender actively complied with the requirement to make way for emergency vehicles."
+          },
+          {
+            "passage": "the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically",
+            "reason": "Indicates direct authorization from emergency personnel, suggesting the action was lawful and expected."
+          }
+        ],
+        "reasoning": "The offender's action of moving to allow emergency vehicles through, with explicit police motioning, indicates compliance with legal requirements to yield, making the offense charge unjustified.",
+        "answer": "yes",
+        "inputHash": -2035846442
+      },
+      "gpt-oss:20b": {
+        "highlights": [
+          {
+            "passage": "I moved just past the white line to allow both emergency vehicles to pass",
+            "reason": "Shows the offender’s own action that may constitute the offence"
+          },
+          {
+            "passage": "I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through",
+            "reason": "Indicates that others assert the offence was committed by the offender, not by third parties"
+          }
+        ],
+        "reasoning": "The statement reveals that the offender himself moved the vehicle past the line and that others maintain it was an offence, showing blame is appropriately on the offender and not wrongly placed on others.",
+        "answer": "no",
+        "inputHash": -2035846442
+      }
+    },
+    {
+      "question": "Was there a perfect driving record?",
+      "magistrate": {
+        "answer": "",
+        "askedAI": true
+      },
+      "qwen3:30b": {
+        "highlights": [
+          {
+            "passage": "these extra points",
+            "reason": "implies prior penalty points on the license, contradicting a perfect record"
+          }
+        ],
+        "reasoning": "The statement mentions 'these extra points,' indicating prior points existed, meaning the driving record was not perfect.",
+        "answer": "no",
+        "inputHash": 1777967254
+      },
+      "gpt-oss:20b": {
+        "highlights": [
+          {
+            "passage": "a week or so later I received a letter in the post advising me that I had committed an offence",
+            "reason": "Shows the driver has committed an offence, disproving a perfect record."
+          }
+        ],
+        "reasoning": "The statement contains evidence that the driver has at least one offence, so they cannot have a perfect driving record.",
+        "answer": "no",
+        "inputHash": 1777967254
+      }
+    },
+    {
+      "question": "Was the weekly pay input as provided by the defendant?",
+      "magistrate": {
+        "answer": "",
+        "askedAI": true
+      },
+      "qwen3:30b": {
+        "highlights": [],
+        "reasoning": "The statement discusses financial impact on insurance but contains no mention of weekly pay, salary, or pay details input by the defendant.",
+        "answer": "undetermined",
+        "inputHash": -1187817300
+      },
+      "gpt-oss:20b": {
+        "highlights": [],
+        "reasoning": "The statement contains no information about a weekly pay input, so there is insufficient evidence to determine if it was provided by the defendant.",
+        "answer": "undetermined",
+        "inputHash": -1187817300
+      }
     }
   ],
   "selectedPart": null
