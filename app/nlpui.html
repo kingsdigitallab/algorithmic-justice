@@ -80,20 +80,20 @@
           <div class="columns">
             <div class="column">
               <h2 class="title is-3">Questions for magistrate</h2>
-              <div class="block" v-for="(part, index) in questionnaire.parts">
-                <h3 class="title is-4">{{index+1}}. {{ part.question }}</h3>
+              <div class="block" v-for="(question, index) in questionnaire.questions">
+                <h3 class="title is-4">{{index+1}}. {{ question }}</h3>
                 <div class="buttons">
                   Magistrate answer:
-                  <a :class="{button: true, 'is-primary': part?.magistrate?.answer === option}" v-for="option in questionnaire.options" @click="onClickMagistrateOption(part, option)">{{option}}</a>
+                  <a :class="{button: true, 'is-primary': getMagistrateResponse(question).answer === option}" v-for="option in questionnaire.options" @click="onClickMagistrateOption(question, option)">{{option}}</a>
                 </div>
 
-                <div v-if="canShowLLMResponseForQuestionnaire(part)">
+                <div v-if="canShowLLMResponseForQuestionnaire(question)">
                   <div class="buttons">
                     AI Assistant answer:
-                    <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(part).answer }}</a>
-                    <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedPart !== part" @click="onClickShowHighlights(part)">Show highlights ⇨</button>
+                    <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(question).answer }}</a>
+                    <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedQuestion !== question" @click="onClickShowHighlights(question)">Show highlights ⇨</button>
                     <span class="highlights-indicator move-right" v-else>
-                      <template v-if="getLLMResponseToQuestionnaire(part).highlights.length">
+                      <template v-if="getLLMResponseToQuestionnaire(question).highlights.length">
                         AI Assistant's highlights ⇨
                       </template>
                       <template v-else>
@@ -102,17 +102,22 @@
                     </span>
                   </div>
                   <p>Explanation:<br>
-                    {{ getLLMResponseToQuestionnaire(part).reasoning }}
+                    {{ getLLMResponseToQuestionnaire(question).reasoning }}
                   </p>
                 </div>
                 <div v-else class="buttons">
                   AI Assistant answer:
-                  <button class="button" :disabled="isResponding" @click="sendQuestionnairePrompt(part)">Ask</button>
+                  <button class="button" :disabled="isResponding" @click="sendQuestionnairePrompt(question)">Ask</button>
                 </div>
               </div>
             </div>
             <div class="column">
               <h2 class="title is-3">Defendant's statement</h2>
+              <div class="select block">
+                <select v-model="questionnaire.selectedStatementKey">
+                  <option v-for="(statement, statementKey) in questionnaire.statements">{{statementKey}}</option>
+                </select>
+              </div>
               <div class="highlighted-text" v-html="highlightedQuestionnaireStatement">
               </div>
             </div>

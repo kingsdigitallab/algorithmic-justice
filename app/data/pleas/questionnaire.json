@@ -1,243 +1,525 @@
 {
-  "statement": "I was driving through a built up area with a number of traffic lights. Traffic was very dense and slow moving.  I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me. I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side. The junction was narrow with a pedestrian island in the middle, so there was no room to manouver. As the two emergency vehicles approached, with cars moving to the left and right, I was hoping for the traffic on the other side to clear so that I could move on and clear the junction. As they came behind me, the lights cycled to red. I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically. I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again, so I moved forward to continue my journey. A week or so later I received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points. I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through. These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.",
+  "statements": {
+    "statement 1": "I was driving through a built up area with a number of traffic lights. Traffic was very dense and slow moving.  I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me. I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side. The junction was narrow with a pedestrian island in the middle, so there was no room to manouver. As the two emergency vehicles approached, with cars moving to the left and right, I was hoping for the traffic on the other side to clear so that I could move on and clear the junction. As they came behind me, the lights cycled to red. I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically. I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again, so I moved forward to continue my journey. A week or so later I received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points. I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through. These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.",
+    "statement 2": "I'm writing to provide context for the incident that occurred on 14th January at approximately 7:35pm on the junction of Meadowbank Road and Station Approach. I've thought quite a lot about what happened, and while I accept that I crossed the red light, I want to explain why it happened the way it did.\nI was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migration that had gone rather badly. My route home takes me through that junction most weekdays, and I know it reasonably well, though I'll admit the lighting there isn't brilliant once it gets dark. There's a streetlamp that's been out for months on the approach side, something I've noticed before but never really thought much about.\nThe weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket. It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications. The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\nAs I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting. Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.\nNow I should say, I'm not someone who normally gets sentimental about animals, but this was a substantial creature and it was moving directly into my path in absolutely foul conditions. My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space. The fox seemed confused, actually stopped halfway across, and I remember thinking 'please don't change direction now' because if it had darted back I'd have been in a worse position.\nThe combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split for what couldn't have been more than two or three seconds, but it was enough. When I looked back at the road ahead, I realised the light had changed - or perhaps had been red all along and I'd simply not registered it properly while dealing with the animal. The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction, though whether that was the weather conditions or something wrong with the signal I couldn't say. In any case, I slammed the brakes much harder at that point, really quite violently, and the car lurched forward. My phone, which had been in my hand, flew onto the passenger seat and hit the floor somewhere. I actually heard it clatter.\nThe car did stop, but not before I'd crossed the line. I could feel I was over it, perhaps a metre or so into the junction, and I sat there for a moment feeling rather foolish. The hail was still hammering down, the wipers still going frantically, and the light cycled through while I tried to gather myself. I drove on, and honestly thought that was the end of it. The fox, incidentally, made it across safely, though it didn't so much as glance back.\nI've replayed the sequence in my mind several times since receiving the notice of prosecution. Could I have reacted differently? Possibly. Should I have noticed the light sooner? Certainly. But in that moment, with an animal in the road, heavy hail reducing visibility to almost nothing, and having to make a split-second decision about whether to hit it or take evasive action, my focus went entirely to not causing an accident. The end result was that I crossed a red light, which I understand is an offense regardless of the circumstances.\nI'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation. But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions. I've been driving for seventeen years without any points on my license, which I mention not to claim special treatment but simply to illustrate that this isn't typical behaviour for me.\nWhether any of this constitutes mitigation in the eyes of the court, I genuinely don't know. I suspect rules are rules, and crossing the line is crossing the line. But I wanted you to understand what actually happened that evening - the weather, the animal, the visibility, all of it - rather than simply seeing the camera image and drawing conclusions.",
+    "statement 3": "I am sorry for crossing the red light and I accept this was my mistake. At the time the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear. The sky was already going dark and everything around the junction looked more dull than usual, so I was trying hard to keep my eyes on the road and the cars around me.\nWhen I came to the lights I thought I saw them in time, but I judged it wrong and went through. I normally drive careful and I do not take risks, and this situation is not how I usually drive. I need my licence for my daily life and I am very sorry for this error."
+  },
+  "selectedStatementKey": "statement 2",
   "options": [
     "yes",
     "no",
     "undetermined"
   ],
-  "parts": [
-    {
-      "question": "Did the driver take action to try to avoid a collision?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "gpt-oss:20b": {
-        "highlights": [
-          {
-            "passage": "I moved just past the white line to allow both emergency vehicles to pass",
-            "reason": "Shows the driver took active steps to clear the path for emergency vehicles, thereby preventing a possible collision."
-          }
-        ],
-        "reasoning": "The driver’s deliberate action to move past the white line in order to allow emergency vehicles to pass demonstrates that they attempted to avoid a collision.",
-        "answer": "yes",
-        "inputHash": 1783347025
-      },
-      "qwen3:30b": {
-        "highlights": [
-          {
-            "passage": "I moved just past the white line to allow both emergency vehicles to pass",
-            "reason": "This action directly demonstrates the driver actively clearing the path for emergency vehicles, preventing potential collision."
-          }
-        ],
-        "reasoning": "The driver moved to allow emergency vehicles to pass, which constitutes taking action to avoid collision.",
-        "answer": "yes",
-        "inputHash": 1783347025
-      }
-    },
-    {
-      "question": "Did an emergency vehicle appear to wish to pass?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "gpt-oss:20b": {
-        "highlights": [
-          {
-            "passage": "I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me.",
-            "reason": "Indicates an ambulance (with a siren) behind me trying to pass."
-          },
-          {
-            "passage": "I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.",
-            "reason": "Shows the police car driver actively requesting to clear the lane to pass."
-          }
-        ],
-        "reasoning": "Both the ambulance (evidenced by its siren) and the police car (evidenced by motioning) demonstrated intent to pass.",
-        "answer": "yes",
-        "inputHash": -1481931793
-      },
-      "qwen3:30b": {
-        "highlights": [
-          {
-            "passage": "the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically",
-            "reason": "Direct indication that an emergency vehicle was attempting to pass by signaling the driver to move."
-          }
-        ],
-        "reasoning": "The police driver's explicit motioning to clear the way confirms the emergency vehicle wished to pass.",
-        "answer": "yes",
-        "inputHash": -1481931793
-      }
-    },
-    {
-      "question": "Was due care not taken due to adverse weather?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "gpt-oss:20b": {
-        "highlights": [],
-        "reasoning": "The statement contains no mention of weather or any indication that adverse weather affected the driver's actions.",
-        "answer": "undetermined",
-        "inputHash": 1331223804
-      },
-      "qwen3:30b": {
-        "highlights": [],
-        "reasoning": "The statement contains no mention of adverse weather conditions, making it impossible to determine if due care was affected by weather.",
-        "answer": "undetermined",
-        "inputHash": 1331223804
-      }
-    },
-    {
-      "question": "Did previous traffic offences include running red lights?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "qwen3:30b": {
-        "highlights": [],
-        "reasoning": "The statement describes a single incident involving red light movement for emergency vehicles but contains no reference to previous traffic offences at all.",
-        "answer": "undetermined",
-        "inputHash": -2049890812
-      },
-      "gpt-oss:20b": {
-        "highlights": [
-          {
-            "passage": "I received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points.",
-            "reason": "states an offence occurred but does not specify the nature or whether it was a prior offence or running a red light"
-          }
-        ],
-        "reasoning": "The statement contains no reference to any previous traffic offences or to running red lights, so the information is insufficient to confirm such a claim.",
-        "answer": "undetermined",
-        "inputHash": -2049890812
-      }
-    },
-    {
-      "question": "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "qwen3:30b": {
-        "highlights": [],
-        "reasoning": "The statement contains no mention of snow, adverse weather, low speed as a cause of the incident, or a minor technical slide, so none of the listed factors contributed to the offence.",
-        "answer": "no",
-        "inputHash": 1090801730
-      },
-      "gpt-oss:20b": {
-        "highlights": [
-          {
-            "passage": "Traffic was very dense and slow moving.",
-            "reason": "Mentions slow-moving traffic, but does not specify the vehicle’s own speed or a technical slide."
-          }
-        ],
-        "reasoning": "The statement gives no indication of snow, adverse weather, a technical slide, or that the driver’s own speed was low; thus the claim cannot be verified.",
-        "answer": "undetermined",
-        "inputHash": 1090801730
-      }
-    },
-    {
-      "question": "Was there a long red light (normally a prerequisite for...)?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "qwen3:30b": {
-        "highlights": [
-          {
-            "passage": "As they came behind me, the lights cycled to red",
-            "reason": "Describes the lights turning red during the emergency vehicles' approach, indicating a normal traffic light cycle, not a prolonged red."
-          },
-          {
-            "passage": "when the lights changed to green again, so I moved forward",
-            "reason": "Shows the lights reverted to green quickly after the emergency vehicles passed, confirming the red phase was brief."
-          }
-        ],
-        "reasoning": "The lights cycled to red briefly during the emergency vehicles' passage and changed to green immediately after, indicating no prolonged red light.",
-        "answer": "no",
-        "inputHash": 1545617459
-      },
-      "gpt-oss:20b": {
-        "highlights": [
-          {
-            "passage": "As they came behind me, the lights cycled to red.",
-            "reason": "Shows that a red light was displayed but does not state its duration."
-          },
-          {
-            "passage": "when the lights changed to green again, so I moved forward to continue my journey.",
-            "reason": "Indicates the red light was not sustained until the next traffic signal cycle; it switched back to green, implying a relatively brief red."
-          }
-        ],
-        "reasoning": "The statement only records that the traffic lights switched to red and then back to green, with no indication that the red illumination was prolonged, making it unclear whether a long red light occurred.",
-        "answer": "undetermined",
-        "inputHash": 1545617459
-      }
-    },
-    {
-      "question": "Was blame wrongly placed on others?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "qwen3:30b": {
-        "highlights": [
-          {
-            "passage": "I moved just past the white line to allow both emergency vehicles to pass",
-            "reason": "Demonstrates the offender actively complied with the requirement to make way for emergency vehicles."
-          },
-          {
-            "passage": "the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically",
-            "reason": "Indicates direct authorization from emergency personnel, suggesting the action was lawful and expected."
-          }
-        ],
-        "reasoning": "The offender's action of moving to allow emergency vehicles through, with explicit police motioning, indicates compliance with legal requirements to yield, making the offense charge unjustified.",
-        "answer": "yes",
-        "inputHash": -2035846442
-      },
-      "gpt-oss:20b": {
-        "highlights": [
-          {
-            "passage": "I moved just past the white line to allow both emergency vehicles to pass",
-            "reason": "Shows the offender’s own action that may constitute the offence"
-          },
-          {
-            "passage": "I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through",
-            "reason": "Indicates that others assert the offence was committed by the offender, not by third parties"
-          }
-        ],
-        "reasoning": "The statement reveals that the offender himself moved the vehicle past the line and that others maintain it was an offence, showing blame is appropriately on the offender and not wrongly placed on others.",
-        "answer": "no",
-        "inputHash": -2035846442
-      }
-    },
-    {
-      "question": "Was there a perfect driving record?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "qwen3:30b": {
-        "highlights": [
-          {
-            "passage": "these extra points",
-            "reason": "implies prior penalty points on the license, contradicting a perfect record"
-          }
-        ],
-        "reasoning": "The statement mentions 'these extra points,' indicating prior points existed, meaning the driving record was not perfect.",
-        "answer": "no",
-        "inputHash": 1777967254
-      },
-      "gpt-oss:20b": {
-        "highlights": [
-          {
-            "passage": "a week or so later I received a letter in the post advising me that I had committed an offence",
-            "reason": "Shows the driver has committed an offence, disproving a perfect record."
-          }
-        ],
-        "reasoning": "The statement contains evidence that the driver has at least one offence, so they cannot have a perfect driving record.",
-        "answer": "no",
-        "inputHash": 1777967254
-      }
-    }
+  "questions": [
+    "Did the driver take action to try to avoid a collision?",
+    "Did an emergency vehicle appear to wish to pass?",
+    "Was due care not taken due to adverse weather?",
+    "Did previous traffic offences include running red lights?",
+    "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
+    "Was there a long red light (normally a prerequisite for...)?",
+    "Was blame wrongly placed on others?",
+    "Was there a perfect driving record?"
   ],
-  "selectedPart": null
+  "selectedQuestion": "Was there a perfect driving record?",
+  "responses": {
+    "1179175": {
+      "statementKey": "statement 2",
+      "question": "Did previous traffic offences include running red lights?",
+      "model": "magistrate",
+      "inputHash": 1179175,
+      "answer": "",
+      "askedAI": true
+    },
+    "9235245": {
+      "statementKey": "statement 2",
+      "question": "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
+      "model": "qwen3:30b",
+      "inputHash": 9235245,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "it had turned to hail",
+          "reason": "The statement explicitly describes hail (not snow) as the weather condition, directly contradicting the 'snow' reference in the question."
+        }
+      ],
+      "reasoning": "The statement specifies hail instead of snow, making the 'snow' component of the question inaccurate and invalidating the entire cause claim."
+    },
+    "96740254": {
+      "statementKey": "statement 3",
+      "question": "Was blame wrongly placed on others?",
+      "model": "magistrate",
+      "inputHash": 96740254,
+      "answer": "",
+      "askedAI": false
+    },
+    "102654176": {
+      "statementKey": "statement 1",
+      "question": "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
+      "model": "qwen3:30b",
+      "inputHash": 102654176,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement does not mention snow, adverse weather, low speed as a cause, or a technical slide; it describes traffic conditions and emergency vehicle interaction instead."
+    },
+    "275749094": {
+      "statementKey": "statement 1",
+      "question": "Was due care not taken due to adverse weather?",
+      "model": "magistrate",
+      "inputHash": 275749094,
+      "answer": "",
+      "askedAI": true
+    },
+    "396335882": {
+      "statementKey": "statement 3",
+      "question": "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
+      "model": "magistrate",
+      "inputHash": 396335882,
+      "answer": "",
+      "askedAI": false
+    },
+    "418722017": {
+      "statementKey": "statement 3",
+      "question": "Did the driver take action to try to avoid a collision?",
+      "model": "qwen3:30b",
+      "inputHash": 418722017,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "I judged it wrong and went through.",
+          "reason": "Admission of proceeding through the red light without stopping or evasive action, indicating no attempt to avoid a collision."
+        }
+      ],
+      "reasoning": "The driver explicitly stated they proceeded through the red light after misjudging the signal, with no mention of braking, swerving, or other actions to avoid a collision."
+    },
+    "471879984": {
+      "statementKey": "statement 2",
+      "question": "Was there a long red light (normally a prerequisite for...)?",
+      "model": "magistrate",
+      "inputHash": 471879984,
+      "answer": "",
+      "askedAI": true
+    },
+    "656978906": {
+      "statementKey": "statement 1",
+      "question": "Did previous traffic offences include running red lights?",
+      "model": "magistrate",
+      "inputHash": 656978906,
+      "answer": "",
+      "askedAI": true
+    },
+    "657667321": {
+      "statementKey": "statement 2",
+      "question": "Was there a perfect driving record?",
+      "model": "magistrate",
+      "inputHash": 657667321,
+      "answer": "",
+      "askedAI": true
+    },
+    "721484529": {
+      "statementKey": "statement 2",
+      "question": "Was due care not taken due to adverse weather?",
+      "model": "qwen3:30b",
+      "inputHash": 721484529,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.",
+          "reason": "Demonstrates the driver intentionally adjusted speed due to weather-impaired visibility, showing due care was taken."
+        }
+      ],
+      "reasoning": "The driver explicitly slowed to 25mph due to adverse weather conditions, proving due care was taken rather than neglected."
+    },
+    "805469076": {
+      "statementKey": "statement 3",
+      "question": "Did previous traffic offences include running red lights?",
+      "model": "qwen3:30b",
+      "inputHash": 805469076,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement describes the current incident and the offender's usual driving habits but contains no mention of previous traffic offences."
+    },
+    "837103266": {
+      "statementKey": "statement 1",
+      "question": "Did previous traffic offences include running red lights?",
+      "model": "qwen3:30b",
+      "inputHash": 837103266,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement contains no references to previous traffic offences, focusing solely on a current incident with emergency vehicles and a subsequent notice about penalties."
+    },
+    "969144484": {
+      "statementKey": "statement 2",
+      "question": "Did an emergency vehicle appear to wish to pass?",
+      "model": "qwen3:30b",
+      "inputHash": 969144484,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement contains no mention of an emergency vehicle or any driver perception of one wishing to pass, making it impossible to confirm or deny the question based on the provided text."
+    },
+    "1135621145": {
+      "statementKey": "statement 3",
+      "question": "Did the driver take action to try to avoid a collision?",
+      "model": "magistrate",
+      "inputHash": 1135621145,
+      "answer": "",
+      "askedAI": true
+    },
+    "1138820921": {
+      "statementKey": "statement 2",
+      "question": "Was blame wrongly placed on others?",
+      "model": "magistrate",
+      "inputHash": 1138820921,
+      "answer": "",
+      "askedAI": true
+    },
+    "1203600636": {
+      "statementKey": "statement 2",
+      "question": "Did the driver take action to try to avoid a collision?",
+      "model": "qwen3:30b",
+      "inputHash": 1203600636,
+      "answer": "yes",
+      "highlights": [
+        {
+          "passage": "My immediate reaction was to brake and swerve slightly right to avoid it",
+          "reason": "This passage explicitly states the driver took active measures (braking and swerving) to prevent a collision with the fox, which was the immediate hazard."
+        }
+      ],
+      "reasoning": "The driver directly describes braking and swerving to avoid the fox, confirming intentional action to prevent a collision."
+    },
+    "1266092757": {
+      "statementKey": "statement 1",
+      "question": "Was there a long red light (normally a prerequisite for...)?",
+      "model": "qwen3:30b",
+      "inputHash": 1266092757,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "the lights cycled to red",
+          "reason": "indicates a normal traffic light cycle duration, not a prolonged red light"
+        },
+        {
+          "passage": "when the lights changed to green again",
+          "reason": "shows the red phase was brief, not extended"
+        }
+      ],
+      "reasoning": "The statement describes lights cycling to red during the emergency vehicles' approach and changing to green again immediately after, indicating no prolonged red light duration."
+    },
+    "1318627777": {
+      "statementKey": "statement 2",
+      "question": "Was there a perfect driving record?",
+      "model": "qwen3:30b",
+      "inputHash": 1318627777,
+      "answer": "yes",
+      "highlights": [
+        {
+          "passage": "I've been driving for seventeen years without any points on my license",
+          "reason": "Directly confirms a perfect driving record without any points for 17 years."
+        }
+      ],
+      "reasoning": "The statement explicitly states a 17-year record without any license points, confirming a perfect driving record."
+    },
+    "1375430098": {
+      "statementKey": "statement 3",
+      "question": "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
+      "model": "qwen3:30b",
+      "inputHash": 1375430098,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "the road was very wet and noisy from the water",
+          "reason": "adverse weather condition (wet road)"
+        }
+      ],
+      "reasoning": "The statement describes wet road due to water (adverse weather) but does not mention snow, low speed, or a minor technical slide, making the combined factors in the question false."
+    },
+    "1799781377": {
+      "statementKey": "statement 2",
+      "question": "Was blame wrongly placed on others?",
+      "model": "qwen3:30b",
+      "inputHash": 1799781377,
+      "answer": "no",
+      "highlights": [],
+      "reasoning": "The statement shows the offender accepting personal responsibility without attributing blame to others, such as the fox, weather, or streetlamp, as they explicitly state 'I bear responsibility for the situation' and 'I'm not trying to excuse what happened'."
+    },
+    "1924711079": {
+      "statementKey": "statement 1",
+      "question": "Did the driver take action to try to avoid a collision?",
+      "model": "magistrate",
+      "inputHash": 1924711079,
+      "answer": "",
+      "askedAI": true
+    },
+    "2114121049": {
+      "statementKey": "statement 1",
+      "question": "Did an emergency vehicle appear to wish to pass?",
+      "model": "magistrate",
+      "inputHash": 2114121049,
+      "answer": "",
+      "askedAI": true
+    },
+    "fjafjlksgsgre": {
+      "statement": "statement 1",
+      "question": "q1",
+      "model": "model1",
+      "highlights": [
+        {
+          "passage": "I moved just past the white line to allow both emergency vehicles to pass",
+          "reason": "Shows the driver took active steps to clear the path for emergency vehicles, thereby preventing a possible collision."
+        }
+      ],
+      "reasoning": "The driver’s deliberate action to move past the white line in order to allow emergency vehicles to pass demonstrates that they attempted to avoid a collision.",
+      "answer": "yes"
+    },
+    "-2047715289": {
+      "statementKey": "statement 3",
+      "question": "Did an emergency vehicle appear to wish to pass?",
+      "model": "magistrate",
+      "inputHash": -2047715289,
+      "answer": "",
+      "askedAI": true
+    },
+    "-1422434508": {
+      "statementKey": "statement 3",
+      "question": "Was due care not taken due to adverse weather?",
+      "model": "magistrate",
+      "inputHash": -1422434508,
+      "answer": "",
+      "askedAI": false
+    },
+    "-1744203572": {
+      "statementKey": "statement 3",
+      "question": "Did previous traffic offences include running red lights?",
+      "model": "magistrate",
+      "inputHash": -1744203572,
+      "answer": "",
+      "askedAI": false
+    },
+    "-1351450517": {
+      "statementKey": "statement 3",
+      "question": "Was there a long red light (normally a prerequisite for...)?",
+      "model": "magistrate",
+      "inputHash": -1351450517,
+      "answer": "",
+      "askedAI": false
+    },
+    "-384413346": {
+      "statementKey": "statement 3",
+      "question": "Was there a perfect driving record?",
+      "model": "magistrate",
+      "inputHash": -384413346,
+      "answer": "",
+      "askedAI": false
+    },
+    "-873943969": {
+      "statementKey": "statement 3",
+      "question": "Did an emergency vehicle appear to wish to pass?",
+      "model": "qwen3:30b",
+      "inputHash": -873943969,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement does not mention any emergency vehicles or related circumstances."
+    },
+    "-1801100948": {
+      "statementKey": "statement 3",
+      "question": "Was due care not taken due to adverse weather?",
+      "model": "qwen3:30b",
+      "inputHash": -1801100948,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "At the time the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear.",
+          "reason": "Demonstrates proactive measures taken in adverse weather (wipers on) to maintain due care."
+        },
+        {
+          "passage": "The sky was already going dark and everything around the junction looked more dull than usual, so I was trying hard to keep my eyes on the road and the cars around me.",
+          "reason": "Shows active effort to focus despite poor visibility, indicating due care was exercised."
+        }
+      ],
+      "reasoning": "The offender explicitly describes taking mitigating actions (wipers on, focusing on road) in adverse weather, indicating due care was taken, so the premise of 'due care not taken' is false."
+    },
+    "-1185709530": {
+      "statementKey": "statement 3",
+      "question": "Was there a perfect driving record?",
+      "model": "qwen3:30b",
+      "inputHash": -1185709530,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement describes typical driving behavior and this incident as atypical but does not provide any evidence about past driving violations or a historical record."
+    },
+    "-704555930": {
+      "statementKey": "statement 3",
+      "question": "Was blame wrongly placed on others?",
+      "model": "qwen3:30b",
+      "inputHash": -704555930,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "I am sorry for crossing the red light and I accept this was my mistake.",
+          "reason": "Explicit acceptance of personal fault without blaming others."
+        },
+        {
+          "passage": "I judged it wrong and went through.",
+          "reason": "Admission of personal error in judgment without attribution to external factors."
+        }
+      ],
+      "reasoning": "The statement shows the offender taking full personal responsibility without implicating others in the mistake."
+    },
+    "-550223709": {
+      "statementKey": "statement 3",
+      "question": "Was there a long red light (normally a prerequisite for...)?",
+      "model": "qwen3:30b",
+      "inputHash": -550223709,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "No mention of red light duration or any indication of a long red light in the statement."
+    },
+    "-885062120": {
+      "statementKey": "statement 1",
+      "question": "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
+      "model": "magistrate",
+      "inputHash": -885062120,
+      "answer": "",
+      "askedAI": true
+    },
+    "-404563299": {
+      "statementKey": "statement 1",
+      "question": "Was there a long red light (normally a prerequisite for...)?",
+      "model": "magistrate",
+      "inputHash": -404563299,
+      "answer": "",
+      "askedAI": true
+    },
+    "-1590754004": {
+      "statementKey": "statement 1",
+      "question": "Was blame wrongly placed on others?",
+      "model": "magistrate",
+      "inputHash": -1590754004,
+      "answer": "",
+      "askedAI": true
+    },
+    "-2071907604": {
+      "statementKey": "statement 1",
+      "question": "Was there a perfect driving record?",
+      "model": "magistrate",
+      "inputHash": -2071907604,
+      "answer": "",
+      "askedAI": true
+    },
+    "-1234874513": {
+      "statementKey": "statement 1",
+      "question": "Did the driver take action to try to avoid a collision?",
+      "model": "qwen3:30b",
+      "inputHash": -1234874513,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "I moved just past the white line to allow both emergency vehicles to pass",
+          "reason": "Describes the driver's action in response to emergency vehicles, not collision avoidance."
+        }
+      ],
+      "reasoning": "The driver's action was to clear the way for emergency vehicles, not to avoid a collision, as no collision risk was mentioned."
+    },
+    "-873221743": {
+      "statementKey": "statement 1",
+      "question": "Did an emergency vehicle appear to wish to pass?",
+      "model": "qwen3:30b",
+      "inputHash": -873221743,
+      "answer": "yes",
+      "highlights": [
+        {
+          "passage": "I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.",
+          "reason": "The police driver's explicit motioning (waving hand emphatically) to clear the way confirms the emergency vehicle's intent to pass."
+        }
+      ],
+      "reasoning": "The police driver's direct physical gesture to clear the way demonstrates an emergency vehicle appearing to wish to pass."
+    },
+    "-1649145058": {
+      "statementKey": "statement 1",
+      "question": "Was due care not taken due to adverse weather?",
+      "model": "qwen3:30b",
+      "inputHash": -1649145058,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement contains no mention of adverse weather conditions, so there is no evidence to confirm or deny the claim about due care being compromised by weather."
+    },
+    "-751057420": {
+      "statementKey": "statement 1",
+      "question": "Was blame wrongly placed on others?",
+      "model": "qwen3:30b",
+      "inputHash": -751057420,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement contains no reference to blame being placed on others, making it impossible to determine if blame was wrongly placed on third parties."
+    },
+    "-1232211020": {
+      "statementKey": "statement 1",
+      "question": "Was there a perfect driving record?",
+      "model": "qwen3:30b",
+      "inputHash": -1232211020,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement contains no information about prior offenses or the driver's historical record, making it impossible to determine if they had a perfect driving record before this incident."
+    },
+    "-1642447820": {
+      "statementKey": "statement 2",
+      "question": "Did the driver take action to try to avoid a collision?",
+      "model": "magistrate",
+      "inputHash": -1642447820,
+      "answer": "",
+      "askedAI": true
+    },
+    "-2140706708": {
+      "statementKey": "statement 2",
+      "question": "Did an emergency vehicle appear to wish to pass?",
+      "model": "magistrate",
+      "inputHash": -2140706708,
+      "answer": "",
+      "askedAI": true
+    },
+    "-238175047": {
+      "statementKey": "statement 2",
+      "question": "Was due care not taken due to adverse weather?",
+      "model": "magistrate",
+      "inputHash": -238175047,
+      "answer": "",
+      "askedAI": true
+    },
+    "-161227675": {
+      "statementKey": "statement 2",
+      "question": "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
+      "model": "magistrate",
+      "inputHash": -161227675,
+      "answer": "",
+      "askedAI": true
+    },
+    "-840422161": {
+      "statementKey": "statement 2",
+      "question": "Did previous traffic offences include running red lights?",
+      "model": "qwen3:30b",
+      "inputHash": -840422161,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "I've been driving for seventeen years without any points on my license",
+          "reason": "directly addresses absence of previous traffic offenses resulting in license points, which would include running red lights"
+        }
+      ],
+      "reasoning": "The statement explicitly states no points on license, confirming no prior offenses including running red lights."
+    },
+    "-1949414040": {
+      "statementKey": "statement 2",
+      "question": "Was there a long red light (normally a prerequisite for...)?",
+      "model": "qwen3:30b",
+      "inputHash": -1949414040,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "the light cycled through",
+          "reason": "This directly indicates the traffic light was functioning normally and changing colors, confirming a standard red light duration rather than an extended one."
+        }
+      ],
+      "reasoning": "The statement explicitly describes the light cycling normally, which contradicts the notion of a long red light."
+    }
+  },
+  "question": "Did the driver take action to try to avoid a collision?"
 }

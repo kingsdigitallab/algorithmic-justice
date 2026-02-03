@@ -16,6 +16,10 @@ DONE show highlights
 DONE button to export questionnaire data to json format
 DONE add question numbers
 DONE more space b/w buttons
+DONE accept multiple statements
+DONE ability to switch in the UI
+WIP M refactor the data model
+C prepare responses from the command line
 
 Questionnaire (Edit):
 . add an edit switch in the settings (only if token is valid)
@@ -33,7 +37,7 @@ const { createApp, nextTick } = window.Vue;
 // const INFERRENCE_BACKEND = 'openwebui'
 const INFERRENCE_BACKEND = 'openai'
 
-
+const AGENT_MAGISTRATE = 'magistrate'
 // const MODEL = "gemma3:12b" // can't disable thinking, which takes a lot of tokens and time
 // const MODEL = "gemma3:4b"
 
@@ -106,7 +110,7 @@ createApp({
       },
       selectedTab: 'questionnaire',
       questionnaire: {
-        statement: '',
+        statements: {},
         questions: [
           '',
         ],
@@ -146,38 +150,27 @@ createApp({
         this.highlights
       )
     },
+    selectedQuestionnaireStatement() {
+      return this.questionnaire?.statements[this.questionnaire?.selectedStatementKey] ?? ''
+    },
+    selectedModel() {
+      return this.settings?.model?.value ?? ''
+    },
     highlightedQuestionnaireStatement() {
-      let ret = this.questionnaire?.statement ?? ''
-      let highlightedPart = this.questionnaire?.selectedPart
-      if (highlightedPart && highlightedPart[this.settings.model.value]) {
-        ret = this.highlightText(
-          ret, 
-          highlightedPart[this.settings.model.value]?.highlights ?? []
-        )
-      }
-      return ret
+      let response = this.getLLMResponseToQuestionnaire(this.questionnaire.selectedQuestion)
+      return this.highlightText(
+        this.selectedQuestionnaireStatement, 
+        response?.highlights ?? []
+      )
     },
     highlights() {
       return this.getArrayFromLLMResponse(this.response)
-    },
-    clipDisplayUnits() {
-      let ret = this.clipUnits
-      ret.sort((a, b) => a.start.localeCompare(b.start))
-      let pLast = null
-      for (let p of ret) {
-        p.current = (this.videoCurrentTime + 5) > this.getSecondsFromTimeCode(p.start)
-        if (pLast && p.current) {
-          pLast.current = false
-        }
-        pLast = p
-      }
-      return ret
     },
     isReadyForQuestions() {
       return this.isServiceWorking && this.isSelectedModelAvailable
     },
     isSelectedModelAvailable() {
-      return this.modelsList.includes(this.settings.model.value)
+      return this.modelsList.includes(this.selectedModel)
     },
   },
   methods: {
@@ -194,20 +187,22 @@ createApp({
           invalidPassages += 1
         }
       }
-      ret = ret.replaceAll('\n', '<br>')
+      ret = ret.replaceAll('\n', '<br><br>')
       if (invalidPassages) {
         this.setMessage(`${invalidPassages} passage(s) returned by the LLM are not verbatim`, 'danger')
       }
       return ret
     },
-    getLLMResponseToQuestionnaire(part) {
-      return part[this.settings.model.value]
+    getLLMResponseToQuestionnaire(question) {
+      return this.getQuestionnaireResponse(question)
     },
-    canShowLLMResponseForQuestionnaire(part) {
+    canShowLLMResponseForQuestionnaire(question) {
       // only show if the response for that part exists
       // AND 
       // the magistrate asked to see it
-      return part?.magistrate?.askedAI && part[this.settings.model.value]?.answer
+      let magistrateResponse = this.getMagistrateResponse(question)
+      let modelResponse = this.getQuestionnaireResponse(question)
+      return magistrateResponse.askedAI && modelResponse.answer
     },
     getArrayFromLLMResponse(response) {
       return this.getArrayOrObjectFromLLMResponse(response)
@@ -244,13 +239,13 @@ createApp({
       if (res) {
         this.questionnaire = res
         // reset all the magistrate metadata
-        for (let part of res.parts) {
-          part.magistrate = {
-            answer: "",
-            askedAI: false,
+        for (const [inputHash, response] of Object.entries(res.responses)) {
+          if (response.model === AGENT_MAGISTRATE) {
+            response.answer = ""
+            response.askedAI = false
           }
         }
-        this.questionnaire.selectedPart = null
+        this.questionnaire.selectedQuestion = null
       }
     },
     getInputClass(settingKey) {
@@ -276,14 +271,36 @@ createApp({
     updateModelsListFromCachedResponses() {
       // even if no model engine is available 
       // we want the user to access the cached responses
-      for (let part of this.questionnaire.parts) {
-        let cachedModels = Object.keys(part).filter(p => !(['question', 'magistrate'].includes(p)))
-        for (let model of cachedModels) {
-          if (!this.modelsList.includes(model)) {
-            this.modelsList.push(model)
-          }
+      for (const [inputHash, response] of Object.entries(this.questionnaire.responses)) {
+        // let cachedModels = Object.keys(part).filter(p => !(['question', 'magistrate'].includes(p)))
+        if (!this.modelsList.includes(response.model)) {
+          this.modelsList.push(response.model)
         }
       }
+    },
+    getMagistrateResponse(question) {
+      let ret = this.getQuestionnaireResponse(question, AGENT_MAGISTRATE)
+      if (!ret?.askedAI) {
+        ret.askedAI = false
+        this.questionnaire.responses[ret.inputHash] = ret
+      }
+      return ret
+    },
+    getQuestionnaireResponse(question, model=null) {
+      model = model ?? this.selectedModel
+      let hash = this.getInputHash(question, model)
+      let defaultResponse = {
+        statementKey: this.questionnaire.selectedStatementKey,
+        question: question,
+        model: model,
+        inputHash: hash,
+        answer: '',
+      }
+      return this.questionnaire.responses[hash] ?? defaultResponse
+    },
+    getInputHash(question, model) {
+      let prompt = this.getQuestionnairePrompt(question)
+      return generateHash(`${model}-${prompt}`)
     },
     async sendToService(path, body) {
       let ret = {}
@@ -409,10 +426,10 @@ createApp({
 
       if (settingKey === 'model') {
         // hide the LLM response to all parts of the questionnaire
-        for (let part of this.questionnaire.parts) {
-          part.magistrate.askedAI = false
+        for (let response of this.questionnaire.responses) {
+          response.askedAI = false
         }
-        this.questionnaire.selectedPart = null
+        this.questionnaire.selectedQuestion = null
       }
     },
     async fetchModelsList() {
@@ -444,25 +461,29 @@ createApp({
 
       this.response = res
     },
-    async sendQuestionnairePrompt(part) {
-      let prompt = this.settings.templateQuestionnaire.value
-      prompt = prompt.replace('{STATEMENT}', this.questionnaire.statement)
-      prompt = prompt.replace('{QUESTION}', part.question)
+    getQuestionnairePrompt(question=null) {
+      question = question ?? this.questionnaire.selectedQuestion
+      let ret = this.settings.templateQuestionnaire?.value ?? ''
+      ret = ret.replace('{STATEMENT}', this.selectedQuestionnaireStatement)
+      ret = ret.replace('{QUESTION}', question)
+      return ret
+    },
+    async sendQuestionnairePrompt(question) {
+      let cachedResponse = this.getQuestionnaireResponse(question)
 
-      let cachedResponse = part[this.settings.model.value]
-
-      let inputHash = generateHash(`${prompt}`)
-
-      if (!cachedResponse?.answer || cachedResponse?.inputHash !== inputHash) {
+      if (!cachedResponse?.answer) {
+        let prompt = this.getQuestionnairePrompt(question)
         let res = await this.sendPrompt(prompt)
 
-        let structuredResponse = this.getObjectFromLLMResponse(res, true)
+        let response = this.getObjectFromLLMResponse(res, true)
 
-        if (structuredResponse?.answer) {
-          structuredResponse.inputHash = inputHash
-          part[this.settings.model.value] = structuredResponse
+        if (response?.answer) {
+          cachedResponse.answer = response.answer
+          cachedResponse.highlights = response.highlights
+          cachedResponse.reasoning = response.reasoning
+          this.questionnaire.responses[cachedResponse.inputHash] = cachedResponse
         } else {
-          delete part[this.settings.model.value]
+          delete this.questionnaire.responses[cachedResponse.inputHash]
         }
       } else {
         this.isResponding = true
@@ -473,9 +494,10 @@ createApp({
         console.log('Response already cached')
       }
       
-      if (part[this.settings.model.value]?.answer) {
-        part.magistrate.askedAI = true
-        this.questionnaire.selectedPart = part
+      if (cachedResponse?.answer) {
+        let magistrateResponse = this.getMagistrateResponse(question)
+        magistrateResponse.askedAI = true
+        this.questionnaire.selectedQuestion = question
 
         nextTick(() => {
           window.tippy('[data-tippy-content]');
@@ -564,17 +586,18 @@ createApp({
       await this.initService()
     },
     async copyQuestionnaireToClipboard() {
-      this.questionnaire.selectedPart = null
+      // this.questionnaire.selectedPart = null
       await this.copyToClipboard(JSON.stringify(this.questionnaire, null, 2))
     },
     async copyToClipboard(content) {
       await navigator.clipboard.writeText(content);
     },
-    onClickMagistrateOption(part, option) {
-      part.magistrate.answer = option
+    onClickMagistrateOption(question, option) {
+      let response = this.getMagistrateResponse(question)
+      response.answer = option
     },
-    onClickShowHighlights(part) {
-      this.questionnaire.selectedPart = part
+    onClickShowHighlights(question) {
+      this.questionnaire.selectedQuestion = question
     },
   }
 }).mount('#app')
