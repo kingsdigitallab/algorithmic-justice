@@ -80,8 +80,8 @@
           <div class="columns">
             <div class="column">
               <h2 class="title is-3">Questions for magistrate</h2>
-              <div class="block" v-for="part in questionnaire.parts">
-                <h3 class="title is-4">{{ part.question }}</h3>
+              <div class="block" v-for="(part, index) in questionnaire.parts">
+                <h3 class="title is-4">{{index+1}}. {{ part.question }}</h3>
                 <div class="buttons">
                   Magistrate answer:
                   <a :class="{button: true, 'is-primary': part?.magistrate?.answer === option}" v-for="option in questionnaire.options" @click="onClickMagistrateOption(part, option)">{{option}}</a>

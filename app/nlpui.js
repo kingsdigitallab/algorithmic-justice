@@ -4,17 +4,17 @@ TODO:
 Questionnaire (MVP):
 DONE populate json file
 DONE load json file
-S reset magistrate answer on load
+DONE reset magistrate answer on load
 DONE aknowledge yes/no/under answers
 DONE show content on the tab
 DONE magistrate choices: yes, no, undetermined, ask ai
 DONE buttons to get one LLM response at a time
-M. CACHING! Seek LLM answer only if not in data already
+DONE CACHING! Seek LLM answer only if not in data already
 DONE show answer
-DONE. show reason
-. show highlights
-S button to export questionnaire data to json format
-. add question numbers
+DONE show reason
+DONE show highlights
+DONE button to export questionnaire data to json format
+DONE add question numbers
 DONE more space b/w buttons
 
 Questionnaire (Edit):

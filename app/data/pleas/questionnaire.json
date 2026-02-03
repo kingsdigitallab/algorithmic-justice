@@ -237,25 +237,6 @@
         "answer": "no",
         "inputHash": 1777967254
       }
-    },
-    {
-      "question": "Was the weekly pay input as provided by the defendant?",
-      "magistrate": {
-        "answer": "",
-        "askedAI": true
-      },
-      "qwen3:30b": {
-        "highlights": [],
-        "reasoning": "The statement discusses financial impact on insurance but contains no mention of weekly pay, salary, or pay details input by the defendant.",
-        "answer": "undetermined",
-        "inputHash": -1187817300
-      },
-      "gpt-oss:20b": {
-        "highlights": [],
-        "reasoning": "The statement contains no information about a weekly pay input, so there is insufficient evidence to determine if it was provided by the defendant.",
-        "answer": "undetermined",
-        "inputHash": -1187817300
-      }
     }
   ],
   "selectedPart": null
