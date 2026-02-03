@@ -257,19 +257,6 @@
       "answer": "",
       "askedAI": true
     },
-    "fjafjlksgsgre": {
-      "statement": "statement 1",
-      "question": "q1",
-      "model": "model1",
-      "highlights": [
-        {
-          "passage": "I moved just past the white line to allow both emergency vehicles to pass",
-          "reason": "Shows the driver took active steps to clear the path for emergency vehicles, thereby preventing a possible collision."
-        }
-      ],
-      "reasoning": "The driver’s deliberate action to move past the white line in order to allow emergency vehicles to pass demonstrates that they attempted to avoid a collision.",
-      "answer": "yes"
-    },
     "-2047715289": {
       "statementKey": "statement 3",
       "question": "Did an emergency vehicle appear to wish to pass?",

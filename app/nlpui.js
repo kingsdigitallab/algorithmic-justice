@@ -273,6 +273,7 @@ createApp({
       // we want the user to access the cached responses
       for (const [inputHash, response] of Object.entries(this.questionnaire.responses)) {
         // let cachedModels = Object.keys(part).filter(p => !(['question', 'magistrate'].includes(p)))
+        if (response.model === AGENT_MAGISTRATE) continue;
         if (!this.modelsList.includes(response.model)) {
           this.modelsList.push(response.model)
         }
@@ -426,7 +427,7 @@ createApp({
 
       if (settingKey === 'model') {
         // hide the LLM response to all parts of the questionnaire
-        for (let response of this.questionnaire.responses) {
+        for (let response of Object.values(this.questionnaire.responses)) {
           response.askedAI = false
         }
         this.questionnaire.selectedQuestion = null
