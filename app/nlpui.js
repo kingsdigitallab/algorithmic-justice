@@ -140,43 +140,20 @@ createApp({
     // }
   },
   computed: {
-    settingsFiltered() {
-      let ret = {}
-
-      return ret  
-    },
     higlightedText() {
-      let ret = this.settings.statement?.value ?? ''
-      let invalidPassages = 0
-      for (let highlight of this.highlights) {
-        let lengthBefore = ret.length
-        ret = ret.replaceAll(highlight.passage, `<span class="passage" data-tippy-content="${highlight.reason}">${highlight.passage}</span>`)
-        if (lengthBefore === ret.length) {
-          invalidPassages += 1
-        }
-      }
-      ret = ret.replaceAll('\n', '<br>')
-      if (invalidPassages) {
-        this.setMessage(`${invalidPassages} passage(s) returned by the LLM are not verbatim`, 'danger')
-      }
-      return ret
+      return this.highlightText(
+        this.settings.statement?.value ?? '', 
+        this.highlights
+      )
     },
     highlightedQuestionnaireStatement() {
       let ret = this.questionnaire?.statement ?? ''
-      let invalidPassages = 0
       let highlightedPart = this.questionnaire?.selectedPart
       if (highlightedPart && highlightedPart[this.settings.model.value]) {
-        for (let highlight of highlightedPart[this.settings.model.value]?.highlights ?? []) {
-          let lengthBefore = ret.length
-          ret = ret.replaceAll(highlight.passage, `<span class="passage" data-tippy-content="${highlight.reason}">${highlight.passage}</span>`)
-          if (lengthBefore === ret.length) {
-            invalidPassages += 1
-          }
-        }
-      }
-      ret = ret.replaceAll('\n', '<br>')
-      if (invalidPassages) {
-        this.setMessage(`${invalidPassages} passage(s) returned by the LLM are not verbatim`, 'warning')
+        ret = this.highlightText(
+          ret, 
+          highlightedPart[this.settings.model.value]?.highlights ?? []
+        )
       }
       return ret
     },
@@ -204,6 +181,25 @@ createApp({
     },
   },
   methods: {
+    highlightText(text, highlights) {
+      let ret = text ?? ''
+      let invalidPassages = 0
+      for (let highlight of highlights) {
+        let lengthBefore = ret.length
+        ret = ret.replaceAll(
+          new RegExp(RegExp.escape(highlight.passage), 'gi'),
+          `<span class="passage" data-tippy-content="${highlight.reason}">$&</span>`
+        )
+        if (lengthBefore === ret.length) {
+          invalidPassages += 1
+        }
+      }
+      ret = ret.replaceAll('\n', '<br>')
+      if (invalidPassages) {
+        this.setMessage(`${invalidPassages} passage(s) returned by the LLM are not verbatim`, 'danger')
+      }
+      return ret
+    },
     getLLMResponseToQuestionnaire(part) {
       return part[this.settings.model.value]
     },
@@ -442,6 +438,10 @@ createApp({
 
       let res = await this.sendPrompt(prompt)
 
+      nextTick(() => {
+        window.tippy('[data-tippy-content]');
+      })
+
       this.response = res
     },
     async sendQuestionnairePrompt(part) {
@@ -476,6 +476,10 @@ createApp({
       if (part[this.settings.model.value]?.answer) {
         part.magistrate.askedAI = true
         this.questionnaire.selectedPart = part
+
+        nextTick(() => {
+          window.tippy('[data-tippy-content]');
+        })
       }
     },
     async sendPrompt(prompt) {
@@ -541,10 +545,6 @@ createApp({
       } else {
         // this.response = ''
       }
-
-      nextTick(() => {
-        window.tippy('[data-tippy-content]');
-      })
 
       this.isResponding = false
 
