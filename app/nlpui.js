@@ -41,6 +41,8 @@ const AGENT_MAGISTRATE = 'magistrate'
 // const MODEL = "gemma3:12b" // can't disable thinking, which takes a lot of tokens and time
 // const MODEL = "gemma3:4b"
 
+const SERVICE_CACHE = 'CACHED'
+
 const CONTEXT_LENGTH = 4000
 
 const DELAY_IN_SECONDS_FOR_CACHED_RESPONSES = 2
@@ -103,6 +105,7 @@ createApp({
       response: '',
       isResponding: false,
       isServiceWorking: false,
+      cachingMessage: '',
       message: {
         content: '',
         level: 'info',
@@ -121,6 +124,7 @@ createApp({
         }
       },
       selectedTab: 'questionnaire',
+      // selectedTab: 'settings',
       questionnaire: {
         statements: {},
         questions: [
@@ -191,12 +195,14 @@ createApp({
       let invalidPassages = 0
       for (let highlight of highlights) {
         let lengthBefore = ret.length
+        let passage = highlight.passage.replace(/^\W|\W$/g, '')
         ret = ret.replaceAll(
-          new RegExp(escapeRegex(highlight.passage), 'gi'),
+          new RegExp(escapeRegex(passage), 'gi'),
           `<span class="passage" data-tippy-content="${highlight.reason}">$&</span>`
         )
         if (lengthBefore === ret.length) {
           invalidPassages += 1
+          console.log(`Passage not found in statement (${this.questionnaire.selectedStatementKey}, ${this.questionnaire.selectedQuestion}): "${highlight.passage}"`)
         }
       }
       ret = ret.replaceAll('\n', '<br><br>')
@@ -501,7 +507,9 @@ createApp({
       } else {
         this.isResponding = true
         this.setMessage(`Model server is processing your request...`)
-        await delay(DELAY_IN_SECONDS_FOR_CACHED_RESPONSES)
+        if (!this.isServiceWorking) {
+          await delay(DELAY_IN_SECONDS_FOR_CACHED_RESPONSES)
+        }
         this.setMessage('')
         this.isResponding = false
         console.log('Response already cached')
@@ -611,6 +619,27 @@ createApp({
     },
     onClickShowHighlights(question) {
       this.questionnaire.selectedQuestion = question
+    },
+    async cacheAllResponses() {
+      this.cachingMessage = '(caching...)'
+      for (let statementKey of Object.keys(this.questionnaire.statements)) {
+        this.questionnaire.selectedStatementKey = statementKey
+        let questionIndex = 0
+        for (let question of this.questionnaire.questions) {
+          questionIndex += 1
+          this.cachingMessage = `(${statementKey}, question ${questionIndex})`
+          await this.sendQuestionnairePrompt(question)
+        }
+      }
+      this.cachingMessage = '(done)'
+    },
+    async removeCachedResponsesBySelectedModel() {
+      let responseKeys = Object.keys(this.questionnaire.responses)
+      for (let rk of responseKeys) {
+        if (this.questionnaire.responses[rk].model === this.selectedModel) {
+          delete this.questionnaire.responses[rk]
+        }
+      }
     },
   }
 }).mount('#app')

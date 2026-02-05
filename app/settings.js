@@ -12,7 +12,7 @@ Only answer with "yes" or "no" if confident based on the evidence from the highl
 Otherwise, answer "undetermined" and explain why in the "reasoning" property.
 
 Each highlight object has two keys: 
-* 'passage': it must be exactly as it occurs in the statement, it can be part of a sentence
+* 'passage': one single, minimal, continuous, unedited, substring taken verbatim, exactly as it appear in the statement (it doesn't have to be a full sentence)
 * 'reason': reason for selecting that passage
 
 Avoid overlapping highlights. Make sure all highlights are relevant to the question. It is acceptable to return no highlight (i.e. an empty array).
