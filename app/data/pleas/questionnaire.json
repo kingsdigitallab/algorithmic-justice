@@ -4,7 +4,7 @@
     "statement 2": "I'm writing to provide context for the incident that occurred on 14th January at approximately 7:35pm on the junction of Meadowbank Road and Station Approach. I've thought quite a lot about what happened, and while I accept that I crossed the red light, I want to explain why it happened the way it did.\nI was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migration that had gone rather badly. My route home takes me through that junction most weekdays, and I know it reasonably well, though I'll admit the lighting there isn't brilliant once it gets dark. There's a streetlamp that's been out for months on the approach side, something I've noticed before but never really thought much about.\nThe weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket. It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications. The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\nAs I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting. Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.\nNow I should say, I'm not someone who normally gets sentimental about animals, but this was a substantial creature and it was moving directly into my path in absolutely foul conditions. My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space. The fox seemed confused, actually stopped halfway across, and I remember thinking 'please don't change direction now' because if it had darted back I'd have been in a worse position.\nThe combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split for what couldn't have been more than two or three seconds, but it was enough. When I looked back at the road ahead, I realised the light had changed - or perhaps had been red all along and I'd simply not registered it properly while dealing with the animal. The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction, though whether that was the weather conditions or something wrong with the signal I couldn't say. In any case, I slammed the brakes much harder at that point, really quite violently, and the car lurched forward. My phone, which had been in my hand, flew onto the passenger seat and hit the floor somewhere. I actually heard it clatter.\nThe car did stop, but not before I'd crossed the line. I could feel I was over it, perhaps a metre or so into the junction, and I sat there for a moment feeling rather foolish. The hail was still hammering down, the wipers still going frantically, and the light cycled through while I tried to gather myself. I drove on, and honestly thought that was the end of it. The fox, incidentally, made it across safely, though it didn't so much as glance back.\nI've replayed the sequence in my mind several times since receiving the notice of prosecution. Could I have reacted differently? Possibly. Should I have noticed the light sooner? Certainly. But in that moment, with an animal in the road, heavy hail reducing visibility to almost nothing, and having to make a split-second decision about whether to hit it or take evasive action, my focus went entirely to not causing an accident. The end result was that I crossed a red light, which I understand is an offense regardless of the circumstances.\nI'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation. But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions. I've been driving for seventeen years without any points on my license, which I mention not to claim special treatment but simply to illustrate that this isn't typical behaviour for me.\nWhether any of this constitutes mitigation in the eyes of the court, I genuinely don't know. I suspect rules are rules, and crossing the line is crossing the line. But I wanted you to understand what actually happened that evening - the weather, the animal, the visibility, all of it - rather than simply seeing the camera image and drawing conclusions.",
     "statement 3": "I am sorry for crossing the red light and I accept this was my mistake. At the time the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear. The sky was already going dark and everything around the junction looked more dull than usual, so I was trying hard to keep my eyes on the road and the cars around me.\nWhen I came to the lights I thought I saw them in time, but I judged it wrong and went through. I normally drive careful and I do not take risks, and this situation is not how I usually drive. I need my licence for my daily life and I am very sorry for this error."
   },
-  "selectedStatementKey": "statement 2",
+  "selectedStatementKey": "statement 3",
   "options": [
     "yes",
     "no",
@@ -13,14 +13,14 @@
   "questions": [
     "Did the driver take action to try to avoid a collision?",
     "Did an emergency vehicle appear to wish to pass?",
-    "Was due care not taken due to adverse weather?",
+    "Was the defendant driving recklessly in bad weather?",
     "Did previous traffic offences include running red lights?",
-    "Was the incident caused by snow, adverse weather, low speed, and a minor technical slide?",
-    "Was there a long red light (normally a prerequisite for...)?",
+    "Did bad weather conditions lead to a minor technical slide at low speed?",
+    "Was there a long red light?",
     "Was blame wrongly placed on others?",
-    "Was there a perfect driving record?"
+    "Prior to this incident did the defendant have a perfect driving record?"
   ],
-  "selectedQuestion": "Was there a perfect driving record?",
+  "selectedQuestion": "Prior to this incident did the defendant have a perfect driving record?",
   "responses": {
     "1179175": {
       "statementKey": "statement 2",
@@ -44,13 +44,22 @@
       ],
       "reasoning": "The statement specifies hail instead of snow, making the 'snow' component of the question inaccurate and invalidating the entire cause claim."
     },
+    "31949198": {
+      "statementKey": "statement 1",
+      "question": "Was there a long red light?",
+      "model": "qwen3:30b",
+      "inputHash": 31949198,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement mentions the lights cycling to red and changing to green again but provides no details about the duration of the red light."
+    },
     "96740254": {
       "statementKey": "statement 3",
       "question": "Was blame wrongly placed on others?",
       "model": "magistrate",
       "inputHash": 96740254,
       "answer": "",
-      "askedAI": false
+      "askedAI": true
     },
     "102654176": {
       "statementKey": "statement 1",
@@ -67,6 +76,28 @@
       "model": "magistrate",
       "inputHash": 275749094,
       "answer": "",
+      "askedAI": false
+    },
+    "286438533": {
+      "statementKey": "statement 2",
+      "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
+      "model": "qwen3:30b",
+      "inputHash": 286438533,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space.",
+          "reason": "Describes a controlled, deliberate action (braking and swerving) to avoid an animal, not a loss of vehicle control or technical slide."
+        }
+      ],
+      "reasoning": "The statement explicitly describes a non-dramatic, controlled swerve to avoid an animal, negating any technical slide as the incident involved deliberate steering, not a slide."
+    },
+    "395651384": {
+      "statementKey": "statement 3",
+      "question": "Was there a long red light?",
+      "model": "magistrate",
+      "inputHash": 395651384,
+      "answer": "",
       "askedAI": true
     },
     "396335882": {
@@ -76,6 +107,24 @@
       "inputHash": 396335882,
       "answer": "",
       "askedAI": false
+    },
+    "405955004": {
+      "statementKey": "statement 3",
+      "question": "Was the defendant driving recklessly in bad weather?",
+      "model": "qwen3:30b",
+      "inputHash": 405955004,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "I normally drive careful and I do not take risks, and this situation is not how I usually drive.",
+          "reason": "Directly addresses defendant's usual cautious driving habits, negating reckless behavior."
+        },
+        {
+          "passage": "At the time the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear.",
+          "reason": "Shows defendant took precautions (wipers on) due to adverse weather, contradicting recklessness."
+        }
+      ],
+      "reasoning": "Defendant explicitly states they drive carefully and this incident was uncharacteristic, while describing precautions taken in bad weather, indicating no reckless driving."
     },
     "418722017": {
       "statementKey": "statement 3",
@@ -91,13 +140,35 @@
       ],
       "reasoning": "The driver explicitly stated they proceeded through the red light after misjudging the signal, with no mention of braking, swerving, or other actions to avoid a collision."
     },
+    "443607428": {
+      "statementKey": "statement 3",
+      "question": "Was the defendant driving recklessly in bad weather?",
+      "model": "magistrate",
+      "inputHash": 443607428,
+      "answer": "",
+      "askedAI": true
+    },
     "471879984": {
       "statementKey": "statement 2",
       "question": "Was there a long red light (normally a prerequisite for...)?",
       "model": "magistrate",
       "inputHash": 471879984,
       "answer": "",
-      "askedAI": true
+      "askedAI": false
+    },
+    "538852937": {
+      "statementKey": "statement 1",
+      "question": "Prior to this incident did the defendant have a perfect driving record?",
+      "model": "qwen3:30b",
+      "inputHash": 538852937,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "these extra points",
+          "reason": "implies the defendant had prior penalty points, as 'extra' suggests points beyond an existing record"
+        }
+      ],
+      "reasoning": "The phrase 'extra points' directly indicates the defendant already had penalty points before this incident, meaning their record was not perfect."
     },
     "656978906": {
       "statementKey": "statement 1",
@@ -113,7 +184,7 @@
       "model": "magistrate",
       "inputHash": 657667321,
       "answer": "",
-      "askedAI": true
+      "askedAI": false
     },
     "721484529": {
       "statementKey": "statement 2",
@@ -186,6 +257,20 @@
       ],
       "reasoning": "The driver directly describes braking and swerving to avoid the fox, confirming intentional action to prevent a collision."
     },
+    "1259057622": {
+      "statementKey": "statement 2",
+      "question": "Prior to this incident did the defendant have a perfect driving record?",
+      "model": "qwen3:30b",
+      "inputHash": 1259057622,
+      "answer": "yes",
+      "highlights": [
+        {
+          "passage": "I've been driving for seventeen years without any points on my license",
+          "reason": "directly states the defendant's clean driving record without penalty points"
+        }
+      ],
+      "reasoning": "The defendant explicitly confirms having no points on their license for 17 years, indicating a perfect driving record prior to the incident."
+    },
     "1266092757": {
       "statementKey": "statement 1",
       "question": "Was there a long red light (normally a prerequisite for...)?",
@@ -232,6 +317,29 @@
       ],
       "reasoning": "The statement describes wet road due to water (adverse weather) but does not mention snow, low speed, or a minor technical slide, making the combined factors in the question false."
     },
+    "1398014849": {
+      "statementKey": "statement 2",
+      "question": "Was the defendant driving recklessly in bad weather?",
+      "model": "qwen3:30b",
+      "inputHash": 1398014849,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.",
+          "reason": "Demonstrates the defendant actively adjusted speed for hazardous weather conditions, showing caution rather than recklessness."
+        }
+      ],
+      "reasoning": "The defendant explicitly slowed to 25mph due to poor visibility from hail, indicating cautious driving in bad weather, not recklessness."
+    },
+    "1676901870": {
+      "statementKey": "statement 1",
+      "question": "Was the defendant driving recklessly in bad weather?",
+      "model": "qwen3:30b",
+      "inputHash": 1676901870,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement contains no mention of weather conditions, so it's impossible to determine if bad weather was present."
+    },
     "1799781377": {
       "statementKey": "statement 2",
       "question": "Was blame wrongly placed on others?",
@@ -246,6 +354,22 @@
       "question": "Did the driver take action to try to avoid a collision?",
       "model": "magistrate",
       "inputHash": 1924711079,
+      "answer": "",
+      "askedAI": true
+    },
+    "2010175443": {
+      "statementKey": "statement 2",
+      "question": "Was there a long red light?",
+      "model": "magistrate",
+      "inputHash": 2010175443,
+      "answer": "",
+      "askedAI": true
+    },
+    "2061244986": {
+      "statementKey": "statement 1",
+      "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
+      "model": "magistrate",
+      "inputHash": 2061244986,
       "answer": "",
       "askedAI": true
     },
@@ -279,7 +403,7 @@
       "model": "magistrate",
       "inputHash": -1744203572,
       "answer": "",
-      "askedAI": false
+      "askedAI": true
     },
     "-1351450517": {
       "statementKey": "statement 3",
@@ -366,7 +490,7 @@
       "model": "magistrate",
       "inputHash": -885062120,
       "answer": "",
-      "askedAI": true
+      "askedAI": false
     },
     "-404563299": {
       "statementKey": "statement 1",
@@ -374,7 +498,7 @@
       "model": "magistrate",
       "inputHash": -404563299,
       "answer": "",
-      "askedAI": true
+      "askedAI": false
     },
     "-1590754004": {
       "statementKey": "statement 1",
@@ -390,7 +514,7 @@
       "model": "magistrate",
       "inputHash": -2071907604,
       "answer": "",
-      "askedAI": true
+      "askedAI": false
     },
     "-1234874513": {
       "statementKey": "statement 1",
@@ -469,7 +593,7 @@
       "model": "magistrate",
       "inputHash": -238175047,
       "answer": "",
-      "askedAI": true
+      "askedAI": false
     },
     "-161227675": {
       "statementKey": "statement 2",
@@ -477,7 +601,7 @@
       "model": "magistrate",
       "inputHash": -161227675,
       "answer": "",
-      "askedAI": true
+      "askedAI": false
     },
     "-840422161": {
       "statementKey": "statement 2",
@@ -506,6 +630,120 @@
         }
       ],
       "reasoning": "The statement explicitly describes the light cycling normally, which contradicts the notion of a long red light."
+    },
+    "-1213575351": {
+      "statementKey": "statement 2",
+      "question": "Was the defendant driving recklessly in bad weather?",
+      "model": "magistrate",
+      "inputHash": -1213575351,
+      "answer": "",
+      "askedAI": true
+    },
+    "-1781183411": {
+      "statementKey": "statement 2",
+      "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
+      "model": "magistrate",
+      "inputHash": -1781183411,
+      "answer": "",
+      "askedAI": true
+    },
+    "-885849842": {
+      "statementKey": "statement 2",
+      "question": "Prior to this incident did the defendant have a perfect driving record?",
+      "model": "magistrate",
+      "inputHash": -885849842,
+      "answer": "",
+      "askedAI": true
+    },
+    "-1841589093": {
+      "statementKey": "statement 2",
+      "question": "Was there a long red light?",
+      "model": "qwen3:30b",
+      "inputHash": -1841589093,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "The light cycled through while I tried to gather myself.",
+          "reason": "indicates the light was functioning normally in a standard cycle, not stuck on red for an extended period"
+        }
+      ],
+      "reasoning": "The statement mentions the light cycling normally, indicating standard operation rather than an abnormally long red phase."
+    },
+    "-1058040394": {
+      "statementKey": "statement 1",
+      "question": "Was the defendant driving recklessly in bad weather?",
+      "model": "magistrate",
+      "inputHash": -1058040394,
+      "answer": "",
+      "askedAI": true
+    },
+    "-892766010": {
+      "statementKey": "statement 1",
+      "question": "Was there a long red light?",
+      "model": "magistrate",
+      "inputHash": -892766010,
+      "answer": "",
+      "askedAI": true
+    },
+    "-900447871": {
+      "statementKey": "statement 1",
+      "question": "Prior to this incident did the defendant have a perfect driving record?",
+      "model": "magistrate",
+      "inputHash": -900447871,
+      "answer": "",
+      "askedAI": true
+    },
+    "-565070222": {
+      "statementKey": "statement 1",
+      "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
+      "model": "qwen3:30b",
+      "inputHash": -565070222,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement contains no mention of weather conditions, technical slides, or low-speed incidents related to road conditions."
+    },
+    "-997491960": {
+      "statementKey": "statement 3",
+      "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
+      "model": "magistrate",
+      "inputHash": -997491960,
+      "answer": "",
+      "askedAI": true
+    },
+    "-1276211469": {
+      "statementKey": "statement 3",
+      "question": "Prior to this incident did the defendant have a perfect driving record?",
+      "model": "magistrate",
+      "inputHash": -1276211469,
+      "answer": "",
+      "askedAI": true
+    },
+    "-866736320": {
+      "statementKey": "statement 3",
+      "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
+      "model": "qwen3:30b",
+      "inputHash": -866736320,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement does not mention a 'technical slide' or any loss of vehicle control, only a judgment error regarding the traffic light."
+    },
+    "-1672240640": {
+      "statementKey": "statement 3",
+      "question": "Was there a long red light?",
+      "model": "qwen3:30b",
+      "inputHash": -1672240640,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement mentions crossing a red light but contains no information about the duration or length of the red light, making it impossible to determine based on the evidence provided."
+    },
+    "-1133446213": {
+      "statementKey": "statement 3",
+      "question": "Prior to this incident did the defendant have a perfect driving record?",
+      "model": "qwen3:30b",
+      "inputHash": -1133446213,
+      "answer": "undetermined",
+      "highlights": [],
+      "reasoning": "The statement describes the defendant's usual careful driving habits but contains no mention of past driving records or prior offenses."
     }
   },
   "question": "Did the driver take action to try to avoid a collision?"
