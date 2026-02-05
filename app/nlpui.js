@@ -82,6 +82,18 @@ function delay(seconds) {
   return new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }
 
+// Source - https://stackoverflow.com/a/3561711
+// Posted by bobince, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-02-05, License - CC BY-SA 4.0
+// RegExp.escape() support in browser started between 24Q4 and 25Q2
+function escapeRegex(string) {
+  if (RegExp.escape) {
+    return RegExp.escape(string)
+  } else {
+    return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&')
+  }
+}
+
 createApp({
   data() {
     return {
@@ -180,7 +192,7 @@ createApp({
       for (let highlight of highlights) {
         let lengthBefore = ret.length
         ret = ret.replaceAll(
-          new RegExp(RegExp.escape(highlight.passage), 'gi'),
+          new RegExp(escapeRegex(highlight.passage), 'gi'),
           `<span class="passage" data-tippy-content="${highlight.reason}">$&</span>`
         )
         if (lengthBefore === ret.length) {
