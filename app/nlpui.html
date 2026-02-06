@@ -127,13 +127,20 @@
         </div>
         <div v-show="selectedTab == 'highlighter'" id="tab-highlighter">
           <div class="block">
-            <h2 class="title is-3">Magistrate's question</h2>
+            <h2 class="title is-3">Magistrate's query</h2>
             <div class="field has-addons">
-              <div class="control is-expanded">
+              <div v-if="isServiceWorking" class="control is-expanded">
                 <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onHighlightQuestionEnter()" :disabled="!isReadyForQuestions" autocomplete="off" >
               </div>
+              <div v-else class="control">
+                <div class="select">
+                  <select v-model="settings.question.value">
+                    <option v-for="question in highlighterQuestions">{{question}}</option>
+                  </select>
+                </div>
+              </div>
               <div class="control">
-                <button class="button is-info" @click.stop.prevent="onHighlightQuestionEnter()" :disabled="!isReadyForQuestions">
+                <button class="button is-info" @click.stop.prevent="onHighlightQuestionEnter()">
                   Ask
                 </button>
               </div>
@@ -141,6 +148,11 @@
           </div>
           <div class="block">
             <h2 class="title is-3">Defendant's statement (with LLM's highlights)</h2>
+            <div class="select block">
+              <select v-model="questionnaire.selectedStatementKey">
+                <option v-for="(statement, statementKey) in questionnaire.statements">{{statementKey}}</option>
+              </select>
+            </div>
             <div class="highlighted-text" v-html="higlightedText">
             </div>
           </div>

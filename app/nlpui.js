@@ -18,8 +18,16 @@ DONE add question numbers
 DONE more space b/w buttons
 DONE accept multiple statements
 DONE ability to switch in the UI
-WIP M refactor the data model
-C prepare responses from the command line
+DONE refactor the data model
+DONE cache all responses with a button
+
+Highlighter in cache mode:
+DONE statement selection (drop down)
+DONE cache responses
+DONE read responses from cache first
+DONE query selection (drop down in CACHE mode)
+DONE clear latest responses and highlights when query or statement change
+DONE fix tooltips not always shpwing
 
 Questionnaire (Edit):
 . add an edit switch in the settings (only if token is valid)
@@ -44,6 +52,8 @@ const AGENT_MAGISTRATE = 'magistrate'
 const SERVICE_CACHE = 'CACHED'
 
 const CONTEXT_LENGTH = 4000
+
+const TAB_HIGHLIGHTER = 'highlighter'
 
 const DELAY_IN_SECONDS_FOR_CACHED_RESPONSES = 2
 
@@ -123,8 +133,9 @@ createApp({
           'title': 'Settings',
         }
       },
-      selectedTab: 'questionnaire',
+      // selectedTab: 'questionnaire',
       // selectedTab: 'settings',
+      selectedTab: TAB_HIGHLIGHTER,
       questionnaire: {
         statements: {},
         questions: [
@@ -160,11 +171,28 @@ createApp({
     // }
   },
   computed: {
+    highlighterQuestions() {
+      let questions = this.settings.questions?.value ?? ''
+      return questions.split('\n').map(l => l.trim()).filter(l => l.length > 2)
+    },
     higlightedText() {
-      return this.highlightText(
-        this.settings.statement?.value ?? '', 
+      let ret = this.highlightText(
+        this.selectedQuestionnaireStatement, 
         this.highlights
       )
+      // add highlights underneath for accessibility purpose, or taking screennshots
+      if (this.response) {
+        ret += '<hr><h4 class="title is-4">Highlights:</h4>'
+        ret += '<div class="content">'
+        ret += '<ul>'
+        ret += this.highlights.map(h => `<li>"${h.passage}" (reason: ${h.reason})</li>`).join('')
+        ret += '</ul>'
+        ret += '<hr>'
+        ret += `Answer: ${this.response.answer}<br>`
+        ret += `Reason: ${this.response.reasoning}<br>`
+        ret += '</div>'
+      }
+      return ret
     },
     selectedQuestionnaireStatement() {
       return this.questionnaire?.statements[this.questionnaire?.selectedStatementKey] ?? ''
@@ -180,7 +208,8 @@ createApp({
       )
     },
     highlights() {
-      return this.getArrayFromLLMResponse(this.response)
+      // return this.getArrayFromLLMResponse(this.response)
+      return this.response?.highlights ?? []
     },
     isReadyForQuestions() {
       return this.isServiceWorking && this.isSelectedModelAvailable
@@ -188,6 +217,14 @@ createApp({
     isSelectedModelAvailable() {
       return this.modelsList.includes(this.selectedModel)
     },
+  },
+  watch: {
+    'questionnaire.selectedStatementKey'() {
+      this.response = null
+    },
+    'settings.question.value'() {
+      this.response = null
+    }
   },
   methods: {
     highlightText(text, highlights) {
@@ -305,9 +342,9 @@ createApp({
       }
       return ret
     },
-    getQuestionnaireResponse(question, model=null) {
+    getQuestionnaireResponse(question, model=null, promptTemplate=null) {
       model = model ?? this.selectedModel
-      let hash = this.getInputHash(question, model)
+      let hash = this.getInputHash(question, model, promptTemplate)
       let defaultResponse = {
         statementKey: this.questionnaire.selectedStatementKey,
         question: question,
@@ -317,8 +354,8 @@ createApp({
       }
       return this.questionnaire.responses[hash] ?? defaultResponse
     },
-    getInputHash(question, model) {
-      let prompt = this.getQuestionnairePrompt(question)
+    getInputHash(question, model, promptTemplate=null) {
+      let prompt = this.getQuestionnairePrompt(question, promptTemplate)
       return generateHash(`${model}-${prompt}`)
     },
     async sendToService(path, body) {
@@ -464,42 +501,49 @@ createApp({
     },
     async onHighlightQuestionEnter() {
       this.onChangedSetting('question')
-
       await this.sendHighlightPrompt()
     },
-    async sendHighlightPrompt() {
-      let prompt = this.settings.template.value
-      prompt = prompt.replace('{STATEMENT}', this.settings.statement.value)
-      prompt = prompt.replace('{QUESTION}', this.settings.question.value)
-
-      let res = await this.sendPrompt(prompt)
-
+    async sendHighlightPrompt(question=null) {
+      question = question ?? this.settings.question.value
+      this.response = await this.sendPromptOrGetFromCache(question, this.settings.templateHighlighter.value)
       nextTick(() => {
         window.tippy('[data-tippy-content]');
       })
-
-      this.response = res
     },
-    getQuestionnairePrompt(question=null) {
+    getQuestionnairePrompt(question=null, promptTemplate=null) {
       question = question ?? this.questionnaire.selectedQuestion
-      let ret = this.settings.templateQuestionnaire?.value ?? ''
+      let ret = promptTemplate
+      if (!ret) {
+        ret = this.settings.templateQuestionnaire?.value ?? ''
+      }
       ret = ret.replace('{STATEMENT}', this.selectedQuestionnaireStatement)
       ret = ret.replace('{QUESTION}', question)
       return ret
     },
     async sendQuestionnairePrompt(question) {
-      let cachedResponse = this.getQuestionnaireResponse(question)
+      let response = await this.sendPromptOrGetFromCache(question)
+      if (response?.answer) {
+        let magistrateResponse = this.getMagistrateResponse(question)
+        magistrateResponse.askedAI = true
+        this.questionnaire.selectedQuestion = question
+        nextTick(() => {
+          window.tippy('[data-tippy-content]');
+        })
+      }
+    },
+    async sendPromptOrGetFromCache(question, promptTemplate=null) {
+      let cachedResponse = this.getQuestionnaireResponse(question, null, promptTemplate)
 
       if (!cachedResponse?.answer) {
-        let prompt = this.getQuestionnairePrompt(question)
+        let prompt = this.getQuestionnairePrompt(question, promptTemplate)
         let res = await this.sendPrompt(prompt)
 
         let response = this.getObjectFromLLMResponse(res, true)
 
         if (response?.answer) {
-          cachedResponse.answer = response.answer
+          cachedResponse.answer = response?.answer ?? ''
           cachedResponse.highlights = response.highlights
-          cachedResponse.reasoning = response.reasoning
+          cachedResponse.reasoning = response?.reasoning ?? ''
           this.questionnaire.responses[cachedResponse.inputHash] = cachedResponse
         } else {
           delete this.questionnaire.responses[cachedResponse.inputHash]
@@ -515,15 +559,7 @@ createApp({
         console.log('Response already cached')
       }
       
-      if (cachedResponse?.answer) {
-        let magistrateResponse = this.getMagistrateResponse(question)
-        magistrateResponse.askedAI = true
-        this.questionnaire.selectedQuestion = question
-
-        nextTick(() => {
-          window.tippy('[data-tippy-content]');
-        })
-      }
+      return cachedResponse
     },
     async sendPrompt(prompt) {
       let ret = ''
@@ -622,16 +658,31 @@ createApp({
     },
     async cacheAllResponses() {
       this.cachingMessage = '(caching...)'
+
+      // questionnaire
       for (let statementKey of Object.keys(this.questionnaire.statements)) {
         this.questionnaire.selectedStatementKey = statementKey
         let questionIndex = 0
         for (let question of this.questionnaire.questions) {
           questionIndex += 1
-          this.cachingMessage = `(${statementKey}, question ${questionIndex})`
+          this.cachingMessage = `(Questionnaire - ${statementKey}, question ${questionIndex})`
           await this.sendQuestionnairePrompt(question)
         }
       }
+
+      // highlighter
+      for (let statementKey of Object.keys(this.questionnaire.statements)) {
+        this.questionnaire.selectedStatementKey = statementKey
+        let questionIndex = 0
+        for (let question of this.highlighterQuestions) {
+          questionIndex += 1
+          this.cachingMessage = `(Highlighter - ${statementKey}, question ${questionIndex})`
+          await this.sendHighlightPrompt(question)
+        }
+      }
+
       this.cachingMessage = '(done)'
+      this.questionnaire.selectedStatementKey = Object.keys(this.questionnaire.statements)[0]
     },
     async removeCachedResponsesBySelectedModel() {
       let responseKeys = Object.keys(this.questionnaire.responses)
