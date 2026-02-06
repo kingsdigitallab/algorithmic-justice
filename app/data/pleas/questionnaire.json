@@ -4,7 +4,7 @@
     "statement 2": "I'm writing to provide context for the incident that occurred on 14th January at approximately 7:35pm on the junction of Meadowbank Road and Station Approach. I've thought quite a lot about what happened, and while I accept that I crossed the red light, I want to explain why it happened the way it did.\nI was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migration that had gone rather badly. My route home takes me through that junction most weekdays, and I know it reasonably well, though I'll admit the lighting there isn't brilliant once it gets dark. There's a streetlamp that's been out for months on the approach side, something I've noticed before but never really thought much about.\nThe weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket. It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications. The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\nAs I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting. Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.\nNow I should say, I'm not someone who normally gets sentimental about animals, but this was a substantial creature and it was moving directly into my path in absolutely foul conditions. My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space. The fox seemed confused, actually stopped halfway across, and I remember thinking 'please don't change direction now' because if it had darted back I'd have been in a worse position.\nThe combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split for what couldn't have been more than two or three seconds, but it was enough. When I looked back at the road ahead, I realised the light had changed - or perhaps had been red all along and I'd simply not registered it properly while dealing with the animal. The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction, though whether that was the weather conditions or something wrong with the signal I couldn't say. In any case, I slammed the brakes much harder at that point, really quite violently, and the car lurched forward. My phone, which had been in my hand, flew onto the passenger seat and hit the floor somewhere. I actually heard it clatter.\nThe car did stop, but not before I'd crossed the line. I could feel I was over it, perhaps a metre or so into the junction, and I sat there for a moment feeling rather foolish. The hail was still hammering down, the wipers still going frantically, and the light cycled through while I tried to gather myself. I drove on, and honestly thought that was the end of it. The fox, incidentally, made it across safely, though it didn't so much as glance back.\nI've replayed the sequence in my mind several times since receiving the notice of prosecution. Could I have reacted differently? Possibly. Should I have noticed the light sooner? Certainly. But in that moment, with an animal in the road, heavy hail reducing visibility to almost nothing, and having to make a split-second decision about whether to hit it or take evasive action, my focus went entirely to not causing an accident. The end result was that I crossed a red light, which I understand is an offense regardless of the circumstances.\nI'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation. But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions. I've been driving for seventeen years without any points on my license, which I mention not to claim special treatment but simply to illustrate that this isn't typical behaviour for me.\nWhether any of this constitutes mitigation in the eyes of the court, I genuinely don't know. I suspect rules are rules, and crossing the line is crossing the line. But I wanted you to understand what actually happened that evening - the weather, the animal, the visibility, all of it - rather than simply seeing the camera image and drawing conclusions.",
     "statement 3": "I am sorry for crossing the red light and I accept this was my mistake. At the time the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear. The sky was already going dark and everything around the junction looked more dull than usual, so I was trying hard to keep my eyes on the road and the cars around me.\nWhen I came to the lights I thought I saw them in time, but I judged it wrong and went through. I normally drive careful and I do not take risks, and this situation is not how I usually drive. I need my licence for my daily life and I am very sorry for this error."
   },
-  "selectedStatementKey": "statement 1",
+  "selectedStatementKey": "statement 3",
   "options": [
     "yes",
     "no",
@@ -67,7 +67,8 @@
           "reason": "This indicates an unusual circumstance, but still attributes the error to a personal lapse in judgment rather than external blame."
         }
       ],
-      "reasoning": "The driver repeatedly admits fault and acknowledges misjudging the situation, despite describing difficult conditions, indicating they do not shift blame to others."
+      "reasoning": "The driver repeatedly admits fault and acknowledges misjudging the situation, despite describing difficult conditions, indicating they do not shift blame to others.",
+      "askedAI": false
     },
     "308984205": {
       "statementKey": "statement 2",
@@ -120,7 +121,8 @@
           "reason": "Details the driver's continued awareness of the hazard and anticipation of its movement."
         }
       ],
-      "reasoning": "The highlights clearly demonstrate the driver braked and swerved to avoid the fox, indicating they took action to prevent a collision."
+      "reasoning": "The highlights clearly demonstrate the driver braked and swerved to avoid the fox, indicating they took action to prevent a collision.",
+      "askedAI": false
     },
     "332444098": {
       "statementKey": "statement 3",
@@ -129,7 +131,17 @@
       "inputHash": 332444098,
       "answer": "undetermined",
       "highlights": [],
-      "reasoning": "The statement focuses solely on the current incident and offers no information regarding any prior traffic offences. Therefore, it is impossible to determine if the offender has previously run red lights based on the provided text."
+      "reasoning": "The statement focuses solely on the current incident and offers no information regarding any prior traffic offences. Therefore, it is impossible to determine if the offender has previously run red lights based on the provided text.",
+      "askedAI": false
+    },
+    "348294899": {
+      "statementKey": "statement 2",
+      "question": "Was blame wrongly placed on others?",
+      "model": "qwen3:30b",
+      "inputHash": 348294899,
+      "answer": "no",
+      "highlights": [],
+      "reasoning": "The offender takes full responsibility without assigning blame to any other party or entity."
     },
     "446252800": {
       "statementKey": "statement 1",
@@ -138,7 +150,8 @@
       "inputHash": 446252800,
       "answer": "no",
       "highlights": [],
-      "reasoning": "The statement does not contain any information about the weather conditions or if the defendant was driving recklessly. It focuses on a situation involving emergency vehicles and a traffic junction."
+      "reasoning": "The statement does not contain any information about the weather conditions or if the defendant was driving recklessly. It focuses on a situation involving emergency vehicles and a traffic junction.",
+      "askedAI": false
     },
     "532042649": {
       "statementKey": "statement 2",
@@ -188,7 +201,8 @@
       "inputHash": 806021111,
       "answer": "undetermined",
       "highlights": [],
-      "reasoning": "The statement does not contain any information about the defendant's driving record prior to the incident. It only discusses the current situation and the consequences of the recent offense."
+      "reasoning": "The statement does not contain any information about the defendant's driving record prior to the incident. It only discusses the current situation and the consequences of the recent offense.",
+      "askedAI": false
     },
     "840765001": {
       "statementKey": "statement 2",
@@ -210,7 +224,8 @@
           "reason": "Driver mentions that the light appeared dimmer than usual, potentially contributing to not noticing the red light"
         }
       ],
-      "reasoning": "The driver admits crossing the red light but suggests they may not have registered it due to the distracting conditions (hail, fox) and that the light itself appeared dim, so it is undetermined whether the light had been red for a long time."
+      "reasoning": "The driver admits crossing the red light but suggests they may not have registered it due to the distracting conditions (hail, fox) and that the light itself appeared dim, so it is undetermined whether the light had been red for a long time.",
+      "askedAI": false
     },
     "915981229": {
       "statementKey": "statement 3",
@@ -310,7 +325,8 @@
           "reason": "Implies the current event is an anomaly, further hinting at a good driving history."
         }
       ],
-      "reasoning": "The defendant states they 'normally drive careful' and that the incident is unusual for them, suggesting a previously good driving record, although not explicitly stated as *perfect*."
+      "reasoning": "The defendant states they 'normally drive careful' and that the incident is unusual for them, suggesting a previously good driving record, although not explicitly stated as *perfect*.",
+      "askedAI": false
     },
     "1325192099": {
       "statementKey": "statement 1",
@@ -332,7 +348,8 @@
           "reason": "Directly indicates a request from the emergency services for the driver to move."
         }
       ],
-      "reasoning": "The statement explicitly mentions the presence of an ambulance and police car with sirens, other cars moving for them, and a police officer motioning for the driver to clear the way, all strongly implying the emergency vehicles wanted to pass."
+      "reasoning": "The statement explicitly mentions the presence of an ambulance and police car with sirens, other cars moving for them, and a police officer motioning for the driver to clear the way, all strongly implying the emergency vehicles wanted to pass.",
+      "askedAI": false
     },
     "1378032000": {
       "statementKey": "statement 1",
@@ -377,7 +394,8 @@
           "reason": "Supports the claim of wet conditions and implies reduced visibility, potentially contributing to a slide."
         }
       ],
-      "reasoning": "The statement mentions wet road conditions and the use of wipers, which suggests challenging visibility, but does not explicitly mention a 'technical slide' or low speed incident. Therefore, it is undetermined if the weather led to a slide."
+      "reasoning": "The statement mentions wet road conditions and the use of wipers, which suggests challenging visibility, but does not explicitly mention a 'technical slide' or low speed incident. Therefore, it is undetermined if the weather led to a slide.",
+      "askedAI": false
     },
     "1615594469": {
       "statementKey": "statement 3",
@@ -426,7 +444,8 @@
           "reason": "This statement directly addresses the driver's history of traffic offences."
         }
       ],
-      "reasoning": "The statement explicitly states the driver has been driving for seventeen years without receiving any points on their license, implying no prior traffic offenses. Although it doesn't specifically exclude the possibility of red light offenses, it strongly suggests a clean driving record."
+      "reasoning": "The statement explicitly states the driver has been driving for seventeen years without receiving any points on their license, implying no prior traffic offenses. Although it doesn't specifically exclude the possibility of red light offenses, it strongly suggests a clean driving record.",
+      "askedAI": false
     },
     "1799281303": {
       "statementKey": "statement 2",
@@ -448,7 +467,8 @@
           "reason": "This statement directly addresses the defendant's prior driving record."
         }
       ],
-      "reasoning": "The statement explicitly states the defendant had been driving for seventeen years without any points on their license, indicating a perfect record prior to the incident."
+      "reasoning": "The statement explicitly states the defendant had been driving for seventeen years without any points on their license, indicating a perfect record prior to the incident.",
+      "askedAI": false
     },
     "2037024462": {
       "statementKey": "statement 3",
@@ -474,7 +494,8 @@
           "reason": "Statements indicating the defendant is normally a careful driver."
         }
       ],
-      "reasoning": "The statement details poor weather conditions and the driver's attempt to assess the situation, alongside a claim of careful driving, but the error in judgment alone isn't sufficient evidence to conclude recklessness; it could simply be a mistake."
+      "reasoning": "The statement details poor weather conditions and the driver's attempt to assess the situation, alongside a claim of careful driving, but the error in judgment alone isn't sufficient evidence to conclude recklessness; it could simply be a mistake.",
+      "askedAI": false
     },
     "2142358202": {
       "statementKey": "statement 2",
@@ -742,7 +763,8 @@
           "reason": "Explicitly states the driver took action to allow passage."
         }
       ],
-      "reasoning": "The driver's actions include attempting to create space for emergency vehicles and physically moving to allow them to pass, suggesting an effort to avoid obstruction and potential collision."
+      "reasoning": "The driver's actions include attempting to create space for emergency vehicles and physically moving to allow them to pass, suggesting an effort to avoid obstruction and potential collision.",
+      "askedAI": false
     },
     "-148094768": {
       "statementKey": "statement 1",
@@ -764,7 +786,8 @@
           "reason": "Indicates the driver moved after the light turned green."
         }
       ],
-      "reasoning": "The statement describes a situation where the driver was at a green light that turned red and then moved forward when it turned green again, but does not explicitly state they ran a red light prior to this incident nor does it mention prior offences."
+      "reasoning": "The statement describes a situation where the driver was at a green light that turned red and then moved forward when it turned green again, but does not explicitly state they ran a red light prior to this incident nor does it mention prior offences.",
+      "askedAI": false
     },
     "-872791420": {
       "statementKey": "statement 1",
@@ -773,7 +796,8 @@
       "inputHash": -872791420,
       "answer": "no",
       "highlights": [],
-      "reasoning": "The statement focuses on the driver's actions to facilitate the passage of emergency vehicles and the subsequent penalty. It contains no mention of weather conditions or a technical slide."
+      "reasoning": "The statement focuses on the driver's actions to facilitate the passage of emergency vehicles and the subsequent penalty. It contains no mention of weather conditions or a technical slide.",
+      "askedAI": false
     },
     "-597100484": {
       "statementKey": "statement 1",
@@ -795,7 +819,8 @@
           "reason": "Clarifies that the light *did* eventually change back to green after being red."
         }
       ],
-      "reasoning": "The statement details the lights being green initially, then cycling to red while the defendant waited, and subsequently changing back to green, indicating the red light was not continuously long."
+      "reasoning": "The statement details the lights being green initially, then cycling to red while the defendant waited, and subsequently changing back to green, indicating the red light was not continuously long.",
+      "askedAI": false
     },
     "-294998366": {
       "statementKey": "statement 1",
@@ -817,7 +842,8 @@
           "reason": "This highlights that the driver believes they acted reasonably to facilitate the emergency vehicles and is questioning the penalty."
         }
       ],
-      "reasoning": "The statement indicates the driver was attempting to facilitate the passage of emergency vehicles, and that other drivers were also moving. The driver was fined despite this, leading them to believe blame was wrongly placed."
+      "reasoning": "The statement indicates the driver was attempting to facilitate the passage of emergency vehicles, and that other drivers were also moving. The driver was fined despite this, leading them to believe blame was wrongly placed.",
+      "askedAI": false
     },
     "-1533216842": {
       "statementKey": "statement 2",
@@ -826,7 +852,8 @@
       "inputHash": -1533216842,
       "answer": "no",
       "highlights": [],
-      "reasoning": "The statement details a scenario involving weather conditions, an animal in the road, and the driver's reaction. It does not mention any emergency vehicle attempting to pass, therefore the answer is undetermined."
+      "reasoning": "The statement details a scenario involving weather conditions, an animal in the road, and the driver's reaction. It does not mention any emergency vehicle attempting to pass, therefore the answer is undetermined.",
+      "askedAI": false
     },
     "-1668077165": {
       "statementKey": "statement 2",
@@ -852,7 +879,8 @@
           "reason": "Shows a reaction to an unexpected hazard rather than ignoring road conditions."
         }
       ],
-      "reasoning": "The highlights demonstrate that the defendant was driving in very poor weather conditions with reduced visibility and reacted to an unexpected hazard (the fox) by braking and swerving, indicating a cautious approach rather than reckless driving. While they did cross the red light, the evidence suggests this was a consequence of the circumstances, not deliberate recklessness."
+      "reasoning": "The highlights demonstrate that the defendant was driving in very poor weather conditions with reduced visibility and reacted to an unexpected hazard (the fox) by braking and swerving, indicating a cautious approach rather than reckless driving. While they did cross the red light, the evidence suggests this was a consequence of the circumstances, not deliberate recklessness.",
+      "askedAI": false
     },
     "-603710057": {
       "statementKey": "statement 2",
@@ -878,7 +906,8 @@
           "reason": "Braking and swerving in hail-affected conditions could contribute to loss of control."
         }
       ],
-      "reasoning": "The statement describes heavy hail, reduced visibility, and a slowed speed, combined with braking and a slight swerve to avoid an animal, immediately followed by the car crossing the line. This sequence of events suggests adverse weather contributed to a loss of control leading to the vehicle's minor movement into the junction."
+      "reasoning": "The statement describes heavy hail, reduced visibility, and a slowed speed, combined with braking and a slight swerve to avoid an animal, immediately followed by the car crossing the line. This sequence of events suggests adverse weather contributed to a loss of control leading to the vehicle's minor movement into the junction.",
+      "askedAI": false
     },
     "-1188927569": {
       "statementKey": "statement 2",
@@ -900,7 +929,8 @@
           "reason": "The driver is presenting the circumstances as mitigating factors, not blaming others, but admitting the final responsibility lies with them."
         }
       ],
-      "reasoning": "The driver consistently accepts responsibility for crossing the red light while providing contextual factors like weather and a fox obstructing the road. The statement emphasizes explaining the situation rather than shifting blame."
+      "reasoning": "The driver consistently accepts responsibility for crossing the red light while providing contextual factors like weather and a fox obstructing the road. The statement emphasizes explaining the situation rather than shifting blame.",
+      "askedAI": false
     },
     "-1651041649": {
       "statementKey": "statement 3",
@@ -918,7 +948,8 @@
           "reason": "This shows the driver attempted to assess the lights, indicating an attempt to react and avoid the situation."
         }
       ],
-      "reasoning": "The driver explicitly states they were trying to keep their eyes on the road and cars and thought they saw the lights, suggesting actions taken in an attempt to avoid a collision, even if they ultimately misjudged the situation."
+      "reasoning": "The driver explicitly states they were trying to keep their eyes on the road and cars and thought they saw the lights, suggesting actions taken in an attempt to avoid a collision, even if they ultimately misjudged the situation.",
+      "askedAI": false
     },
     "-116249999": {
       "statementKey": "statement 3",
@@ -927,7 +958,8 @@
       "inputHash": -116249999,
       "answer": "no",
       "highlights": [],
-      "reasoning": "The statement focuses entirely on the driver's perception of the traffic lights and road conditions, with no mention of any emergency vehicle or attempts to give way to one. Therefore, it's impossible to determine if an emergency vehicle was present."
+      "reasoning": "The statement focuses entirely on the driver's perception of the traffic lights and road conditions, with no mention of any emergency vehicle or attempts to give way to one. Therefore, it's impossible to determine if an emergency vehicle was present.",
+      "askedAI": false
     },
     "-1313653586": {
       "statementKey": "statement 3",
@@ -945,7 +977,26 @@
           "reason": "Indicates the driver perceived the lights but miscalculated, suggesting it wasn't a prolonged or unexpected red light period."
         }
       ],
-      "reasoning": "The statement indicates the driver believed they saw the lights in time, but misjudged their timing, rather than being caught by a long or unexpected red light."
+      "reasoning": "The statement indicates the driver believed they saw the lights in time, but misjudged their timing, rather than being caught by a long or unexpected red light.",
+      "askedAI": false
+    },
+    "-1271795501": {
+      "statementKey": "statement 2",
+      "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
+      "model": "qwen3:30b",
+      "inputHash": -1271795501,
+      "answer": "no",
+      "highlights": [
+        {
+          "passage": "turned to hail",
+          "reason": "describes severe weather conditions affecting visibility and driving"
+        },
+        {
+          "passage": "slowed down to about 25mph",
+          "reason": "indicates low speed due to weather-related reduced visibility"
+        }
+      ],
+      "reasoning": "The statement details bad weather and low speed but contains no mention of a technical slide, and describes the incident as resulting from distraction by a fox rather than a mechanical slide."
     }
   }
 }
