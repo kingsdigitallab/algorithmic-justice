@@ -314,7 +314,7 @@ createApp({
       return ret
     },
     getModelsList() {
-      return this.modelsList
+      return this.modelsList.sort()
     },
     async initService() {
       this.setMessage('')
