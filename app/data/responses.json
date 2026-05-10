@@ -1,15 +1,14 @@
 {
   "41075293": {
-    "statementKey": "statement 3",
     "question": "Is there a reason why the defendant might not be guilty?",
     "model": "qwen3:30b",
     "inputHash": 41075293,
     "answer": "no",
     "highlights": [],
-    "reasoning": "All cited factors (wet road, poor visibility) are mitigating circumstances for the error, not evidence negating guilt."
+    "reasoning": "All cited factors (wet road, poor visibility) are mitigating circumstances for the error, not evidence negating guilt.",
+    "caseKey": "case 3"
   },
   "85238510": {
-    "statementKey": "statement 2",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "qwen3:30b",
     "inputHash": 85238510,
@@ -21,20 +20,20 @@
       }
     ],
     "reasoning": "The driver directly describes braking and swerving to avoid the fox, confirming they took action to prevent collision.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "159604672": {
-    "statementKey": "statement 1",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "qwen3:30b",
     "inputHash": 159604672,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement contains no references to weather conditions, technical issues, or vehicle slides, making it impossible to determine based on the provided text.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "229269780": {
-    "statementKey": "statement 3",
     "question": "Was blame wrongly placed on others?",
     "model": "gemma3:27b",
     "inputHash": 229269780,
@@ -54,10 +53,10 @@
       }
     ],
     "reasoning": "The driver repeatedly admits fault and acknowledges misjudging the situation, despite describing difficult conditions, indicating they do not shift blame to others.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "308984205": {
-    "statementKey": "statement 2",
     "question": "Was there a long red light?",
     "model": "qwen3:30b",
     "inputHash": 308984205,
@@ -73,18 +72,18 @@
       }
     ],
     "reasoning": "The statement describes the light appearing dim and cycling normally, but contains no mention of the duration of the red phase, making it impossible to confirm if it was 'long'.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "323248008": {
-    "statementKey": "statement 1",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "magistrate",
     "inputHash": 323248008,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 1"
   },
   "325895594": {
-    "statementKey": "statement 2",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "gemma3:27b",
     "inputHash": 325895594,
@@ -108,65 +107,65 @@
       }
     ],
     "reasoning": "The highlights clearly demonstrate the driver braked and swerved to avoid the fox, indicating they took action to prevent a collision.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "332444098": {
-    "statementKey": "statement 3",
     "question": "Did previous traffic offences include running red lights?",
     "model": "gemma3:27b",
     "inputHash": 332444098,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement focuses solely on the current incident and offers no information regarding any prior traffic offences. Therefore, it is impossible to determine if the offender has previously run red lights based on the provided text.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "348294899": {
-    "statementKey": "statement 2",
     "question": "Was blame wrongly placed on others?",
     "model": "qwen3:30b",
     "inputHash": 348294899,
     "answer": "no",
     "highlights": [],
     "reasoning": "The offender takes full responsibility without assigning blame to any other party or entity.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "415742049": {
-    "statementKey": "statement 2",
     "question": "Is there a reason this case should be heard in open court?",
     "model": "qwen3:30b",
     "inputHash": 415742049,
     "answer": "undetermined",
     "highlights": [],
-    "reasoning": "The statement details the incident circumstances but contains no mention of court hearing procedures, public interest, or any request for an open hearing, making it impossible to determine if there's a reason for open court."
+    "reasoning": "The statement details the incident circumstances but contains no mention of court hearing procedures, public interest, or any request for an open hearing, making it impossible to determine if there's a reason for open court.",
+    "caseKey": "case 2"
   },
   "446252800": {
-    "statementKey": "statement 1",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "gemma3:27b",
     "inputHash": 446252800,
     "answer": "no",
     "highlights": [],
     "reasoning": "The statement does not contain any information about the weather conditions or if the defendant was driving recklessly. It focuses on a situation involving emergency vehicles and a traffic junction.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "532042649": {
-    "statementKey": "statement 2",
     "question": "Did previous traffic offences include running red lights?",
     "model": "magistrate",
     "inputHash": 532042649,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 2"
   },
   "535158981": {
-    "statementKey": "statement 2",
     "question": "Was there a long red light?",
     "model": "magistrate",
     "inputHash": 535158981,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 2"
   },
   "703129043": {
-    "statementKey": "statement 3",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "qwen3:30b",
     "inputHash": 703129043,
@@ -178,30 +177,30 @@
       }
     ],
     "reasoning": "The statement explicitly states the driver went through the red light after misjudging the light, with no mention of braking or evasive maneuvers to prevent a collision.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "730880572": {
-    "statementKey": "statement 1",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "qwen3:30b",
     "inputHash": 730880572,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement does not mention weather conditions or reckless driving, making it impossible to determine if the defendant was driving recklessly in bad weather.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "806021111": {
-    "statementKey": "statement 1",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "gemma3:27b",
     "inputHash": 806021111,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement does not contain any information about the defendant's driving record prior to the incident. It only discusses the current situation and the consequences of the recent offense.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "840765001": {
-    "statementKey": "statement 2",
     "question": "Was there a long red light?",
     "model": "gemma3:27b",
     "inputHash": 840765001,
@@ -221,30 +220,30 @@
       }
     ],
     "reasoning": "The driver admits crossing the red light but suggests they may not have registered it due to the distracting conditions (hail, fox) and that the light itself appeared dim, so it is undetermined whether the light had been red for a long time.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "915981229": {
-    "statementKey": "statement 3",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "qwen3:30b",
     "inputHash": 915981229,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement contains no mention of an emergency vehicle or any indication that one attempted to pass.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "940608685": {
-    "statementKey": "statement 3",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "qwen3:30b",
     "inputHash": 940608685,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement describes the defendant's current behavior and driving conditions but contains no mention of prior driving violations or record.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "1035433560": {
-    "statementKey": "statement 3",
     "question": "Was blame wrongly placed on others?",
     "model": "qwen3:30b",
     "inputHash": 1035433560,
@@ -260,38 +259,38 @@
       }
     ],
     "reasoning": "The offender explicitly accepts personal blame for the mistake without attributing fault to others or external factors.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "1050758118": {
-    "statementKey": "statement 1",
     "question": "Was blame wrongly placed on others?",
     "model": "qwen3:30b",
     "inputHash": 1050758118,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement contains no references to blame being placed on other people; it focuses solely on the speaker's own perceived offense and insurance concerns.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "1089291730": {
-    "statementKey": "statement 3",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "magistrate",
     "inputHash": 1089291730,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 3"
   },
   "1116418875": {
-    "statementKey": "statement 1",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "qwen3:30b",
     "inputHash": 1116418875,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement contains no information about the defendant's prior driving record, only discussing the current incident and future consequences.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "1208792008": {
-    "statementKey": "statement 2",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "qwen3:30b",
     "inputHash": 1208792008,
@@ -303,10 +302,10 @@
       }
     ],
     "reasoning": "The defendant explicitly states a 17-year point-free driving record, which constitutes proof of a perfect prior driving record.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "1259341986": {
-    "statementKey": "statement 2",
     "question": "Is there a reason why the defendant might not be guilty?",
     "model": "qwen3:30b",
     "inputHash": 1259341986,
@@ -317,10 +316,10 @@
         "reason": "directly states the defendant's claim that their action was due to an unavoidable emergency (animal crossing), not deliberate negligence"
       }
     ],
-    "reasoning": "The statement explicitly argues the violation resulted from reacting to an unexpected hazard (fox) under extreme weather, which may negate the negligence required for guilt."
+    "reasoning": "The statement explicitly argues the violation resulted from reacting to an unexpected hazard (fox) under extreme weather, which may negate the negligence required for guilt.",
+    "caseKey": "case 2"
   },
   "1301662057": {
-    "statementKey": "statement 3",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "gemma3:27b",
     "inputHash": 1301662057,
@@ -336,10 +335,10 @@
       }
     ],
     "reasoning": "The defendant states they 'normally drive careful' and that the incident is unusual for them, suggesting a previously good driving record, although not explicitly stated as *perfect*.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "1325192099": {
-    "statementKey": "statement 1",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "gemma3:27b",
     "inputHash": 1325192099,
@@ -359,10 +358,10 @@
       }
     ],
     "reasoning": "The statement explicitly mentions the presence of an ambulance and police car with sirens, other cars moving for them, and a police officer motioning for the driver to clear the way, all strongly implying the emergency vehicles wanted to pass.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "1378032000": {
-    "statementKey": "statement 1",
     "question": "Was there a long red light?",
     "model": "qwen3:30b",
     "inputHash": 1378032000,
@@ -378,18 +377,18 @@
       }
     ],
     "reasoning": "The statement mentions the lights cycled to red and then changed to green again, but provides no details about the duration of the red phase.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "1394540075": {
-    "statementKey": "statement 2",
     "question": "Was blame wrongly placed on others?",
     "model": "magistrate",
     "inputHash": 1394540075,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 2"
   },
   "1457300062": {
-    "statementKey": "statement 2",
     "question": "Is there a reason why the defendant might not be guilty?",
     "model": "gemma3:27b",
     "inputHash": 1457300062,
@@ -421,10 +420,10 @@
       }
     ],
     "reasoning": "The statement details challenging conditions and an unexpected hazard which led the defendant to focus on avoiding the animal, leading them to potentially not see the red light. While they admit to crossing the line, this sequence of events creates reasonable doubt as to their intent to ignore the traffic signal.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "1607176018": {
-    "statementKey": "statement 3",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "gemma3:27b",
     "inputHash": 1607176018,
@@ -440,18 +439,18 @@
       }
     ],
     "reasoning": "The statement mentions wet road conditions and the use of wipers, which suggests challenging visibility, but does not explicitly mention a 'technical slide' or low speed incident. Therefore, it is undetermined if the weather led to a slide.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "1615594469": {
-    "statementKey": "statement 3",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "magistrate",
     "inputHash": 1615594469,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 3"
   },
   "1674892061": {
-    "statementKey": "statement 2",
     "question": "Is there a reason this case should be heard in open court?",
     "model": "gemma3:27b",
     "inputHash": 1674892061,
@@ -471,10 +470,10 @@
       }
     ],
     "reasoning": "The driver explicitly requests the magistrate to consider the full context of the incident, including adverse weather conditions and an animal in the road, as opposed to simply relying on camera footage, indicating the need for a more detailed examination in open court to establish mitigation.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "1696985807": {
-    "statementKey": "statement 2",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "qwen3:30b",
     "inputHash": 1696985807,
@@ -490,18 +489,18 @@
       }
     ],
     "reasoning": "The highlights show the defendant deliberately slowed speed and defensively maneuvered to avoid a hazard, contradicting recklessness in bad weather.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "1767516560": {
-    "statementKey": "statement 3",
     "question": "Was blame wrongly placed on others?",
     "model": "magistrate",
     "inputHash": 1767516560,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 3"
   },
   "1793589789": {
-    "statementKey": "statement 2",
     "question": "Did previous traffic offences include running red lights?",
     "model": "gemma3:27b",
     "inputHash": 1793589789,
@@ -513,18 +512,18 @@
       }
     ],
     "reasoning": "The statement explicitly states the driver has been driving for seventeen years without receiving any points on their license, implying no prior traffic offenses. Although it doesn't specifically exclude the possibility of red light offenses, it strongly suggests a clean driving record.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "1799281303": {
-    "statementKey": "statement 2",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "magistrate",
     "inputHash": 1799281303,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 2"
   },
   "1923079812": {
-    "statementKey": "statement 2",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "gemma3:27b",
     "inputHash": 1923079812,
@@ -536,10 +535,10 @@
       }
     ],
     "reasoning": "The statement explicitly states the defendant had been driving for seventeen years without any points on their license, indicating a perfect record prior to the incident.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "2037024462": {
-    "statementKey": "statement 3",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "gemma3:27b",
     "inputHash": 2037024462,
@@ -563,124 +562,124 @@
       }
     ],
     "reasoning": "The statement details poor weather conditions and the driver's attempt to assess the situation, alongside a claim of careful driving, but the error in judgment alone isn't sufficient evidence to conclude recklessness; it could simply be a mistake.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "2142358202": {
-    "statementKey": "statement 2",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "magistrate",
     "inputHash": 2142358202,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 2"
   },
   "-441856757": {
-    "statementKey": "statement 3",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "magistrate",
     "inputHash": -441856757,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 3"
   },
   "-21689483": {
-    "statementKey": "statement 3",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "magistrate",
     "inputHash": -21689483,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 3"
   },
   "-1577011906": {
-    "statementKey": "statement 3",
     "question": "Did previous traffic offences include running red lights?",
     "model": "magistrate",
     "inputHash": -1577011906,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 3"
   },
   "-1545821098": {
-    "statementKey": "statement 3",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "magistrate",
     "inputHash": -1545821098,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 3"
   },
   "-662617814": {
-    "statementKey": "statement 3",
     "question": "Was there a long red light?",
     "model": "magistrate",
     "inputHash": -662617814,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 3"
   },
   "-1919959143": {
-    "statementKey": "statement 1",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "magistrate",
     "inputHash": -1919959143,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 1"
   },
   "-126829401": {
-    "statementKey": "statement 1",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "magistrate",
     "inputHash": -126829401,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 1"
   },
   "-1507258876": {
-    "statementKey": "statement 1",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "magistrate",
     "inputHash": -1507258876,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 1"
   },
   "-399229876": {
-    "statementKey": "statement 1",
     "question": "Did previous traffic offences include running red lights?",
     "model": "magistrate",
     "inputHash": -399229876,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 1"
   },
   "-1244597064": {
-    "statementKey": "statement 1",
     "question": "Was there a long red light?",
     "model": "magistrate",
     "inputHash": -1244597064,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 1"
   },
   "-1623429346": {
-    "statementKey": "statement 1",
     "question": "Was blame wrongly placed on others?",
     "model": "magistrate",
     "inputHash": -1623429346,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 1"
   },
   "-263775629": {
-    "statementKey": "statement 1",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "magistrate",
     "inputHash": -263775629,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 1"
   },
   "-579966879": {
-    "statementKey": "statement 1",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "qwen3:30b",
     "inputHash": -579966879,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement describes the driver moving to allow emergency vehicles to pass but explicitly states the purpose was to facilitate the vehicles' passage, not to avoid a collision; no mention of collision risk or avoidance is present.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-1978211105": {
-    "statementKey": "statement 1",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "qwen3:30b",
     "inputHash": -1978211105,
@@ -692,54 +691,54 @@
       }
     ],
     "reasoning": "The police car driver's emphatic hand wave to clear the way demonstrates the emergency vehicle's intent to pass.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-1156852972": {
-    "statementKey": "statement 1",
     "question": "Did previous traffic offences include running red lights?",
     "model": "qwen3:30b",
     "inputHash": -1156852972,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement contains no mention of previous traffic offences, only the current incident involving emergency vehicles and traffic lights.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-1856420314": {
-    "statementKey": "statement 2",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "magistrate",
     "inputHash": -1856420314,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 2"
   },
   "-1689181029": {
-    "statementKey": "statement 2",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "magistrate",
     "inputHash": -1689181029,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 2"
   },
   "-1714166016": {
-    "statementKey": "statement 2",
     "question": "Prior to this incident did the defendant have a perfect driving record?",
     "model": "magistrate",
     "inputHash": -1714166016,
     "answer": "",
-    "askedAI": true
+    "askedAI": true,
+    "caseKey": "case 2"
   },
   "-174211342": {
-    "statementKey": "statement 2",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "qwen3:30b",
     "inputHash": -174211342,
     "answer": "no",
     "highlights": [],
     "reasoning": "The statement contains no mention of an emergency vehicle, other vehicles, or any context suggesting an emergency vehicle was present or attempting to pass.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "-1844601247": {
-    "statementKey": "statement 2",
     "question": "Did previous traffic offences include running red lights?",
     "model": "qwen3:30b",
     "inputHash": -1844601247,
@@ -751,10 +750,10 @@
       }
     ],
     "reasoning": "The statement explicitly states no prior points on license, confirming no previous traffic offences including running red lights.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "-213245430": {
-    "statementKey": "statement 3",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "qwen3:30b",
     "inputHash": -213245430,
@@ -770,20 +769,20 @@
       }
     ],
     "reasoning": "Defendant explicitly states they do not take risks and were actively attempting to drive carefully despite weather, negating recklessness.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-757285882": {
-    "statementKey": "statement 3",
     "question": "Did previous traffic offences include running red lights?",
     "model": "qwen3:30b",
     "inputHash": -757285882,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement contains no mention of previous traffic offenses, including running red lights, making it impossible to confirm or deny.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-995543922": {
-    "statementKey": "statement 3",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "qwen3:30b",
     "inputHash": -995543922,
@@ -799,20 +798,20 @@
       }
     ],
     "reasoning": "Statement mentions weather conditions but does not reference any 'technical slide' or loss of vehicle control, so causality cannot be established.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-1589914126": {
-    "statementKey": "statement 3",
     "question": "Was there a long red light?",
     "model": "qwen3:30b",
     "inputHash": -1589914126,
     "answer": "undetermined",
     "highlights": [],
     "reasoning": "The statement describes the offender's perception of the traffic lights but contains no mention of the red light's duration being long, short, or otherwise.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-1660480227": {
-    "statementKey": "statement 1",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "gemma3:27b",
     "inputHash": -1660480227,
@@ -832,10 +831,10 @@
       }
     ],
     "reasoning": "The driver's actions include attempting to create space for emergency vehicles and physically moving to allow them to pass, suggesting an effort to avoid obstruction and potential collision.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-148094768": {
-    "statementKey": "statement 1",
     "question": "Did previous traffic offences include running red lights?",
     "model": "gemma3:27b",
     "inputHash": -148094768,
@@ -855,20 +854,20 @@
       }
     ],
     "reasoning": "The statement describes a situation where the driver was at a green light that turned red and then moved forward when it turned green again, but does not explicitly state they ran a red light prior to this incident nor does it mention prior offences.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-872791420": {
-    "statementKey": "statement 1",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "gemma3:27b",
     "inputHash": -872791420,
     "answer": "no",
     "highlights": [],
     "reasoning": "The statement focuses on the driver's actions to facilitate the passage of emergency vehicles and the subsequent penalty. It contains no mention of weather conditions or a technical slide.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-597100484": {
-    "statementKey": "statement 1",
     "question": "Was there a long red light?",
     "model": "gemma3:27b",
     "inputHash": -597100484,
@@ -888,10 +887,10 @@
       }
     ],
     "reasoning": "The statement details the lights being green initially, then cycling to red while the defendant waited, and subsequently changing back to green, indicating the red light was not continuously long.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-294998366": {
-    "statementKey": "statement 1",
     "question": "Was blame wrongly placed on others?",
     "model": "gemma3:27b",
     "inputHash": -294998366,
@@ -911,20 +910,20 @@
       }
     ],
     "reasoning": "The statement indicates the driver was attempting to facilitate the passage of emergency vehicles, and that other drivers were also moving. The driver was fined despite this, leading them to believe blame was wrongly placed.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-1533216842": {
-    "statementKey": "statement 2",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "gemma3:27b",
     "inputHash": -1533216842,
     "answer": "no",
     "highlights": [],
     "reasoning": "The statement details a scenario involving weather conditions, an animal in the road, and the driver's reaction. It does not mention any emergency vehicle attempting to pass, therefore the answer is undetermined.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "-1668077165": {
-    "statementKey": "statement 2",
     "question": "Was the defendant driving recklessly in bad weather?",
     "model": "gemma3:27b",
     "inputHash": -1668077165,
@@ -948,10 +947,10 @@
       }
     ],
     "reasoning": "The highlights demonstrate that the defendant was driving in very poor weather conditions with reduced visibility and reacted to an unexpected hazard (the fox) by braking and swerving, indicating a cautious approach rather than reckless driving. While they did cross the red light, the evidence suggests this was a consequence of the circumstances, not deliberate recklessness.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "-603710057": {
-    "statementKey": "statement 2",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "gemma3:27b",
     "inputHash": -603710057,
@@ -975,10 +974,10 @@
       }
     ],
     "reasoning": "The statement describes heavy hail, reduced visibility, and a slowed speed, combined with braking and a slight swerve to avoid an animal, immediately followed by the car crossing the line. This sequence of events suggests adverse weather contributed to a loss of control leading to the vehicle's minor movement into the junction.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "-1188927569": {
-    "statementKey": "statement 2",
     "question": "Was blame wrongly placed on others?",
     "model": "gemma3:27b",
     "inputHash": -1188927569,
@@ -998,10 +997,10 @@
       }
     ],
     "reasoning": "The driver consistently accepts responsibility for crossing the red light while providing contextual factors like weather and a fox obstructing the road. The statement emphasizes explaining the situation rather than shifting blame.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "-1651041649": {
-    "statementKey": "statement 3",
     "question": "Did the driver take action to try to avoid a collision?",
     "model": "gemma3:27b",
     "inputHash": -1651041649,
@@ -1017,20 +1016,20 @@
       }
     ],
     "reasoning": "The driver explicitly states they were trying to keep their eyes on the road and cars and thought they saw the lights, suggesting actions taken in an attempt to avoid a collision, even if they ultimately misjudged the situation.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-116249999": {
-    "statementKey": "statement 3",
     "question": "Did an emergency vehicle appear to wish to pass?",
     "model": "gemma3:27b",
     "inputHash": -116249999,
     "answer": "no",
     "highlights": [],
     "reasoning": "The statement focuses entirely on the driver's perception of the traffic lights and road conditions, with no mention of any emergency vehicle or attempts to give way to one. Therefore, it's impossible to determine if an emergency vehicle was present.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-1313653586": {
-    "statementKey": "statement 3",
     "question": "Was there a long red light?",
     "model": "gemma3:27b",
     "inputHash": -1313653586,
@@ -1046,10 +1045,10 @@
       }
     ],
     "reasoning": "The statement indicates the driver believed they saw the lights in time, but misjudged their timing, rather than being caught by a long or unexpected red light.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-1271795501": {
-    "statementKey": "statement 2",
     "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
     "model": "qwen3:30b",
     "inputHash": -1271795501,
@@ -1065,10 +1064,10 @@
       }
     ],
     "reasoning": "The statement details bad weather and low speed but contains no mention of a technical slide, and describes the incident as resulting from distraction by a fox rather than a mechanical slide.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 2"
   },
   "-1977961141": {
-    "statementKey": "statement 1",
     "question": "Is there a reason why the defendant might not be guilty?",
     "model": "gemma3:27b",
     "inputHash": -1977961141,
@@ -1088,10 +1087,10 @@
       }
     ],
     "reasoning": "The defendant's statement indicates they attempted to facilitate the passage of emergency vehicles but were constrained by traffic conditions and still received a penalty, suggesting potential grounds to challenge the guilt.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-1076240694": {
-    "statementKey": "statement 1",
     "question": "Is there a reason this case should be heard in open court?",
     "model": "gemma3:27b",
     "inputHash": -1076240694,
@@ -1115,10 +1114,10 @@
       }
     ],
     "reasoning": "The driver's statements suggest they attempted to assist emergency vehicles while constrained by traffic conditions, and the potential severity of the penalty seems disproportionate given the circumstances, potentially warranting a closer examination by the court.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 1"
   },
   "-1588204007": {
-    "statementKey": "statement 3",
     "question": "Is there a reason why the defendant might not be guilty?",
     "model": "gemma3:27b",
     "inputHash": -1588204007,
@@ -1138,20 +1137,20 @@
       }
     ],
     "reasoning": "The defendant cites poor weather and lighting conditions which impaired visibility, and claims to have *thought* they saw the light, suggesting a possible error in judgement rather than intentional disregard which could excuse them.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-181789672": {
-    "statementKey": "statement 3",
     "question": "Is there a reason this case should be heard in open court?",
     "model": "gemma3:27b",
     "inputHash": -181789672,
     "answer": "no",
     "highlights": [],
     "reasoning": "The statement contains no information suggesting reasons for a hearing in open court; it's a standard apology for a traffic violation and does not mention any complicating factors that would necessitate open proceedings.",
-    "askedAI": false
+    "askedAI": false,
+    "caseKey": "case 3"
   },
   "-1491136113": {
-    "statementKey": "statement 1",
     "question": "Is there a reason why the defendant might not be guilty?",
     "model": "qwen3:30b",
     "inputHash": -1491136113,
@@ -1170,10 +1169,10 @@
         "reason": "Confirms movement occurred only after traffic lights turned green, which would be lawful and not constitute obstruction of emergency vehicles."
       }
     ],
-    "reasoning": "The highlights show the defendant was legally stopped at red, moved only after lights turned green (not during red), and thus did not unlawfully obstruct emergency vehicles."
+    "reasoning": "The highlights show the defendant was legally stopped at red, moved only after lights turned green (not during red), and thus did not unlawfully obstruct emergency vehicles.",
+    "caseKey": "case 1"
   },
   "-2107445412": {
-    "statementKey": "statement 3",
     "question": "Is there a reason this case should be heard in open court?",
     "model": "qwen3:30b",
     "inputHash": -2107445412,
@@ -1192,10 +1191,10 @@
         "reason": "expresses remorse and personal impact"
       }
     ],
-    "reasoning": "The highlights demonstrate genuine remorse, admission of fault, and a clear indication that this was an isolated incident inconsistent with the offender's usual careful driving habits, suggesting no need for open court proceedings."
+    "reasoning": "The highlights demonstrate genuine remorse, admission of fault, and a clear indication that this was an isolated incident inconsistent with the offender's usual careful driving habits, suggesting no need for open court proceedings.",
+    "caseKey": "case 3"
   },
   "-1388824050": {
-    "statementKey": "statement 1",
     "question": "Is there a reason this case should be heard in open court?",
     "model": "qwen3:30b",
     "inputHash": -1388824050,
@@ -1206,6 +1205,7 @@
         "reason": "Confirms movement occurred after lawful green light, contradicting alleged offence of moving on red light"
       }
     ],
-    "reasoning": "The statement indicates the offender only moved after traffic lights turned green, which would make the alleged offense invalid, necessitating a court hearing to verify facts."
+    "reasoning": "The statement indicates the offender only moved after traffic lights turned green, which would make the alleged offense invalid, necessitating a court hearing to verify facts.",
+    "caseKey": "case 1"
   }
 }

@@ -137,7 +137,7 @@ createApp({
       // selectedTab: 'settings',
       selectedTab: TAB_HIGHLIGHTER,
       questionnaire: {
-        statements: {},
+        cases: {},
         questions: [
           '',
         ],
@@ -195,7 +195,7 @@ createApp({
       return ret
     },
     selectedQuestionnaireStatement() {
-      return this.questionnaire?.statements[this.questionnaire?.selectedStatementKey] ?? ''
+      return this.questionnaire?.cases[this.questionnaire?.selectedCaseKey]?.statement ?? ''
     },
     selectedModel() {
       return this.settings?.model?.value ?? ''
@@ -219,7 +219,7 @@ createApp({
     },
   },
   watch: {
-    'questionnaire.selectedStatementKey'() {
+    'questionnaire.selectedCaseKey'() {
       this.response = null
     },
     'settings.question.value'() {
@@ -239,7 +239,7 @@ createApp({
         )
         if (lengthBefore === ret.length) {
           invalidPassages += 1
-          console.log(`Passage not found in statement (${this.questionnaire.selectedStatementKey}, ${this.questionnaire.selectedQuestion}): "${highlight.passage}"`)
+          console.log(`Passage not found in case (${this.questionnaire.selectedCaseKey}, ${this.questionnaire.selectedQuestion}): "${highlight.passage}"`)
         }
       }
       ret = ret.replaceAll('\n', '<br><br>')
@@ -348,7 +348,7 @@ createApp({
       model = model ?? this.selectedModel
       let hash = this.getInputHash(question, model, promptTemplate)
       let defaultResponse = {
-        statementKey: this.questionnaire.selectedStatementKey,
+        caseKey: this.questionnaire.selectedCaseKey,
         question: question,
         model: model,
         inputHash: hash,
@@ -662,29 +662,29 @@ createApp({
       this.cachingMessage = '(caching...)'
 
       // questionnaire
-      for (let statementKey of Object.keys(this.questionnaire.statements)) {
-        this.questionnaire.selectedStatementKey = statementKey
+      for (let caseKey of Object.keys(this.questionnaire.cases)) {
+        this.questionnaire.selectedCaseKey = caseKey
         let questionIndex = 0
         for (let question of this.questionnaire.questions) {
           questionIndex += 1
-          this.cachingMessage = `(Questionnaire - ${statementKey}, question ${questionIndex})`
+          this.cachingMessage = `(Questionnaire - ${caseKey}, question ${questionIndex})`
           await this.sendQuestionnairePrompt(question)
         }
       }
 
       // highlighter
-      for (let statementKey of Object.keys(this.questionnaire.statements)) {
-        this.questionnaire.selectedStatementKey = statementKey
+      for (let caseKey of Object.keys(this.questionnaire.cases)) {
+        this.questionnaire.selectedCaseKey = caseKey
         let questionIndex = 0
         for (let question of this.highlighterQuestions) {
           questionIndex += 1
-          this.cachingMessage = `(Highlighter - ${statementKey}, question ${questionIndex})`
+          this.cachingMessage = `(Highlighter - ${caseKey}, question ${questionIndex})`
           await this.sendHighlightPrompt(question)
         }
       }
 
       this.cachingMessage = '(done)'
-      this.questionnaire.selectedStatementKey = Object.keys(this.questionnaire.statements)[0]
+      this.questionnaire.selectedCaseKey = Object.keys(this.questionnaire.cases)[0]
     },
     async removeCachedResponsesBySelectedModel() {
       let responseKeys = Object.keys(this.questionnaire.responses)

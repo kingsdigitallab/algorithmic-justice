@@ -116,8 +116,8 @@
             <div class="column">
               <h2 class="title is-3">Defendant's statement</h2>
               <div class="select block">
-                <select v-model="questionnaire.selectedStatementKey">
-                  <option v-for="(statement, statementKey) in questionnaire.statements">{{statementKey}}</option>
+                <select v-model="questionnaire.selectedCaseKey">
+                  <option v-for="(caseData, caseKey) in questionnaire.cases">{{caseKey}}</option>
                 </select>
               </div>
               <div class="highlighted-text" v-html="highlightedQuestionnaireStatement">
@@ -149,8 +149,8 @@
           <div class="block">
             <h2 class="title is-3">Defendant's statement (with LLM's highlights)</h2>
             <div class="select block">
-              <select v-model="questionnaire.selectedStatementKey">
-                <option v-for="(statement, statementKey) in questionnaire.statements">{{statementKey}}</option>
+              <select v-model="questionnaire.selectedCaseKey">
+                <option v-for="(caseData, caseKey) in questionnaire.cases">{{caseKey}}</option>
               </select>
             </div>
             <div class="highlighted-text" v-html="higlightedText">
