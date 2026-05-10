@@ -291,10 +291,12 @@ createApp({
     },
     async loadQuestionnaire() {
       let res = await loadJson('data/app-data.json')
+      let responses = await loadJson('data/responses.json')
       if (res) {
         this.questionnaire = res
+        this.questionnaire.responses = responses
         // reset all the magistrate metadata
-        for (const [inputHash, response] of Object.entries(res.responses)) {
+        for (const [inputHash, response] of Object.entries(responses)) {
           if (response.model === AGENT_MAGISTRATE) {
             response.answer = ""
             response.askedAI = false
