@@ -290,7 +290,7 @@ createApp({
       return ret
     },
     async loadQuestionnaire() {
-      let res = await loadJson('data/pleas/questionnaire.json')
+      let res = await loadJson('data/app-data.json')
       if (res) {
         this.questionnaire = res
         // reset all the magistrate metadata

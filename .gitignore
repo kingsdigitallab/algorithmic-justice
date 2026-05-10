@@ -31,3 +31,6 @@ vite.config.ts.timestamp-*
 # macOS system files
 .DS_Store   
 
+# unused data files
+app/data/unused/
+
