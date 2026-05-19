@@ -529,13 +529,13 @@ createApp({
       ret = ret.replace('{QUESTION}', question)
       return ret
     },
-    async sendQuestionnairePrompt(index) {
-      let question = this.questionnaire.questions[index]
+    async sendQuestionnairePrompt(questionIndex) {
+      let question = this.questionnaire.questions[questionIndex]
       let response = await this.sendPromptOrGetFromCache(question)
       if (response?.answer) {
         let magistrateResponse = this.getMagistrateResponse(question)
         magistrateResponse.askedAI = true
-        this.questionnaire.selectedQuestionIndex = index
+        this.questionnaire.selectedQuestionIndex = questionIndex
         nextTick(() => {
           window.tippy('[data-tippy-content]');
         })
@@ -663,8 +663,8 @@ createApp({
       let response = this.getMagistrateResponse(question)
       response.answer = option
     },
-    onClickShowHighlights(index) {
-      this.questionnaire.selectedQuestionIndex = index
+    onClickShowHighlights(questionIndex) {
+      this.questionnaire.selectedQuestionIndex = questionIndex
     },
     async cacheAllResponses() {
       this.cachingMessage = '(caching...)'

@@ -82,8 +82,8 @@
           <div class="columns">
             <div class="column">
               <h2 class="title is-3">Questions for magistrate</h2>
-              <div class="block" v-for="(question, index) in questionnaire.questions">
-                <h3 class="title is-4">{{index+1}}. {{ question }}</h3>
+              <div class="block" v-for="(question, questionIndex) in questionnaire.questions">
+                <h3 class="title is-4">{{questionIndex+1}}. {{ question }}</h3>
                 <div class="buttons">
                   Magistrate answer:
                   <a :class="{button: true, 'is-primary': getMagistrateResponse(question).answer === option}" v-for="option in questionnaire.options" @click="onClickMagistrateOption(question, option)">{{option}}</a>
@@ -93,7 +93,7 @@
                   <div class="buttons">
                   AI Assistant answer:
                   <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(question).answer }}</a>
-                  <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedQuestionIndex !== index" @click="onClickShowHighlights(index)">Show highlights ⇨</button>
+                  <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedQuestionIndex !== questionIndex" @click="onClickShowHighlights(questionIndex)">Show highlights ⇨</button>
                     <span class="highlights-indicator move-right" v-else>
                       <template v-if="getLLMResponseToQuestionnaire(question).highlights.length">
                         AI Assistant's highlights ⇨
@@ -109,7 +109,7 @@
                 </div>
                 <div v-else class="buttons">
                   AI Assistant answer:
-                  <button class="button" :disabled="isResponding" @click="sendQuestionnairePrompt(index)">Ask</button>
+                  <button class="button" :disabled="isResponding" @click="sendQuestionnairePrompt(questionIndex)">Ask</button>
                 </div>
               </div>
             </div>
