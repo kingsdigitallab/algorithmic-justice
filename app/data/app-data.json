@@ -6,35 +6,35 @@
   ],
   "questions": [
     {
-      "text": "Did the driver take action to try to avoid a collision?",
-      "effect": 2
-    },
-    {
       "text": "Did an emergency vehicle appear to wish to pass?",
       "effect": 2
     },
     {
-      "text": "Was the defendant driving recklessly in bad weather?",
-      "effect": 2
-    },
-    {
       "text": "Did previous traffic offences include running red lights?",
-      "effect": 2
+      "effect": -2
     },
     {
       "text": "Did bad weather conditions lead to a minor technical slide at low speed?",
-      "effect": 2
+      "effect": 1
     },
     {
       "text": "Was there a long red light?",
-      "effect": 2
+      "effect": -1
     },
     {
       "text": "Was blame wrongly placed on others?",
-      "effect": 2
+      "effect": -1
+    },
+    {
+      "text": "Was the defendant driving recklessly in bad weather?",
+      "effect": -2
     },
     {
       "text": "Prior to this incident did the defendant have a perfect driving record?",
+      "effect": 1
+    },
+    {
+      "text": "Did the driver take action to try to avoid a collision?",
       "effect": 2
     }
   ],
