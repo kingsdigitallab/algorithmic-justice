@@ -296,12 +296,6 @@ createApp({
       if (res) {
         this.questionnaire = res
         this.questionnaire.responses = responses
-        // backward compatibility: convert old selectedQuestion string to selectedQuestionIndex
-        if ('selectedQuestion' in this.questionnaire && !('selectedQuestionIndex' in this.questionnaire)) {
-          let idx = this.questionnaire.questions.indexOf(this.questionnaire.selectedQuestion)
-          this.questionnaire.selectedQuestionIndex = idx >= 0 ? idx : null
-          delete this.questionnaire.selectedQuestion
-        }
         // reset all the magistrate metadata
         for (const [inputHash, response] of Object.entries(responses)) {
           if (response.model === AGENT_MAGISTRATE) {
