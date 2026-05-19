@@ -539,7 +539,7 @@ createApp({
       let cachedResponse = this.getQuestionnaireResponse(questionText, null, promptTemplate)
 
       if (!cachedResponse?.answer) {
-        let prompt = this.getQuestionnairePrompt(question, promptTemplate)
+        let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
         let res = await this.sendPrompt(prompt)
 
         let response = this.getObjectFromLLMResponse(res, true)
