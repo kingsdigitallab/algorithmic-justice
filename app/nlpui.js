@@ -201,8 +201,8 @@ createApp({
       return this.settings?.model?.value ?? ''
     },
     highlightedQuestionnaireStatement() {
-      let question = this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]?.text
-      let response = this.getLLMResponseToQuestionnaire(question)
+      let questionText = this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]?.text
+      let response = this.getLLMResponseToQuestionnaire(questionText)
       return this.highlightText(
         this.selectedQuestionnaireStatement, 
         response?.highlights ?? []
@@ -249,15 +249,15 @@ createApp({
       }
       return ret
     },
-    getLLMResponseToQuestionnaire(question) {
-      return this.getQuestionnaireResponse(question)
+    getLLMResponseToQuestionnaire(questionText) {
+      return this.getQuestionnaireResponse(questionText)
     },
-    canShowLLMResponseForQuestionnaire(question) {
+    canShowLLMResponseForQuestionnaire(questionText) {
       // only show if the response for that part exists
       // AND 
       // the magistrate asked to see it
-      let magistrateResponse = this.getMagistrateResponse(question)
-      let modelResponse = this.getQuestionnaireResponse(question)
+      let magistrateResponse = this.getMagistrateResponse(questionText)
+      let modelResponse = this.getQuestionnaireResponse(questionText)
       return magistrateResponse.askedAI && modelResponse.answer
     },
     getArrayFromLLMResponse(response) {
@@ -337,28 +337,28 @@ createApp({
         }
       }
     },
-    getMagistrateResponse(question) {
-      let ret = this.getQuestionnaireResponse(question, AGENT_MAGISTRATE)
+    getMagistrateResponse(questionText) {
+      let ret = this.getQuestionnaireResponse(questionText, AGENT_MAGISTRATE)
       if (!ret?.askedAI) {
         ret.askedAI = false
         this.questionnaire.responses[ret.inputHash] = ret
       }
       return ret
     },
-    getQuestionnaireResponse(question, model=null, promptTemplate=null) {
+    getQuestionnaireResponse(questionText, model=null, promptTemplate=null) {
       model = model ?? this.selectedModel
-      let hash = this.getInputHash(question, model, promptTemplate)
+      let hash = this.getInputHash(questionText, model, promptTemplate)
       let defaultResponse = {
         caseKey: this.questionnaire.selectedCaseKey,
-        question: question,
+        question: questionText,
         model: model,
         inputHash: hash,
         answer: '',
       }
       return this.questionnaire.responses[hash] ?? defaultResponse
     },
-    getInputHash(question, model, promptTemplate=null) {
-      let prompt = this.getQuestionnairePrompt(question, promptTemplate)
+    getInputHash(questionText, model, promptTemplate=null) {
+      let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
       return generateHash(`${model}-${prompt}`)
     },
     async sendToService(path, body) {
@@ -506,28 +506,28 @@ createApp({
       this.onChangedSetting('question')
       await this.sendHighlightPrompt()
     },
-    async sendHighlightPrompt(question=null) {
-      question = question ?? this.settings.question.value
-      this.response = await this.sendPromptOrGetFromCache(question, this.settings.templateHighlighter.value)
+    async sendHighlightPrompt(questionText=null) {
+      questionText = questionText ?? this.settings.question.value
+      this.response = await this.sendPromptOrGetFromCache(questionText, this.settings.templateHighlighter.value)
       nextTick(() => {
         window.tippy('[data-tippy-content]');
       })
     },
-    getQuestionnairePrompt(question=null, promptTemplate=null) {
-      question = question ?? this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]?.text
+    getQuestionnairePrompt(questionText=null, promptTemplate=null) {
+      questionText = questionText ?? this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]?.text
       let ret = promptTemplate
       if (!ret) {
         ret = this.settings.templateQuestionnaire?.value ?? ''
       }
       ret = ret.replace('{STATEMENT}', this.selectedQuestionnaireStatement)
-      ret = ret.replace('{QUESTION}', question)
+      ret = ret.replace('{QUESTION}', questionText)
       return ret
     },
     async sendQuestionnairePrompt(questionIndex) {
-      let question = this.questionnaire.questions[questionIndex]?.text
-      let response = await this.sendPromptOrGetFromCache(question)
+      let questionText = this.questionnaire.questions[questionIndex]?.text
+      let response = await this.sendPromptOrGetFromCache(questionText)
       if (response?.answer) {
-        let magistrateResponse = this.getMagistrateResponse(question)
+        let magistrateResponse = this.getMagistrateResponse(questionText)
         magistrateResponse.askedAI = true
         this.questionnaire.selectedQuestionIndex = questionIndex
         nextTick(() => {
@@ -535,8 +535,8 @@ createApp({
         })
       }
     },
-    async sendPromptOrGetFromCache(question, promptTemplate=null) {
-      let cachedResponse = this.getQuestionnaireResponse(question, null, promptTemplate)
+    async sendPromptOrGetFromCache(questionText, promptTemplate=null) {
+      let cachedResponse = this.getQuestionnaireResponse(questionText, null, promptTemplate)
 
       if (!cachedResponse?.answer) {
         let prompt = this.getQuestionnairePrompt(question, promptTemplate)
@@ -653,8 +653,8 @@ createApp({
     async copyToClipboard(content) {
       await navigator.clipboard.writeText(content);
     },
-    onClickMagistrateOption(question, option) {
-      let response = this.getMagistrateResponse(question)
+    onClickMagistrateOption(questionText, option) {
+      let response = this.getMagistrateResponse(questionText)
       response.answer = option
     },
     onClickShowHighlights(questionIndex) {
@@ -669,7 +669,7 @@ createApp({
         let questionIndex = 0
         for (let question of this.questionnaire.questions) {
           questionIndex += 1
-          this.cachingMessage = `(Questionnaire - ${caseKey}, question ${questionIndex})`
+          this.cachingMessage = `(Questionnaire - ${caseKey}, questionText ${questionIndex})`
           await this.sendQuestionnairePrompt(questionIndex - 1)
         }
       }
@@ -678,10 +678,10 @@ createApp({
       for (let caseKey of Object.keys(this.questionnaire.cases)) {
         this.questionnaire.selectedCaseKey = caseKey
         let questionIndex = 0
-        for (let question of this.highlighterQuestions) {
+        for (let questionText of this.highlighterQuestions) {
           questionIndex += 1
-          this.cachingMessage = `(Highlighter - ${caseKey}, question ${questionIndex})`
-          await this.sendHighlightPrompt(question)
+          this.cachingMessage = `(Highlighter - ${caseKey}, questionText ${questionIndex})`
+          await this.sendHighlightPrompt(questionText)
         }
       }
 
