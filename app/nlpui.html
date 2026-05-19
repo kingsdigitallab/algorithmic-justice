@@ -91,9 +91,9 @@
 
                 <div v-if="canShowLLMResponseForQuestionnaire(question)">
                   <div class="buttons">
-                    AI Assistant answer:
-                    <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(question).answer }}</a>
-                    <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedQuestion !== question" @click="onClickShowHighlights(question)">Show highlights ⇨</button>
+                  AI Assistant answer:
+                  <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(question).answer }}</a>
+                  <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedQuestionIndex !== index" @click="onClickShowHighlights(index)">Show highlights ⇨</button>
                     <span class="highlights-indicator move-right" v-else>
                       <template v-if="getLLMResponseToQuestionnaire(question).highlights.length">
                         AI Assistant's highlights ⇨
@@ -109,7 +109,7 @@
                 </div>
                 <div v-else class="buttons">
                   AI Assistant answer:
-                  <button class="button" :disabled="isResponding" @click="sendQuestionnairePrompt(question)">Ask</button>
+                  <button class="button" :disabled="isResponding" @click="sendQuestionnairePrompt(index)">Ask</button>
                 </div>
               </div>
             </div>

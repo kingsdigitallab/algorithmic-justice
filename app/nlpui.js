@@ -201,7 +201,8 @@ createApp({
       return this.settings?.model?.value ?? ''
     },
     highlightedQuestionnaireStatement() {
-      let response = this.getLLMResponseToQuestionnaire(this.questionnaire.selectedQuestion)
+      let question = this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]
+      let response = this.getLLMResponseToQuestionnaire(question)
       return this.highlightText(
         this.selectedQuestionnaireStatement, 
         response?.highlights ?? []
@@ -239,7 +240,7 @@ createApp({
         )
         if (lengthBefore === ret.length) {
           invalidPassages += 1
-          console.log(`Passage not found in case (${this.questionnaire.selectedCaseKey}, ${this.questionnaire.selectedQuestion}): "${highlight.passage}"`)
+          console.log(`Passage not found in case (${this.questionnaire.selectedCaseKey}, question ${this.questionnaire.selectedQuestionIndex}): "${highlight.passage}"`)
         }
       }
       ret = ret.replaceAll('\n', '<br><br>')
@@ -295,6 +296,12 @@ createApp({
       if (res) {
         this.questionnaire = res
         this.questionnaire.responses = responses
+        // backward compatibility: convert old selectedQuestion string to selectedQuestionIndex
+        if ('selectedQuestion' in this.questionnaire && !('selectedQuestionIndex' in this.questionnaire)) {
+          let idx = this.questionnaire.questions.indexOf(this.questionnaire.selectedQuestion)
+          this.questionnaire.selectedQuestionIndex = idx >= 0 ? idx : null
+          delete this.questionnaire.selectedQuestion
+        }
         // reset all the magistrate metadata
         for (const [inputHash, response] of Object.entries(responses)) {
           if (response.model === AGENT_MAGISTRATE) {
@@ -302,7 +309,7 @@ createApp({
             response.askedAI = false
           }
         }
-        this.questionnaire.selectedQuestion = null
+        this.questionnaire.selectedQuestionIndex = null
       }
     },
     getInputClass(settingKey) {
@@ -487,7 +494,7 @@ createApp({
         for (let response of Object.values(this.questionnaire.responses)) {
           response.askedAI = false
         }
-        this.questionnaire.selectedQuestion = null
+        this.questionnaire.selectedQuestionIndex = null
       }
     },
     async fetchModelsList() {
@@ -513,7 +520,7 @@ createApp({
       })
     },
     getQuestionnairePrompt(question=null, promptTemplate=null) {
-      question = question ?? this.questionnaire.selectedQuestion
+      question = question ?? this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]
       let ret = promptTemplate
       if (!ret) {
         ret = this.settings.templateQuestionnaire?.value ?? ''
@@ -522,12 +529,13 @@ createApp({
       ret = ret.replace('{QUESTION}', question)
       return ret
     },
-    async sendQuestionnairePrompt(question) {
+    async sendQuestionnairePrompt(index) {
+      let question = this.questionnaire.questions[index]
       let response = await this.sendPromptOrGetFromCache(question)
       if (response?.answer) {
         let magistrateResponse = this.getMagistrateResponse(question)
         magistrateResponse.askedAI = true
-        this.questionnaire.selectedQuestion = question
+        this.questionnaire.selectedQuestionIndex = index
         nextTick(() => {
           window.tippy('[data-tippy-content]');
         })
@@ -655,8 +663,8 @@ createApp({
       let response = this.getMagistrateResponse(question)
       response.answer = option
     },
-    onClickShowHighlights(question) {
-      this.questionnaire.selectedQuestion = question
+    onClickShowHighlights(index) {
+      this.questionnaire.selectedQuestionIndex = index
     },
     async cacheAllResponses() {
       this.cachingMessage = '(caching...)'
@@ -668,7 +676,7 @@ createApp({
         for (let question of this.questionnaire.questions) {
           questionIndex += 1
           this.cachingMessage = `(Questionnaire - ${caseKey}, question ${questionIndex})`
-          await this.sendQuestionnairePrompt(question)
+          await this.sendQuestionnairePrompt(questionIndex - 1)
         }
       }
 
