@@ -201,7 +201,7 @@ createApp({
       return this.settings?.model?.value ?? ''
     },
     highlightedQuestionnaireStatement() {
-      let question = this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]
+      let question = this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]?.text
       let response = this.getLLMResponseToQuestionnaire(question)
       return this.highlightText(
         this.selectedQuestionnaireStatement, 
@@ -514,7 +514,7 @@ createApp({
       })
     },
     getQuestionnairePrompt(question=null, promptTemplate=null) {
-      question = question ?? this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]
+      question = question ?? this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]?.text
       let ret = promptTemplate
       if (!ret) {
         ret = this.settings.templateQuestionnaire?.value ?? ''
@@ -524,7 +524,7 @@ createApp({
       return ret
     },
     async sendQuestionnairePrompt(questionIndex) {
-      let question = this.questionnaire.questions[questionIndex]
+      let question = this.questionnaire.questions[questionIndex]?.text
       let response = await this.sendPromptOrGetFromCache(question)
       if (response?.answer) {
         let magistrateResponse = this.getMagistrateResponse(question)

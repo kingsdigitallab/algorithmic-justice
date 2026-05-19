@@ -83,19 +83,19 @@
             <div class="column">
               <h2 class="title is-3">Questions for magistrate</h2>
               <div class="block" v-for="(question, questionIndex) in questionnaire.questions">
-                <h3 class="title is-4">{{questionIndex+1}}. {{ question }}</h3>
+                <h3 class="title is-4">{{questionIndex+1}}. {{ question.text }}</h3>
                 <div class="buttons">
                   Magistrate answer:
-                  <a :class="{button: true, 'is-primary': getMagistrateResponse(question).answer === option}" v-for="option in questionnaire.options" @click="onClickMagistrateOption(question, option)">{{option}}</a>
+                  <a :class="{button: true, 'is-primary': getMagistrateResponse(question.text).answer === option}" v-for="option in questionnaire.options" @click="onClickMagistrateOption(question.text, option)">{{option}}</a>
                 </div>
 
-                <div v-if="canShowLLMResponseForQuestionnaire(question)">
+                <div v-if="canShowLLMResponseForQuestionnaire(question.text)">
                   <div class="buttons">
                   AI Assistant answer:
-                  <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(question).answer }}</a>
+                  <a class="button is-primary" disabled>{{ getLLMResponseToQuestionnaire(question.text).answer }}</a>
                   <button class="button move-right" :disabled="isResponding" v-if="questionnaire.selectedQuestionIndex !== questionIndex" @click="onClickShowHighlights(questionIndex)">Show highlights ⇨</button>
                     <span class="highlights-indicator move-right" v-else>
-                      <template v-if="getLLMResponseToQuestionnaire(question).highlights.length">
+                      <template v-if="getLLMResponseToQuestionnaire(question.text).highlights.length">
                         AI Assistant's highlights ⇨
                       </template>
                       <template v-else>
@@ -104,7 +104,7 @@
                     </span>
                   </div>
                   <p>Explanation:<br>
-                    {{ getLLMResponseToQuestionnaire(question).reasoning }}
+                    {{ getLLMResponseToQuestionnaire(question.text).reasoning }}
                   </p>
                 </div>
                 <div v-else class="buttons">

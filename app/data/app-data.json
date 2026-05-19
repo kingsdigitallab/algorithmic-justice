@@ -5,19 +5,43 @@
     "undetermined"
   ],
   "questions": [
-    "Did the driver take action to try to avoid a collision?",
-    "Did an emergency vehicle appear to wish to pass?",
-    "Was the defendant driving recklessly in bad weather?",
-    "Did previous traffic offences include running red lights?",
-    "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "Was there a long red light?",
-    "Was blame wrongly placed on others?",
-    "Prior to this incident did the defendant have a perfect driving record?"
+    {
+      "text": "Did the driver take action to try to avoid a collision?",
+      "effect": 2
+    },
+    {
+      "text": "Did an emergency vehicle appear to wish to pass?",
+      "effect": 2
+    },
+    {
+      "text": "Was the defendant driving recklessly in bad weather?",
+      "effect": 2
+    },
+    {
+      "text": "Did previous traffic offences include running red lights?",
+      "effect": 2
+    },
+    {
+      "text": "Did bad weather conditions lead to a minor technical slide at low speed?",
+      "effect": 2
+    },
+    {
+      "text": "Was there a long red light?",
+      "effect": 2
+    },
+    {
+      "text": "Was blame wrongly placed on others?",
+      "effect": 2
+    },
+    {
+      "text": "Prior to this incident did the defendant have a perfect driving record?",
+      "effect": 2
+    }
   ],
   "selectedQuestionIndex": null,
   "cases": {
     "case 1": {
-      "statement": "I was driving through a built up area with a number of traffic lights. Traffic was very dense and slow moving.  I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me. I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side. The junction was narrow with a pedestrian island in the middle, so there was no room to manouver. As the two emergency vehicles approached, with cars moving to the left and right, I was hoping for the traffic on the other side to clear so that I could move on and clear the junction. As they came behind me, the lights cycled to red. I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically. I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again, so I moved forward to continue my journey. A week or so later I received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points. I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through. These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.",
+      "statement": "I was driving through a built up area with a number of traffic lights. Traffic was very dense and slow moving.\u00a0 I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me. I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side. The junction was narrow with a pedestrian island in the middle, so there was no room to manouver. As the two emergency vehicles approached, with cars moving to the left and right, I was hoping for the traffic on the other side to clear so that I could move on and clear the junction. As they came behind me, the lights cycled to red. I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically. I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again, so I moved forward to continue my journey. A week or so later I received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points. I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through. These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.",
       "monthlySalary": 775
     },
     "case 2": {
