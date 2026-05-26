@@ -88,6 +88,17 @@ export default class InferenceEngine {
     return {}
   }
 
+  async sendPromptTemplate(template, variables) {
+    // Replaces placeholders like {KEY} in template with corresponding values from variables
+    // then send that as a prompt
+    let prompt = template
+    for (let [k, v] of Object.entries(variables)) {
+      prompt = prompt.replace('{'+k+'}', v)
+    }
+
+    return this.sendPrompt(prompt)
+  }
+
   async sendPrompt(prompt) {
     let generate_url = ''
     let body = {}
