@@ -14,11 +14,13 @@ export default class CachedInferenceEngine extends InferenceEngine {
     this.cache = await response.json()
   }
 
-  async sendPrompt(prompt) {
+  async sendPrompt(prompt, ignoreCache=false) {
     let key = InferenceEngine.hash(`${this.model}-${prompt}`)
-    let entry = this.cache[key]
-    if (entry) {
-      return entry.response
+    if (!ignoreCache) {
+      let entry = this.cache[key]
+      if (entry) {
+        return entry.response
+      }
     }
     let ret = await super.sendPrompt(prompt)
     if (ret) {
