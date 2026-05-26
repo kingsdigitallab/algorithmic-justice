@@ -1,0 +1,27 @@
+{
+  "name": "Node.js App",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+
+  "mounts": [
+    "source=${localEnv:HOME}/.config/opencode,target=/opencode-config,type=bind"
+  ],
+  "remoteEnv": {
+    "OPENCODE_CONFIG_DIR": "/opencode-config"
+  },
+  
+  // Install project dependencies automatically after the container is created
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postStartCommand": "cd app && npm run start",
+
+  // Map the application port so you can access it at http://localhost:3000
+  "forwardPorts": [3000, 3001],
+
+  // Optional: Customizations for VS Code (if you use it)
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  }
+}

@@ -38,20 +38,17 @@ Scoring algorithm?
 . should we show the scores?
 */
 const { createApp, nextTick } = window.Vue;
+import InferenceEngine from './inference-engine.mjs'
 
 // const INFERRENCE_URL = "http://localhost:11436/api/"
 // const INFERRENCE_BACKEND = 'ollama'
 // const INFERRENCE_URL = "https://ai.create.kcl.ac.uk/api/"
 // const INFERRENCE_BACKEND = 'openwebui'
-const INFERRENCE_BACKEND = 'openai'
-
 const AGENT_MAGISTRATE = 'magistrate'
 // const MODEL = "gemma3:12b" // can't disable thinking, which takes a lot of tokens and time
 // const MODEL = "gemma3:4b"
 
 const SERVICE_CACHE = 'CACHED'
-
-const CONTEXT_LENGTH = 4000
 
 const TAB_HIGHLIGHTER = 'highlighter'
 
@@ -61,18 +58,6 @@ function camelToSpaceCase(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1 $2')
       .replace(/^./, (match) => match.toUpperCase());
 }
-
-// Source - https://stackoverflow.com/a
-// Posted by esmiralha, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-01-27, License - CC BY-SA 4.0
-const generateHash = (string) => {
-  let hash = 0;
-  for (const char of string) {
-    hash = (hash << 5) - hash + char.charCodeAt(0);
-    hash |= 0; // Constrain to 32bit integer
-  }
-  return hash;
-};
 
 async function loadJson(url) {
   let ret = {}
@@ -87,11 +72,6 @@ async function loadJson(url) {
     console.error('Error loading JSON:', err);
   }
   return ret
-}
-
-function delay(seconds) {
-  // usage: await delay(2000)
-  return new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }
 
 // Source - https://stackoverflow.com/a/3561711
@@ -115,6 +95,7 @@ createApp({
       response: '',
       isResponding: false,
       isServiceWorking: false,
+      engine: null,
       cachingMessage: '',
       message: {
         content: '',
@@ -161,6 +142,13 @@ createApp({
   },
   async mounted() {
     this.initSettings()
+
+    this.engine = new InferenceEngine({
+      serviceUrl: this.settings.serviceUrl.value,
+      apiKey: this.settings.apiKey.value,
+      model: this.settings.model.value,
+      contextLength: this.settings.contextLength.value,
+    })
 
     await this.loadQuestionnaire()
 
@@ -260,36 +248,6 @@ createApp({
       let modelResponse = this.getQuestionnaireResponse(questionText)
       return magistrateResponse.askedAI && modelResponse.answer
     },
-    getArrayFromLLMResponse(response) {
-      return this.getArrayOrObjectFromLLMResponse(response)
-    },
-    getObjectFromLLMResponse(response) {
-      return this.getArrayOrObjectFromLLMResponse(response, true)
-    },
-    getArrayOrObjectFromLLMResponse(response, isObject=false) {
-      let ret = isObject ? {} : []
-      if (response) {
-        let res = response.replace('```json', '').replace('```', '').trim()
-        let bracketPairs = [
-          ['[', ']'],
-          ['{', '}']
-        ]
-        let bracketPair = bracketPairs[isObject ? 1 : 0]
-        let isWellFormed = false
-        if (res.startsWith(bracketPair[0]) && res.endsWith(bracketPair[1])) {
-          try {
-            ret = JSON.parse(res)
-            isWellFormed = true
-          } catch (error) {
-            console.log(error.message)
-          }
-        }
-        if (!isWellFormed) {
-          this.setMessage(`Response from LLM is malformed`, 'danger')
-        }
-      }
-      return ret
-    },
     async loadQuestionnaire() {
       let res = await loadJson('data/app-data.json')
       let responses = await loadJson('data/responses.json')
@@ -321,9 +279,16 @@ createApp({
     },
     async initService() {
       this.setMessage('')
-      let res = await this.fetchModelsList()
-      this.isServiceWorking = (res && res?.length > 0)
-      
+      this.isResponding = true
+      try {
+        await this.engine.fetchModels()
+        this.isServiceWorking = this.engine.isWorking
+        this.modelsList = [...this.engine.models]
+      } catch (error) {
+        this.isServiceWorking = false
+        this.setMessage(error.message, 'danger')
+      }
+      this.isResponding = false
       this.updateModelsListFromCachedResponses()
     },
     updateModelsListFromCachedResponses() {
@@ -359,84 +324,7 @@ createApp({
     },
     getInputHash(questionText, model, promptTemplate=null) {
       let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
-      return generateHash(`${model}-${prompt}`)
-    },
-    async sendToService(path, body) {
-      let ret = {}
-
-      this.isResponding = true
-
-      this.setMessage(`Model server is processing your request (${path})...`)
-
-      let res = {}
-      let headers = {
-        "Content-Type": "application/json",
-      }
-      if (this.settings.apiKey.value) {
-        headers['Authorization'] = `Bearer ${this.settings.apiKey.value}`
-      }
-      let requestInit = {
-        headers: headers,
-      }
-      if (body) {
-        requestInit.body = JSON.stringify(body)
-        requestInit.method = 'POST'
-      }
-      let fullPath = this.settings.serviceUrl.value.replace(/\/+$/, '');
-
-      if (!fullPath.includes('/')) {
-        // dummy path, e.g. 'CACHED'
-        this.setMessage('No model service selected', 'warning')
-      } else {
-        fullPath += '/' + path.replace(/^\/+/, '');
-        try {
-          res = await fetch(fullPath, requestInit);
-        } catch (error) {
-          this.setMessage(`Processing error (${error.message}). Check address or access to model server (${this.settings.serviceUrl.value}).`, 'danger')
-        }
-
-        if (!res.ok && res?.status) {
-          this.setMessage(`Processing error (${res.status}). Check address or access to model server (${this.settings.serviceUrl.value}).`, 'danger')
-        }
-
-        if (res?.status == '401') {
-          this.setMessage(`Can't access the model (401), is your API key valid? (check Settings tab)`, 'danger')
-        }
-
-        if ([200, 404, 400].includes(res?.status)) {
-          try {
-            const data = await res.json();
-
-            if (data?.error?.message) {
-              this.setMessage(`Processing error (${data.error.message}).`, 'danger')
-            } else {
-              if (res?.status == '200') {
-                ret = data
-              } else {
-                if (data.detail) {
-                  this.setMessage(`Processing error (${data.detail}).`, 'danger')
-                } else {
-                  this.setMessage(`Processing error (unknown).`, 'danger')
-                }
-              }
-            }
-          } catch (error) {
-            this.setMessage(`Processing error (${error.message}). Check address or access to model server in the Settings tab.`, 'danger')
-          }
-          // responseElement.textContent = data.response;
-          // console.log(data)
-        }
-      }
-
-      if (this.message.level === 'info') {
-        this.setMessage('')
-      } else {
-        this.response = ''
-      }
-
-      this.isResponding = false
-
-      return ret
+      return InferenceEngine.hash(`${model}-${prompt}`)
     },
     initSettings() {
       const params = new URLSearchParams(window.location.search);
@@ -479,6 +367,10 @@ createApp({
         sessionStorage.setItem(settingKey, setting.value)
       }
 
+      if (['serviceUrl', 'apiKey', 'model', 'contextLength'].includes(settingKey)) {
+        this.engine.updateConfig({ [settingKey]: setting.value })
+      }
+
       if (!dontInitService && settingKey === 'serviceUrl' || settingKey === 'apiKey') {
         await this.initService()
       }
@@ -490,17 +382,6 @@ createApp({
         }
         this.questionnaire.selectedQuestionIndex = null
       }
-    },
-    async fetchModelsList() {
-      let ret = []
-      if (this.settings.serviceUrl.value.includes('/')) {
-        let res = await this.sendToService('models')
-        if (res?.data) {
-          ret = res.data.map(modelInfo => modelInfo.id)
-        }
-      }
-      this.modelsList = ret
-      return ret
     },
     async onHighlightQuestionEnter() {
       this.onChangedSetting('question')
@@ -542,7 +423,7 @@ createApp({
         let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
         let res = await this.sendPrompt(prompt)
 
-        let response = this.getObjectFromLLMResponse(res, true)
+        let response = this.engine.parseObject(res)
 
         if (response?.answer) {
           cachedResponse.answer = response?.answer ?? ''
@@ -556,7 +437,7 @@ createApp({
         this.isResponding = true
         this.setMessage(`Model server is processing your request...`)
         if (!this.isServiceWorking) {
-          await delay(DELAY_IN_SECONDS_FOR_CACHED_RESPONSES)
+          await InferenceEngine.delay(DELAY_IN_SECONDS_FOR_CACHED_RESPONSES)
         }
         this.setMessage('')
         this.isResponding = false
@@ -566,72 +447,22 @@ createApp({
       return cachedResponse
     },
     async sendPrompt(prompt) {
-      let ret = ''
-
       this.isResponding = true
       this.response = ''
-
-      // let generate_url = this.settings.serviceUrl.value
-      let generate_url = ''
-
-      let body = {}
-      if (INFERRENCE_BACKEND == 'ollama') {
-        generate_url = 'generate'
-        body = {
-          model: this.settings.model, // Replace with your downloaded model name
-          prompt: prompt,
-          stream: false, // Set to true for streaming response
-          options: {
-            "num_ctx": CONTEXT_LENGTH,
-            think: false,
-          }             
+      this.setMessage('Model server is processing your request...')
+      try {
+        const ret = await this.engine.sendPrompt(prompt)
+        if (this.message.level === 'info') {
+          this.setMessage('')
         }
+        return ret
+      } catch (error) {
+        this.setMessage(error.message, 'danger')
+        this.response = ''
+        return ''
+      } finally {
+        this.isResponding = false
       }
-      if (INFERRENCE_BACKEND == 'openwebui' || INFERRENCE_BACKEND == 'openai') {
-        generate_url = 'chat/completions'
-        // if (this.apiKey) {
-        //   headers['Authorization'] = `Bearer ${this.apiKey}`
-        // }
-        body = {
-          model: this.settings.model.value, // Replace with your downloaded model name
-          messages: [{
-            role: 'user',
-            content: prompt
-          }],
-          stream: false, // Set to true for streaming response
-          max_tokens: parseInt(this.settings.contextLength.value)
-          // options: {
-          //   "num_ctx": CONTEXT_LENGTH,
-          //   think: false,
-          // }             
-        }
-      }
-
-      const res = await this.sendToService(generate_url, body)
-      console.log(res)
-      // const res = await fetch(generate_url, {
-      //   method: "POST",
-      //   headers: headers,
-      //   body: JSON.stringify(body),
-      // });
-
-
-      // if (INFERRENCE_BACKEND == 'ollama') {
-      //   this.response = data?.response || ''
-      // } else {
-      //   this.response = data?.choices[0]?.message?.content || ''
-      // }
-      
-      if (this.message.level === 'info') {
-        // this.response = res?.choices[0]?.message?.content || ''
-        ret = res?.choices[0]?.message?.content || ''
-      } else {
-        // this.response = ''
-      }
-
-      this.isResponding = false
-
-      return ret
     },
     setMessage(message, level='info') {
       // levels: info|success|warning|danger
