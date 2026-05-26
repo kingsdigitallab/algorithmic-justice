@@ -7,16 +7,11 @@ export default class CachedInferenceEngine extends InferenceEngine {
   }
 
   async loadCache(url) {
-    let ret = {}
-    try {
-      const response = await fetch(url)
-      if (response.ok) {
-        ret = await response.json()
-      }
-    } catch (err) {
-      console.error('Error loading cache:', err)
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
-    this.cache = ret
+    this.cache = await response.json()
   }
 
   async sendPrompt(prompt) {
