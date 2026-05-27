@@ -130,7 +130,7 @@
             <h2 class="title is-3">Magistrate's query</h2>
             <div class="field has-addons">
               <div v-if="isServiceWorking" class="control is-expanded">
-                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onHighlightQuestionEnter()" :disabled="!isReadyForQuestions" autocomplete="off" >
+                <input class="input" type="search" v-model="settings.question.value" @keyup.enter="onHighlighterQuestionEnter()" :disabled="!isReadyForQuestions" autocomplete="off" >
               </div>
               <div v-else class="control">
                 <div class="select">
@@ -140,7 +140,7 @@
                 </div>
               </div>
               <div class="control">
-                <button class="button is-info" @click.stop.prevent="onHighlightQuestionEnter()">
+                <button class="button is-info" @click.stop.prevent="onHighlighterQuestionEnter()">
                   Ask
                 </button>
               </div>

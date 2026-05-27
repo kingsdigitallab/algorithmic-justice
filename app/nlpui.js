@@ -361,11 +361,11 @@ createApp({
         this.questionnaire.selectedQuestionIndex = null
       }
     },
-    async onHighlightQuestionEnter() {
+    async onHighlighterQuestionEnter() {
       this.onChangedSetting('question')
-      await this.sendHighlightPrompt()
+      await this.sendHighlighterPrompt()
     },
-    async sendHighlightPrompt(questionText=null) {
+    async sendHighlighterPrompt(questionText=null) {
       questionText = questionText ?? this.settings.question.value
       this.highlighterResponse = await this.sendPromptOrGetFromCache(questionText, this.settings.templateHighlighter.value)
       nextTick(() => {
@@ -488,7 +488,7 @@ createApp({
         for (let questionText of this.highlighterQuestions) {
           questionIndex += 1
           this.cachingMessage = `(Highlighter - ${caseKey}, questionText ${questionIndex})`
-          await this.sendHighlightPrompt(questionText)
+          await this.sendHighlighterPrompt(questionText)
         }
       }
 
