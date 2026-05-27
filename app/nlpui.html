@@ -71,7 +71,7 @@
             <div class="block">
               <div class="buttons">
                 <a class="button is-warning" @click="resetAllSettings()">Reset all settings</a>
-                <a class="button" @click="copyQuestionnaireToClipboard()">Copy questionnaire to clipboard</a>
+                <a class="button" @click="copyResponsesToClipboard()">Copy responses to clipboard</a>
                 <a class="button" v-if="isServiceWorking" @click="cacheAllResponses()">Cache all responses {{cachingMessage}}</a>
                 <a class="button is-warning" v-if="isServiceWorking" @click="removeCachedResponsesBySelectedModel()">Remove cached responses</a>
               </div>

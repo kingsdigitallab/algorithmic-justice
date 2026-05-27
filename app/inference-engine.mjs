@@ -89,14 +89,18 @@ export default class InferenceEngine {
   }
 
   async sendPromptTemplate(template, variables) {
+    let prompt = this.getPromptFromTemplate(template, variables)
+    return await this.sendPrompt(prompt)
+  }
+
+  getPromptFromTemplate(template, variables) {
     // Replaces placeholders like {KEY} in template with corresponding values from variables
     // then send that as a prompt
-    let prompt = template
+    let ret = template ?? ''
     for (let [k, v] of Object.entries(variables)) {
-      prompt = prompt.replace('{'+k+'}', v)
+      ret = ret.replace('{'+k+'}', v)
     }
-
-    return this.sendPrompt(prompt)
+    return ret
   }
 
   async sendPrompt(prompt) {
@@ -157,16 +161,5 @@ export default class InferenceEngine {
     return ret
   }
 
-  static hash(string) {
-    let hash = 0
-    for (const char of string) {
-      hash = (hash << 5) - hash + char.charCodeAt(0)
-      hash |= 0
-    }
-    return hash
-  }
 
-  static delay(seconds) {
-    return new Promise(resolve => setTimeout(resolve, seconds * 1000))
-  }
 }

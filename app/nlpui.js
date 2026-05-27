@@ -38,7 +38,7 @@ Scoring algorithm?
 . should we show the scores?
 */
 const { createApp, nextTick } = window.Vue;
-import InferenceEngine from './inference-engine.mjs'
+import CachedInferenceEngine from './cached-inference-engine.mjs'
 
 // const INFERRENCE_URL = "http://localhost:11436/api/"
 // const INFERRENCE_BACKEND = 'ollama'
@@ -95,7 +95,7 @@ createApp({
       isResponding: false,
       isServiceWorking: false,
       engine: null,
-      responses: {},
+      // responses: {},
       userResponses: {},
       cachingMessage: '',
       message: {
@@ -131,7 +131,7 @@ createApp({
   async mounted() {
     this.initSettings()
 
-    this.engine = new InferenceEngine({
+    this.engine = new CachedInferenceEngine({
       serviceUrl: this.settings.serviceUrl.value,
       apiKey: this.settings.apiKey.value,
       model: this.settings.model.value,
@@ -238,11 +238,12 @@ createApp({
     },
     async loadQuestionnaire() {
       let res = await loadJson('data/app-data.json')
-      let responses = await loadJson('data/responses.json')
       if (res) {
         this.questionnaire = res
-        this.responses = responses
         this.questionnaire.selectedQuestionIndex = null
+        // let responses = await loadJson('data/responses.json')
+        // this.responses = responses
+        await this.engine.loadCache('data/responses.json')
       }
     },
     getInputClass(settingKey) {
@@ -275,12 +276,7 @@ createApp({
     updateModelsListFromCachedResponses() {
       // even if no model engine is available 
       // we want the user to access the cached responses
-      for (const [inputHash, response] of Object.entries(this.responses)) {
-        if (response.model === 'magistrate') continue;
-        if (!this.modelsList.includes(response.model)) {
-          this.modelsList.push(response.model)
-        }
-      }
+      this.modelsList = [...this.modelsList, ...this.engine?.getCachedModels() ?? []]
     },
     getMagistrateResponse(questionText) {
       if (!(questionText in this.userResponses)) {
@@ -288,22 +284,36 @@ createApp({
       }
       return this.userResponses[questionText]
     },
-    getQuestionnaireResponse(questionText, model=null, promptTemplate=null) {
+    getQuestionnaireResponse(questionText, model=null, promptTemplate=null) {  
       model = model ?? this.selectedModel
-      let hash = this.getInputHash(questionText, model, promptTemplate)
-      let defaultResponse = {
+      let ret = {
         caseKey: this.questionnaire.selectedCaseKey,
         question: questionText,
         model: model,
-        inputHash: hash,
         answer: '',
       }
-      return this.responses[hash] ?? defaultResponse
+      // let hash = this.getInputHash(questionText, model, promptTemplate)
+      // let defaultResponse = {
+      //   caseKey: this.questionnaire.selectedCaseKey,
+      //   question: questionText,
+      //   model: model,
+      //   // inputHash: hash,
+      //   answer: '',
+      // }
+      if (this.engine) {
+        let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
+        let res = this.engine.getCachedResponse(prompt)
+        if (res) {
+          ret = res
+        }
+      }
+      // return this.responses[hash] ?? defaultResponse
+      return ret
     },
-    getInputHash(questionText, model, promptTemplate=null) {
-      let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
-      return InferenceEngine.hash(`${model}-${prompt}`)
-    },
+    // getInputHash(questionText, model, promptTemplate=null) {
+    //   let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
+    //   return InferenceEngine.hash(`${model}-${prompt}`)
+    // },
     initSettings() {
       const params = new URLSearchParams(window.location.search);
       // this.question = params.get('q') ?? DEFAULT_QUESTION;
@@ -378,8 +388,12 @@ createApp({
       if (!ret) {
         ret = this.settings.templateQuestionnaire?.value ?? ''
       }
-      ret = ret.replace('{STATEMENT}', this.selectedQuestionnaireStatement)
-      ret = ret.replace('{QUESTION}', questionText)
+      ret = this.engine.getPromptFromTemplate(ret, {
+        STATEMENT: this.selectedQuestionnaireStatement,
+        QUESTION: questionText
+      })
+      // ret = ret.replace('{STATEMENT}', this.selectedQuestionnaireStatement)
+      // ret = ret.replace('{QUESTION}', questionText)
       return ret
     },
     async sendQuestionnairePrompt(questionIndex) {
@@ -395,6 +409,7 @@ createApp({
       }
     },
     async sendPromptOrGetFromCache(questionText, promptTemplate=null) {
+      // TODO: needs simplifying by relying on the cached inference engine
       let cachedResponse = this.getQuestionnaireResponse(questionText, null, promptTemplate)
 
       if (!cachedResponse?.answer) {
@@ -408,14 +423,12 @@ createApp({
           cachedResponse.highlights = response.highlights
           cachedResponse.reasoning = response?.reasoning ?? ''
           this.responses[cachedResponse.inputHash] = cachedResponse
-        } else {
-          delete this.responses[cachedResponse.inputHash]
         }
       } else {
         this.isResponding = true
         this.setMessage(`Model server is processing your request...`)
         if (!this.isServiceWorking) {
-          await InferenceEngine.delay(DELAY_IN_SECONDS_FOR_CACHED_RESPONSES)
+          await CachedInferenceEngine.delay(DELAY_IN_SECONDS_FOR_CACHED_RESPONSES)
         }
         this.setMessage('')
         this.isResponding = false
@@ -425,20 +438,20 @@ createApp({
       return cachedResponse
     },
     async sendPrompt(prompt) {
+      let ret = null
       this.isResponding = true
       this.setMessage('Model server is processing your request...')
       try {
-        const ret = await this.engine.sendPrompt(prompt)
+        ret = await this.engine.sendPrompt(prompt)
         if (this.message.level === 'info') {
           this.setMessage('')
         }
-        return ret
       } catch (error) {
         this.setMessage(error.message, 'danger')
-        return ''
       } finally {
         this.isResponding = false
       }
+      return ret
     },
     setMessage(message, level='info') {
       // levels: info|success|warning|danger
@@ -453,9 +466,13 @@ createApp({
 
       await this.initService()
     },
-    async copyQuestionnaireToClipboard() {
+    async copyResponsesToClipboard() {
       // this.questionnaire.selectedPart = null
-      await this.copyToClipboard(JSON.stringify(this.questionnaire, null, 2))
+      await this.copyToClipboard(JSON.stringify(
+        this.engine.getCache(),
+        null, 
+        2
+      ))
     },
     async copyToClipboard(content) {
       await navigator.clipboard.writeText(content);
@@ -496,12 +513,7 @@ createApp({
       this.questionnaire.selectedCaseKey = Object.keys(this.questionnaire.cases)[0]
     },
     async removeCachedResponsesBySelectedModel() {
-      let responseKeys = Object.keys(this.responses)
-      for (let rk of responseKeys) {
-        if (this.responses[rk].model === this.selectedModel) {
-          delete this.responses[rk]
-        }
-      }
+      this.engine.removeCachedResponsesByModel(this.selectedModel)
     },
   }
 }).mount('#app')
