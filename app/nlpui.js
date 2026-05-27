@@ -44,7 +44,6 @@ import InferenceEngine from './inference-engine.mjs'
 // const INFERRENCE_BACKEND = 'ollama'
 // const INFERRENCE_URL = "https://ai.create.kcl.ac.uk/api/"
 // const INFERRENCE_BACKEND = 'openwebui'
-const AGENT_MAGISTRATE = 'magistrate'
 // const MODEL = "gemma3:12b" // can't disable thinking, which takes a lot of tokens and time
 // const MODEL = "gemma3:4b"
 
@@ -97,6 +96,7 @@ createApp({
       isServiceWorking: false,
       engine: null,
       responses: {},
+      userResponses: {},
       cachingMessage: '',
       message: {
         content: '',
@@ -242,13 +242,6 @@ createApp({
       if (res) {
         this.questionnaire = res
         this.responses = responses
-        // reset all the magistrate metadata
-        for (const [inputHash, response] of Object.entries(responses)) {
-          if (response.model === AGENT_MAGISTRATE) {
-            response.answer = ""
-            response.askedAI = false
-          }
-        }
         this.questionnaire.selectedQuestionIndex = null
       }
     },
@@ -283,20 +276,17 @@ createApp({
       // even if no model engine is available 
       // we want the user to access the cached responses
       for (const [inputHash, response] of Object.entries(this.responses)) {
-        // let cachedModels = Object.keys(part).filter(p => !(['question', 'magistrate'].includes(p)))
-        if (response.model === AGENT_MAGISTRATE) continue;
+        if (response.model === 'magistrate') continue;
         if (!this.modelsList.includes(response.model)) {
           this.modelsList.push(response.model)
         }
       }
     },
     getMagistrateResponse(questionText) {
-      let ret = this.getQuestionnaireResponse(questionText, AGENT_MAGISTRATE)
-      if (!ret?.askedAI) {
-        ret.askedAI = false
-        this.responses[ret.inputHash] = ret
+      if (!(questionText in this.userResponses)) {
+        this.userResponses[questionText] = { answer: null, askedAI: false }
       }
-      return ret
+      return this.userResponses[questionText]
     },
     getQuestionnaireResponse(questionText, model=null, promptTemplate=null) {
       model = model ?? this.selectedModel
@@ -365,7 +355,7 @@ createApp({
 
       if (settingKey === 'model') {
         // hide the LLM response to all parts of the questionnaire
-        for (let response of Object.values(this.responses)) {
+        for (let response of Object.values(this.userResponses)) {
           response.askedAI = false
         }
         this.questionnaire.selectedQuestionIndex = null
