@@ -96,6 +96,7 @@ createApp({
       isResponding: false,
       isServiceWorking: false,
       engine: null,
+      responses: {},
       cachingMessage: '',
       message: {
         content: '',
@@ -121,19 +122,6 @@ createApp({
         cases: {},
         questions: [
           '',
-        ],
-        responses: [
-          {
-            question: '',
-            answer: '',
-            reason: '',
-            highlights: [
-                {
-                  passage: '',
-                  reason: '',
-                },
-            ],
-          }
         ],
         model: '',
       }
@@ -253,7 +241,7 @@ createApp({
       let responses = await loadJson('data/responses.json')
       if (res) {
         this.questionnaire = res
-        this.questionnaire.responses = responses
+        this.responses = responses
         // reset all the magistrate metadata
         for (const [inputHash, response] of Object.entries(responses)) {
           if (response.model === AGENT_MAGISTRATE) {
@@ -294,7 +282,7 @@ createApp({
     updateModelsListFromCachedResponses() {
       // even if no model engine is available 
       // we want the user to access the cached responses
-      for (const [inputHash, response] of Object.entries(this.questionnaire.responses)) {
+      for (const [inputHash, response] of Object.entries(this.responses)) {
         // let cachedModels = Object.keys(part).filter(p => !(['question', 'magistrate'].includes(p)))
         if (response.model === AGENT_MAGISTRATE) continue;
         if (!this.modelsList.includes(response.model)) {
@@ -306,7 +294,7 @@ createApp({
       let ret = this.getQuestionnaireResponse(questionText, AGENT_MAGISTRATE)
       if (!ret?.askedAI) {
         ret.askedAI = false
-        this.questionnaire.responses[ret.inputHash] = ret
+        this.responses[ret.inputHash] = ret
       }
       return ret
     },
@@ -320,7 +308,7 @@ createApp({
         inputHash: hash,
         answer: '',
       }
-      return this.questionnaire.responses[hash] ?? defaultResponse
+      return this.responses[hash] ?? defaultResponse
     },
     getInputHash(questionText, model, promptTemplate=null) {
       let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
@@ -377,7 +365,7 @@ createApp({
 
       if (settingKey === 'model') {
         // hide the LLM response to all parts of the questionnaire
-        for (let response of Object.values(this.questionnaire.responses)) {
+        for (let response of Object.values(this.responses)) {
           response.askedAI = false
         }
         this.questionnaire.selectedQuestionIndex = null
@@ -429,9 +417,9 @@ createApp({
           cachedResponse.answer = response?.answer ?? ''
           cachedResponse.highlights = response.highlights
           cachedResponse.reasoning = response?.reasoning ?? ''
-          this.questionnaire.responses[cachedResponse.inputHash] = cachedResponse
+          this.responses[cachedResponse.inputHash] = cachedResponse
         } else {
-          delete this.questionnaire.responses[cachedResponse.inputHash]
+          delete this.responses[cachedResponse.inputHash]
         }
       } else {
         this.isResponding = true
@@ -520,10 +508,10 @@ createApp({
       this.questionnaire.selectedCaseKey = Object.keys(this.questionnaire.cases)[0]
     },
     async removeCachedResponsesBySelectedModel() {
-      let responseKeys = Object.keys(this.questionnaire.responses)
+      let responseKeys = Object.keys(this.responses)
       for (let rk of responseKeys) {
-        if (this.questionnaire.responses[rk].model === this.selectedModel) {
-          delete this.questionnaire.responses[rk]
+        if (this.responses[rk].model === this.selectedModel) {
+          delete this.responses[rk]
         }
       }
     },
