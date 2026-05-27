@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="theme-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NLP Prototype - Algorithmic Justice</title>
+    <link rel="icon" href="data:," >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <style>
+      .longtext {
+        height: 70vh;
+      }
+      .is-responding .highlighted-text {
+        opacity: 0.5;
+      }
+      .passage {
+        background-color: orange;
+        color: black;
+        padding: 0.2em;
+      }
+      .invisible {
+        visibility: hidden;
+      }
+      .move-right {
+        margin-left: auto;
+      }
+      .highlights-indicator {
+        background-color: #FFD580;
+        color: black;
+      }
+      select.case-selector {
+        height: 6em;
+      }
+      .full-width {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section" id="app">
+      <div class="container is-fluid" :class="{'container': true, 'is-fluid': true, 'is-responding': isResponding}">
+        <p :class="['notification', 'is-light', `is-${message.level}`, `${message.content ? '' : 'in'}visible`]">{{ message.content }}</p>
+        <div id="tab-poc3">
+          <div class="block">
+            <div class="select is-multiple full-width">
+              <h3 class="title is-4">Select a case to review:</h3>
+              <select size="3" class="case-selector full-width" v-model="questionnaire.selectedCaseKey">
+                <option v-for="(acase, k) in questionnaire.cases" :value="k">{{ getTitleFromCase(acase) }}</option>
+              </select>
+            </div>
+          </div>
+          <div v-if="selectedCase" class="columns is-desktop">
+            <div class="column block">
+              <h2 class="title is-3">Automated review ✨</h2>
+              <a v-if="!areDetailsShown" class="button is-primary" @click.prevent="onClickShowDetails()">Show details</a>
+              <template v-else>
+                <p class="box title is-4">Suggested penalty: £{{penalty}}</p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <td>Question</td>
+                      <td>Answer</td>
+                      <td>Effect</td>
+                    </tr>
+                  </thead>
+                  <tr v-for="(question, idx) in reportRows">
+                    <td>{{idx+1}}. {{question.text}}</td>
+                    <td>{{question.answer}}</td>
+                    <td>{{question.score}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>Total:</td>
+                    <td>{{totalScore}}</td>
+                  </tr>
+                </table>
+              </template>
+            </div>
+            <div class="column block">
+              <h2 class="title is-3">Case</h2>
+              <div class="block">
+                <p>Name: {{selectedCase.name}}</p>
+                <p>Incident date: {{selectedCase.incidentDate}}</p>
+                <p>Weekly wage: £{{selectedCase.weeklyWage}}</p>
+              </div>
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title title is-4">Driver's statement</p>
+                </header>
+                <div class="card-content">
+                  <div class="highlighted-text" v-html="highlightedQuestionnaireStatement">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="settings.js"></script>
+    <script type="module" src="poc3.js"></script>
+  </body>
+</html>

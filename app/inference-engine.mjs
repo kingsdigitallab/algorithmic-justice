@@ -127,7 +127,7 @@ export default class InferenceEngine {
           content: prompt
         }],
         stream: false,
-        max_tokens: parseInt(this.contextLength)
+        max_tokens: parseInt(this.contextLength)        
       }
     }
 

@@ -1,1211 +1,342 @@
 {
-  "41075293": {
-    "question": "Is there a reason why the defendant might not be guilty?",
-    "model": "qwen3:30b",
-    "inputHash": 41075293,
-    "answer": "no",
-    "highlights": [],
-    "reasoning": "All cited factors (wet road, poor visibility) are mitigating circumstances for the error, not evidence negating guilt.",
-    "caseKey": "case 3"
+  "156349856": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"Demonstrates that the driver's movement was a deliberate traffic maneuver to yield, directly contradicting the premise of an involuntary slide.\"\n    }\n  ],\n  \"reasoning\": \"The statement attributes the driver's actions to yielding to emergency vehicles at a junction and contains no information about adverse weather or vehicle sliding, so the claim is false.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "qwen3.6:27b",
+    "hash": 156349856
   },
-  "85238510": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "qwen3:30b",
-    "inputHash": 85238510,
+  "248772275": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"The weather that evening was particularly grim.\",\n      \"reason\": \"Confirms that adverse weather conditions were present during the incident.\"\n    },\n    {\n      \"passage\": \"I'd slowed down to about 25mph\",\n      \"reason\": \"Shows the vehicle was being driven at a low speed.\"\n    },\n    {\n      \"passage\": \"my attention was split for what couldn't have been more than two or three seconds, but it was enough.\",\n      \"reason\": \"Indicates the crossing was due to momentary distraction rather than a mechanical or traction-related event.\"\n    },\n    {\n      \"passage\": \"I slammed the brakes much harder at that point, really quite violently, and the car lurched forward.\",\n      \"reason\": \"Describes heavy braking with forward momentum, containing no mention of skidding, sliding, or loss of tyre grip.\"\n    }\n  ],\n  \"reasoning\": \"Although the statement confirms poor weather and a low speed, it explicitly attributes crossing the stop line to split attention and delayed perception of the traffic light, with no indication that the vehicle slid or lost traction.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 248772275
+  },
+  "325929478": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"The defendant explicitly acknowledges their own decision to cross the line rather than attributing fault for the violation to other drivers or authorities.\"\n    }\n  ],\n  \"reasoning\": \"Based on the highlight showing the defendant's clear acknowledgment of their own maneuver, the statement contains no instances of shifting responsibility for the offence onto other parties.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 325929478
+  },
+  "366848175": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\",\n      \"reason\": \"Demonstrates adjusted speed for hazardous weather conditions, indicating caution rather than reckless disregard.\"\n    },\n    {\n      \"passage\": \"My immediate reaction was to brake and swerve slightly right to avoid it\",\n      \"reason\": \"Shows defensive maneuvering to prevent an accident with an animal, supporting a claim of emergency response rather than recklessness.\"\n    },\n    {\n      \"passage\": \"difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard\",\n      \"reason\": \"Explicitly frames the defendant's actions as a reactive measure to a hazard rather than a reckless or careless violation.\"\n    }\n  ],\n  \"reasoning\": \"The defendant's account details proactive speed reduction for poor visibility, defensive braking to avoid a hazard, and explicitly distinguishes their conduct from careless driving, providing no textual evidence of reckless behavior.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 366848175
+  },
+  "387748993": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I've been driving for seventeen years without any points on my license\",\n      \"reason\": \"The defendant explicitly states they have a clean driving record with no penalty points, indicating no history of traffic violations.\"\n    }\n  ],\n  \"reasoning\": \"The defendant confirms they have driven for seventeen years without accumulating any penalty points, which definitively rules out any prior traffic offences such as running red lights.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 387748993
+  },
+  "544120188": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I am sorry for crossing the red light and I accept this was my mistake.\",\n      \"reason\": \"Demonstrates a straightforward guilty plea with no contested facts that would require oral examination.\"\n    },\n    {\n      \"passage\": \"I normally drive careful and I do not take risks, and this situation is not how I usually drive. I need my licence for my daily life and I am very sorry for this error.\",\n      \"reason\": \"Contains routine mitigation and character assurances that do not show legal complexity or a necessity for in-person assessment.\"\n    }\n  ],\n  \"reasoning\": \"The statement is a simple admission of guilt with standard contextual mitigation and contains no factual disputes, procedural requests, or complexities that would justify an open court hearing.\",\n  \"answer\": \"No\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 544120188
+  },
+  "563619886": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.\",\n      \"reason\": \"Indicates significant financial hardship and potential loss of essential transport, which is a recognized ground for requesting an open court hearing to present full mitigation.\"\n    }\n  ],\n  \"reasoning\": \"The highlighted passage reveals substantial financial hardship and potential loss of transport due to the penalty, providing a valid basis for an open court hearing to allow for full oral mitigation and judicial discretion.\",\n  \"answer\": \"yes\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 563619886
+  },
+  "601089576": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"they seemed to be motioning for me to clear the way immediately, waving their hand emphatically\",\n      \"reason\": \"Direct statement of the police driver's action\"\n    },\n    {\n      \"passage\": \"I could see the police car driver in my mirror\",\n      \"reason\": \"Contextualizes the previous action\"\n    }\n  ],\n  \"reasoning\": \"The statement clearly describes the police officer waving their hand and indicating for the defendant to move aside, suggesting a desire for passage.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 601089576,
     "answer": "yes",
     "highlights": [
       {
-        "passage": "brake and swerve slightly right to avoid it",
-        "reason": "Explicitly states the driver took action (braking and swerving) to avoid the fox, directly addressing collision avoidance."
-      }
-    ],
-    "reasoning": "The driver directly describes braking and swerving to avoid the fox, confirming they took action to prevent collision.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "159604672": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "qwen3:30b",
-    "inputHash": 159604672,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement contains no references to weather conditions, technical issues, or vehicle slides, making it impossible to determine based on the provided text.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "229269780": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "gemma3:27b",
-    "inputHash": 229269780,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "I am sorry for crossing the red light and I accept this was my mistake.",
-        "reason": "This statement explicitly acknowledges responsibility for the offense."
+        "passage": "they seemed to be motioning for me to clear the way immediately, waving their hand emphatically",
+        "reason": "Direct statement of the police driver's action"
       },
       {
-        "passage": "I thought I saw them in time, but I judged it wrong and went through.",
-        "reason": "This admits a misjudgment on the driver's part, not blaming external factors for the error."
-      },
-      {
-        "passage": "I normally drive careful and I do not take risks, and this situation is not how I usually drive.",
-        "reason": "This indicates an unusual circumstance, but still attributes the error to a personal lapse in judgment rather than external blame."
+        "passage": "I could see the police car driver in my mirror",
+        "reason": "Contextualizes the previous action"
       }
     ],
-    "reasoning": "The driver repeatedly admits fault and acknowledges misjudging the situation, despite describing difficult conditions, indicating they do not shift blame to others.",
-    "askedAI": false,
-    "caseKey": "case 3"
+    "reasoning": "The statement clearly describes the police officer waving their hand and indicating for the defendant to move aside, suggesting a desire for passage."
   },
-  "308984205": {
-    "question": "Was there a long red light?",
-    "model": "qwen3:30b",
-    "inputHash": 308984205,
-    "answer": "undetermined",
-    "highlights": [
-      {
-        "passage": "The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction",
-        "reason": "Mentions the light's appearance, which the speaker attributes to weather or signal issues, but does not reference its duration."
-      },
-      {
-        "passage": "the light cycled through while I tried to gather myself",
-        "reason": "Indicates the light changed (cycled), suggesting normal operation rather than an extended red phase."
-      }
-    ],
-    "reasoning": "The statement describes the light appearing dim and cycling normally, but contains no mention of the duration of the red phase, making it impossible to confirm if it was 'long'.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "323248008": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "magistrate",
-    "inputHash": 323248008,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 1"
-  },
-  "325895594": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "gemma3:27b",
-    "inputHash": 325895594,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "I was in the left lane with just a couple of cars ahead and one or two behind.",
-        "reason": "Establishes the driver's position on the road, setting the stage for evasive action."
-      },
-      {
-        "passage": "Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.",
-        "reason": "Introduces the hazard the driver needed to react to."
-      },
-      {
-        "passage": "My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space.",
-        "reason": "Directly states the driver's actions to avoid the fox."
-      },
-      {
-        "passage": "The fox seemed confused, actually stopped halfway across, and I remember thinking 'please don't change direction now' because if it had darted back I'd have been in a worse position.",
-        "reason": "Details the driver's continued awareness of the hazard and anticipation of its movement."
-      }
-    ],
-    "reasoning": "The highlights clearly demonstrate the driver braked and swerved to avoid the fox, indicating they took action to prevent a collision.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "332444098": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "gemma3:27b",
-    "inputHash": 332444098,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement focuses solely on the current incident and offers no information regarding any prior traffic offences. Therefore, it is impossible to determine if the offender has previously run red lights based on the provided text.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "348294899": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "qwen3:30b",
-    "inputHash": 348294899,
-    "answer": "no",
-    "highlights": [],
-    "reasoning": "The offender takes full responsibility without assigning blame to any other party or entity.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "415742049": {
-    "question": "Is there a reason this case should be heard in open court?",
-    "model": "qwen3:30b",
-    "inputHash": 415742049,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement details the incident circumstances but contains no mention of court hearing procedures, public interest, or any request for an open hearing, making it impossible to determine if there's a reason for open court.",
-    "caseKey": "case 2"
-  },
-  "446252800": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "gemma3:27b",
-    "inputHash": 446252800,
-    "answer": "no",
-    "highlights": [],
-    "reasoning": "The statement does not contain any information about the weather conditions or if the defendant was driving recklessly. It focuses on a situation involving emergency vehicles and a traffic junction.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "532042649": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "magistrate",
-    "inputHash": 532042649,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 2"
-  },
-  "535158981": {
-    "question": "Was there a long red light?",
-    "model": "magistrate",
-    "inputHash": 535158981,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 2"
-  },
-  "703129043": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "qwen3:30b",
-    "inputHash": 703129043,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "judged it wrong and went through",
-        "reason": "indicates driver proceeded through red light without stopping, showing no action taken to avoid collision"
-      }
-    ],
-    "reasoning": "The statement explicitly states the driver went through the red light after misjudging the light, with no mention of braking or evasive maneuvers to prevent a collision.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "730880572": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "qwen3:30b",
-    "inputHash": 730880572,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement does not mention weather conditions or reckless driving, making it impossible to determine if the defendant was driving recklessly in bad weather.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "806021111": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "gemma3:27b",
-    "inputHash": 806021111,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement does not contain any information about the defendant's driving record prior to the incident. It only discusses the current situation and the consequences of the recent offense.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "840765001": {
-    "question": "Was there a long red light?",
-    "model": "gemma3:27b",
-    "inputHash": 840765001,
-    "answer": "undetermined",
-    "highlights": [
-      {
-        "passage": "I accept that I crossed the red light",
-        "reason": "Confirmation that the driver admits to crossing a red light."
-      },
-      {
-        "passage": "or perhaps had been red all along and I'd simply not registered it properly while dealing with the animal.",
-        "reason": "Driver states a possibility that the light was red the entire time but they didn't notice."
-      },
-      {
-        "passage": "The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction",
-        "reason": "Driver mentions that the light appeared dimmer than usual, potentially contributing to not noticing the red light"
-      }
-    ],
-    "reasoning": "The driver admits crossing the red light but suggests they may not have registered it due to the distracting conditions (hail, fox) and that the light itself appeared dim, so it is undetermined whether the light had been red for a long time.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "915981229": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "qwen3:30b",
-    "inputHash": 915981229,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement contains no mention of an emergency vehicle or any indication that one attempted to pass.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "940608685": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "qwen3:30b",
-    "inputHash": 940608685,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement describes the defendant's current behavior and driving conditions but contains no mention of prior driving violations or record.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "1035433560": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "qwen3:30b",
-    "inputHash": 1035433560,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "I am sorry for crossing the red light and I accept this was my mistake.",
-        "reason": "Admits personal fault without blaming others."
-      },
-      {
-        "passage": "I judged it wrong and went through.",
-        "reason": "Takes direct responsibility for the error."
-      }
-    ],
-    "reasoning": "The offender explicitly accepts personal blame for the mistake without attributing fault to others or external factors.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "1050758118": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "qwen3:30b",
-    "inputHash": 1050758118,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement contains no references to blame being placed on other people; it focuses solely on the speaker's own perceived offense and insurance concerns.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "1089291730": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "magistrate",
-    "inputHash": 1089291730,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 3"
-  },
-  "1116418875": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "qwen3:30b",
-    "inputHash": 1116418875,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement contains no information about the defendant's prior driving record, only discussing the current incident and future consequences.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "1208792008": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "qwen3:30b",
-    "inputHash": 1208792008,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "I've been driving for seventeen years without any points on my license",
-        "reason": "This directly confirms the defendant's claim of 17 years without any traffic violations (points), indicating a perfect driving record prior to the incident."
-      }
-    ],
-    "reasoning": "The defendant explicitly states a 17-year point-free driving record, which constitutes proof of a perfect prior driving record.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "1259341986": {
-    "question": "Is there a reason why the defendant might not be guilty?",
-    "model": "qwen3:30b",
-    "inputHash": 1259341986,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "responding to an unexpected hazard in difficult conditions",
-        "reason": "directly states the defendant's claim that their action was due to an unavoidable emergency (animal crossing), not deliberate negligence"
-      }
-    ],
-    "reasoning": "The statement explicitly argues the violation resulted from reacting to an unexpected hazard (fox) under extreme weather, which may negate the negligence required for guilt.",
-    "caseKey": "case 2"
-  },
-  "1301662057": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "gemma3:27b",
-    "inputHash": 1301662057,
-    "answer": "undetermined",
-    "highlights": [
-      {
-        "passage": "I normally drive careful and I do not take risks",
-        "reason": "This suggests a history of careful driving."
-      },
-      {
-        "passage": "this situation is not how I usually drive",
-        "reason": "Implies the current event is an anomaly, further hinting at a good driving history."
-      }
-    ],
-    "reasoning": "The defendant states they 'normally drive careful' and that the incident is unusual for them, suggesting a previously good driving record, although not explicitly stated as *perfect*.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "1325192099": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "gemma3:27b",
-    "inputHash": 1325192099,
+  "667871229": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me.\",\n      \"reason\": \"Highlights the actions of other drivers influenced by the emergency vehicles.\"\n    },\n    {\n      \"passage\": \"they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.\",\n      \"reason\": \"Highlights the police officer's actions which suggests an expectation of cooperation.\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"Highlights the defendant's action to facilitate the emergency vehicles.\"\n    },\n     {\n      \"passage\": \"These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.\",\n      \"reason\": \"Highlights the negative consequences the defendant is facing, suggesting unfair treatment.\"\n    }\n  ],\n  \"reasoning\": \"The statement indicates the defendant was attempting to help emergency vehicles and the police officer was directing them to do so, suggesting a situation where blame might be unfairly placed on the defendant.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 667871229,
     "answer": "yes",
     "highlights": [
       {
         "passage": "I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me.",
-        "reason": "This clearly states the presence of an ambulance and police car with sirens, indicating an emergency situation."
+        "reason": "Highlights the actions of other drivers influenced by the emergency vehicles."
       },
       {
-        "passage": "As the two emergency vehicles approached, with cars moving to the left and right, I was hoping for the traffic on the other side to clear so that I could move on and clear the junction.",
-        "reason": "This confirms the driver's awareness of the approaching emergency vehicles and their intention to facilitate their passage."
-      },
-      {
-        "passage": "I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.",
-        "reason": "Directly indicates a request from the emergency services for the driver to move."
-      }
-    ],
-    "reasoning": "The statement explicitly mentions the presence of an ambulance and police car with sirens, other cars moving for them, and a police officer motioning for the driver to clear the way, all strongly implying the emergency vehicles wanted to pass.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "1378032000": {
-    "question": "Was there a long red light?",
-    "model": "qwen3:30b",
-    "inputHash": 1378032000,
-    "answer": "undetermined",
-    "highlights": [
-      {
-        "passage": "the lights cycled to red",
-        "reason": "mentions the red light phase during the incident"
-      },
-      {
-        "passage": "when the lights changed to green again",
-        "reason": "indicates the light returned to green shortly after red phase"
-      }
-    ],
-    "reasoning": "The statement mentions the lights cycled to red and then changed to green again, but provides no details about the duration of the red phase.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "1394540075": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "magistrate",
-    "inputHash": 1394540075,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 2"
-  },
-  "1457300062": {
-    "question": "Is there a reason why the defendant might not be guilty?",
-    "model": "gemma3:27b",
-    "inputHash": 1457300062,
-    "answer": "possibly",
-    "highlights": [
-      {
-        "passage": "I accept that I crossed the red light, I want to explain why it happened the way it did.",
-        "reason": "Establishes the defendant admits crossing the red light but offers an explanation which might lead to a not guilty verdict or mitigation."
-      },
-      {
-        "passage": "The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.",
-        "reason": "Highlights a severe weather condition impacting visibility."
-      },
-      {
-        "passage": "It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications.",
-        "reason": "Further details the difficult visibility conditions."
-      },
-      {
-        "passage": "I saw movement to my left... It was a fox, quite a large one actually, and it had started to cross from the pavement.",
-        "reason": "Introduces an unexpected hazard (the fox) that required immediate reaction."
-      },
-      {
-        "passage": "My immediate reaction was to brake and swerve slightly right to avoid it",
-        "reason": "Describes the defendant's reaction to the hazard, potentially explaining why attention was diverted from the traffic signal."
-      },
-      {
-        "passage": "When I looked back at the road ahead, I realised the light had changed - or perhaps had been red all along and I'd simply not registered it properly while dealing with the animal.",
-        "reason": "Crucially, the defendant suggests they may not have consciously seen the red light due to focusing on the fox and poor conditions."
-      }
-    ],
-    "reasoning": "The statement details challenging conditions and an unexpected hazard which led the defendant to focus on avoiding the animal, leading them to potentially not see the red light. While they admit to crossing the line, this sequence of events creates reasonable doubt as to their intent to ignore the traffic signal.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "1607176018": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "gemma3:27b",
-    "inputHash": 1607176018,
-    "answer": "undetermined",
-    "highlights": [
-      {
-        "passage": "the road was very wet",
-        "reason": "Highlights the wet road condition which is a key element of the question about weather and potential sliding."
-      },
-      {
-        "passage": "wipers going strong just to keep the screen clear",
-        "reason": "Supports the claim of wet conditions and implies reduced visibility, potentially contributing to a slide."
-      }
-    ],
-    "reasoning": "The statement mentions wet road conditions and the use of wipers, which suggests challenging visibility, but does not explicitly mention a 'technical slide' or low speed incident. Therefore, it is undetermined if the weather led to a slide.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "1615594469": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "magistrate",
-    "inputHash": 1615594469,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 3"
-  },
-  "1674892061": {
-    "question": "Is there a reason this case should be heard in open court?",
-    "model": "gemma3:27b",
-    "inputHash": 1674892061,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "Whether any of this constitutes mitigation in the eyes of the court, I genuinely don't know.",
-        "reason": "This sentence directly addresses whether the circumstances merit special consideration, suggesting a need for a detailed hearing."
-      },
-      {
-        "passage": "But I wanted you to understand what actually happened that evening - the weather, the animal, the visibility, all of it - rather than simply seeing the camera image and drawing conclusions.",
-        "reason": "The driver emphasizes a complex set of circumstances that a simple review of evidence might miss, supporting the argument for a hearing where details can be fully presented."
-      },
-      {
-        "passage": "I'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation. But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions.",
-        "reason": "Highlights the driver’s attempt to explain the difference between careless and reactive behavior which may be best heard in open court."
-      }
-    ],
-    "reasoning": "The driver explicitly requests the magistrate to consider the full context of the incident, including adverse weather conditions and an animal in the road, as opposed to simply relying on camera footage, indicating the need for a more detailed examination in open court to establish mitigation.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "1696985807": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "qwen3:30b",
-    "inputHash": 1696985807,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you",
-        "reason": "Demonstrates cautious speed adjustment for hazardous weather conditions, countering reckless driving claims"
-      },
-      {
-        "passage": "immediate reaction was to brake and swerve slightly right to avoid it",
-        "reason": "Shows defensive action to prevent animal collision, not reckless operation"
-      }
-    ],
-    "reasoning": "The highlights show the defendant deliberately slowed speed and defensively maneuvered to avoid a hazard, contradicting recklessness in bad weather.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "1767516560": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "magistrate",
-    "inputHash": 1767516560,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 3"
-  },
-  "1793589789": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "gemma3:27b",
-    "inputHash": 1793589789,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "I've been driving for seventeen years without any points on my license",
-        "reason": "This statement directly addresses the driver's history of traffic offences."
-      }
-    ],
-    "reasoning": "The statement explicitly states the driver has been driving for seventeen years without receiving any points on their license, implying no prior traffic offenses. Although it doesn't specifically exclude the possibility of red light offenses, it strongly suggests a clean driving record.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "1799281303": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "magistrate",
-    "inputHash": 1799281303,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 2"
-  },
-  "1923079812": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "gemma3:27b",
-    "inputHash": 1923079812,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "I've been driving for seventeen years without any points on my license",
-        "reason": "This statement directly addresses the defendant's prior driving record."
-      }
-    ],
-    "reasoning": "The statement explicitly states the defendant had been driving for seventeen years without any points on their license, indicating a perfect record prior to the incident.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "2037024462": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "gemma3:27b",
-    "inputHash": 2037024462,
-    "answer": "undetermined",
-    "highlights": [
-      {
-        "passage": "the road was very wet and noisy from the water",
-        "reason": "Establishes the presence of bad weather conditions."
-      },
-      {
-        "passage": "I was trying hard to keep my eyes on the road and the cars around me.",
-        "reason": "Suggests the driver was attempting to navigate difficult conditions, but doesn't inherently denote recklessness."
-      },
-      {
-        "passage": "I thought I saw them in time, but I judged it wrong and went through.",
-        "reason": "Indicates an error in judgement, but doesn't confirm reckless behaviour."
-      },
-      {
-        "passage": "I normally drive careful and I do not take risks",
-        "reason": "Statements indicating the defendant is normally a careful driver."
-      }
-    ],
-    "reasoning": "The statement details poor weather conditions and the driver's attempt to assess the situation, alongside a claim of careful driving, but the error in judgment alone isn't sufficient evidence to conclude recklessness; it could simply be a mistake.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "2142358202": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "magistrate",
-    "inputHash": 2142358202,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 2"
-  },
-  "-441856757": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "magistrate",
-    "inputHash": -441856757,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 3"
-  },
-  "-21689483": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "magistrate",
-    "inputHash": -21689483,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 3"
-  },
-  "-1577011906": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "magistrate",
-    "inputHash": -1577011906,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 3"
-  },
-  "-1545821098": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "magistrate",
-    "inputHash": -1545821098,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 3"
-  },
-  "-662617814": {
-    "question": "Was there a long red light?",
-    "model": "magistrate",
-    "inputHash": -662617814,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 3"
-  },
-  "-1919959143": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "magistrate",
-    "inputHash": -1919959143,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 1"
-  },
-  "-126829401": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "magistrate",
-    "inputHash": -126829401,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 1"
-  },
-  "-1507258876": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "magistrate",
-    "inputHash": -1507258876,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 1"
-  },
-  "-399229876": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "magistrate",
-    "inputHash": -399229876,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 1"
-  },
-  "-1244597064": {
-    "question": "Was there a long red light?",
-    "model": "magistrate",
-    "inputHash": -1244597064,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 1"
-  },
-  "-1623429346": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "magistrate",
-    "inputHash": -1623429346,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 1"
-  },
-  "-263775629": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "magistrate",
-    "inputHash": -263775629,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 1"
-  },
-  "-579966879": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "qwen3:30b",
-    "inputHash": -579966879,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement describes the driver moving to allow emergency vehicles to pass but explicitly states the purpose was to facilitate the vehicles' passage, not to avoid a collision; no mention of collision risk or avoidance is present.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-1978211105": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "qwen3:30b",
-    "inputHash": -1978211105,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "waving their hand emphatically",
-        "reason": "The emergency vehicle driver's emphatic hand motion directly indicates a wish to pass through the junction."
-      }
-    ],
-    "reasoning": "The police car driver's emphatic hand wave to clear the way demonstrates the emergency vehicle's intent to pass.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-1156852972": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "qwen3:30b",
-    "inputHash": -1156852972,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement contains no mention of previous traffic offences, only the current incident involving emergency vehicles and traffic lights.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-1856420314": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "magistrate",
-    "inputHash": -1856420314,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 2"
-  },
-  "-1689181029": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "magistrate",
-    "inputHash": -1689181029,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 2"
-  },
-  "-1714166016": {
-    "question": "Prior to this incident did the defendant have a perfect driving record?",
-    "model": "magistrate",
-    "inputHash": -1714166016,
-    "answer": "",
-    "askedAI": true,
-    "caseKey": "case 2"
-  },
-  "-174211342": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "qwen3:30b",
-    "inputHash": -174211342,
-    "answer": "no",
-    "highlights": [],
-    "reasoning": "The statement contains no mention of an emergency vehicle, other vehicles, or any context suggesting an emergency vehicle was present or attempting to pass.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "-1844601247": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "qwen3:30b",
-    "inputHash": -1844601247,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "I've been driving for seventeen years without any points on my license",
-        "reason": "Directly indicates no prior traffic offenses, as points would be recorded for violations like running red lights."
-      }
-    ],
-    "reasoning": "The statement explicitly states no prior points on license, confirming no previous traffic offences including running red lights.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "-213245430": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "qwen3:30b",
-    "inputHash": -213245430,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "do not take risks",
-        "reason": "directly contradicts reckless driving by stating defendant's usual cautious behavior"
-      },
-      {
-        "passage": "trying hard to keep my eyes on the road",
-        "reason": "demonstrates active effort to drive safely in adverse conditions"
-      }
-    ],
-    "reasoning": "Defendant explicitly states they do not take risks and were actively attempting to drive carefully despite weather, negating recklessness.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "-757285882": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "qwen3:30b",
-    "inputHash": -757285882,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement contains no mention of previous traffic offenses, including running red lights, making it impossible to confirm or deny.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "-995543922": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "qwen3:30b",
-    "inputHash": -995543922,
-    "answer": "undetermined",
-    "highlights": [
-      {
-        "passage": "road was very wet and noisy from the water",
-        "reason": "describes explicit bad weather condition (wet road)"
-      },
-      {
-        "passage": "sky was already going dark and everything around the junction looked more dull than usual",
-        "reason": "describes poor visibility due to weather, a contributing factor"
-      }
-    ],
-    "reasoning": "Statement mentions weather conditions but does not reference any 'technical slide' or loss of vehicle control, so causality cannot be established.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "-1589914126": {
-    "question": "Was there a long red light?",
-    "model": "qwen3:30b",
-    "inputHash": -1589914126,
-    "answer": "undetermined",
-    "highlights": [],
-    "reasoning": "The statement describes the offender's perception of the traffic lights but contains no mention of the red light's duration being long, short, or otherwise.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "-1660480227": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "gemma3:27b",
-    "inputHash": -1660480227,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "many cars started moving out of the way of an ambulance and police car",
-        "reason": "Indicates an attempt to avoid obstructing emergency vehicles."
-      },
-      {
-        "passage": "I was hoping for the traffic on the other side to clear so that I could move on and clear the junction.",
-        "reason": "Shows the driver's intention to facilitate passage for emergency vehicles."
+        "passage": "they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.",
+        "reason": "Highlights the police officer's actions which suggests an expectation of cooperation."
       },
       {
         "passage": "I moved just past the white line to allow both emergency vehicles to pass",
-        "reason": "Explicitly states the driver took action to allow passage."
-      }
-    ],
-    "reasoning": "The driver's actions include attempting to create space for emergency vehicles and physically moving to allow them to pass, suggesting an effort to avoid obstruction and potential collision.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-148094768": {
-    "question": "Did previous traffic offences include running red lights?",
-    "model": "gemma3:27b",
-    "inputHash": -148094768,
-    "answer": "undetermined",
-    "highlights": [
-      {
-        "passage": "I was positioned just before the junction at a green light, but unable to enter the junction",
-        "reason": "Establishes the driver was approaching a junction on a green light."
-      },
-      {
-        "passage": "As they came behind me, the lights cycled to red.",
-        "reason": "States the traffic lights changed to red while emergency vehicles were approaching."
-      },
-      {
-        "passage": "I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again",
-        "reason": "Indicates the driver moved after the light turned green."
-      }
-    ],
-    "reasoning": "The statement describes a situation where the driver was at a green light that turned red and then moved forward when it turned green again, but does not explicitly state they ran a red light prior to this incident nor does it mention prior offences.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-872791420": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "gemma3:27b",
-    "inputHash": -872791420,
-    "answer": "no",
-    "highlights": [],
-    "reasoning": "The statement focuses on the driver's actions to facilitate the passage of emergency vehicles and the subsequent penalty. It contains no mention of weather conditions or a technical slide.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-597100484": {
-    "question": "Was there a long red light?",
-    "model": "gemma3:27b",
-    "inputHash": -597100484,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "but unable to enter the junction as there was traffic on the other side",
-        "reason": "This indicates the initial blockage preventing movement through the junction."
-      },
-      {
-        "passage": "As they came behind me, the lights cycled to red.",
-        "reason": "This is the direct mention of the light changing to red while the defendant was waiting."
-      },
-      {
-        "passage": "when the lights changed to green again, so I moved forward",
-        "reason": "Clarifies that the light *did* eventually change back to green after being red."
-      }
-    ],
-    "reasoning": "The statement details the lights being green initially, then cycling to red while the defendant waited, and subsequently changing back to green, indicating the red light was not continuously long.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-294998366": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "gemma3:27b",
-    "inputHash": -294998366,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "I heard a siren and many cars started moving out of the way of an ambulance and police car",
-        "reason": "Indicates other drivers were also responding to the emergency vehicles."
-      },
-      {
-        "passage": "I was hoping for the traffic on the other side to clear so that I could move on and clear the junction.",
-        "reason": "Shows the driver was waiting for other traffic to move, suggesting they weren't solely responsible for the blockage."
-      },
-      {
-        "passage": "they tell me that it's an offence even if I moved to let the ambulance through.",
-        "reason": "This highlights that the driver believes they acted reasonably to facilitate the emergency vehicles and is questioning the penalty."
-      }
-    ],
-    "reasoning": "The statement indicates the driver was attempting to facilitate the passage of emergency vehicles, and that other drivers were also moving. The driver was fined despite this, leading them to believe blame was wrongly placed.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-1533216842": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "gemma3:27b",
-    "inputHash": -1533216842,
-    "answer": "no",
-    "highlights": [],
-    "reasoning": "The statement details a scenario involving weather conditions, an animal in the road, and the driver's reaction. It does not mention any emergency vehicle attempting to pass, therefore the answer is undetermined.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "-1668077165": {
-    "question": "Was the defendant driving recklessly in bad weather?",
-    "model": "gemma3:27b",
-    "inputHash": -1668077165,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket.",
-        "reason": "Describes severe weather conditions (hail) impacting visibility."
-      },
-      {
-        "passage": "It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications.",
-        "reason": "Highlights poor visibility due to time of day combined with weather."
-      },
-      {
-        "passage": "The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.",
-        "reason": "Demonstrates the driver's acknowledgement of limited visibility and their attempt to adjust driving accordingly."
-      },
-      {
-        "passage": "My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space.",
-        "reason": "Shows a reaction to an unexpected hazard rather than ignoring road conditions."
-      }
-    ],
-    "reasoning": "The highlights demonstrate that the defendant was driving in very poor weather conditions with reduced visibility and reacted to an unexpected hazard (the fox) by braking and swerving, indicating a cautious approach rather than reckless driving. While they did cross the red light, the evidence suggests this was a consequence of the circumstances, not deliberate recklessness.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "-603710057": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "gemma3:27b",
-    "inputHash": -603710057,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail",
-        "reason": "Describes the deteriorating weather conditions that precede the incident."
-      },
-      {
-        "passage": "The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.",
-        "reason": "Details reduced visibility and slowed speed due to weather."
-      },
-      {
-        "passage": "The car did stop, but not before I'd crossed the line. I could feel I was over it, perhaps a metre or so into the junction, and I sat there for a moment feeling rather foolish.",
-        "reason": "Describes the vehicle crossing the line which implies a minor slide or loss of control."
-      },
-      {
-        "passage": "My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space.",
-        "reason": "Braking and swerving in hail-affected conditions could contribute to loss of control."
-      }
-    ],
-    "reasoning": "The statement describes heavy hail, reduced visibility, and a slowed speed, combined with braking and a slight swerve to avoid an animal, immediately followed by the car crossing the line. This sequence of events suggests adverse weather contributed to a loss of control leading to the vehicle's minor movement into the junction.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "-1188927569": {
-    "question": "Was blame wrongly placed on others?",
-    "model": "gemma3:27b",
-    "inputHash": -1188927569,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "I'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation.",
-        "reason": "This statement explicitly acknowledges responsibility, contradicting the idea of blaming others."
-      },
-      {
-        "passage": "But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions.",
-        "reason": "This clarifies that the driver is not claiming others are to blame, but providing context for their actions."
-      },
-      {
-        "passage": "Whether any of this constitutes mitigation in the eyes of the court, I genuinely don't know.",
-        "reason": "The driver is presenting the circumstances as mitigating factors, not blaming others, but admitting the final responsibility lies with them."
-      }
-    ],
-    "reasoning": "The driver consistently accepts responsibility for crossing the red light while providing contextual factors like weather and a fox obstructing the road. The statement emphasizes explaining the situation rather than shifting blame.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "-1651041649": {
-    "question": "Did the driver take action to try to avoid a collision?",
-    "model": "gemma3:27b",
-    "inputHash": -1651041649,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "I was trying hard to keep my eyes on the road and the cars around me.",
-        "reason": "This indicates the driver was actively attempting to maintain awareness of their surroundings, suggestive of collision avoidance."
-      },
-      {
-        "passage": "I thought I saw them in time, but I judged it wrong",
-        "reason": "This shows the driver attempted to assess the lights, indicating an attempt to react and avoid the situation."
-      }
-    ],
-    "reasoning": "The driver explicitly states they were trying to keep their eyes on the road and cars and thought they saw the lights, suggesting actions taken in an attempt to avoid a collision, even if they ultimately misjudged the situation.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "-116249999": {
-    "question": "Did an emergency vehicle appear to wish to pass?",
-    "model": "gemma3:27b",
-    "inputHash": -116249999,
-    "answer": "no",
-    "highlights": [],
-    "reasoning": "The statement focuses entirely on the driver's perception of the traffic lights and road conditions, with no mention of any emergency vehicle or attempts to give way to one. Therefore, it's impossible to determine if an emergency vehicle was present.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "-1313653586": {
-    "question": "Was there a long red light?",
-    "model": "gemma3:27b",
-    "inputHash": -1313653586,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "crossing the red light",
-        "reason": "Acknowledges running a red light, forming the basis of the inquiry."
-      },
-      {
-        "passage": "I thought I saw them in time, but I judged it wrong",
-        "reason": "Indicates the driver perceived the lights but miscalculated, suggesting it wasn't a prolonged or unexpected red light period."
-      }
-    ],
-    "reasoning": "The statement indicates the driver believed they saw the lights in time, but misjudged their timing, rather than being caught by a long or unexpected red light.",
-    "askedAI": false,
-    "caseKey": "case 3"
-  },
-  "-1271795501": {
-    "question": "Did bad weather conditions lead to a minor technical slide at low speed?",
-    "model": "qwen3:30b",
-    "inputHash": -1271795501,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "turned to hail",
-        "reason": "describes severe weather conditions affecting visibility and driving"
-      },
-      {
-        "passage": "slowed down to about 25mph",
-        "reason": "indicates low speed due to weather-related reduced visibility"
-      }
-    ],
-    "reasoning": "The statement details bad weather and low speed but contains no mention of a technical slide, and describes the incident as resulting from distraction by a fox rather than a mechanical slide.",
-    "askedAI": false,
-    "caseKey": "case 2"
-  },
-  "-1977961141": {
-    "question": "Is there a reason why the defendant might not be guilty?",
-    "model": "gemma3:27b",
-    "inputHash": -1977961141,
-    "answer": "potentially",
-    "highlights": [
-      {
-        "passage": "I was hoping for the traffic on the other side to clear so that I could move on and clear the junction.",
-        "reason": "This shows the defendant's intention to allow passage for the emergency vehicles, but was blocked by other traffic."
-      },
-      {
-        "passage": "I moved just past the white line to allow both emergency vehicles to pass",
-        "reason": "This demonstrates the defendant did take action to facilitate the emergency vehicles' passage."
-      },
-      {
-        "passage": "even if I moved to let the ambulance through",
-        "reason": "Confirms the defendant's action was specifically to allow the ambulance passage. Suggests the offence was given despite this action."
-      }
-    ],
-    "reasoning": "The defendant's statement indicates they attempted to facilitate the passage of emergency vehicles but were constrained by traffic conditions and still received a penalty, suggesting potential grounds to challenge the guilt.",
-    "askedAI": false,
-    "caseKey": "case 1"
-  },
-  "-1076240694": {
-    "question": "Is there a reason this case should be heard in open court?",
-    "model": "gemma3:27b",
-    "inputHash": -1076240694,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "I was hoping for the traffic on the other side to clear so that I could move on and clear the junction.",
-        "reason": "Indicates driver was attempting to act responsibly in a difficult situation, suggesting they weren't deliberately flouting the rules."
-      },
-      {
-        "passage": "I moved just past the white line to allow both emergency vehicles to pass",
-        "reason": "Highlights the driver's action to facilitate the emergency vehicles, indicating a potential mitigating circumstance."
-      },
-      {
-        "passage": "even if I moved to let the ambulance through.",
-        "reason": "This states the driver contends their actions were to allow passage for emergency vehicles and implies disagreement with the penalty."
+        "reason": "Highlights the defendant's action to facilitate the emergency vehicles."
       },
       {
         "passage": "These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.",
-        "reason": "This shows the potential impact of the points on the driver's life; a relatively harsh penalty for a possibly understandable action."
+        "reason": "Highlights the negative consequences the defendant is facing, suggesting unfair treatment."
       }
     ],
-    "reasoning": "The driver's statements suggest they attempted to assist emergency vehicles while constrained by traffic conditions, and the potential severity of the penalty seems disproportionate given the circumstances, potentially warranting a closer examination by the court.",
-    "askedAI": false,
-    "caseKey": "case 1"
+    "reasoning": "The statement indicates the defendant was attempting to help emergency vehicles and the police officer was directing them to do so, suggesting a situation where blame might be unfairly placed on the defendant."
   },
-  "-1588204007": {
-    "question": "Is there a reason why the defendant might not be guilty?",
-    "model": "gemma3:27b",
-    "inputHash": -1588204007,
-    "answer": "potentially",
-    "highlights": [
-      {
-        "passage": "the road was very wet and noisy from the water",
-        "reason": "Describes adverse weather conditions that could have affected visibility and judgment."
-      },
-      {
-        "passage": "the sky was already going dark and everything around the junction looked more dull than usual",
-        "reason": "Describes poor lighting conditions contributing to reduced visibility."
-      },
-      {
-        "passage": "I thought I saw them in time, but I judged it wrong",
-        "reason": "Acknowledges misjudgment but implies a perceived attempt to stop, potentially due to the conditions."
-      }
-    ],
-    "reasoning": "The defendant cites poor weather and lighting conditions which impaired visibility, and claims to have *thought* they saw the light, suggesting a possible error in judgement rather than intentional disregard which could excuse them.",
-    "askedAI": false,
-    "caseKey": "case 3"
+  "793866719": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I've been driving for seventeen years without any points on my license\",\n      \"reason\": \"Directly states the defendant's driving history.\"\n    }\n  ],\n  \"reasoning\": \"The statement explicitly mentions the defendant's seventeen-year driving history without any points on their license, indicating a previous perfect record.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 793866719
   },
-  "-181789672": {
-    "question": "Is there a reason this case should be heard in open court?",
-    "model": "gemma3:27b",
-    "inputHash": -181789672,
-    "answer": "no",
-    "highlights": [],
-    "reasoning": "The statement contains no information suggesting reasons for a hearing in open court; it's a standard apology for a traffic violation and does not mention any complicating factors that would necessitate open proceedings.",
-    "askedAI": false,
-    "caseKey": "case 3"
+  "845995283": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"There's a streetlamp that's been out for months on the approach side\",\n      \"reason\": \"Mentions potential municipal infrastructure failure as a contextual factor rather than assigning direct blame\"\n    },\n    {\n      \"passage\": \"though whether that was the weather conditions or something wrong with the signal I couldn't say\",\n      \"reason\": \"Questions the traffic light's visibility but explicitly avoids definitively blaming the signal system\"\n    },\n    {\n      \"passage\": \"I recognise that I bear responsibility for the situation\",\n      \"reason\": \"Explicitly accepts personal accountability and rejects shifting fault to external factors or other parties\"\n    }\n  ],\n  \"reasoning\": \"Although the offender cited adverse weather, an animal crossing, and potentially faulty street lighting as contextual factors, they explicitly acknowledged personal responsibility and did not unjustly shift fault to others.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 845995283
   },
-  "-1491136113": {
-    "question": "Is there a reason why the defendant might not be guilty?",
-    "model": "qwen3:30b",
-    "inputHash": -1491136113,
+  "975731833": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migration that had gone rather badly.\",\n      \"reason\": \"Establishes a stressful and distracting situation contributing to potential inattention.\"\n    },\n    {\n      \"passage\": \"The weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket.\",\n      \"reason\": \"Details the severe weather conditions which significantly reduced visibility.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Highlights the distracting nature of the hail and the surrounding traffic.\"\n    },\n    {\n      \"passage\": \"Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.\",\n      \"reason\": \"Identifies the sudden, unexpected hazard - the fox – creating a reactive situation.\"\n    },\n    {\n      \"passage\": \"My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space.\",\n      \"reason\": \"Demonstrates a reasonable, instinctive action taken to avoid a collision.\"\n    },\n    {\n      \"passage\": \"In any case, I slammed the brakes much harder at that point, really quite violently, and the car lurched forward.\",\n      \"reason\": \"Shows the urgency and force of the braking action\"\n    },\n    {\n      \"passage\": \"But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions.\",\n      \"reason\": \"Argues for a distinction between deliberate and reactive actions.\"\n    }\n  ],\n  \"reasoning\": \"The highlights reveal a scenario where the driver's attention was significantly diverted by a combination of a stressful situation, severe weather conditions, and a sudden, unexpected hazard – a fox crossing the road – leading to a reactive and arguably justified evasive maneuver that resulted in crossing the red light.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 975731833
+  },
+  "1188805325": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I normally drive careful and I do not take risks, and this situation is not how I usually drive.\",\n      \"reason\": \"The defendant claims to generally drive carefully and avoids risks, but does not provide any factual details about past convictions or their official driving history.\"\n    }\n  ],\n  \"reasoning\": \"The statement only contains the defendant's subjective assessment of their usual driving behavior and contains no verifiable information about past traffic violations or an official driving record, making it impossible to confirm whether it was perfect.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 1188805325
+  },
+  "1198209523": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I need my licence for my daily life\",\n      \"reason\": \"This highlights the potential impact of a driving ban on the individual's life.\"\n    },\n    {\n      \"passage\": \"I am very sorry for this error.\",\n      \"reason\": \"Demonstrates remorse and potential for rehabilitation.\"\n    }\n  ],\n  \"reasoning\": \"The highlighted passages suggest that the case is significant due to the defendant's reliance on their driving licence for daily activities and their expressed remorse for the offense.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1198209523
+  },
+  "1238706093": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I accept that I crossed the red light,\",\n      \"reason\": \"Confirms the presence of a red traffic signal but provides no information regarding its duration or length.\"\n    }\n  ],\n  \"reasoning\": \"The statement acknowledges that the traffic light was red when the driver proceeded, but it contains no details about the length or duration of the red signal phase, leaving the question undetermined.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 1238706093
+  },
+  "1340391608": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I've been driving for seventeen years without any points on my license, which I mention not to claim special treatment but simply to illustrate that this isn't typical behaviour for me.\",\n      \"reason\": \"This directly states the defendant has no prior traffic offenses.\"\n    },\n    {\n      \"passage\": \"The end result was that I crossed a red light, which I understand is an offense regardless of the circumstances.\",\n      \"reason\": \"Acknowledges the offense occurred, but frames it as a consequence of the situation.\"\n    }\n  ],\n  \"reasoning\": \"The statement explicitly states a lack of previous traffic offences, providing evidence against the question's claim.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1340391608
+  },
+  "1350417559": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"the lights cycled to red\",\n      \"reason\": \"Directly states the light changed to red\"\n    }\n  ],\n  \"reasoning\": \"The statement explicitly mentions that the traffic lights cycled to red, indicating a period of red light.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1350417559,
     "answer": "yes",
     "highlights": [
       {
-        "passage": "lights cycled to red",
-        "reason": "Indicates defendant was legally stopped at red light when emergency vehicles approached, not driving through red light illegally."
-      },
-      {
-        "passage": "moved just past the white line",
-        "reason": "Shows defendant attempted to yield by moving when legally possible (after lights turned green), not during red light."
-      },
-      {
-        "passage": "lights changed to green again, so I moved forward",
-        "reason": "Confirms movement occurred only after traffic lights turned green, which would be lawful and not constitute obstruction of emergency vehicles."
+        "passage": "the lights cycled to red",
+        "reason": "Directly states the light changed to red"
       }
     ],
-    "reasoning": "The highlights show the defendant was legally stopped at red, moved only after lights turned green (not during red), and thus did not unlawfully obstruct emergency vehicles.",
-    "caseKey": "case 1"
+    "reasoning": "The statement explicitly mentions that the traffic lights cycled to red, indicating a period of red light."
   },
-  "-2107445412": {
-    "question": "Is there a reason this case should be heard in open court?",
-    "model": "qwen3:30b",
-    "inputHash": -2107445412,
-    "answer": "no",
-    "highlights": [
-      {
-        "passage": "I am sorry for crossing the red light and I accept this was my mistake.",
-        "reason": "direct admission of fault"
-      },
-      {
-        "passage": "I normally drive careful and I do not take risks, and this situation is not how I usually drive.",
-        "reason": "indicates routine safe driving behavior"
-      },
-      {
-        "passage": "I need my licence for my daily life and I am very sorry for this error.",
-        "reason": "expresses remorse and personal impact"
-      }
-    ],
-    "reasoning": "The highlights demonstrate genuine remorse, admission of fault, and a clear indication that this was an isolated incident inconsistent with the offender's usual careful driving habits, suggesting no need for open court proceedings.",
-    "caseKey": "case 3"
+  "1530557976": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications.\",\n      \"reason\": \"Describes reduced visibility due to the transition between daylight and darkness.\"\n    },\n    {\n      \"passage\": \"The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Highlights a significant distraction caused by the weather.\"\n    },\n    {\n      \"passage\": \"My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space.\",\n      \"reason\": \"Shows a deliberate action taken to avoid a hazard.\"\n    },\n    {\n      \"passage\": \"My focus went entirely to not causing an accident.\",\n      \"reason\": \"Indicates the primary motivation behind the defendant's actions.\"\n    }\n  ],\n  \"reasoning\": \"The statement reveals the defendant's actions – braking, swerving, and prioritizing avoiding a collision – indicating a response to a hazardous situation (the fox) exacerbated by poor weather conditions and reduced visibility, suggesting a lack of reckless behaviour.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1530557976
   },
-  "-1388824050": {
-    "question": "Is there a reason this case should be heard in open court?",
-    "model": "qwen3:30b",
-    "inputHash": -1388824050,
-    "answer": "yes",
-    "highlights": [
-      {
-        "passage": "when the lights changed to green again",
-        "reason": "Confirms movement occurred after lawful green light, contradicting alleged offence of moving on red light"
-      }
-    ],
-    "reasoning": "The statement indicates the offender only moved after traffic lights turned green, which would make the alleged offense invalid, necessitating a court hearing to verify facts.",
-    "caseKey": "case 1"
+  "1581517962": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migration that had gone rather badly.\",\n      \"reason\": \"Details the stressful situation contributing to inattention.\"\n    },\n    {\n      \"passage\": \"The weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket.\",\n      \"reason\": \"Identifies extreme weather conditions as a key factor impacting visibility.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Highlights the distracting nature of the hail.\"\n    },\n    {\n      \"passage\": \"Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.\",\n      \"reason\": \"Describes the unexpected hazard - the fox - that diverted attention.\"\n    },\n    {\n      \"passage\": \"My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space.\",\n      \"reason\": \"Shows the driver's attempt to mitigate the hazard.\"\n    },\n    {\n      \"passage\": \"The combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split for what couldn't have been more than two or three seconds, but it was enough.\",\n      \"reason\": \"Acknowledges the divided attention as a contributing factor.\"\n    },\n     {\n      \"passage\": \"But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions.\",\n      \"reason\": \"Explicitly argues that blame shouldn't be solely focused on deliberate carelessness.\"\n    }\n  ],\n  \"reasoning\": \"The statement repeatedly emphasizes how external factors like the stressful work situation, severe weather conditions, and the sudden appearance of a fox led to a divided attention and a reaction intended to avoid an accident, suggesting that blame shouldn't solely be placed on the driver's negligence.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1581517962
+  },
+  "1582519817": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"Traffic was very dense and slow moving.\",\n      \"reason\": \"Describes the initial conditions – slow-moving traffic is a key factor in a potential 'slide'.\"\n    },\n    {\n      \"passage\": \"I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side.\",\n      \"reason\": \"Highlights the operator's constrained position and inability to maneuver.\"\n    },\n    {\n      \"passage\": \"the lights cycled to red\",\n      \"reason\": \"Indicates a change in traffic control, which could have contributed to the situation.\"\n    }\n  ],\n  \"reasoning\": \"The statement describes dense, slow-moving traffic, a constrained maneuverability situation, and a sudden change in the traffic light cycle, suggesting an unexpected situation influenced by external factors, potentially interpreted as a 'minor technical slide'.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1582519817
+  },
+  "1626397375": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.\",\n      \"reason\": \"Directly indicates the police car driver actively signaled for the driver to move aside so the emergency vehicle could proceed.\"\n    }\n  ],\n  \"reasoning\": \"The statement explicitly describes the police driver waving and motioning for the road to be cleared, which directly confirms the emergency vehicle's clear intent to pass.\",\n  \"answer\": \"yes\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 1626397375
+  },
+  "1640215570": {
+    "response": "```json\n{\n  \"highlights\": [],\n  \"reasoning\": \"The statement references the traffic light and the offender's error but provides no information regarding its duration, making it impossible to determine if it was long.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "qwen3.6:27b",
+    "hash": 1640215570
+  },
+  "1730546441": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"crossing the red light\",\n      \"reason\": \"Directly indicates an instance of a red light being violated\"\n    },\n    {\n      \"passage\": \"I thought I saw them in time\",\n      \"reason\": \"Suggests the light was red for an extended period\"\n    }\n  ],\n  \"reasoning\": \"The statement explicitly mentions crossing a red light and thinking the light was seen in time, implying a duration for which the light remained red.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1730546441
+  },
+  "1745826936": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I am sorry for crossing the red light and I accept this was my mistake.\",\n      \"reason\": \"Explicitly accepts full personal responsibility for the traffic violation, showing no attempt to shift fault to other parties.\"\n    },\n    {\n      \"passage\": \"I judged it wrong and went through.\",\n      \"reason\": \"Directly attributes the incident to his own error in judgment rather than blaming external factors or other individuals.\"\n    }\n  ],\n  \"reasoning\": \"The offender clearly accepts personal fault for running the red light and acknowledges his own poor judgment, making no attempt to attribute responsibility to anyone else.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 1745826936
+  },
+  "1795247803": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications.\",\n      \"reason\": \"This describes the general visibility issues present at the time of the incident.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind.\",\n      \"reason\": \"This sets the scene and the driver's position before encountering the hazard.\"\n    },\n    {\n      \"passage\": \"The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"The severe weather conditions significantly impacted visibility and driver focus.\"\n    },\n    {\n      \"passage\": \"Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.\",\n      \"reason\": \"Describes the unexpected hazard and the diversion of the driver's attention.\"\n    }\n  ],\n  \"reasoning\": \"The statement details the presence of a distracting hazard – a large fox – that significantly impacted the driver’s visibility and attention, suggesting a sudden shift in focus away from the road ahead.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1795247803
+  },
+  "1940962116": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I normally drive careful and I do not take risks\",\n      \"reason\": \"This directly states the defendant's usual driving behavior.\"\n    }\n  ],\n  \"reasoning\": \"The statement indicates the defendant typically drives carefully and without risk, suggesting a good record.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": 1940962116
+  },
+  "1992056860": {
+    "response": "{\n  \"highlights\": [],\n  \"reasoning\": \"The statement describes dense traffic and the defendant's attempt to yield to emergency vehicles, but it contains no information regarding weather conditions, making it impossible to determine if the driving occurred in bad weather or was reckless.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 1992056860
+  },
+  "2028210095": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.\",\n      \"reason\": \"Indicates direct instruction from law enforcement, which can legally justify overriding a traffic signal.\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"Shows the crossing was minimal and performed out of necessity to assist emergency services, supporting a potential exemption from liability.\"\n    }\n  ],\n  \"reasoning\": \"The defendant explicitly states they were gestured by a police officer to proceed past the red light to clear emergency vehicles, which constitutes a recognized legal defense or justification for the alleged offence.\",\n  \"answer\": \"Yes\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": 2028210095
+  },
+  "-1848084172": {
+    "response": "{\n  \"highlights\": [],\n  \"reasoning\": \"The statement only discusses the current incident and the resulting penalty points, providing no information about the driver's prior traffic history or previous offences.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -1848084172
+  },
+  "-1788921952": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"the lights cycled to red.\",\n      \"reason\": \"Indicates that the traffic signal turned red during the incident.\"\n    },\n    {\n      \"passage\": \"when the lights changed to green again\",\n      \"reason\": \"Shows when the signal returned to green, but provides no details about the duration of the red phase.\"\n    }\n  ],\n  \"reasoning\": \"The statement notes that the light turned red and later green again, but it does not mention how long the red phase lasted, so there is insufficient evidence to determine if it was long.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -1788921952
+  },
+  "-961896101": {
+    "response": "{\n  \"highlights\": [],\n  \"reasoning\": \"The statement discusses the circumstances of the current offence and concerns about future insurance costs, but provides no information regarding the defendant's driving history or any previous penalty points prior to this incident.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -961896101
+  },
+  "-1251076479": {
+    "response": "{\n  \"highlights\": [],\n  \"reasoning\": \"The statement details the driver's actions to yield to emergency vehicles and clear a junction, but contains no mention of an imminent collision or any maneuvers specifically intended to avoid one.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -1251076479
+  },
+  "-1420073774": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I was in the left lane with just a couple of cars ahead and one or two behind.\",\n      \"reason\": \"The driver explicitly accounts for the surrounding traffic, noting only ordinary civilian vehicles ahead and behind, with absolutely no mention of emergency vehicles, sirens, or signals.\"\n    }\n  ],\n  \"reasoning\": \"The statement provides a detailed account of the traffic and distractions present at the time but contains no reference to emergency vehicles or signals attempting to pass, confirming that none were involved.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "qwen3.6:27b",
+    "hash": -1420073774
+  },
+  "-266178072": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I've been driving for seventeen years without any points on my license\",\n      \"reason\": \"The defendant explicitly states they had zero penalty points prior to the incident, indicating a clean record.\"\n    }\n  ],\n  \"reasoning\": \"The defendant explicitly states they had been driving for seventeen years without accumulating any penalty points, which directly confirms they maintained a perfect driving record prior to this incident.\",\n  \"answer\": \"yes\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -266178072
+  },
+  "-676683506": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"My immediate reaction was to brake and swerve slightly right to avoid it\",\n      \"reason\": \"The driver explicitly describes performing evasive maneuvers, specifically braking and swerving, to avoid the fox entering the road.\"\n    },\n    {\n      \"passage\": \"I slammed the brakes much harder at that point\",\n      \"reason\": \"The driver reports applying heavy braking to stop the vehicle, indicating a further action to prevent a collision.\"\n    },\n    {\n      \"passage\": \"my focus went entirely to not causing an accident\",\n      \"reason\": \"The driver confirms their primary intent was to avoid an accident, corroborating that the actions taken were for avoidance purposes.\"\n    }\n  ],\n  \"reasoning\": \"The driver clearly states they braked, swerved, and focused on accident avoidance in response to a hazard, providing direct evidence of actions taken to prevent a collision.\",\n  \"answer\": \"yes\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -676683506
+  },
+  "-1459684979": {
+    "response": "{\n  \"highlights\": [],\n  \"reasoning\": \"The statement contains no reference to emergency vehicles or any vehicle attempting to pass, making it impossible to confirm or deny based on the provided text.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -1459684979
+  },
+  "-1478155738": {
+    "response": "{\n  \"highlights\": [],\n  \"reasoning\": \"The statement provides no information about the defendant's past driving record or prior violations, only addressing the current incident and claiming it is out of character, so there is no evidence to confirm or deny previous red light offences.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -1478155738
+  },
+  "-1891382674": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"the road was very wet and noisy from the water, and I had the wipers going strong\",\n      \"reason\": \"Confirms the presence of bad weather conditions that affected visibility and concentration.\"\n    },\n    {\n      \"passage\": \"I judged it wrong and went through\",\n      \"reason\": \"Shows the actual cause of the incident was a timing error at the traffic light, directly contradicting the premise of a technical slide or low-speed maneuver.\"\n    }\n  ],\n  \"reasoning\": \"The statement acknowledges adverse weather impacted visibility but explicitly attributes the violation to misjudging the traffic light timing, with no mention of a technical slide or low-speed driving.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -1891382674
+  },
+  "-1176344598": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear\",\n      \"reason\": \"Confirms the defendant was driving in adverse weather conditions.\"\n    },\n    {\n      \"passage\": \"I judged it wrong and went through\",\n      \"reason\": \"Attributes the traffic violation to a momentary error in judgment rather than a willful or reckless disregard for safety.\"\n    },\n    {\n      \"passage\": \"I normally drive careful and I do not take risks\",\n      \"reason\": \"Explicitly denies reckless intent or behavior during the incident.\"\n    }\n  ],\n  \"reasoning\": \"The highlights confirm driving in bad weather but attribute the violation to a momentary misjudgment and explicitly deny reckless intent, providing insufficient objective evidence to definitively confirm or deny recklessness based solely on this subjective plea.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -1176344598
+  },
+  "-602647565": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"trying hard to keep my eyes on the road and the cars around me.\",\n      \"reason\": \"Indicates visual attention was maintained but does not constitute a physical evasive action to avoid a collision.\"\n    },\n    {\n      \"passage\": \"I judged it wrong and went through.\",\n      \"reason\": \"Shows the driver proceeded past the lights without describing any braking or maneuvering to stop or avoid a potential collision.\"\n    }\n  ],\n  \"reasoning\": \"The statement shows the driver maintained visual awareness but ultimately misjudged the signal timing and proceeded through the intersection without mentioning any physical actions, such as braking or steering, to prevent a collision.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -602647565
+  },
+  "-1486926142": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"while I accept that I crossed the red light, I want to explain why it happened the way it did.\",\n      \"reason\": \"Direct admission of the violation, indicating the plea seeks explanation rather than denial of guilt.\"\n    },\n    {\n      \"passage\": \"The end result was that I crossed a red light, which I understand is an offense regardless of the circumstances.\",\n      \"reason\": \"Explicitly acknowledges that the act constitutes a legal offense, negating any claim of innocence or legal exemption.\"\n    },\n    {\n      \"passage\": \"I recognise that I bear responsibility for the situation.\",\n      \"reason\": \"Clear acceptance of culpability, confirming the defendant is not arguing against guilt.\"\n    }\n  ],\n  \"reasoning\": \"Although hazardous weather and an animal are described, the defendant explicitly frames them as contextual mitigation rather than a legal defense, directly admitting fault and acknowledging the violation remains an offense regardless of circumstances.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "qwen3.6:27b",
+    "hash": -1486926142
+  },
+  "-1638009215": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I accept that I crossed the red light\",\n      \"reason\": \"Explicit admission of guilt indicates a guilty plea rather than a contested defense\"\n    },\n    {\n      \"passage\": \"I recognise that I bear responsibility for the situation\",\n      \"reason\": \"Confirms the defendant is not disputing liability or the facts, removing the need for a full trial\"\n    },\n    {\n      \"passage\": \"I've been driving for seventeen years without any points on my license\",\n      \"reason\": \"Provides only character mitigation for sentencing discretion, not a legal or factual dispute requiring open court\"\n    }\n  ],\n  \"reasoning\": \"The offender unequivocally pleads guilty and offers only mitigating circumstances for sentencing, presenting no contested evidence, complex legal issues, or defense that would justify a full open court hearing.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -1638009215
+  },
+  "-170690435": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I am sorry for crossing the red light and I accept this was my mistake.\",\n      \"reason\": \"The defendant explicitly admits fault and accepts responsibility for the offense.\"\n    },\n    {\n      \"passage\": \"I judged it wrong and went through.\",\n      \"reason\": \"Confirms the defendant acknowledges running the light was a personal error in judgment rather than a valid defense of innocence.\"\n    }\n  ],\n  \"reasoning\": \"The defendant explicitly admits fault and acknowledges running the light was a personal error in judgment, offering only mitigating circumstances rather than a defense of innocence.\",\n  \"answer\": \"no\"\n}",
+    "model": "qwen3.6:27b",
+    "hash": -170690435
+  },
+  "-1202637845": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me.\",\n      \"reason\": \"This indicates a situation where drivers were yielding to emergency vehicles, suggesting potential disregard for traffic signals.\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"This describes a specific action taken to prioritize emergency vehicles, implying a deliberate deviation from normal traffic rules.\"\n    }\n  ],\n  \"reasoning\": \"The highlights show the defendant actively moved to allow emergency vehicles to pass, and this action was described as moving 'just past the white line', which is a direct violation of traffic regulations.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -1202637845
+  },
+  "-1326870779": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"Traffic was very dense and slow moving.\",\n      \"reason\": \"Describes the conditions of the environment\"\n    },\n    {\n      \"passage\": \"I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side.\",\n      \"reason\": \"Details the defendant's position and situation\"\n    },\n    {\n      \"passage\": \"The junction was narrow with a pedestrian island in the middle, so there was no room to manouver.\",\n      \"reason\": \"Highlights the limited maneuverability\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"Shows deliberate action to facilitate emergency vehicles\"\n    }\n  ],\n  \"reasoning\": \"The statement describes a situation of slow-moving traffic, a narrow junction with limited maneuverability, and the defendant's deliberate action to allow emergency vehicles to pass, indicating a cautious and considered response rather than reckless behavior.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -1326870779
+  },
+  "-500248622": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I have tried to speak to people about it\",\n      \"reason\": \"Indicates previous discussion about the incident.\"\n    }\n  ],\n  \"reasoning\": \"The statement suggests prior conversations regarding the offense, implying a record existed before the incident.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -500248622
+  },
+  "-982248712": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side.\",\n      \"reason\": \"Describes the driver's initial situation and inability to proceed.\"\n    },\n    {\n      \"passage\": \"As the two emergency vehicles approached, with cars moving to the left and right, I was hoping for the traffic on the other side to clear so that I could move on and clear the junction.\",\n      \"reason\": \"Shows the driver's intention to facilitate passage.\"\n    },\n    {\n      \"passage\": \"As they came behind me, the lights cycled to red. I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.\",\n      \"reason\": \"Demonstrates the police officer's direction to move.\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again, so I moved forward to continue my journey.\",\n      \"reason\": \"Explicit action taken to permit passage.\"\n    }\n  ],\n  \"reasoning\": \"The highlights detail the driver's deliberate actions - hoping for traffic to clear, responding to the officer's signals, and moving to the side to allow passage - all indicating an attempt to avoid a potential collision.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -982248712
+  },
+  "-1249577572": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"The weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket.\",\n      \"reason\": \"Describes the severe weather conditions (hail) present at the time of the incident.\"\n    },\n    {\n      \"passage\": \"It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications.\",\n      \"reason\": \"Highlights the already reduced visibility due to the transition between daylight and darkness.\"\n    },\n    {\n      \"passage\": \"The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\",\n      \"reason\": \"Details the driver's reduced speed and acknowledged limitations in visibility due to the conditions.\"\n    },\n    {\n      \"passage\": \"The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Emphasizes the distracting nature of the hail, contributing to the driver's impaired focus.\"\n    }\n  ],\n  \"reasoning\": \"The highlights detail a situation of reduced visibility due to a combination of hail and twilight, leading the driver to reduce speed and become distracted, directly supporting the idea of a 'minor technical slide at low speed' caused by adverse weather conditions.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -1249577572
+  },
+  "-1110262236": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction, though whether that was the weather conditions or something wrong with the signal I couldn't say.\",\n      \"reason\": \"This passage directly describes the appearance of the light as 'oddly dim'.\"\n    },\n    {\n      \"passage\": \"When I looked back at the road ahead, I realised the light had changed - or perhaps had been red all along and I'd simply not registered it properly while dealing with the animal.\",\n      \"reason\": \"This describes a moment of realization where the speaker believes the light may have been red.\"\n    }\n  ],\n  \"reasoning\": \"The statement indicates the speaker's perception of the light as 'oddly dim' and a subsequent belief that it may have been red, suggesting a possible long red light.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -1110262236
+  },
+  "-1574015227": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migration that had gone rather badly.\",\n      \"reason\": \"Establishes the driver's intention to arrive home safely and the context of a stressful situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n   {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the immediate situation and environmental factors.\"\n    }\n  ],\n  \"reasoning\": \"The driver explicitly states they 'braked and swerved slightly right to avoid it', indicating an action taken to mitigate the potential collision with the fox, therefore it can be concluded that the driver took action to try to avoid a collision.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -1574015227
+  },
+  "-325750026": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"and noisy from the water\",\n      \"reason\": \"Describes the environment, potentially suggesting a distraction and justification for delayed reaction.\"\n    },\n    {\n      \"passage\": \"everything around the junction looked more dull than usual\",\n      \"reason\": \"Indicates a reduced visual clarity, possibly affecting the driver's perception of time and distance.\"\n    }\n  ],\n  \"reasoning\": \"The statement describes a noisy, dark, and visually obscured environment, suggesting the driver's focus was impacted and potentially hindering their ability to accurately assess the time of approaching emergency vehicles.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -325750026
+  },
+  "-173658403": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I am sorry for crossing the red light\",\n      \"reason\": \"Direct admission of a prior red light infraction\"\n    },\n    {\n      \"passage\": \"this situation is not how I usually drive\",\n      \"reason\": \"Implies a pattern of driving behavior, including disregard for traffic rules\"\n    }\n  ],\n  \"reasoning\": \"The statement includes an explicit apology for crossing a red light and indicates a deviation from the speaker's normal cautious driving habits, suggesting prior offenses.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -173658403
+  },
+  "-49358633": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"At the time the road was very wet and noisy from the water\",\n      \"reason\": \"Identifies the presence of water on the road, a key factor in bad weather.\"\n    },\n    {\n      \"passage\": \"and I had the wipers going strong just to keep the screen clear\",\n      \"reason\": \"Confirms the driver was actively dealing with reduced visibility due to rain.\"\n    },\n    {\n      \"passage\": \"the sky was already going dark and everything around the junction looked more dull than usual\",\n      \"reason\": \"Describes worsening visibility conditions.\"\n    }\n  ],\n  \"reasoning\": \"The statement explicitly details the presence of wet conditions, the use of wipers to combat reduced visibility, and darkening sky conditions, all consistent with the concept of 'bad weather conditions' impacting driving.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -49358633
+  },
+  "-155016081": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"At the time the road was very wet and noisy from the water\",\n      \"reason\": \"This describes external factors contributing to the situation.\"\n    },\n    {\n      \"passage\": \"the sky was already going dark and everything around the junction looked more dull than usual\",\n      \"reason\": \"This highlights environmental factors that may have contributed to the driver's perception.\"\n    },\n    {\n      \"passage\": \"I thought I saw them in time, but I judged it wrong\",\n      \"reason\": \"This indicates a misjudgment on the driver's part.\"\n    }\n  ],\n  \"reasoning\": \"The statement provides explanations for the driver's actions, focusing on external conditions and a misjudgment, suggesting blame was placed on circumstances rather than purely on the driver's negligence.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -155016081
+  },
+  "-245627693": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"noisy from the water\",\n      \"reason\": \"Describes the environmental conditions – ‘noisy from the water’ – contributing to the situation.\"\n    },\n    {\n      \"passage\": \"trying hard to keep my eyes on the road\",\n      \"reason\": \"Indicates an attempt to maintain focus, suggesting a potential challenge to safe driving.\"\n    },\n    {\n      \"passage\": \"judged it wrong and went through\",\n      \"reason\": \"Confirms an incorrect assessment of the traffic light timing.\"\n    }\n  ],\n  \"reasoning\": \"The highlights demonstrate the defendant's struggle to see clearly due to the weather and their subsequent misjudgment of the traffic light, suggesting reckless behavior in bad weather.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -245627693
+  },
+  "-1924193686": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I had the wipers going strong just to keep the screen clear.\",\n      \"reason\": \"This indicates the driver was actively attempting to improve visibility, a potential action to avoid a hazard.\"\n    },\n    {\n      \"passage\": \"I was trying hard to keep my eyes on the road and the cars around me.\",\n      \"reason\": \"This demonstrates an effort to maintain situational awareness and avoid potential danger.\"\n    }\n  ],\n  \"reasoning\": \"The driver’s actions of using wipers and concentrating on the road indicate an attempt to mitigate the risk of a collision.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -1924193686
+  },
+  "-78248986": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I heard a siren and many cars started moving out of the way of an ambulance and police car\",\n      \"reason\": \"This demonstrates a clear attempt to facilitate the emergency vehicles' passage.\"\n    },\n    {\n      \"passage\": \"I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side.\",\n      \"reason\": \"This explains the situation presented by the defendant, a situation beyond their control.\"\n    },\n    {\n      \"passage\": \"As the two emergency vehicles approached, with cars moving to the left and right, I was hoping for the traffic on the other side to clear\",\n      \"reason\": \"Highlights the defendant's intent to allow passage.\"\n    },\n    {\n      \"passage\": \"the lights cycled to red. I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.\",\n      \"reason\": \"Shows evidence of cooperation and instruction from the police.\"\n    }\n  ],\n  \"reasoning\": \"The highlights reveal the defendant's actions were motivated by a genuine attempt to assist emergency vehicles, evidenced by the siren, traffic moving aside, and police signaling, suggesting a lack of intent to break the law.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -78248986
+  },
+  "-813960539": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I have tried to speak to people about it\",\n      \"reason\": \"This indicates a desire for clarification and potentially a misunderstanding of the situation which warrants discussion.\"\n    },\n    {\n      \"passage\": \"These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.\",\n      \"reason\": \"This highlights the significant consequences of the alleged offense, suggesting a need for a thorough review.\"\n    }\n  ],\n  \"reasoning\": \"The offender’s attempts to discuss the situation and the significant consequences of the alleged offense point to the need for a transparent hearing.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -813960539
+  },
+  "-1550675336": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I wanted you to understand what actually happened that evening - the weather, the animal, the visibility, all of it - rather than simply seeing the camera image and drawing conclusions.\",\n      \"reason\": \"This directly expresses a desire for a full explanation of the circumstances, suggesting a complexity requiring a judge's consideration.\"\n    },\n    {\n      \"passage\": \"The end result was that I crossed a red light, which I understand is an offense regardless of the circumstances.\",\n      \"reason\": \"Acknowledges the legal infraction while simultaneously emphasizing the mitigating factors that led to it.\"\n    },\n    {\n      \"passage\": \"But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions.\",\n      \"reason\": \"Highlights a perceived distinction between intentional and reactive behavior, implying a need for nuanced judgment.\"\n    }\n  ],\n  \"reasoning\": \"The statement repeatedly emphasizes the complex, unusual circumstances surrounding the incident, suggesting a need for a judge's detailed assessment rather than a simple application of the law.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -1550675336
+  },
+  "-1519728972": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"At the time the road was very wet and noisy from the water\",\n      \"reason\": \"This describes conditions that could have impaired visibility and reaction time.\"\n    },\n    {\n      \"passage\": \"I had the wipers going strong just to keep the screen clear\",\n      \"reason\": \"This suggests the defendant was actively trying to mitigate poor visibility.\"\n    },\n    {\n      \"passage\": \"everything around the junction looked more dull than usual\",\n      \"reason\": \"This indicates unusual lighting conditions contributed to the difficulty in judging the situation.\"\n    },\n    {\n      \"passage\": \"I thought I saw them in time, but I judged it wrong\",\n      \"reason\": \"This highlights a claim of misjudgment, rather than intentional disregard for the rules.\"\n    }\n  ],\n  \"reasoning\": \"The highlights reveal a claimed misjudgment due to difficult environmental conditions, suggesting the defendant's actions were not a deliberate violation.\",\n  \"answer\": \"potentially\"\n}\n```",
+    "model": "gemma3:4b",
+    "hash": -1519728972
   }
 }

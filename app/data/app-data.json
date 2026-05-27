@@ -41,17 +41,77 @@
   "selectedQuestionIndex": null,
   "cases": {
     "case 1": {
+      "name": "John Doe",
+      "incidentDate": "13/05/2026",
       "statement": "I was driving through a built up area with a number of traffic lights. Traffic was very dense and slow moving.\u00a0 I heard a siren and many cars started moving out of the way of an ambulance and police car travelling in the road behind me. I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side. The junction was narrow with a pedestrian island in the middle, so there was no room to manouver. As the two emergency vehicles approached, with cars moving to the left and right, I was hoping for the traffic on the other side to clear so that I could move on and clear the junction. As they came behind me, the lights cycled to red. I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically. I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again, so I moved forward to continue my journey. A week or so later I received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points. I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through. These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car.",
-      "monthlySalary": 775
+      "weeklyWage": 775
     },
     "case 2": {
-      "statement": "I'm writing to provide context for the incident that occurred on 14th January at approximately 7:35pm on the junction of Meadowbank Road and Station Approach. I've thought quite a lot about what happened, and while I accept that I crossed the red light, I want to explain why it happened the way it did.\nI was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migration that had gone rather badly. My route home takes me through that junction most weekdays, and I know it reasonably well, though I'll admit the lighting there isn't brilliant once it gets dark. There's a streetlamp that's been out for months on the approach side, something I've noticed before but never really thought much about.\nThe weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket. It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications. The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\nAs I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting. Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.\nNow I should say, I'm not someone who normally gets sentimental about animals, but this was a substantial creature and it was moving directly into my path in absolutely foul conditions. My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space. The fox seemed confused, actually stopped halfway across, and I remember thinking 'please don't change direction now' because if it had darted back I'd have been in a worse position.\nThe combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split for what couldn't have been more than two or three seconds, but it was enough. When I looked back at the road ahead, I realised the light had changed - or perhaps had been red all along and I'd simply not registered it properly while dealing with the animal. The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction, though whether that was the weather conditions or something wrong with the signal I couldn't say. In any case, I slammed the brakes much harder at that point, really quite violently, and the car lurched forward. My phone, which had been in my hand, flew onto the passenger seat and hit the floor somewhere. I actually heard it clatter.\nThe car did stop, but not before I'd crossed the line. I could feel I was over it, perhaps a metre or so into the junction, and I sat there for a moment feeling rather foolish. The hail was still hammering down, the wipers still going frantically, and the light cycled through while I tried to gather myself. I drove on, and honestly thought that was the end of it. The fox, incidentally, made it across safely, though it didn't so much as glance back.\nI've replayed the sequence in my mind several times since receiving the notice of prosecution. Could I have reacted differently? Possibly. Should I have noticed the light sooner? Certainly. But in that moment, with an animal in the road, heavy hail reducing visibility to almost nothing, and having to make a split-second decision about whether to hit it or take evasive action, my focus went entirely to not causing an accident. The end result was that I crossed a red light, which I understand is an offense regardless of the circumstances.\nI'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation. But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions. I've been driving for seventeen years without any points on my license, which I mention not to claim special treatment but simply to illustrate that this isn't typical behaviour for me.\nWhether any of this constitutes mitigation in the eyes of the court, I genuinely don't know. I suspect rules are rules, and crossing the line is crossing the line. But I wanted you to understand what actually happened that evening - the weather, the animal, the visibility, all of it - rather than simply seeing the camera image and drawing conclusions.",
-      "monthlySalary": 952
+      "name": "Jane Smith",
+      "incidentDate": "28/04/2026",
+      "statement": "I'm writing to provide context for the incident that occurred on 14th January at approximately 7:35pm on the junction of Meadowbank Road and Station Approach. I've thought quite a lot about what happened, and while I accept that I crossed the red light, I want to explain why it happened the way it did.\nI was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migratio that had gone rather badly. My route home takes me through that junction most weekdays, and I know it reasonably well, though I'll admit the lighting there isn't brilliant once it gets dark. There's a streetlamp that's been out for months on the approach side, something I've noticed before but never really thought much about.\nThe weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket. It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications. The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\nAs I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting. Then, quite suddenly, I saw movement to my left through all of this. It was a fox, quite a large one actually, and it had started to cross from the pavement.\nNow I should say, I'm not someone who normally gets sentimental about animals, but this was a substantial creature and it was moving directly into my path in absolutely foul conditions. My immediate reaction was to brake and swerve slightly right to avoid it - not a dramatic swerve, just enough to give it space. The fox seemed confused, actually stopped halfway across, and I remember thinking 'please don't change direction now' because if it had darted back I'd have been in a worse position.\nThe combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split for what couldn't have been more than two or three seconds, but it was enough. When I looked back at the road ahead, I realised the light had changed - or perhaps had been red all along and I'd simply not registered it properly while dealing with the animal. The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction, though whether that was the weather conditions or something wrong with the signal I couldn't say. In any case, I slammed the brakes much harder at that point, really quite violently, and the car lurched forward. My phone, which had been in my hand, flew onto the passenger seat and hit the floor somewhere. I actually heard it clatter.\nThe car did stop, but not before I'd crossed the line. I could feel I was over it, perhaps a metre or so into the junction, and I sat there for a moment feeling rather foolish. The hail was still hammering down, the wipers still going frantically, and the light cycled through while I tried to gather myself. I drove on, and honestly thought that was the end of it. The fox, incidentally, made it across safely, though it didn't so much as glance back.\nI've replayed the sequence in my mind several times since receiving the notice of prosecution. Could I have reacted differently? Possibly. Should I have noticed the light sooner? Certainly. But in that moment, with an animal in the road, heavy hail reducing visibility to almost nothing, and having to make a split-second decision about whether to hit it or take evasive action, my focus went entirely to not causing an accident. The end result was that I crossed a red light, which I understand is an offense regardless of the circumstances.\nI'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation. But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions. I've been driving for seventeen years without any points on my license, which I mention not to claim special treatment but simply to illustrate that this isn't typical behaviour for me.\nWhether any of this constitutes mitigation in the eyes of the court, I genuinely don't know. I suspect rules are rules, and crossing the line is crossing the line. But I wanted you to understand what actually happened that evening - the weather, the animal, the visibility, all of it - rather than simply seeing the camera image and drawing conclusions.",
+      "weeklyWage": 952
     },
     "case 3": {
+      "name": "Alice Foo", 
+      "incidentDate": "20/05/2026",
       "statement": "I am sorry for crossing the red light and I accept this was my mistake. At the time the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear. The sky was already going dark and everything around the junction looked more dull than usual, so I was trying hard to keep my eyes on the road and the cars around me.\nWhen I came to the lights I thought I saw them in time, but I judged it wrong and went through. I normally drive careful and I do not take risks, and this situation is not how I usually drive. I need my licence for my daily life and I am very sorry for this error.",
-      "monthlySalary": 628
+      "weeklyWage": 628
     }
   },
-  "selectedCaseKey": "case 1"
+  "selectedCaseKey": "case 1",
+  "buckets": {
+    "6": {
+      "number": 1,
+      "ratio": 0.250
+    },
+    "5": {
+      "number": 1,
+      "ratio": 0.250
+    },
+    "4": {
+      "number": 2,
+      "ratio": 0.375
+    },
+    "3": {
+      "number": 2,
+      "ratio": 0.375
+    },
+    "2": {
+      "number": 2,
+      "ratio": 0.375
+    },
+    "1": {
+      "number": 3,
+      "ratio": 0.500
+    },
+    "0": {
+      "number": 3,
+      "ratio": 0.500
+    },
+    "-1": {
+      "number": 3,
+      "ratio": 0.500
+    },
+    "-2": {
+      "number": 4,
+      "ratio": 0.625
+    },
+    "-3": {
+      "number": 4,
+      "ratio": 0.625
+    },
+    "-4": {
+      "number": 4,
+      "ratio": 0.625
+    },
+    "-5": {
+      "number": 5,
+      "ratio": 0.750
+    },
+    "-6": {
+      "number": 5,
+      "ratio": 0.750
+    }
+  }
 }

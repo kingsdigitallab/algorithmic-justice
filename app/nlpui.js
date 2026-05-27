@@ -310,10 +310,6 @@ createApp({
       // return this.responses[hash] ?? defaultResponse
       return ret
     },
-    // getInputHash(questionText, model, promptTemplate=null) {
-    //   let prompt = this.getQuestionnairePrompt(questionText, promptTemplate)
-    //   return InferenceEngine.hash(`${model}-${prompt}`)
-    // },
     initSettings() {
       const params = new URLSearchParams(window.location.search);
       // this.question = params.get('q') ?? DEFAULT_QUESTION;
@@ -422,7 +418,7 @@ createApp({
           cachedResponse.answer = response?.answer ?? ''
           cachedResponse.highlights = response.highlights
           cachedResponse.reasoning = response?.reasoning ?? ''
-          this.responses[cachedResponse.inputHash] = cachedResponse
+          // this.responses[cachedResponse.inputHash] = cachedResponse
         }
       } else {
         this.isResponding = true
