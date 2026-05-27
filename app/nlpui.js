@@ -91,7 +91,7 @@ createApp({
       // question: DEFAULT_QUESTION,
       // template: TEMPLATE,
       // statement: STATEMENT,
-      response: '',
+      highlighterResponse: null,
       isResponding: false,
       isServiceWorking: false,
       engine: null,
@@ -157,15 +157,15 @@ createApp({
         this.highlights
       )
       // add highlights underneath for accessibility purpose, or taking screennshots
-      if (this.response) {
+      if (this.highlighterResponse) {
         ret += '<hr><h4 class="title is-4">Highlights:</h4>'
         ret += '<div class="content">'
         ret += '<ul>'
         ret += this.highlights.map(h => `<li>"${h.passage}" (reason: ${h.reason})</li>`).join('')
         ret += '</ul>'
         ret += '<hr>'
-        ret += `Answer: ${this.response.answer}<br>`
-        ret += `Reason: ${this.response.reasoning}<br>`
+        ret += `Answer: ${this.highlighterResponse.answer}<br>`
+        ret += `Reason: ${this.highlighterResponse.reasoning}<br>`
         ret += '</div>'
       }
       return ret
@@ -185,8 +185,8 @@ createApp({
       )
     },
     highlights() {
-      // return this.getArrayFromLLMResponse(this.response)
-      return this.response?.highlights ?? []
+      // return this.getArrayFromLLMResponse(this.highlighterResponse)
+      return this.highlighterResponse?.highlights ?? []
     },
     isReadyForQuestions() {
       return this.isServiceWorking && this.isSelectedModelAvailable
@@ -197,10 +197,10 @@ createApp({
   },
   watch: {
     'questionnaire.selectedCaseKey'() {
-      this.response = null
+      this.highlighterResponse = null
     },
     'settings.question.value'() {
-      this.response = null
+      this.highlighterResponse = null
     }
   },
   methods: {
@@ -367,7 +367,7 @@ createApp({
     },
     async sendHighlightPrompt(questionText=null) {
       questionText = questionText ?? this.settings.question.value
-      this.response = await this.sendPromptOrGetFromCache(questionText, this.settings.templateHighlighter.value)
+      this.highlighterResponse = await this.sendPromptOrGetFromCache(questionText, this.settings.templateHighlighter.value)
       nextTick(() => {
         window.tippy('[data-tippy-content]');
       })
@@ -426,7 +426,6 @@ createApp({
     },
     async sendPrompt(prompt) {
       this.isResponding = true
-      this.response = ''
       this.setMessage('Model server is processing your request...')
       try {
         const ret = await this.engine.sendPrompt(prompt)
@@ -436,7 +435,6 @@ createApp({
         return ret
       } catch (error) {
         this.setMessage(error.message, 'danger')
-        this.response = ''
         return ''
       } finally {
         this.isResponding = false
