@@ -33,9 +33,12 @@ export default class InferenceEngine {
   }
 
   async callApi(path, body) {
+    let ret = null
+
     let fullPath = this.serviceUrl.replace(/\/+$/, '')
+    // console.log(fullPath, path)
     if (!fullPath.includes('/')) {
-      return {}
+      return ret
     }
     fullPath += '/' + path.replace(/^\/+/, '')
 
@@ -49,14 +52,14 @@ export default class InferenceEngine {
       requestInit.method = 'POST'
     }
 
-    let res
+    let res = null
     try {
       res = await fetch(fullPath, requestInit)
     } catch (error) {
       throw new Error(`Processing error (${error.message}). Check address or access to model server (${this.serviceUrl}).`)
     }
 
-    if (!res.ok && res?.status) {
+    if (!res?.ok && res?.status) {
       throw new Error(`Processing error (${res.status}). Check address or access to model server (${this.serviceUrl}).`)
     }
 
@@ -71,12 +74,13 @@ export default class InferenceEngine {
           throw new Error(`Processing error (${data.error.message}).`)
         }
         if (res?.status == '200') {
-          return data
+          ret = data
+        } else {
+          if (data.detail) {
+            throw new Error(`Processing error (${data.detail}).`)
+          }
+          throw new Error('Processing error (unknown).')
         }
-        if (data.detail) {
-          throw new Error(`Processing error (${data.detail}).`)
-        }
-        throw new Error('Processing error (unknown).')
       } catch (error) {
         if (error instanceof SyntaxError) {
           throw new Error(`Processing error (${error.message}). Check address or access to model server in the Settings tab.`)
@@ -85,7 +89,7 @@ export default class InferenceEngine {
       }
     }
 
-    return {}
+    return ret
   }
 
   async sendPromptTemplate(template, variables) {
@@ -104,6 +108,7 @@ export default class InferenceEngine {
   }
 
   async sendPrompt(prompt) {
+    let ret = null
     let generate_url = ''
     let body = {}
     if (INFERRENCE_BACKEND == 'ollama') {
@@ -131,9 +136,14 @@ export default class InferenceEngine {
       }
     }
 
-    const res = await this.callApi(generate_url, body)
-    console.log(res)
-    return res?.choices[0]?.message?.content || ''
+    if (generate_url) {
+      const res = await this.callApi(generate_url, body)
+      // console.log(res)
+      if (res?.choices) {
+        ret = res?.choices[0]?.message?.content || ''
+      }
+    }
+    return ret
   }
 
   parseObject(text) {

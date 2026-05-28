@@ -4,6 +4,7 @@ export default class CachedInferenceEngine extends InferenceEngine {
   constructor(config = {}) {
     super(config)
     this.cache = {}
+    this.cacheUrl = null
   }
 
   async loadCache(url) {
@@ -26,7 +27,22 @@ export default class CachedInferenceEngine extends InferenceEngine {
       ret = await response.json()
     }
     this.cache = ret
+    this.cacheUrl = url
     return ret
+  }
+
+  async saveCache() {
+    const url = this.cacheUrl
+    const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null
+    const urlStr = typeof url === 'string' ? url : url.href
+    if (isNode) {
+      if (!urlStr.startsWith('http:') && !urlStr.startsWith('https:')) {
+        const { writeFileSync } = await import('node:fs')
+        const { fileURLToPath } = await import('node:url')
+        const filePath = urlStr.startsWith('file:') ? fileURLToPath(urlStr) : urlStr
+        writeFileSync(filePath, JSON.stringify(this.cache))
+      }
+    }
   }
 
   getCache() {
@@ -58,7 +74,7 @@ export default class CachedInferenceEngine extends InferenceEngine {
 
   getCachedResponse(prompt) {
     let key = CachedInferenceEngine.hash(`${this.model}-${prompt}`)
-    console.log(key, prompt)
+    // console.log(key, prompt)
     return this.cache[key] ?? null
   }
 

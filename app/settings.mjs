@@ -122,7 +122,7 @@ RESPONSE:
 
 // DEFAULT_STATEMENT = DEFAULT_STATEMENT.replaceAll(/\n\s*\n/g, 'BREAK').replaceAll('\n', '').replaceAll('BREAK', '\n\n')
 
-const SETTINGS = {
+export const SETTINGS = {
   question: {
     default: 'technical defects',
     inQueryString: true,
@@ -168,4 +168,8 @@ const SETTINGS = {
 
 if (typeof window !== 'undefined') {
   window.SETTINGS = SETTINGS
+}
+
+export function getDefaultSetting(key) {
+  return SETTINGS[key].default
 }

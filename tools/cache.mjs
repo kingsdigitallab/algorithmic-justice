@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { readFileSync, writeFileSync } from 'node:fs'
-import { DEFAULT_TEMPLATE_QUESTIONNAIRE as TEMPLATE } from '../app/settings.mjs'
+import { getDefaultSetting } from '../app/settings.mjs'
 import CachedInferenceEngine from '../app/cached-inference-engine.mjs'
 
 const APP_DATA_FILE = new URL('../app/data/app-data.json', import.meta.url)
@@ -9,8 +9,8 @@ class ResponseCacheManager {
 
   constructor() {
     this.engine = new CachedInferenceEngine({
-      serviceUrl: process.env.AJ_LLM_API,
-      model: process.env.AJ_MODEL
+      serviceUrl: process.env.AJ_LLM_API || getDefaultSetting('serviceUrl'),
+      model: process.env.AJ_MODEL || getDefaultSetting('model')
     })
   }
 
@@ -44,48 +44,40 @@ class ResponseCacheManager {
   }
 
   async actionFetch() {
-    const cache = this.engine.getCache()
     const appData = JSON.parse(readFileSync(APP_DATA_FILE, 'utf-8'))
+    let template = getDefaultSetting('templateQuestionnaire')
 
     for (const [caseKey, caseData] of Object.entries(appData.cases)) {
+      let questionIndex = 0
       for (const question of appData.questions) {
-        const prompt = this.engine.getPromptFromTemplate(TEMPLATE, {
+        console.log(`${caseKey}, ${questionIndex+1}, ${question.text}`)
+        let res = await this.engine.sendPromptTemplate(template, {
           STATEMENT: caseData.statement,
           QUESTION: question.text,
         })
-
-        const key = CachedInferenceEngine.hash(`${model}-${prompt}`)
-
-        if (cache[key]) {
-          continue
-        }
-
-        const url = serviceUrl.replace(/\/+$/, '') + '/chat/completions'
-        const res = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model,
-            messages: [{ role: 'user', content: prompt }],
-            stream: false,
-            max_tokens: 4000,
-          }),
-        })
-
-        if (!res.ok) {
-          console.error(`API error (${res.status}) for ${caseKey} / ${question.text}`)
-          continue
-        }
-
-        const data = await res.json()
-        const response = data?.choices?.[0]?.message?.content
-
-        if (response) {
-          cache[key] = { response, model, hash: key }
-          console.log(`cached ${caseKey} / ${question.text}`)
-        }
+        console.log(`  length: ${res?.length || 0}`)
+        questionIndex += 1
       }
     }
+
+    template = getDefaultSetting('templateHighlighter')
+    let questions = getDefaultSetting('questions')
+    questions = questions.split('\n').map(l => l.trim()).filter(l => l.length)
+
+    for (const [caseKey, caseData] of Object.entries(appData.cases)) {
+      let questionIndex = 0
+      for (const question of questions) {
+        console.log(`${caseKey}, ${questionIndex+1}, ${question}`)
+        let res = await this.engine.sendPromptTemplate(template, {
+          STATEMENT: caseData.statement,
+          QUESTION: question,
+        })
+        console.log(`  length: ${res?.length || 0}`)
+        questionIndex += 1
+      }
+    }
+
+    this.engine.saveCache()
   }
 
   async runAction(action) {
