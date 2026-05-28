@@ -5,7 +5,7 @@ DONE case selection
 DONE show case
 DONE show penalty
 DONE table
-M draw LLM responses from cache
+DONE draw LLM responses from cache
 S explaination
 C highlights
 C summary 

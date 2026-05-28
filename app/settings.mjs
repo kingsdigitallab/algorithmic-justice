@@ -166,4 +166,6 @@ const SETTINGS = {
   },
 }
 
-window.SETTINGS = SETTINGS
+if (typeof window !== 'undefined') {
+  window.SETTINGS = SETTINGS
+}

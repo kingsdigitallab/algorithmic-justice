@@ -7,11 +7,26 @@ export default class CachedInferenceEngine extends InferenceEngine {
   }
 
   async loadCache(url) {
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+    let ret = null
+    const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null
+    const urlStr = typeof url === 'string' ? url : url.href
+    if (isNode) {
+      if (!urlStr.startsWith('http:') && !urlStr.startsWith('https:')) {
+        const { readFileSync } = await import('node:fs')
+        const { fileURLToPath } = await import('node:url')
+        const filePath = urlStr.startsWith('file:') ? fileURLToPath(urlStr) : urlStr
+        ret = JSON.parse(readFileSync(filePath, 'utf-8'))
+      }
     }
-    this.cache = await response.json()
+    if (ret === null) {
+      const response = await fetch(url)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      ret = await response.json()
+    }
+    this.cache = ret
+    return ret
   }
 
   getCache() {
