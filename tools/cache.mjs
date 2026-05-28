@@ -9,7 +9,7 @@ function load() {
   return JSON.parse(readFileSync(CACHE_FILE, 'utf-8'))
 }
 
-function ls() {
+function actionLs() {
   const data = load()
 
   for (const [key, entry] of Object.entries(data)) {
@@ -17,7 +17,7 @@ function ls() {
   }
 }
 
-function models() {
+function actionModels() {
   const data = load()
   const counts = {}
 
@@ -47,7 +47,7 @@ function buildPrompt(template, variables) {
   return ret
 }
 
-async function runFetch() {
+async function actionFetch() {
   const serviceUrl = process.env.AJ_LLM_API
   const model = process.env.AJ_MODEL
 
@@ -104,11 +104,11 @@ async function runFetch() {
 
 const action = process.argv[2]
 if (action === 'ls') {
-  ls()
+  actionLs()
 } else if (action === 'models') {
-  models()
+  actionModels()
 } else if (action === 'fetch') {
-  runFetch()
+  actionFetch()
 } else {
   console.error('Unknown action:', action)
   console.error('Usage: node cache.mjs <ls|models|fetch>')
