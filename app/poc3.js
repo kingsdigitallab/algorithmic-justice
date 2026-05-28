@@ -3,9 +3,10 @@ TODO:
 
 DONE case selection
 DONE show case
-M show penalty
-S table
-S explanation
+DONE show penalty
+DONE table
+M draw LLM responses from cache
+S explaination
 C highlights
 C summary 
 W highlights snippets
@@ -98,20 +99,28 @@ createApp({
       )
       return ret
     },
-    reportRows() {
+    reviewRows() {
       let ret = []
       for (let qst of this?.questionnaire?.questions ?? []) {
+        let response = this.engine.getCachedResponseFromTemplate(
+          this.settings.templateQuestionnaire.value, 
+          {
+            QUESTION: qst.text, 
+            STATEMENT: this.selectedCase.statement
+          }
+        )
+        response = this.engine.parseObject(response?.response)
         ret.push({
           text: qst.text,
-          answer: 'undefined',
-          score: 0,
+          answer: response?.answer ?? 'undefined',
+          score: response?.answer === 'yes' ? qst.effect : 0,
         })
       }
       return ret
     },
     totalScore() {
       let ret = 0
-      for (let r of this.reportRows) {
+      for (let r of this.reviewRows) {
         ret += r.score
       }
       return ret
@@ -161,11 +170,12 @@ createApp({
       // TODO: deduped this code from nlpui.js
       let res = await loadJson('data/app-data.json')
       if (res) {
+        await this.engine.loadCache('data/responses.json')
+        
         this.questionnaire = res
         this.questionnaire.selectedQuestionIndex = null
         // let responses = await loadJson('data/responses.json')
         // this.responses = responses
-        await this.engine.loadCache('data/responses.json')
       }
     },
     async initService() {

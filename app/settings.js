@@ -133,7 +133,7 @@ const SETTINGS = {
     type: 'textarea',
   },
   model: {
-    default: "qwen3:30b",
+    default: "gemma3:4b",
     // default: "gpt-oss:20b",
     inQueryString: true,
     lookup: 'getModelsList',

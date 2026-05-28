@@ -43,6 +43,7 @@ export default class CachedInferenceEngine extends InferenceEngine {
 
   getCachedResponse(prompt) {
     let key = CachedInferenceEngine.hash(`${this.model}-${prompt}`)
+    console.log(key, prompt)
     return this.cache[key] ?? null
   }
 
