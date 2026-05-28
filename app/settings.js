@@ -1,4 +1,4 @@
-const DEFAULT_TEMPLATE_QUESTIONNAIRE = `TASK:
+export const DEFAULT_TEMPLATE_QUESTIONNAIRE = `TASK:
 You'll find below a STATEMENT and a QUESTION related to it.
 The STATEMENT is a plea from a road offender.
 The QUESTION is from a magistrate trying to quickly find clues in the STATEMENT.
