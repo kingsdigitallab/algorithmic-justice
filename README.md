@@ -2,7 +2,7 @@
 
 KDL components for the Algorithmic Justice research project.
 
-[Experimental interfaces](https://kingsdigitallab.github.io/algorithmic-justice/nlpui.html).
+[Research prototypes](https://kingsdigitallab.github.io/algorithmic-justice/nlpui.html).
 
 # Interfaces
 
