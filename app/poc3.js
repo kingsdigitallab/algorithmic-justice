@@ -10,15 +10,13 @@ S explaination
 C highlights
 C summary 
 W highlights snippets
-W algorithm
+W show algorithm
 W polish interface
 
+S dedupe code (with nlpui.js)
 */
 const { createApp, nextTick } = window.Vue;
 import CachedInferenceEngine from './cached-inference-engine.mjs'
-
-const TAB_HIGHLIGHTER = 'highlighter'
-const DELAY_IN_SECONDS_FOR_CACHED_RESPONSES = 2
 
 function camelToSpaceCase(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1 $2')
@@ -64,7 +62,7 @@ createApp({
       isServiceWorking: false,
       questionnaire: {},
       modelsList: [],
-      areDetailsShown: true,
+      areDetailsShown: false,
     }
   },
   async mounted() {
