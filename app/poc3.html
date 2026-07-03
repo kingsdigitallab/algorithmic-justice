@@ -59,7 +59,7 @@
   <body>
     <section class="section" id="app">
       <div class="container is-fluid" :class="{'container': true, 'is-fluid': true, 'is-responding': isResponding}">
-        <p :class="['notification', 'is-light', `is-${message.level}`, `${message.content ? '' : 'in'}visible`]">{{ message.content }}</p>
+        <p v-if="message.content" :class="['notification', 'is-light', `is-${message.level}`, `${message.content ? '' : 'in'}visible`]">{{ message.content }}</p>
         <div id="tab-poc3">
           <div class="block">
             <div class="select is-multiple full-width">
@@ -74,7 +74,10 @@
               <h2 class="title is-3">Automated review ✨</h2>
               <a v-if="!areDetailsShown" class="button is-primary" @click.prevent="onClickShowDetails()">Show details</a>
               <template v-else>
-                <p class="box title is-4">Suggested penalty: £{{penalty}}</p>
+                <div class="box">
+                  <p class="title is-4">Suggested penalty: £{{penalty}}</p>
+                  <p v-if="undeterminedWarningMessage">{{undeterminedWarningMessage}}</p>
+                </div>
                 <table class="table">
                   <thead>
                     <tr>

@@ -139,6 +139,30 @@ createApp({
       }
       return ret
     },
+    undeterminedWarningMessage() {
+      let ret = ''
+      let answersIndexes = []
+
+      for (const [i, row] of this.reviewRows.entries()) {
+        if (!['yes', 'no'].includes(row.answer)) {
+          answersIndexes.push(i+1)
+        }
+      }
+
+      let questionForm = 'question' + (answersIndexes.length > 1 ? 's' : '');
+
+      if (answersIndexes.length) {
+        let lastIndex = answersIndexes.pop()
+        let questionsStr = answersIndexes.join(', ')
+        if (questionsStr) {
+          questionsStr += ` and `
+        }
+        questionsStr += lastIndex
+        ret = `⚠️ Warning: the tool could not resolve ${questionForm} ${questionsStr} confidently.`
+      }
+
+      return ret
+    }
   },
   methods: {
     initSettings() {
