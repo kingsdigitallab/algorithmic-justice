@@ -63,6 +63,7 @@ createApp({
       questionnaire: {},
       modelsList: [],
       areDetailsShown: false,
+      areScoresShown: false,
     }
   },
   async mounted() {
@@ -206,6 +207,9 @@ createApp({
     getTitleFromCase(acase) {
       let nameParts = acase.name.split(/\s/)
       return `${acase.incidentDate} - ${nameParts[1]} ${nameParts[0][0]}.`;
+    },
+    getEffectLabelFromQuestion(question) {
+      return this.questionnaire.effectsLabel[question.score] || 'undetermined'
     },
     highlightText(text, highlights) {
       // TODO: deduped this code from nlpui.js

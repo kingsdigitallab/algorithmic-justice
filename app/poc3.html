@@ -42,6 +42,18 @@
         background-color: #eee;
         border-top: 1px solid grey;        
       }
+      td.score--2 {
+        background-color: hsl(350, 60%, 85%);
+      }
+      td.score--1 {
+        background-color: hsl(350, 60%, 95%);
+      }
+      td.score-1 {
+        background-color: hsl(150, 60%, 95%);
+      }
+      td.score-2 {
+        background-color: hsl(150, 60%, 85%);
+      }
     </style>
   </head>
   <body>
@@ -74,9 +86,12 @@
                   <tr v-for="(question, idx) in reviewRows">
                     <td>{{idx+1}}. {{question.text}}</td>
                     <td>{{question.answer}}</td>
-                    <td>{{question.score}}</td>
+                    <td :class="`score-${question.score}`">
+                      {{getEffectLabelFromQuestion(question)}} 
+                      <template v-if="areScoresShown">({{question.score}})</template>
+                    </td>
                   </tr>
-                  <tr>
+                  <tr v-if="areScoresShown">
                     <td></td>
                     <td>Total:</td>
                     <td>{{totalScore}}</td>
