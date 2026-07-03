@@ -63,16 +63,20 @@ createApp({
       questionnaire: {},
       modelsList: [],
       areDetailsShown: false,
-      areScoresShown: false,
+      // areScoresShown: false,
+      isAlgorithmExplained: false,
+      model: null,
     }
   },
   async mounted() {
     this.initSettings()
 
+    this.model = this.settings.model.value
+
     this.engine = new CachedInferenceEngine({
       serviceUrl: this.settings.serviceUrl.value,
       apiKey: this.settings.apiKey.value,
-      model: this.settings.model.value,
+      model: this.model,
       contextLength: this.settings.contextLength.value,
     })
 
@@ -113,6 +117,7 @@ createApp({
           text: qst.text,
           answer: response?.answer ?? 'undefined',
           score: response?.answer === 'yes' ? qst.effect : 0,
+          llmResponse: response
         })
       }
       return ret
@@ -128,6 +133,14 @@ createApp({
       let ret = null
       if (this.questionnaire.buckets) {
         ret = this.questionnaire.buckets[this.totalScore]
+      }
+      return ret
+    },
+    sortedBuckets() {
+      let keys = Object.keys(this.questionnaire.buckets).sort((a, b) => Number(a) - Number(b))
+      let ret = []
+      for (let k of keys) {
+        ret.push({...this.questionnaire.buckets[k], total: k})
       }
       return ret
     },
@@ -260,5 +273,8 @@ createApp({
     onClickShowDetails() {
       this.areDetailsShown = true
     },
+    onClickExplainAlgorithm() {
+      this.isAlgorithmExplained = !this.isAlgorithmExplained
+    }
   }
 }).mount('#app')
