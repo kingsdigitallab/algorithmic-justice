@@ -37,7 +37,7 @@ Another simple option is to use the [OpenRouter platform](https://openrouter.ai/
 which is a third-party service that offers a large number of paid-for and free models.
 All you need is to create an account and an API key.
 
-If everything goes well, you can return to the 'Highlighter' or 'Highlighter'
+If everything goes well, you can return to the 'Questionnaire' or 'Highlighter'
 tab and ask a question to the language model.
 
 # Running the application on your local machine
