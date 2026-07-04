@@ -102,9 +102,7 @@ createApp({
         this.selectedCase?.statement, 
         response?.highlights ?? []
       )
-      nextTick(() => {
-        window.tippy('[data-tippy-content]');
-      })
+      this.enableNewTooltips('#statement span.passage')
       return ret
     },
     reviewRows() {
@@ -126,9 +124,7 @@ createApp({
         })
       }
 
-      nextTick(() => {
-        window.tippy('[data-tippy-content]');
-      })
+      this.enableNewTooltips()
 
       return ret
     },
@@ -294,6 +290,12 @@ createApp({
     },
     onClickQuestion(question) {
       this.selectedQuestion = question
+    },
+    enableNewTooltips(selector) {
+      selector = selector || ''
+      nextTick(() => {
+        window.tippy(`${selector}[data-tippy-content]`);
+      })
     },
   }
 }).mount('#app')
