@@ -11,6 +11,7 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
     <style>
+      :root { --selected-color: lightblue; }
       .longtext {
         height: 70vh;
       }
@@ -18,7 +19,7 @@
         opacity: 0.5;
       }
       .passage {
-        background-color: orange;
+        background-color: var(--selected-color);
         color: black;
         padding: 0.2em;
       }
@@ -54,6 +55,26 @@
       td.score-2 {
         background-color: hsl(150, 60%, 85%);
       }
+      table.table.table-questionnaire {
+        --tbl-border: 3px;
+        border-collapse: collapse;
+
+        td:first-child, td:nth-child(2) { cursor: pointer; }
+
+        tr {
+          border: var(--tbl-border) solid #e0e0e0;
+        }
+
+        tr.selected {
+          td {
+            border-top: var(--tbl-border) solid var(--selected-color);
+            border-bottom: var(--tbl-border) solid var(--selected-color);
+          }
+
+          td:first-child { border-left: var(--tbl-border) solid var(--selected-color); }
+          td:last-child { border-right: var(--tbl-border) solid var(--selected-color); }
+        }
+      }
     </style>
   </head>
   <body>
@@ -78,7 +99,7 @@
                   <p class="title is-4">Suggested penalty: £{{penalty}}</p>
                   <p v-if="undeterminedWarningMessage">{{undeterminedWarningMessage}}</p>
                 </div>
-                <table class="table">
+                <table class="table is-striped is-hoverable table-questionnaire">
                   <thead>
                     <tr>
                       <th>Question</th>
@@ -87,14 +108,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(question, idx) in reviewRows">
-                      <td>{{idx+1}}. {{question.text}}</td>
-                      <td>{{question.answer}}</td>
-                      <td :class="`score-${question.score}`">
-                        {{getEffectLabelFromQuestion(question)}} 
-                        <template v-if="isAlgorithmExplained">({{question.score}})</template>
-                      </td>
-                    </tr>
+                    <template v-for="(question, idx) in reviewRows">
+                      <tr @click="onClickQuestion(question)" :class="{'selected': question?.text == selectedQuestion?.text}">
+                        <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{idx+1}}. {{question.text}}</td>
+                        <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{question.answer}}</td>
+                        <td :class="`score-${question.score}`">
+                          {{getEffectLabelFromQuestion(question)}} 
+                          <template v-if="isAlgorithmExplained">({{question.score}})</template>
+                        </td>
+                      </tr>
+                    </template>
                     <tr v-if="isAlgorithmExplained">
                       <td></td>
                       <td><strong>Total effect</strong>:</td>

@@ -62,10 +62,12 @@ createApp({
       isServiceWorking: false,
       questionnaire: {},
       modelsList: [],
-      areDetailsShown: false,
+      areDetailsShown: true,
       // areScoresShown: false,
       isAlgorithmExplained: false,
       model: null,
+      hoveredQuestion: null,
+      selectedQuestion: null,
     }
   },
   async mounted() {
@@ -95,11 +97,14 @@ createApp({
     highlightedQuestionnaireStatement() {
       // let ret = this.questionnaire.questions[this.questionnaire.selectedQuestionIndex]?.text
       // let response = this.getLLMResponseToQuestionnaire(questionText)
-      let response = null
+      let response = this.hoveredQuestion?.llmResponse || this.selectedQuestion?.llmResponse
       let ret = this.highlightText(
         this.selectedCase?.statement, 
         response?.highlights ?? []
       )
+      nextTick(() => {
+        window.tippy('[data-tippy-content]');
+      })
       return ret
     },
     reviewRows() {
@@ -120,6 +125,11 @@ createApp({
           llmResponse: response
         })
       }
+
+      nextTick(() => {
+        window.tippy('[data-tippy-content]');
+      })
+
       return ret
     },
     totalScore() {
@@ -275,6 +285,15 @@ createApp({
     },
     onClickExplainAlgorithm() {
       this.isAlgorithmExplained = !this.isAlgorithmExplained
-    }
+    },
+    onHoverQuestion(question) {
+      this.hoveredQuestion = question
+    },
+    onUnhoverQuestion(question) {
+      this.hoveredQuestion = null
+    },
+    onClickQuestion(question) {
+      this.selectedQuestion = question
+    },
   }
 }).mount('#app')
