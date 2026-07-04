@@ -75,6 +75,9 @@
           td:last-child { border-right: var(--tbl-border) solid var(--selected-color); }
         }
       }
+      table.buckets tr.selected {
+        background-color: var(--selected-color);
+      }
     </style>
   </head>
   <body>
@@ -113,8 +116,18 @@
                         <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{idx+1}}. {{question.text}}</td>
                         <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{question.answer}}</td>
                         <td :class="`score-${question.score}`">
-                          {{getEffectLabelFromQuestion(question)}} 
-                          <template v-if="isAlgorithmExplained">({{question.score}})</template>
+                          <template v-if="question.answer === 'undetermined'">
+                            <select v-model="userScores[caseKey+question.text]" class="select">
+                              <option v-for="effect in sortedEffects" :value="effect.value">
+                                {{ effect.label }} 
+                                <template v-if="isAlgorithmExplained">({{effect.value}})</template>
+                              </option>
+                            </select>
+                          </template>
+                          <template v-else>
+                            {{getEffectLabelFromQuestion(question)}} 
+                            <template v-if="isAlgorithmExplained">({{question.score}})</template>
+                          </template>
                         </td>
                       </tr>
                     </template>
@@ -137,7 +150,7 @@
                   <p>Penalty (£{{penalty}}) = Weekly wage (£{{selectedCase?.weeklyWage}}) * Bucket ratio ({{bucket.ratio}})</p>
                   <p>The bucket is determined by the total effect.</p>
                   <p>The <strong>Total effect</strong> is the sum of the effect for each answer in the above questionnaire.</p>
-                  <table>
+                  <table class="table buckets">
                     <thead>
                       <tr>
                         <th>Total effect</th>
@@ -146,10 +159,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="bucket in sortedBuckets">
-                        <td>{{bucket.total}}</td>
-                        <td>{{bucket.number}}</td>
-                        <td>{{bucket.ratio}}</td>
+                      <tr v-for="abucket in sortedBuckets" :class="{selected: abucket.total == totalScore}">
+                        <td>{{abucket.total}}</td>
+                        <td>{{abucket.number}}</td>
+                        <td>{{abucket.ratio}}</td>
                       </tr>
                     </tbody>
                   </table>

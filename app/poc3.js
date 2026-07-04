@@ -62,12 +62,13 @@ createApp({
       isServiceWorking: false,
       questionnaire: {},
       modelsList: [],
-      areDetailsShown: true,
-      // areScoresShown: false,
+      areDetailsShown: false,
       isAlgorithmExplained: false,
       model: null,
       hoveredQuestion: null,
       selectedQuestion: null,
+      // maps `${CASEKEY}${QUESTIONTEXT}` to a score given by user (default=score for the LLM answer)
+      userScores: {},
     }
   },
   async mounted() {
@@ -116,10 +117,12 @@ createApp({
           }
         )
         response = this.engine.parseObject(response?.response)
+        let score = response?.answer === 'yes' ? qst.effect : 0
+        this.userScores[this.caseKey+qst.text] = Number(this.userScores[this.caseKey+qst.text] || score)
         ret.push({
           text: qst.text,
           answer: response?.answer ?? 'undefined',
-          score: response?.answer === 'yes' ? qst.effect : 0,
+          score: this.userScores[this.caseKey+qst.text],
           llmResponse: response
         })
       }
@@ -127,6 +130,9 @@ createApp({
       this.enableNewTooltips()
 
       return ret
+    },
+    caseKey() {
+      return this.questionnaire.selectedCaseKey
     },
     totalScore() {
       let ret = 0
@@ -147,6 +153,17 @@ createApp({
       let ret = []
       for (let k of keys) {
         ret.push({...this.questionnaire.buckets[k], total: k})
+      }
+      return ret
+    },
+    sortedEffects() {
+      let keys = Object.keys(this.questionnaire.effectsLabel).sort((a, b) => Number(a) - Number(b))
+      let ret = []
+      for (let k of keys) {
+        ret.push({
+          value: k,
+          label: this.questionnaire.effectsLabel[k]
+        })
       }
       return ret
     },
