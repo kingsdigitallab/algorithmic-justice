@@ -114,7 +114,7 @@
                     <template v-for="(question, idx) in reviewRows">
                       <tr @click="onClickQuestion(question)" :class="{'selected': question?.text == selectedQuestion?.text}">
                         <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{idx+1}}. {{question.text}}</td>
-                        <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{question.answer}} {{question.answerSecondary}}</td>
+                        <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{question.answer}}</td>
                         <td :class="`score-${question.score}`">
                           <template v-if="question.answer === 'undetermined'">
                             <select v-model="userScores[caseKey+question.text]" class="select">

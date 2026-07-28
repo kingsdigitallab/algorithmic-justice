@@ -2,7 +2,7 @@
 // AJ_LLM_API=http://localhost:11436/v1 AJ_MODEL=qwen3.6:27b node cache.mjs fetch
 // AJ_LLM_API=http://localhost:11436/v1 AJ_MODEL=granite4.1:30b node cache.mjs fetch
 import { readFileSync, writeFileSync } from 'node:fs'
-import { getDefaultSetting } from '../app/settings.mjs'
+import { getDefaultSetting, SETTINGS } from '../app/settings.mjs'
 import CachedInferenceEngine from '../app/cached-inference-engine.mjs'
 
 const APP_DATA_FILE = new URL('../app/data/app-data.json', import.meta.url)
@@ -41,7 +41,10 @@ class ResponseCacheManager {
     }
 
     for (const [model, count] of Object.entries(counts)) {
-      console.log(`${model}\t${count}`)
+      let modelSelection = ''
+      if (model == SETTINGS.model.default) modelSelection = 'default';
+      if (model == SETTINGS.modelSecondary.default) modelSelection = 'secondary';
+      console.log(`${model}\t${count}\t${modelSelection}`)
     }
   }
 
@@ -105,11 +108,17 @@ class ResponseCacheManager {
     } else if (action === 'expand') {
       this.actionExpand()
     } else {
+      console.log('Usage: node cache.mjs ACTION')
+      console.log('ACTIONS')
+      console.log('  ls:      list metadata about all cached answers')
+      console.log('  models:  list all models and number of answers for each in cache')
+      console.log('  fetch:   prompt LLM with all questions and save answers in cache')
+      console.log('  compact: remove derived data from cache and blank spaces')
+      console.log('  expand:  indent cache file for improved readability')
       if (action && action !== 'help') {
         console.error('Unknown action:', action)
+        process.exit(1)
       }
-      console.error('Usage: node cache.mjs <ls|models|fetch>')
-      process.exit(1)
     }
   }
 }
