@@ -41,7 +41,7 @@
   "effectsLabel": {
     "-2": "aggravating",
     "-1": "somewhat aggravating",
-    "0": "undetermined",
+    "0": "none",
     "1": "somewhat mitigating",
     "2": "mitigating"
   },

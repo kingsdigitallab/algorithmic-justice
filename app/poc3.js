@@ -266,7 +266,8 @@ createApp({
       return `${acase.incidentDate} - ${nameParts[1]} ${nameParts[0][0]}.`;
     },
     getEffectLabelFromQuestion(question) {
-      return this.questionnaire.effectsLabel[question.score] || 'undetermined'
+      let defaultLabel = this.questionnaire.effectsLabel['0']
+      return this.questionnaire.effectsLabel[question.score] || defaultLabel
     },
     highlightText(text, highlights) {
       // TODO: deduped this code from nlpui.js
