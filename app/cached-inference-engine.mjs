@@ -31,7 +31,7 @@ export default class CachedInferenceEngine extends InferenceEngine {
     return ret
   }
 
-  async saveCache() {
+  async saveCache(compact=false) {
     const url = this.cacheUrl
     const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null
     const urlStr = typeof url === 'string' ? url : url.href
@@ -40,7 +40,11 @@ export default class CachedInferenceEngine extends InferenceEngine {
         const { writeFileSync } = await import('node:fs')
         const { fileURLToPath } = await import('node:url')
         const filePath = urlStr.startsWith('file:') ? fileURLToPath(urlStr) : urlStr
-        writeFileSync(filePath, JSON.stringify(this.cache))
+        writeFileSync(filePath, JSON.stringify(
+          this.cache, 
+          null, 
+          compact ? undefined : 2
+        ))
       }
     }
   }
@@ -67,13 +71,14 @@ export default class CachedInferenceEngine extends InferenceEngine {
     return ret
   }
 
-  getCachedResponseFromTemplate(template, variables) {
+  getCachedResponseFromTemplate(template, variables, model=null) {
     let prompt = this.getPromptFromTemplate(template, variables)
-    return this.getCachedResponse(prompt)
+    return this.getCachedResponse(prompt, model)
   }
 
-  getCachedResponse(prompt) {
-    let key = CachedInferenceEngine.hash(`${this.model}-${prompt}`)
+  getCachedResponse(prompt, model=null) {
+    model = model || this.model
+    let key = CachedInferenceEngine.hash(`${model}-${prompt}`)
     // console.log(key, prompt)
     return this.cache[key] ?? null
   }
@@ -115,6 +120,16 @@ export default class CachedInferenceEngine extends InferenceEngine {
       hash |= 0
     }
     return hash
+  }
+
+  removeDerivedProperties() {
+    for (let entry of Object.values(this.cache)) {
+      for (let k of Object.keys(entry)) {
+        if (!['response', 'model', 'hash'].includes(k)) {
+          delete entry[k]
+        }
+      }
+    }    
   }
 
 }

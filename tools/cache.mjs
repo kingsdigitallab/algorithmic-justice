@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// AJ_LLM_API=http://localhost:11436/v1 AJ_MODEL=qwen3.6:27b node cache.mjs fetch
+// AJ_LLM_API=http://localhost:11436/v1 AJ_MODEL=granite4.1:30b node cache.mjs fetch
 import { readFileSync, writeFileSync } from 'node:fs'
 import { getDefaultSetting } from '../app/settings.mjs'
 import CachedInferenceEngine from '../app/cached-inference-engine.mjs'
@@ -50,7 +52,7 @@ class ResponseCacheManager {
     for (const [caseKey, caseData] of Object.entries(appData.cases)) {
       let questionIndex = 0
       for (const question of appData.questions) {
-        console.log(`${caseKey}, ${questionIndex+1}, ${question.text}`)
+        console.log(`Questionnaire; ${caseKey}, question ${questionIndex+1}, ${question.text}`)
         let res = await this.engine.sendPromptTemplate(template, {
           STATEMENT: caseData.statement,
           QUESTION: question.text,
@@ -67,7 +69,7 @@ class ResponseCacheManager {
     for (const [caseKey, caseData] of Object.entries(appData.cases)) {
       let questionIndex = 0
       for (const question of questions) {
-        console.log(`${caseKey}, ${questionIndex+1}, ${question}`)
+        console.log(`Highlighter; ${caseKey}, question ${questionIndex+1}, ${question}`)
         let res = await this.engine.sendPromptTemplate(template, {
           STATEMENT: caseData.statement,
           QUESTION: question,
@@ -80,6 +82,15 @@ class ResponseCacheManager {
     this.engine.saveCache()
   }
 
+  async actionCompact() {
+    this.engine.removeDerivedProperties()
+    this.engine.saveCache(true)
+  }
+
+  async actionExpand() {
+    this.engine.saveCache()
+  }
+
   async runAction(action) {
     await this.loadCache()
 
@@ -89,6 +100,10 @@ class ResponseCacheManager {
       this.actionModels()
     } else if (action === 'fetch') {
       this.actionFetch()
+    } else if (action === 'compact') {
+      this.actionCompact()
+    } else if (action === 'expand') {
+      this.actionExpand()
     } else {
       if (action && action !== 'help') {
         console.error('Unknown action:', action)

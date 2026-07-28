@@ -138,6 +138,12 @@ export const SETTINGS = {
     inQueryString: true,
     lookup: 'getModelsList',
   },
+  modelSecondary: {
+    default: "qwen3.6:27b",
+    // default: "gpt-oss:20b",
+    inQueryString: true,
+    lookup: 'getModelsList',
+  },
   serviceUrl: {
     default: "CACHED",
     // default: "https://ai.create" + ".kcl.ac.uk/api/",

@@ -62,7 +62,7 @@ createApp({
       isServiceWorking: false,
       questionnaire: {},
       modelsList: [],
-      areDetailsShown: false,
+      areDetailsShown: true,
       isAlgorithmExplained: false,
       model: null,
       hoveredQuestion: null,
@@ -109,19 +109,16 @@ createApp({
     reviewRows() {
       let ret = []
       for (let qst of this?.questionnaire?.questions ?? []) {
-        let response = this.engine.getCachedResponseFromTemplate(
-          this.settings.templateQuestionnaire.value, 
-          {
-            QUESTION: qst.text, 
-            STATEMENT: this.selectedCase.statement
-          }
-        )
-        response = this.engine.parseObject(response?.response)
+        let response = this.getResponse(qst)
+        let responseSecondary = this.getResponse(qst, true)
+
         let score = response?.answer === 'yes' ? qst.effect : 0
         this.userScores[this.caseKey+qst.text] = Number(this.userScores[this.caseKey+qst.text] || score)
+        
         ret.push({
           text: qst.text,
           answer: response?.answer ?? 'undefined',
+          answerSecondary: responseSecondary?.answer ?? 'undefined',
           score: this.userScores[this.caseKey+qst.text],
           llmResponse: response
         })
@@ -313,6 +310,17 @@ createApp({
       nextTick(() => {
         window.tippy(`${selector}[data-tippy-content]`);
       })
+    },
+    getResponse(question, useSecondaryModel=false) {
+      let response = this.engine.getCachedResponseFromTemplate(
+        this.settings.templateQuestionnaire.value, 
+        {
+          QUESTION: question.text, 
+          STATEMENT: this.selectedCase.statement
+        },
+        useSecondaryModel ? this.settings.modelSecondary.value : this.settings.model.value, 
+      )
+      return this.engine.parseObject(response?.response)
     },
   }
 }).mount('#app')
