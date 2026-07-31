@@ -73,9 +73,9 @@ and saved their responses in a file.
 The user interface of the prototypes then fetches the responses from that file 
 instead of a model server, which is:
 * more cost effective (i.e. it's free), 
-* more sustainable (i.e. it will still work in the future even of the model is decommissioned), 
+* more sustainable (i.e. it will still work in the future even if the model is decommissioned), 
 * much more responsive (i.e. no delay for the end user)
-* more reliable (i.e. no model server downtime or connection issue will ruin a workshop or testing session)
+* more reliable (i.e. no model server downtime or connection issue will disrupt a workshop or a testing session)
 * much easier to configure (i.e. no service account, VPN, API key or other configuration)
 * more secure (i.e. no risk of losing keys or exposing KCL LLM platform)
 
