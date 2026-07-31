@@ -47,8 +47,6 @@ import CachedInferenceEngine from './cached-inference-engine.mjs'
 // const MODEL = "gemma3:12b" // can't disable thinking, which takes a lot of tokens and time
 // const MODEL = "gemma3:4b"
 
-const SERVICE_CACHE = 'CACHED'
-
 const TAB_HIGHLIGHTER = 'highlighter'
 
 const DELAY_IN_SECONDS_FOR_CACHED_RESPONSES = 2
@@ -115,9 +113,9 @@ createApp({
           'title': 'Settings',
         }
       },
-      // selectedTab: 'questionnaire',
+      selectedTab: 'questionnaire',
       // selectedTab: 'settings',
-      selectedTab: TAB_HIGHLIGHTER,
+      // selectedTab: TAB_HIGHLIGHTER,
       questionnaire: {
         cases: {},
         questions: [
@@ -264,6 +262,8 @@ createApp({
       this.isResponding = true
       try {
         await this.engine.fetchModels()
+        console.log(this.engine.serviceUrl)
+        console.log(this.engine.models)
         this.isServiceWorking = this.engine.isWorking
         this.modelsList = [...this.engine.models]
       } catch (error) {
@@ -271,13 +271,13 @@ createApp({
         this.setMessage(error.message, 'danger')
       }
       this.isResponding = false
-      this.updateModelsListFromCachedResponses()
+      // this.updateModelsListFromCachedResponses()
     },
-    updateModelsListFromCachedResponses() {
-      // even if no model engine is available 
-      // we want the user to access the cached responses
-      this.modelsList = [...this.modelsList, ...this.engine?.getCachedModels() ?? []]
-    },
+    // updateModelsListFromCachedResponses() {
+    //   // even if no model engine is available 
+    //   // we want the user to access the cached responses
+    //   this.modelsList = [...this.modelsList, ...this.engine?.getCachedModels() ?? []]
+    // },
     getMagistrateResponse(questionText) {
       if (!(questionText in this.userResponses)) {
         this.userResponses[questionText] = { answer: null, askedAI: false }
@@ -365,6 +365,7 @@ createApp({
           response.askedAI = false
         }
         this.questionnaire.selectedQuestionIndex = null
+        this.cachingMessage = ''
       }
     },
     async onHighlighterQuestionEnter() {
@@ -423,7 +424,7 @@ createApp({
       } else {
         this.isResponding = true
         this.setMessage(`Model server is processing your request...`)
-        if (!this.isServiceWorking) {
+        if (0 && !this.isServiceWorking) {
           await CachedInferenceEngine.delay(DELAY_IN_SECONDS_FOR_CACHED_RESPONSES)
         }
         this.setMessage('')

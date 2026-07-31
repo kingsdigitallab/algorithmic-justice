@@ -83,6 +83,16 @@ export default class CachedInferenceEngine extends InferenceEngine {
     return this.cache[key] ?? null
   }
 
+  async fetchModels() {
+    if (this.serviceUrl.includes('/')) {
+      return await super.fetchModels()
+    }
+    let ret = this.getCachedModels()
+    this.models = ret
+    this.isWorking = ret.length > 0
+    return ret
+  }
+
   getCachedModels() {
     let ret = []
 

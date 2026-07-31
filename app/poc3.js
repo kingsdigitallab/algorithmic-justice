@@ -6,12 +6,12 @@ DONE show case
 DONE show penalty
 DONE table
 DONE draw LLM responses from cache
-S explaination
-C highlights
+DONE explaination
+DONE highlights
 C summary 
-W highlights snippets
-W show algorithm
-W polish interface
+DONE highlights snippets
+DONE show algorithm
+C polish interface
 
 S dedupe code (with nlpui.js)
 */
@@ -61,10 +61,11 @@ createApp({
       isResponding: false,
       isServiceWorking: false,
       questionnaire: {},
-      modelsList: [],
+      // modelsList: [],
       areDetailsShown: true,
       isAlgorithmExplained: false,
-      model: null,
+      // model: null,
+      // modelSecondary: null,
       hoveredQuestion: null,
       selectedQuestion: null,
       // maps `${CASEKEY}${QUESTIONTEXT}` to a score given by user (default=score for the LLM answer)
@@ -74,20 +75,28 @@ createApp({
   async mounted() {
     this.initSettings()
 
-    this.model = this.settings.model.value
-
     this.engine = new CachedInferenceEngine({
       serviceUrl: this.settings.serviceUrl.value,
       apiKey: this.settings.apiKey.value,
-      model: this.model,
+      // model: this.model,
       contextLength: this.settings.contextLength.value,
     })
+    await this.engine.loadCache('data/responses.json')
+    
+    this.selectModel()
+    this.selectModel(true)
 
     await this.loadQuestionnaire()
 
     await this.initService()    
   },
   computed: {
+    model() {
+      return this.settings.model.value
+    },
+    modelSecondary() {
+      return this.settings.modelSecondary.value
+    },
     selectedCase() {
       let ret = null
       if (this?.questionnaire?.cases) {
@@ -225,9 +234,7 @@ createApp({
     async loadQuestionnaire() {
       // TODO: deduped this code from nlpui.js
       let res = await loadJson('data/app-data.json')
-      if (res) {
-        await this.engine.loadCache('data/responses.json')
-        
+      if (res) {       
         this.questionnaire = res
         this.questionnaire.selectedQuestionIndex = null
         // let responses = await loadJson('data/responses.json')
@@ -241,19 +248,39 @@ createApp({
       try {
         await this.engine.fetchModels()
         this.isServiceWorking = this.engine.isWorking
-        this.modelsList = [...this.engine.models]
+        // this.modelsList = [...this.engine.models]
       } catch (error) {
         this.isServiceWorking = false
         this.setMessage(error.message, 'danger')
       }
       this.isResponding = false
-      this.updateModelsListFromCachedResponses()
+      // this.updateModelsListFromCachedResponses()
     },
-    updateModelsListFromCachedResponses() {
-      // TODO: deduped this code from nlpui.js
-      // even if no model engine is available 
-      // we want the user to access the cached responses
-      this.modelsList = [...this.modelsList, ...this.engine?.getCachedModels() ?? []]
+    // updateModelsListFromCachedResponses() {
+    //   // TODO: deduped this code from nlpui.js
+    //   // even if no model engine is available 
+    //   // we want the user to access the cached responses
+    //   this.modelsList = [...this.modelsList, ...this.engine?.getCachedModels() ?? []]
+    // },
+    async selectModel(secondary=false) {
+      let models = await this.engine.fetchModels()
+      const modelRank = 'model' + (secondary ? 'Secondary' : '')
+      const modelCandidates = [
+        this.settings[modelRank].value,
+        this.settings[modelRank].default,
+        secondary ? 1 : 0,
+      ]
+      for (let model of modelCandidates) {
+        console.log(model)
+        if (typeof model === 'number') {
+          model = models[model]
+        }
+        if (!models.includes(model)) {
+          continue
+        }
+        this.settings[modelRank].value = model
+        break
+      }
     },
     setMessage(message, level='info') {
       // TODO: deduped this code from nlpui.js
@@ -319,7 +346,7 @@ createApp({
           QUESTION: question.text, 
           STATEMENT: this.selectedCase.statement
         },
-        useSecondaryModel ? this.settings.modelSecondary.value : this.settings.model.value, 
+        useSecondaryModel ? this.modelSecondary : this.model, 
       )
       return this.engine.parseObject(response?.response)
     },

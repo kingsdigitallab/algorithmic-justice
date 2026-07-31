@@ -123,7 +123,7 @@
                             <select v-model="userScores[caseKey+question.text]" class="select">
                               <option v-for="effect in sortedEffects" :value="effect.value">
                                 {{ effect.label }} 
-                                <template v-if="isAlgorithmExplained">({{effect.value}})</template>
+                                <template v-if="0 && isAlgorithmExplained">({{effect.value}})</template>
                               </option>
                             </select>
                           </template>
