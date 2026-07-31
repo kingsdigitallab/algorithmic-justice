@@ -129,3 +129,15 @@ in the "Api Key" input box in the Settings tab.
 Both Openrouter and eResearch platform offer free and low cost access to models.
 OpenRouter has a very large selection whereas eResearch hosts three to four models
 but with better support for staff and more secure policies for sensitive data.
+
+## Where are the questions and other algorithmic parameters stored?
+
+They can be found in this configuration file:
+
+[app-data.json](https://github.com/kingsdigitallab/algorithmic-justice/blob/main/app/data/app-data.json)
+
+Whereas the other variables, such as the prompt templates,
+visible on the Settings tab are stored in this file:
+
+[settings.mjs](https://github.com/kingsdigitallab/algorithmic-justice/blob/main/app/settings.mjs)
+
