@@ -122,11 +122,13 @@ is selected in the "Service Url" dropdown
 the prototypes will prompt the models directly without a cache. 
 In that mode, the Highlighter will also allow the user to type their own query.
 
-However to use those model provider you'll need to consult their website 
+However to use those model providers you'll need to consult their website 
 to find out how to obtain a personal API key which can then be pasted 
-in the "Api Key" input box in the Settings tab.
+in the "API Key" input box in the Settings tab. It shouldn't take more than 10 minutes.
+If all goes well the list of available models from the selected service will appear 
+in the "Model" dropdown.
 
-Both Openrouter and eResearch platform offer free and low cost access to models.
+Both Openrouter and eResearch platforms offer free and low cost access to models.
 OpenRouter has a very large selection whereas eResearch hosts three to four models
 but with better support for staff and more secure policies for sensitive data.
 
@@ -142,7 +144,7 @@ Each time the questionnaire changes the responses have to be
 computed and cached by a KDL developer. 
 Note that the questionnaire and the cached responses 
 are shared by between the Questionnaire tab 
-and the integrated prototype.
+and the Integrated prototype.
 
 Whereas the other variables, such as the prompt templates,
 visible on the Settings tab are stored in this file:
@@ -156,4 +158,5 @@ the settings are reset to their default.
 
 Any change in those two files above will trigger 
 an automatic rebuild of the website on github.
-After a couple of minutes the changes will appear in the live interfaces.
+After a couple of minutes the changes will appear in the live interfaces
+if you reload the page in your browser.
