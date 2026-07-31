@@ -80,6 +80,9 @@
                 <a class="button is-warning" v-if="isServiceWorking" @click="removeCachedResponsesBySelectedModel()">Remove cached responses</a>
               </div>
             </div>
+            <p>
+              <a :href="`./poc3.html?model=${settings.model.value}`" target="_blank">Open integrated prototype with selected model ({{settings.model.value}})</a>
+            </p>
           </form>
         </div>
         <div v-show="selectedTab == 'questionnaire'" id="tab-questionnaire">

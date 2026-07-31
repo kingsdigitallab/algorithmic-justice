@@ -52,3 +52,6 @@ This allows you to share a link with other users or tester
 who will only see that particular model 
 when the integrated prototype loads in their browser.
 
+Before sharing a link, please double check that it selects the desired model 
+by opening it in your browser and verifying the name in the algorithm section.
+
