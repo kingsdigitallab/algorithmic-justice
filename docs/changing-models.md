@@ -22,13 +22,13 @@ you can also pre-render all the responses at once
 after changing a model
 by pressing the "Show all responses" button 
 at the bottom of the Settings screen 
-then return to the Questionnare tab.
+then return to the Questionnaire tab.
 
 ![Settings tab, show all responses button](settings-show-all-responses.png)
 
 Whenever you change a model 
 its name is updated in the URL of the web page 
-which is usually visible in the address bar of your browser.
+which may be visible in the address bar of your browser.
 You can therefore bookmark, copy and share that address 
 and the next time it is opened, that model will be pre-selected.
 
@@ -55,16 +55,77 @@ who will only see that particular model
 when the integrated prototype loads in their browser.
 
 **Before sharing a link, please double check that it selects the desired model 
-by opening it in your browser and verifying the name in the algorithm section**.
+by opening it in your browser and verifying its name in the algorithm section**.
 
 One way to obtain the link to the intergrated prototpye with the correct model
 is to:
-1. visit the Settings tab on the Questionnaire and Highlighter page,
-2. select the desired model in the drop down
+1. visit the Settings tab on the Questionnaire and Highlighter page;
+2. select the desired model in the drop down;
 3. click the link at the bottom of the Settings tab
 
 ![Settings link to integrated prototype](settings-link.png)
 
-## Adding more models to the cache
+## Cached mode
 
-Coming soon.
+By default all the prototypes work with *cached* responses from a small range of models.
+Caching here means that a KDL developer has prompted models with all possible questions 
+and saved their responses in a file. 
+The user interface of the prototypes then fetches the responses from that file 
+instead of a model server, which is:
+* more cost effective (i.e. it's free), 
+* more sustainable (i.e. it will still work in the future even of the model is decommissioned), 
+* much more responsive (i.e. no delay for the end user)
+* more reliable (i.e. no model server downtime or connection issue will ruin a workshop or testing session)
+* much easier to configure (i.e. no service account, VPN, API key or other configuration)
+* more secure (i.e. no risk of losing keys or exposing KCL LLM platform)
+
+That caching mode is the default. 
+When it is enabled you'll see the Service Url dropdown set to "CACHED".
+
+<img width="436" height="362" alt="image" src="https://github.com/user-attachments/assets/c38eb41c-9b41-4dbb-a57a-491e278a9ba3" />
+
+Caching also comes with some disadvantages. 
+If a question changes or a new model is needed, 
+a KDL developer has to prompt the model offline and the responses to the cache.
+In that mode the Highlighter only works with predefined queries.
+
+It is technically feasible to update the cache with new models and questions
+with a combination of the prototype interface and access to the github repository.
+But that process is a bit more involved. 
+KDL can provide additional instructions for it if needed.
+
+## Models
+
+The models used in this prototype are on the smaller end of the range.
+The number at the end of the name is the quantity of parameters.
+For instance gemma3:4b has 4 billion parameters.
+Which is considered very small. 
+Smaller models will have less world knowledge 
+and follow instructions will less nuance or accuracy 
+(e.g. simple or sometimes poor reasoning; less ability to find passages in statement).
+
+KDL can access models up to ~30 billion parameters on its own infrastructure.
+For instance qwen3.6:27b. 
+These are still considered small compared to leading LLMs 
+which have hundreds (or thousands) of billions of parameters.
+It's important to understand that there can be a considerable gap in 
+output quality among small and larger models. 
+However for relatively simple tasks based on small amount of textual input,
+that gap is not always so pronounced.
+
+## Live prompting
+
+When a model server like 
+[Openrouter](https://openrouter.ai/) 
+or [KCL eResearch (ai.create.kcl.ac.uk)](ai.create.kcl.ac.uk)
+is selected in the "Service Url" dropdown 
+the prototypes will prompt the models directly without a cache. 
+In that mode, the Highlighter will also allow the user to type their own query.
+
+However to use those model provider you'll need to consult their website 
+to find out how to obtain a personal API key which can then be pasted 
+in the "Api Key" input box in the Settings tab.
+
+Both Openrouter and eResearch platform offer free and low cost access to models.
+OpenRouter has a very large selection whereas eResearch hosts three to four models
+but with better support for staff and more secure policies for sensitive data.
