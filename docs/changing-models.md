@@ -136,8 +136,24 @@ They can be found in this configuration file:
 
 [app-data.json](https://github.com/kingsdigitallab/algorithmic-justice/blob/main/app/data/app-data.json)
 
+The questionnaire is not editable via the interface, 
+they can be changed in the file only. 
+Each time the questionnaire changes the responses have to be 
+computed and cached by a KDL developer. 
+Note that the questionnaire and the cached responses 
+are shared by between the Questionnaire tab 
+and the integrated prototype.
+
 Whereas the other variables, such as the prompt templates,
 visible on the Settings tab are stored in this file:
 
 [settings.mjs](https://github.com/kingsdigitallab/algorithmic-justice/blob/main/app/settings.mjs)
 
+Those settings can be temporarily changed in the Settings tab, 
+but it won't affect the default values stored in the file.
+When you reload the web page without special argument in the URL,
+the settings are reset to their default.
+
+Any change in those two files above will trigger 
+an automatic rebuild of the website on github.
+After a couple of minutes the changes will appear in the live interfaces.
