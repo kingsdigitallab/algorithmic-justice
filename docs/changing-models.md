@@ -86,11 +86,11 @@ When it is enabled you'll see the Service Url dropdown set to "CACHED".
 
 Caching also comes with some disadvantages. 
 If a question changes or a new model is needed, 
-a KDL developer has to prompt the model offline and the responses to the cache.
+a KDL developer has to prompt the model offline and add the responses to the cache.
 In that mode the Highlighter only works with predefined queries.
 
 It is technically feasible to update the cache with new models and questions
-with a combination of the prototype interface and access to the github repository.
+by using the prototype interface and github editorial interface.
 But that process is a bit more involved. 
 KDL can provide additional instructions for it if needed.
 
