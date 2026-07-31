@@ -345,8 +345,20 @@ createApp({
       }
       if (setting.inQueryString) {
         const url = new URL(window.location);
-        url.searchParams.set(settingKey, setting.value);
-        window.history.replaceState({}, '', url);
+        
+        // This creates ugly ?model=gemma4%3A31b
+        //url.searchParams.set(settingKey, setting.value);
+        //window.history.replaceState({}, '', url);
+        
+        // Convert search to a string, or parse/rebuild it manually
+        let searchParams = new URLSearchParams(url.search);
+        searchParams.set(settingKey, setting.value);
+
+        // Reconstruct the search string and manually un-escape the colon
+        let cleanSearch = searchParams.toString().replace(/%3A/g, ':');
+
+        // Update the browser's URL without a full page reload
+        window.history.replaceState({}, '', `${url.pathname}?${cleanSearch}`);
       } else {
         sessionStorage.setItem(settingKey, setting.value)
       }
