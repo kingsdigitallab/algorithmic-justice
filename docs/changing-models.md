@@ -8,7 +8,7 @@ come from the same model selected in the Settings tab.
 
 ![Setting tab, model drop down](settings-model.png)
 
-(You can ignore the "Secondary Model" dropdown on the settings page)
+(You can ignore the "Secondary Model" dropdown in the settings)
 
 By default the drop down is set to a particular model 
 (`gemma3:4b` in this example).
