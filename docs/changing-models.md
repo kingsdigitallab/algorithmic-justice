@@ -8,6 +8,8 @@ come from the same model selected in the Settings tab.
 
 ![Setting tab, model drop down](settings-model.png)
 
+(You can ignore the "Secondary Model" dropdown on the settings page)
+
 By default the drop down is set to a particular model 
 (`gemma3:4b` in this example).
 
@@ -52,6 +54,17 @@ This allows you to share a link with other users or tester
 who will only see that particular model 
 when the integrated prototype loads in their browser.
 
-Before sharing a link, please double check that it selects the desired model 
-by opening it in your browser and verifying the name in the algorithm section.
+**Before sharing a link, please double check that it selects the desired model 
+by opening it in your browser and verifying the name in the algorithm section**.
 
+One way to obtain the link to the intergrated prototpye with the correct model
+is to:
+1. visit the Settings tab on the Questionnaire and Highlighter page,
+2. select the desired model in the drop down
+3. click the link at the bottom of the Settings tab
+
+![Settings link to integrated prototype](settings-link.png)
+
+## Adding more models to the cache
+
+Coming soon.
