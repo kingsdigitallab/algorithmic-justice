@@ -187,7 +187,7 @@
                     </thead>
                     <tbody>
                       <tr v-for="(question, questionIndex) in questionnaire.questions" :class="{selected: false}">
-                        <td>{{questionIndex}}</td>
+                        <td>{{questionIndex + 1}}</td>
                         <td>{{question.effect}}</td>
                         <td>{{reviewRows[questionIndex].answer}}</td>
                         <td>{{reviewRows[questionIndex].score}}</td>
