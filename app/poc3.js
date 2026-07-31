@@ -62,7 +62,7 @@ createApp({
       isServiceWorking: false,
       questionnaire: {},
       // modelsList: [],
-      areDetailsShown: true,
+      areDetailsShown: false,
       isAlgorithmExplained: false,
       // model: null,
       // modelSecondary: null,
