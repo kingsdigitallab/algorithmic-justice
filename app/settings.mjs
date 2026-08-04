@@ -149,7 +149,7 @@ export const SETTINGS = {
     // default: "https://ai.create" + ".kcl.ac.uk/api/",
     // default: "http://localhost:11434/v1",
     inQueryString: true,
-    lookup: ['CACHED', 'http://localhost:11434/v1', 'http://localhost:11436/v1', "https://ai.create" + ".kcl.ac.uk/api/", "https://openrouter.ai/api/v1", 'https://localhost:11437/v1'],
+    lookup: ['CACHED', 'http://localhost:11434/v1', 'http://localhost:11436/v1', "https://ai.create" + ".kcl.ac.uk/api/v1", "https://openrouter.ai/api/v1", 'https://localhost:11437/v1'],
   },
   apiKey: {
     default: '',
