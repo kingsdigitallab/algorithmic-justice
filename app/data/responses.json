@@ -4,6 +4,32 @@
     "model": "granite4.1:30b",
     "hash": 39487276
   },
+  "76062930": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I've been driving for seventeen years without any points on my license\",\n      \"reason\": \"This is the only passage referencing the driver's past record, claiming a clean history without any license points.\"\n    }\n  ],\n  \"reasoning\": \"The statement mentions a seventeen-year driving record without license points, but it does not explicitly detail or confirm previous traffic offences to determine if running red lights was among them.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 76062930,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "I've been driving for seventeen years without any points on my license",
+        "reason": "This is the only passage referencing the driver's past record, claiming a clean history without any license points."
+      }
+    ],
+    "reasoning": "The statement mentions a seventeen-year driving record without license points, but it does not explicitly detail or confirm previous traffic offences to determine if running red lights was among them."
+  },
+  "90408281": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"These extra points\",\n      \"reason\": \"Suggests the offender already has existing penalty points from previous offences, although the nature of these previous offences is not detailed.\"\n    }\n  ],\n  \"reasoning\": \"The statement mentions receiving 'extra points' which implies the offender already had penalty points from previous offences, but it does not specify whether those previous offences included running red lights.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 90408281,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "These extra points",
+        "reason": "Suggests the offender already has existing penalty points from previous offences, although the nature of these previous offences is not detailed."
+      }
+    ],
+    "reasoning": "The statement mentions receiving 'extra points' which implies the offender already had penalty points from previous offences, but it does not specify whether those previous offences included running red lights."
+  },
   "122590865": {
     "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I am sorry for crossing the red light and I accept this was my mistake\",\n      \"reason\": \"The defendant explicitly admits to the offense.\"\n    },\n    {\n      \"passage\": \"I judged it wrong and went through\",\n      \"reason\": \"The defendant confirms they committed the act due to a failure in judgment.\"\n    }\n  ],\n  \"reasoning\": \"The defendant admits to crossing the red light and takes responsibility for the mistake, providing no justification that would negate guilt.\",\n  \"answer\": \"no\"\n}\n```",
     "model": "gemma4:31b",
@@ -18,6 +44,23 @@
     "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"The weather that evening was particularly grim.\",\n      \"reason\": \"Confirms that adverse weather conditions were present during the incident.\"\n    },\n    {\n      \"passage\": \"I'd slowed down to about 25mph\",\n      \"reason\": \"Shows the vehicle was being driven at a low speed.\"\n    },\n    {\n      \"passage\": \"my attention was split for what couldn't have been more than two or three seconds, but it was enough.\",\n      \"reason\": \"Indicates the crossing was due to momentary distraction rather than a mechanical or traction-related event.\"\n    },\n    {\n      \"passage\": \"I slammed the brakes much harder at that point, really quite violently, and the car lurched forward.\",\n      \"reason\": \"Describes heavy braking with forward momentum, containing no mention of skidding, sliding, or loss of tyre grip.\"\n    }\n  ],\n  \"reasoning\": \"Although the statement confirms poor weather and a low speed, it explicitly attributes crossing the stop line to split attention and delayed perception of the traffic light, with no indication that the vehicle slid or lost traction.\",\n  \"answer\": \"no\"\n}",
     "model": "qwen3.6:27b",
     "hash": 248772275
+  },
+  "251434231": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"crossing the red light\",\n      \"reason\": \"Establishes that a red light was crossed but provides no details about its duration.\"\n    },\n    {\n      \"passage\": \"When I came to the lights I thought I saw them in time, but I judged it wrong and went through.\",\n      \"reason\": \"Describes the moment of crossing the lights, yet lacks any mention of how long the red light had been active.\"\n    }\n  ],\n  \"reasoning\": \"The statement confirms the offender crossed a red light but provides no information regarding the duration or length of the red light, making it impossible to determine if it was a long red light.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "arc:apex",
+    "hash": 251434231,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "crossing the red light",
+        "reason": "Establishes that a red light was crossed but provides no details about its duration."
+      },
+      {
+        "passage": "When I came to the lights I thought I saw them in time, but I judged it wrong and went through.",
+        "reason": "Describes the moment of crossing the lights, yet lacks any mention of how long the red light had been active."
+      }
+    ],
+    "reasoning": "The statement confirms the offender crossed a red light but provides no information regarding the duration or length of the red light, making it impossible to determine if it was a long red light."
   },
   "262507220": {
     "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I wanted you to understand what actually happened that evening - the weather, the animal, the visibility, all of it - rather than simply seeing the camera image and drawing conclusions.\",\n      \"reason\": \"This directly states the desire for a full explanation of the circumstances, suggesting a complex situation requiring scrutiny.\"\n    },\n    {\n      \"passage\": \"The combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split for what couldn't have been more than two or three seconds, but it was enough.\",\n      \"reason\": \"Highlights a situation where divided attention and a rapid, potentially risky, decision-making process occurred.\"\n    },\n    {\n      \"passage\": \"But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions.\",\n      \"reason\": \"Introduces a key element – a comparison between a deliberate offense and a response to an urgent, challenging situation.\"\n    }\n  ],\n  \"reasoning\": \"The statement explicitly argues for a consideration of the unusual circumstances – the weather, the animal, and the reduced visibility – that contributed to the driver's actions, suggesting the case warrants a detailed examination in an open court.\",\n  \"answer\": \"yes\"\n}\n```",
@@ -59,6 +102,52 @@
     "model": "gemma4:31b",
     "hash": 415936392
   },
+  "456851111": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"while I accept that I crossed the red light\",\n      \"reason\": \"Defendant explicitly admits to the offense\"\n    },\n    {\n      \"passage\": \"which I understand is an offense regardless of the circumstances\",\n      \"reason\": \"Defendant acknowledges the offense stands regardless of circumstances\"\n    },\n    {\n      \"passage\": \"I recognise that I bear responsibility for the situation\",\n      \"reason\": \"Defendant takes responsibility rather than denying guilt\"\n    },\n    {\n      \"passage\": \"crossing the line is crossing the line\",\n      \"reason\": \"Defendant concedes the offense is clear-cut\"\n    }\n  ],\n  \"reasoning\": \"The defendant explicitly accepts guilt and acknowledges the offense applies regardless of circumstances, offering only mitigation rather than a defense against guilt.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 456851111,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "while I accept that I crossed the red light",
+        "reason": "Defendant explicitly admits to the offense"
+      },
+      {
+        "passage": "which I understand is an offense regardless of the circumstances",
+        "reason": "Defendant acknowledges the offense stands regardless of circumstances"
+      },
+      {
+        "passage": "I recognise that I bear responsibility for the situation",
+        "reason": "Defendant takes responsibility rather than denying guilt"
+      },
+      {
+        "passage": "crossing the line is crossing the line",
+        "reason": "Defendant concedes the offense is clear-cut"
+      }
+    ],
+    "reasoning": "The defendant explicitly accepts guilt and acknowledges the offense applies regardless of circumstances, offering only mitigation rather than a defense against guilt."
+  },
+  "476108884": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically\",\n      \"reason\": \"The defendant was directed by a police officer to move, which can be a valid defense for crossing a stop line on red\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"The defendant moved only as far as necessary to comply with the police officer's direction\"\n    },\n    {\n      \"passage\": \"I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side\",\n      \"reason\": \"Shows the defendant was initially stopped lawfully at a green light and was blocked from proceeding\"\n    }\n  ],\n  \"reasoning\": \"The defendant may not be guilty because they were following a police officer's explicit direction to clear the way for emergency vehicles, which typically supersedes traffic signals.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 476108884,
+    "answer": "yes",
+    "highlights": [
+      {
+        "passage": "I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically",
+        "reason": "The defendant was directed by a police officer to move, which can be a valid defense for crossing a stop line on red"
+      },
+      {
+        "passage": "I moved just past the white line to allow both emergency vehicles to pass",
+        "reason": "The defendant moved only as far as necessary to comply with the police officer's direction"
+      },
+      {
+        "passage": "I was positioned just before the junction at a green light, but unable to enter the junction as there was traffic on the other side",
+        "reason": "Shows the defendant was initially stopped lawfully at a green light and was blocked from proceeding"
+      }
+    ],
+    "reasoning": "The defendant may not be guilty because they were following a police officer's explicit direction to clear the way for emergency vehicles, which typically supersedes traffic signals."
+  },
   "480660931": {
     "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"ambulance and police car travelling in the road behind me\",\n      \"reason\": \"Identifies the presence of emergency vehicles requiring passage.\"\n    },\n    {\n      \"passage\": \"the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically\",\n      \"reason\": \"Suggests that a police officer gave a direct signal to move.\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"Explains the motivation for the alleged offence was to facilitate the passage of emergency services.\"\n    }\n  ],\n  \"reasoning\": \"The defendant claims they only crossed the white line because it was necessary to let emergency vehicles through and they were emphatically motioned to do so by a police officer.\",\n  \"answer\": \"yes\"\n}\n```",
     "model": "gemma4:31b",
@@ -68,6 +157,27 @@
     "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"It was a fox, quite a large one actually, and it had started to cross from the pavement.\",\n      \"reason\": \"Indicates a sudden, unexpected wildlife hazard that required immediate evasive action rather than deliberate traffic violation.\"\n    },\n    {\n      \"passage\": \"my attention was split for what couldn't have been more than two or three seconds\",\n      \"reason\": \"Explains how the emergency avoidance maneuver directly caused a momentary lapse in monitoring the traffic signal.\"\n    },\n    {\n      \"passage\": \"The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction\",\n      \"reason\": \"Suggests the traffic signal may have been malfunctioning or obscured by weather, potentially negating conscious disregard of a clear red light.\"\n    }\n  ],\n  \"reasoning\": \"The defendant cites an unexpected animal hazard, severe weather severely impairing visibility, and a potentially dim traffic signal as direct circumstances that divided attention and could support a claim of non-guilt or emergency mitigation.\",\n  \"answer\": \"Yes\"\n}",
     "model": "qwen3.6:27b",
     "hash": 487005292
+  },
+  "518142683": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"Traffic was very dense and slow moving.\",\n      \"reason\": \"Describes traffic conditions but mentions nothing about weather conditions or sliding.\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"Indicates the actual action that led to the offense, which was crossing a traffic line, not a weather-related slide.\"\n    },\n    {\n      \"passage\": \"received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points\",\n      \"reason\": \"Confirms the nature of the offense, which is unrelated to weather conditions or a technical slide.\"\n    }\n  ],\n  \"reasoning\": \"The statement contains no mention of bad weather conditions or any technical slide; it describes a traffic violation related to crossing a white line to allow emergency vehicles to pass.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 518142683,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "Traffic was very dense and slow moving.",
+        "reason": "Describes traffic conditions but mentions nothing about weather conditions or sliding."
+      },
+      {
+        "passage": "I moved just past the white line to allow both emergency vehicles to pass",
+        "reason": "Indicates the actual action that led to the offense, which was crossing a traffic line, not a weather-related slide."
+      },
+      {
+        "passage": "received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points",
+        "reason": "Confirms the nature of the offense, which is unrelated to weather conditions or a technical slide."
+      }
+    ],
+    "reasoning": "The statement contains no mention of bad weather conditions or any technical slide; it describes a traffic violation related to crossing a white line to allow emergency vehicles to pass."
   },
   "544120188": {
     "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I am sorry for crossing the red light and I accept this was my mistake.\",\n      \"reason\": \"Demonstrates a straightforward guilty plea with no contested facts that would require oral examination.\"\n    },\n    {\n      \"passage\": \"I normally drive careful and I do not take risks, and this situation is not how I usually drive. I need my licence for my daily life and I am very sorry for this error.\",\n      \"reason\": \"Contains routine mitigation and character assurances that do not show legal complexity or a necessity for in-person assessment.\"\n    }\n  ],\n  \"reasoning\": \"The statement is a simple admission of guilt with standard contextual mitigation and contains no factual disputes, procedural requests, or complexities that would justify an open court hearing.\",\n  \"answer\": \"No\"\n}",
@@ -169,6 +279,40 @@
     "model": "granite4.1:30b",
     "hash": 1069584464
   },
+  "1082434181": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"the lights cycled to red\",\n      \"reason\": \"Indicates the moment the traffic light changed to red.\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again\",\n      \"reason\": \"Demonstrates that the traffic light quickly returned to green, meaning the red light was brief.\"\n    }\n  ],\n  \"reasoning\": \"The light turned red as the emergency vehicles approached and changed back to green almost immediately after the driver moved slightly forward, indicating the red light was not long.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 1082434181,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "the lights cycled to red",
+        "reason": "Indicates the moment the traffic light changed to red."
+      },
+      {
+        "passage": "I moved just past the white line to allow both emergency vehicles to pass, when the lights changed to green again",
+        "reason": "Demonstrates that the traffic light quickly returned to green, meaning the red light was brief."
+      }
+    ],
+    "reasoning": "The light turned red as the emergency vehicles approached and changed back to green almost immediately after the driver moved slightly forward, indicating the red light was not long."
+  },
+  "1137811706": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"they seemed to be motioning for me to clear the way immediately, waving their hand emphatically\",\n      \"reason\": \"This directly indicates the police car driver was gesturing for the road user to move out of the way so the emergency vehicle could pass.\"\n    },\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"This confirms the driver's interpretation that the emergency vehicles wished to pass, as he repositioned his vehicle to let them through.\"\n    }\n  ],\n  \"reasoning\": \"The police car driver was seen in the mirror motioning emphatically for the driver to clear the way, clearly indicating that the emergency vehicle wished to pass.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 1137811706,
+    "answer": "yes",
+    "highlights": [
+      {
+        "passage": "they seemed to be motioning for me to clear the way immediately, waving their hand emphatically",
+        "reason": "This directly indicates the police car driver was gesturing for the road user to move out of the way so the emergency vehicle could pass."
+      },
+      {
+        "passage": "I moved just past the white line to allow both emergency vehicles to pass",
+        "reason": "This confirms the driver's interpretation that the emergency vehicles wished to pass, as he repositioned his vehicle to let them through."
+      }
+    ],
+    "reasoning": "The police car driver was seen in the mirror motioning emphatically for the driver to clear the way, clearly indicating that the emergency vehicle wished to pass."
+  },
   "1144221017": {
     "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\",\n      \"reason\": \"Shows the driver proactively reduced speed due to poor visibility, which contradicts reckless driving behavior.\"\n    },\n    {\n      \"passage\": \"My immediate reaction was to brake and swerve slightly right to avoid it\",\n      \"reason\": \"Indicates a controlled, emergency maneuver in response to a sudden hazard rather than careless or reckless conduct.\"\n    },\n    {\n      \"passage\": \"But I also think there's a difference between someone who runs a red light deliberately or carelessly, and someone who's responding to an unexpected hazard in difficult conditions.\",\n      \"reason\": \"The defendant explicitly distinguishes their situational response from deliberate or careless actions, directly addressing the notion of recklessness.\"\n    }\n  ],\n  \"reasoning\": \"The defendant's account demonstrates appropriate speed reduction for poor visibility, controlled evasive action for a sudden hazard, and an explicit distinction between their emergency response and deliberate or careless conduct, which collectively indicate the driving was not reckless.\",\n  \"answer\": \"no\"\n}",
     "model": "qwen3.6:27b",
@@ -188,6 +332,14 @@
     "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I need my licence for my daily life\",\n      \"reason\": \"This highlights the potential impact of a driving ban on the individual's life.\"\n    },\n    {\n      \"passage\": \"I am very sorry for this error.\",\n      \"reason\": \"Demonstrates remorse and potential for rehabilitation.\"\n    }\n  ],\n  \"reasoning\": \"The highlighted passages suggest that the case is significant due to the defendant's reliance on their driving licence for daily activities and their expressed remorse for the offense.\",\n  \"answer\": \"yes\"\n}\n```",
     "model": "gemma3:4b",
     "hash": 1198209523
+  },
+  "1202850248": {
+    "response": "```json\n{\n  \"highlights\": [],\n  \"reasoning\": \"The statement makes no mention of an emergency vehicle, as the only noise noted was from the rain and the offender only discusses misjudging the traffic lights.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 1202850248,
+    "answer": "undetermined",
+    "highlights": [],
+    "reasoning": "The statement makes no mention of an emergency vehicle, as the only noise noted was from the rain and the offender only discusses misjudging the traffic lights."
   },
   "1207614285": {
     "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I was driving home from work that evening - I work in IT support and we'd had a particularly frustrating day dealing with a server migratio that had gone rather badly.\",\n      \"reason\": \"States the driver was driving home from work, implying intent to avoid a potential hazard.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n      {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    },\n    {\n      \"passage\": \"As I approached the junction, I was in the left lane with just a couple of cars ahead and one or two behind. The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Describes the driver's actions – maneuvering in a lane to react to the situation.\"\n    }\n  ],\n  \"reasoning\": \"The highlights demonstrate the driver's active behavior of maneuvering in the left lane with other vehicles present, clearly exhibiting an attempt to avoid a collision by reacting to the sudden appearance of the fox in the road due to the hazardous conditions.\",\n  \"answer\": \"yes\"\n}\n```",
@@ -228,6 +380,31 @@
     "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"the lights cycled to red\",\n      \"reason\": \"Directly states the light changed to red\"\n    }\n  ],\n  \"reasoning\": \"The statement explicitly mentions that the traffic lights cycled to red, indicating a period of red light.\",\n  \"answer\": \"yes\"\n}\n```",
     "model": "gemma3:4b",
     "hash": 1350417559
+  },
+  "1366662722": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"It had been raining on and off all afternoon, but around the time I left work it had turned to hail\",\n      \"reason\": \"Confirms bad weather conditions were present\"\n    },\n    {\n      \"passage\": \"I'd slowed down to about 25mph\",\n      \"reason\": \"Confirms the driver was traveling at low speed\"\n    },\n    {\n      \"passage\": \"In any case, I slammed the brakes much harder at that point, really quite violently, and the car lurched forward\",\n      \"reason\": \"Describes what happened instead of a slide - hard braking causing the car to lurch forward\"\n    },\n    {\n      \"passage\": \"The car did stop, but not before I'd crossed the line\",\n      \"reason\": \"Indicates the car stopped rather than slid\"\n    }\n  ],\n  \"reasoning\": \"While bad weather and low speed are confirmed in the statement, the incident involved hard braking and the car lurching forward then stopping over the line, with no mention of any slide occurring.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 1366662722,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "It had been raining on and off all afternoon, but around the time I left work it had turned to hail",
+        "reason": "Confirms bad weather conditions were present"
+      },
+      {
+        "passage": "I'd slowed down to about 25mph",
+        "reason": "Confirms the driver was traveling at low speed"
+      },
+      {
+        "passage": "In any case, I slammed the brakes much harder at that point, really quite violently, and the car lurched forward",
+        "reason": "Describes what happened instead of a slide - hard braking causing the car to lurch forward"
+      },
+      {
+        "passage": "The car did stop, but not before I'd crossed the line",
+        "reason": "Indicates the car stopped rather than slid"
+      }
+    ],
+    "reasoning": "While bad weather and low speed are confirmed in the statement, the incident involved hard braking and the car lurching forward then stopping over the line, with no mention of any slide occurring."
   },
   "1420092717": {
     "response": "{\n  \"highlights\": [],\n  \"reasoning\": \"The statement does not mention any adverse weather conditions or reckless driving behavior.\",\n  \"answer\": \"undetermined\"\n}",
@@ -294,6 +471,23 @@
     "model": "qwen3.6:27b",
     "hash": 1745826936
   },
+  "1786706980": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I accept that I crossed the red light\",\n      \"reason\": \"The offender admits the offense rather than attributing it to another party.\"\n    },\n    {\n      \"passage\": \"I'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation.\",\n      \"reason\": \"The offender explicitly denies shifting blame and accepts personal responsibility.\"\n    }\n  ],\n  \"reasoning\": \"The offender explicitly accepts responsibility and states they are not trying to excuse the incident, so blame was not wrongly placed on others.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 1786706980,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "I accept that I crossed the red light",
+        "reason": "The offender admits the offense rather than attributing it to another party."
+      },
+      {
+        "passage": "I'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation.",
+        "reason": "The offender explicitly denies shifting blame and accepts personal responsibility."
+      }
+    ],
+    "reasoning": "The offender explicitly accepts responsibility and states they are not trying to excuse the incident, so blame was not wrongly placed on others."
+  },
   "1787446964": {
     "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"the lights cycled to red\",\n      \"reason\": \"indicates that the traffic light became red\"\n    },\n    {\n      \"passage\": \"when the lights changed to green again\",\n      \"reason\": \"indicates when the red light phase ended\"\n    }\n  ],\n  \"reasoning\": \"The statement mentions that the light turned red and eventually returned to green, but it does not describe the duration or length of time this took.\",\n  \"answer\": \"undetermined\"\n}\n```",
     "model": "gemma4:31b",
@@ -343,6 +537,44 @@
     "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"The weather that evening was particularly grim. It had been raining on and off all afternoon, but around the time I left work it had turned to hail - proper hail, the kind that hammers on the windscreen and makes quite a racket.\",\n      \"reason\": \"Describes the severe weather conditions (hail) present at the time of the incident.\"\n    },\n    {\n      \"passage\": \"It was also that awkward time of day, not quite dark but past dusk, where visibility becomes rather tricky even without weather complications.\",\n      \"reason\": \"Highlights the reduced visibility due to the time of day combined with the weather.\"\n    },\n    {\n      \"passage\": \"The wipers were going full speed and I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\",\n      \"reason\": \"Details the driver's reduced speed and the resulting limited visibility caused by the conditions.\"\n    },\n    {\n      \"passage\": \"The hail was coming down quite heavily at this point, bouncing off the bonnet in a way that was honestly quite distracting.\",\n      \"reason\": \"Explains how the severe weather contributed to a distraction for the driver.\"\n    }\n  ],\n  \"reasoning\": \"The highlights detail a significant reduction in visibility due to heavy hail and a low speed, indicating a focus on avoiding an unexpected hazard (the fox) and a resulting momentary lapse in attention regarding the traffic light.\",\n  \"answer\": \"yes\"\n}\n```",
     "model": "gemma3:4b",
     "hash": 2036449876
+  },
+  "2075003233": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"It was a fox, quite a large one actually, and it had started to cross from the pavement.\",\n      \"reason\": \"This indicates the unexpected hazard the driver faced was an animal crossing the road, rather than an emergency vehicle.\"\n    },\n    {\n      \"passage\": \"The combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split\",\n      \"reason\": \"This summarises the specific factors that distracted the driver, with no mention of an emergency vehicle.\"\n    }\n  ],\n  \"reasoning\": \"The statement comprehensively explains that the driver's attention was diverted by a fox and severe weather conditions, making no mention whatsoever of an emergency vehicle wishing to pass.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": 2075003233,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "It was a fox, quite a large one actually, and it had started to cross from the pavement.",
+        "reason": "This indicates the unexpected hazard the driver faced was an animal crossing the road, rather than an emergency vehicle."
+      },
+      {
+        "passage": "The combination of braking quite hard, watching the fox, and trying to see through the hail meant my attention was split",
+        "reason": "This summarises the specific factors that distracted the driver, with no mention of an emergency vehicle."
+      }
+    ],
+    "reasoning": "The statement comprehensively explains that the driver's attention was diverted by a fox and severe weather conditions, making no mention whatsoever of an emergency vehicle wishing to pass."
+  },
+  "2082303422": {
+    "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"The weather that evening was particularly grim.\",\n      \"reason\": \"Establishes that the defendant acknowledges driving in bad weather.\"\n    },\n    {\n      \"passage\": \"I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.\",\n      \"reason\": \"Indicates the defendant was taking precautions by reducing speed due to the weather.\"\n    },\n    {\n      \"passage\": \"My phone, which had been in my hand, flew onto the passenger seat and hit the floor somewhere.\",\n      \"reason\": \"Reveals the defendant was holding a phone while driving, which contradicts the claim of careful driving and suggests potential recklessness.\"\n    }\n  ],\n  \"reasoning\": \"The defendant claims to have reduced speed in the bad weather to drive safely, but also admits to holding a phone while driving, making it undetermined whether their overall conduct was legally reckless.\",\n  \"answer\": \"undetermined\"\n}",
+    "model": "arc:apex",
+    "hash": 2082303422,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "The weather that evening was particularly grim.",
+        "reason": "Establishes that the defendant acknowledges driving in bad weather."
+      },
+      {
+        "passage": "I'd slowed down to about 25mph because frankly you couldn't see much beyond what was immediately in front of you.",
+        "reason": "Indicates the defendant was taking precautions by reducing speed due to the weather."
+      },
+      {
+        "passage": "My phone, which had been in my hand, flew onto the passenger seat and hit the floor somewhere.",
+        "reason": "Reveals the defendant was holding a phone while driving, which contradicts the claim of careful driving and suggests potential recklessness."
+      }
+    ],
+    "reasoning": "The defendant claims to have reduced speed in the bad weather to drive safely, but also admits to holding a phone while driving, making it undetermined whether their overall conduct was legally reckless."
   },
   "-1848084172": {
     "response": "{\n  \"highlights\": [],\n  \"reasoning\": \"The statement only discusses the current incident and the resulting penalty points, providing no information about the driver's prior traffic history or previous offences.\",\n  \"answer\": \"undetermined\"\n}",
@@ -713,5 +945,281 @@
     "response": "{\n  \"highlights\": [\n    {\n      \"passage\": \"I am sorry for crossing the red light and I accept this was my mistake.\",\n      \"reason\": \"The offender openly admits guilt, indicating no contest to the charges.\"\n    },\n    {\n      \"passage\": \"I normally drive careful and I do not take risks, and this situation is not how I usually drive.\",\n      \"reason\": \"Suggests an isolated incident rather than a pattern of reckless behavior.\"\n    },\n    {\n      \"passage\": \"The sky was already going dark and everything around the junction looked more dull than usual, so I was trying hard to keep my eyes on the road and the cars around me.\",\n      \"reason\": \"Provides context (poor visibility) that might mitigate severity but does not indicate complexity.\"\n    }\n  ],\n  \"reasoning\": \"The statement shows clear admission of guilt, an isolated incident without extenuating circumstances requiring public scrutiny, and contextual factors that do not add legal complexity.\",\n  \"answer\": \"no\"\n}",
     "model": "granite4.1:30b",
     "hash": -413445429
+  },
+  "-1061158933": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.\",\n      \"reason\": \"This passage suggests the driver is implying the police instructed them to move past the white line, potentially placing blame on the police for the situation.\"\n    },\n    {\n      \"passage\": \"I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through.\",\n      \"reason\": \"This passage indicates the driver believes they shouldn't have been penalized for letting an ambulance through, implying blame was wrongly placed on them rather than on the emergency situation.\"\n    }\n  ],\n  \"reasoning\": \"While the driver mentions the police motioning them to move and expresses frustration about being penalized for letting an ambulance through, they are explaining their circumstances and reasoning rather than explicitly blaming others for the offence.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -1061158933,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically.",
+        "reason": "This passage suggests the driver is implying the police instructed them to move past the white line, potentially placing blame on the police for the situation."
+      },
+      {
+        "passage": "I have tried to speak to people about it but they tell me that it's an offence even if I moved to let the ambulance through.",
+        "reason": "This passage indicates the driver believes they shouldn't have been penalized for letting an ambulance through, implying blame was wrongly placed on them rather than on the emergency situation."
+      }
+    ],
+    "reasoning": "While the driver mentions the police motioning them to move and expresses frustration about being penalized for letting an ambulance through, they are explaining their circumstances and reasoning rather than explicitly blaming others for the offence."
+  },
+  "-754347817": {
+    "response": "```json\n{\n  \"highlights\": [],\n  \"reasoning\": \"The statement does not mention any weather conditions, making it impossible to determine if the defendant was driving recklessly in bad weather.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -754347817,
+    "answer": "undetermined",
+    "highlights": [],
+    "reasoning": "The statement does not mention any weather conditions, making it impossible to determine if the defendant was driving recklessly in bad weather."
+  },
+  "-257488704": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"These extra points will make my car insurance so expensive\",\n      \"reason\": \"The use of 'extra points' might suggest the defendant already has points on their license, but this is ambiguous as it could simply refer to the new points being received\"\n    }\n  ],\n  \"reasoning\": \"The statement only mentions that the defendant will receive 3 penalty points for this incident, and the word 'extra' is ambiguous enough that it doesn't conclusively establish whether there were prior points or offenses on their record.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -257488704,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "These extra points will make my car insurance so expensive",
+        "reason": "The use of 'extra points' might suggest the defendant already has points on their license, but this is ambiguous as it could simply refer to the new points being received"
+      }
+    ],
+    "reasoning": "The statement only mentions that the defendant will receive 3 penalty points for this incident, and the word 'extra' is ambiguous enough that it doesn't conclusively establish whether there were prior points or offenses on their record."
+  },
+  "-265820186": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I moved just past the white line to allow both emergency vehicles to pass\",\n      \"reason\": \"This shows the driver took physical action in response to the emergency vehicles behind them\"\n    },\n    {\n      \"passage\": \"I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically\",\n      \"reason\": \"This indicates the driver was responding to police instructions rather than taking action to avoid a collision\"\n    },\n    {\n      \"passage\": \"I was hoping for the traffic on the other side to clear so that I could move on and clear the junction\",\n      \"reason\": \"This shows the driver's primary concern was clearing the junction for the emergency vehicles, not avoiding a collision\"\n    }\n  ],\n  \"reasoning\": \"The driver moved to let emergency vehicles pass following police hand signals, but the statement doesn't indicate they took action specifically to avoid a collision.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -265820186,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "I moved just past the white line to allow both emergency vehicles to pass",
+        "reason": "This shows the driver took physical action in response to the emergency vehicles behind them"
+      },
+      {
+        "passage": "I could see the police car driver in my mirror, and they seemed to be motioning for me to clear the way immediately, waving their hand emphatically",
+        "reason": "This indicates the driver was responding to police instructions rather than taking action to avoid a collision"
+      },
+      {
+        "passage": "I was hoping for the traffic on the other side to clear so that I could move on and clear the junction",
+        "reason": "This shows the driver's primary concern was clearing the junction for the emergency vehicles, not avoiding a collision"
+      }
+    ],
+    "reasoning": "The driver moved to let emergency vehicles pass following police hand signals, but the statement doesn't indicate they took action specifically to avoid a collision."
+  },
+  "-65280066": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"the light cycled through while I tried to gather myself.\",\n      \"reason\": \"Indicates the traffic light changed phases shortly after the driver stopped, but does not confirm if it was a long red light.\"\n    },\n    {\n      \"passage\": \"The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction\",\n      \"reason\": \"Describes the brightness of the traffic light, providing no information about its duration.\"\n    }\n  ],\n  \"reasoning\": \"The statement mentions the traffic light being red and cycling through, but it provides no information about whether the red light was long in duration.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -65280066,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "the light cycled through while I tried to gather myself.",
+        "reason": "Indicates the traffic light changed phases shortly after the driver stopped, but does not confirm if it was a long red light."
+      },
+      {
+        "passage": "The light itself looked oddly dim, actually, less bright than I'm used to seeing at that junction",
+        "reason": "Describes the brightness of the traffic light, providing no information about its duration."
+      }
+    ],
+    "reasoning": "The statement mentions the traffic light being red and cycling through, but it provides no information about whether the red light was long in duration."
+  },
+  "-1477043079": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I've been driving for seventeen years without any points on my license\",\n      \"reason\": \"This statement indicates the defendant had no points on their license for 17 years prior to the incident, suggesting a perfect driving record.\"\n    }\n  ],\n  \"reasoning\": \"The defendant explicitly states they had been driving for seventeen years without any points on their license, which indicates a perfect driving record prior to this incident.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -1477043079,
+    "answer": "yes",
+    "highlights": [
+      {
+        "passage": "I've been driving for seventeen years without any points on my license",
+        "reason": "This statement indicates the defendant had no points on their license for 17 years prior to the incident, suggesting a perfect driving record."
+      }
+    ],
+    "reasoning": "The defendant explicitly states they had been driving for seventeen years without any points on their license, which indicates a perfect driving record prior to this incident."
+  },
+  "-1365275233": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"My immediate reaction was to brake and swerve slightly right to avoid it\",\n      \"reason\": \"The driver describes taking evasive action by braking and swerving to avoid hitting the fox.\"\n    },\n    {\n      \"passage\": \"I slammed the brakes much harder at that point, really quite violently\",\n      \"reason\": \"The driver describes braking hard upon realising the traffic light had changed.\"\n    }\n  ],\n  \"reasoning\": \"The highlights demonstrate that the driver actively braked and swerved to avoid an animal, and subsequently slammed the brakes again upon noticing the red light.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -1365275233,
+    "answer": "yes",
+    "highlights": [
+      {
+        "passage": "My immediate reaction was to brake and swerve slightly right to avoid it",
+        "reason": "The driver describes taking evasive action by braking and swerving to avoid hitting the fox."
+      },
+      {
+        "passage": "I slammed the brakes much harder at that point, really quite violently",
+        "reason": "The driver describes braking hard upon realising the traffic light had changed."
+      }
+    ],
+    "reasoning": "The highlights demonstrate that the driver actively braked and swerved to avoid an animal, and subsequently slammed the brakes again upon noticing the red light."
+  },
+  "-963566517": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I normally drive careful and I do not take risks, and this situation is not how I usually drive.\",\n      \"reason\": \"Indicates the driver's claim about their usual driving behavior, though it does not specify any past traffic offences.\"\n    }\n  ],\n  \"reasoning\": \"The statement describes the current incident and the driver's general driving habits, but contains no mention of any previous traffic offences.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -963566517,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "I normally drive careful and I do not take risks, and this situation is not how I usually drive.",
+        "reason": "Indicates the driver's claim about their usual driving behavior, though it does not specify any past traffic offences."
+      }
+    ],
+    "reasoning": "The statement describes the current incident and the driver's general driving habits, but contains no mention of any previous traffic offences."
+  },
+  "-2132239959": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"At the time the road was very wet and noisy from the water\",\n      \"reason\": \"Indicates the presence of bad weather conditions.\"\n    },\n    {\n      \"passage\": \"but I judged it wrong and went through\",\n      \"reason\": \"Shows the cause of the incident was a misjudgment of the traffic lights, not a technical slide.\"\n    }\n  ],\n  \"reasoning\": \"The statement acknowledges bad weather conditions but explicitly attributes the offence to misjudging the traffic lights, with no mention of a minor technical slide at low speed.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -2132239959,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "At the time the road was very wet and noisy from the water",
+        "reason": "Indicates the presence of bad weather conditions."
+      },
+      {
+        "passage": "but I judged it wrong and went through",
+        "reason": "Shows the cause of the incident was a misjudgment of the traffic lights, not a technical slide."
+      }
+    ],
+    "reasoning": "The statement acknowledges bad weather conditions but explicitly attributes the offence to misjudging the traffic lights, with no mention of a minor technical slide at low speed."
+  },
+  "-543203235": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I accept this was my mistake.\",\n      \"reason\": \"The offender explicitly takes full responsibility for the incident rather than blaming others.\"\n    },\n    {\n      \"passage\": \"but I judged it wrong and went through.\",\n      \"reason\": \"The offender admits personal error in judgment instead of shifting the blame to someone else.\"\n    }\n  ],\n  \"reasoning\": \"The offender explicitly accepts full responsibility for the incident and admits their own judgment was wrong, with no indication of placing blame on others.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -543203235,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "I accept this was my mistake.",
+        "reason": "The offender explicitly takes full responsibility for the incident rather than blaming others."
+      },
+      {
+        "passage": "but I judged it wrong and went through.",
+        "reason": "The offender admits personal error in judgment instead of shifting the blame to someone else."
+      }
+    ],
+    "reasoning": "The offender explicitly accepts full responsibility for the incident and admits their own judgment was wrong, with no indication of placing blame on others."
+  },
+  "-1412635995": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"At the time the road was very wet and noisy from the water\",\n      \"reason\": \"Indicates that the weather conditions were bad at the time of the offense.\"\n    },\n    {\n      \"passage\": \"I judged it wrong and went through.\",\n      \"reason\": \"Shows the defendant's action of proceeding through the red light.\"\n    },\n    {\n      \"passage\": \"I normally drive careful and I do not take risks\",\n      \"reason\": \"The defendant explicitly denies driving recklessly or taking risks.\"\n    }\n  ],\n  \"reasoning\": \"The defendant admits to crossing a red light in bad weather but explicitly denies taking risks and claims to drive carefully, making it undetermined whether the driving was reckless.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -1412635995,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "At the time the road was very wet and noisy from the water",
+        "reason": "Indicates that the weather conditions were bad at the time of the offense."
+      },
+      {
+        "passage": "I judged it wrong and went through.",
+        "reason": "Shows the defendant's action of proceeding through the red light."
+      },
+      {
+        "passage": "I normally drive careful and I do not take risks",
+        "reason": "The defendant explicitly denies driving recklessly or taking risks."
+      }
+    ],
+    "reasoning": "The defendant admits to crossing a red light in bad weather but explicitly denies taking risks and claims to drive carefully, making it undetermined whether the driving was reckless."
+  },
+  "-65890254": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I normally drive careful and I do not take risks\",\n      \"reason\": \"The defendant describes their usual driving behaviour as careful and without risks, but this does not explicitly confirm a perfect driving record prior to the incident.\"\n    }\n  ],\n  \"reasoning\": \"The statement mentions the defendant's usual careful driving habits but does not provide explicit information about their actual driving record prior to this incident.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -65890254,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "I normally drive careful and I do not take risks",
+        "reason": "The defendant describes their usual driving behaviour as careful and without risks, but this does not explicitly confirm a perfect driving record prior to the incident."
+      }
+    ],
+    "reasoning": "The statement mentions the defendant's usual careful driving habits but does not provide explicit information about their actual driving record prior to this incident."
+  },
+  "-508257448": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I was trying hard to keep my eyes on the road and the cars around me.\",\n      \"reason\": \"This is the only mention of the driver taking preventative action regarding other vehicles, though it describes general awareness rather than a specific maneuver to avoid a collision.\"\n    }\n  ],\n  \"reasoning\": \"The statement mentions the driver trying to keep their eyes on the road and surrounding cars, but it does not specify any evasive maneuvers taken to actively avoid a collision.\",\n  \"answer\": \"undetermined\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -508257448,
+    "answer": "undetermined",
+    "highlights": [
+      {
+        "passage": "I was trying hard to keep my eyes on the road and the cars around me.",
+        "reason": "This is the only mention of the driver taking preventative action regarding other vehicles, though it describes general awareness rather than a specific maneuver to avoid a collision."
+      }
+    ],
+    "reasoning": "The statement mentions the driver trying to keep their eyes on the road and surrounding cars, but it does not specify any evasive maneuvers taken to actively avoid a collision."
+  },
+  "-651992173": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points\",\n      \"reason\": \"Shows the offence is being processed via a postal notice with a standard penalty, without indicating a requirement for an open court hearing.\"\n    },\n    {\n      \"passage\": \"These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car\",\n      \"reason\": \"Mentions personal financial concerns, which do not constitute a legal or procedural reason to mandate an open court hearing.\"\n    }\n  ],\n  \"reasoning\": \"The statement describes a standard traffic offence processed by post and mentions personal financial concerns, but provides no legal or procedural reason requiring the case to be heard in open court.\",\n  \"answer\": \"no\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -651992173,
+    "answer": "no",
+    "highlights": [
+      {
+        "passage": "received a letter in the post advising me that I had committed an offence and would have a fine and 3 penalty points",
+        "reason": "Shows the offence is being processed via a postal notice with a standard penalty, without indicating a requirement for an open court hearing."
+      },
+      {
+        "passage": "These extra points will make my car insurance so expensive, I am worried I will need to get rid of my car",
+        "reason": "Mentions personal financial concerns, which do not constitute a legal or procedural reason to mandate an open court hearing."
+      }
+    ],
+    "reasoning": "The statement describes a standard traffic offence processed by post and mentions personal financial concerns, but provides no legal or procedural reason requiring the case to be heard in open court."
+  },
+  "-905429214": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"At the time the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear.\",\n      \"reason\": \"Describes poor weather and road conditions that may have affected visibility and ability to perceive traffic signals\"\n    },\n    {\n      \"passage\": \"The sky was already going dark and everything around the junction looked more dull than usual\",\n      \"reason\": \"Indicates poor lighting conditions at the junction that may have made the traffic lights difficult to see\"\n    },\n    {\n      \"passage\": \"When I came to the lights I thought I saw them in time, but I judged it wrong and went through.\",\n      \"reason\": \"Suggests the defendant may not have clearly perceived the red light due to the conditions, potentially supporting a defense of not seeing the signal\"\n    }\n  ],\n  \"reasoning\": \"The defendant describes poor visibility conditions including wet roads, darkness, and a dull-looking junction that may have prevented them from clearly seeing the red light, providing a potential reason they might not be guilty.\",\n  \"answer\": \"yes\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -905429214,
+    "answer": "yes",
+    "highlights": [
+      {
+        "passage": "At the time the road was very wet and noisy from the water, and I had the wipers going strong just to keep the screen clear.",
+        "reason": "Describes poor weather and road conditions that may have affected visibility and ability to perceive traffic signals"
+      },
+      {
+        "passage": "The sky was already going dark and everything around the junction looked more dull than usual",
+        "reason": "Indicates poor lighting conditions at the junction that may have made the traffic lights difficult to see"
+      },
+      {
+        "passage": "When I came to the lights I thought I saw them in time, but I judged it wrong and went through.",
+        "reason": "Suggests the defendant may not have clearly perceived the red light due to the conditions, potentially supporting a defense of not seeing the signal"
+      }
+    ],
+    "reasoning": "The defendant describes poor visibility conditions including wet roads, darkness, and a dull-looking junction that may have prevented them from clearly seeing the red light, providing a potential reason they might not be guilty."
+  },
+  "-1165209887": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"I am sorry for crossing the red light and I accept this was my mistake.\",\n      \"reason\": \"The offender explicitly admits to the offence and accepts fault, indicating there is no factual dispute to contest.\"\n    },\n    {\n      \"passage\": \"but I judged it wrong and went through.\",\n      \"reason\": \"The offender acknowledges their error in judgement that led to the offence, further confirming they do not deny the act.\"\n    }\n  ],\n  \"reasoning\": \"Since the offender fully admits to crossing the red light and accepts responsibility without disputing any facts, there is no reason for this case to be heard in open court.\",\n  \"answer\": \"No\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -1165209887,
+    "answer": "No",
+    "highlights": [
+      {
+        "passage": "I am sorry for crossing the red light and I accept this was my mistake.",
+        "reason": "The offender explicitly admits to the offence and accepts fault, indicating there is no factual dispute to contest."
+      },
+      {
+        "passage": "but I judged it wrong and went through.",
+        "reason": "The offender acknowledges their error in judgement that led to the offence, further confirming they do not deny the act."
+      }
+    ],
+    "reasoning": "Since the offender fully admits to crossing the red light and accepts responsibility without disputing any facts, there is no reason for this case to be heard in open court."
+  },
+  "-1978842842": {
+    "response": "```json\n{\n  \"highlights\": [\n    {\n      \"passage\": \"while I accept that I crossed the red light\",\n      \"reason\": \"Shows the offender is pleading guilty and not disputing the charge, removing the need for a trial.\"\n    },\n    {\n      \"passage\": \"I'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation.\",\n      \"reason\": \"Confirms the offender accepts the offense without contesting the facts, indicating no factual dispute for a court to resolve.\"\n    },\n    {\n      \"passage\": \"I've been driving for seventeen years without any points on my license\",\n      \"reason\": \"Shows the offender is not at risk of a totting-up disqualification, which would otherwise mandate a hearing in open court.\"\n    }\n  ],\n  \"reasoning\": \"The offender pleads guilty, accepts full responsibility, and has a clean license with no risk of a totting-up disqualification, meaning there is no reason for the case to be heard in open court.\",\n  \"answer\": \"No\"\n}\n```",
+    "model": "arc:apex",
+    "hash": -1978842842,
+    "answer": "No",
+    "highlights": [
+      {
+        "passage": "while I accept that I crossed the red light",
+        "reason": "Shows the offender is pleading guilty and not disputing the charge, removing the need for a trial."
+      },
+      {
+        "passage": "I'm not trying to excuse what happened, and I recognise that I bear responsibility for the situation.",
+        "reason": "Confirms the offender accepts the offense without contesting the facts, indicating no factual dispute for a court to resolve."
+      },
+      {
+        "passage": "I've been driving for seventeen years without any points on my license",
+        "reason": "Shows the offender is not at risk of a totting-up disqualification, which would otherwise mandate a hearing in open court."
+      }
+    ],
+    "reasoning": "The offender pleads guilty, accepts full responsibility, and has a clean license with no risk of a totting-up disqualification, meaning there is no reason for the case to be heard in open court."
   }
 }
