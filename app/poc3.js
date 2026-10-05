@@ -1,5 +1,6 @@
 /*
 TODO:
+question.answer === 'undetermined'
 
 DONE case selection
 DONE show case
@@ -64,6 +65,7 @@ createApp({
       // modelsList: [],
       areDetailsShown: false,
       isAlgorithmExplained: false,
+      isEditingEffects: false,
       // model: null,
       // modelSecondary: null,
       hoveredQuestion: null,
@@ -121,14 +123,18 @@ createApp({
         let response = this.getResponse(qst)
         let responseSecondary = this.getResponse(qst, true)
 
-        let score = response?.answer === 'yes' ? qst.effect : 0
-        this.userScores[this.caseKey+qst.text] = Number(this.userScores[this.caseKey+qst.text] || score)
+        let modelScore = Number(response?.answer === 'yes' ? qst.effect : 0)
+        this.userScores[this.caseKey+qst.text] = Number(this.userScores[this.caseKey+qst.text])
+        if (Number.isNaN(this.userScores[this.caseKey+qst.text])) {
+          this.userScores[this.caseKey+qst.text] = modelScore
+        }
         
         ret.push({
           text: qst.text,
           answer: response?.answer ?? 'undefined',
           answerSecondary: responseSecondary?.answer ?? 'undefined',
-          score: this.userScores[this.caseKey+qst.text],
+          userScore: this.userScores[this.caseKey+qst.text],
+          modelScore: modelScore,
           llmResponse: response
         })
       }
@@ -143,7 +149,7 @@ createApp({
     totalScore() {
       let ret = 0
       for (let r of this.reviewRows) {
-        ret += r.score
+        ret += r.userScore
       }
       return ret
     },
@@ -294,7 +300,7 @@ createApp({
     },
     getEffectLabelFromQuestion(question) {
       let defaultLabel = this.questionnaire.effectsLabel['0']
-      return this.questionnaire.effectsLabel[question.score] || defaultLabel
+      return this.questionnaire.effectsLabel[question.userScore] || defaultLabel
     },
     highlightText(text, highlights) {
       // TODO: deduped this code from nlpui.js
@@ -321,8 +327,11 @@ createApp({
     onClickShowDetails() {
       this.areDetailsShown = true
     },
-    onClickExplainAlgorithm() {
+    onToggleExplainAlgorithm() {
       this.isAlgorithmExplained = !this.isAlgorithmExplained
+    },
+    onToggleEditEffects() {
+      this.isEditingEffects = !this.isEditingEffects
     },
     onHoverQuestion(question) {
       this.hoveredQuestion = question

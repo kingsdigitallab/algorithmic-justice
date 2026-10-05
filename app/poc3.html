@@ -118,18 +118,20 @@
                       <tr @click="onClickQuestion(question)" :class="{'selected': question?.text == selectedQuestion?.text}">
                         <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{idx+1}}. {{question.text}}</td>
                         <td @mouseEnter="onHoverQuestion(question)" @mouseLeave="onUnhoverQuestion(question)" :data-tippy-content="question.llmResponse?.reasoning">{{question.answer}}</td>
-                        <td :class="`score-${question.score}`">
-                          <template v-if="question.answer === 'undetermined'">
+                        <td :class="`score-${question.userScore}`">                          
+                          <template v-if="isEditingEffects">
                             <select v-model="userScores[caseKey+question.text]" class="select">
                               <option v-for="effect in sortedEffects" :value="effect.value">
+                                <span v-if="effect.value != question.modelScore">🖉</span>
                                 {{ effect.label }} 
                                 <template v-if="0 && isAlgorithmExplained">({{effect.value}})</template>
                               </option>
                             </select>
                           </template>
                           <template v-else>
+                            <span v-if="question.userScore != question.modelScore">🖉</span>
                             {{getEffectLabelFromQuestion(question)}} 
-                            <template v-if="0 && isAlgorithmExplained">({{question.score}})</template>
+                            <template v-if="0 && isAlgorithmExplained">({{question.userScore}})</template>
                           </template>
                         </td>
                       </tr>
@@ -143,10 +145,15 @@
                 </table>
 
                 <p>
-                  <a class="button is-info is-light" @click.prevent="onClickExplainAlgorithm()">
+                  <a class="button is-info is-light" @click.prevent="onToggleExplainAlgorithm()">
                     <template v-if="isAlgorithmExplained">Hide</template>
                     <template v-else>Explain</template>
                     algorithm
+                  </a>
+                  <a class="button is-info is-light pull-right" @click.prevent="onToggleEditEffects()">
+                    <template v-if="isEditingEffects">Confirm</template>
+                    <template v-else>🖉 Override</template>
+                    effects
                   </a>
                 </p>
                 <div class="box content" v-if="isAlgorithmExplained">
@@ -184,7 +191,9 @@
                         <td>{{questionIndex + 1}}</td>
                         <td>{{question.effect}}</td>
                         <td>{{reviewRows[questionIndex].answer}}</td>
-                        <td>{{reviewRows[questionIndex].score}}</td>
+                        <td>{{reviewRows[questionIndex].userScore}}
+                          <span v-if="reviewRows[questionIndex].userScore != reviewRows[questionIndex].modelScore">(overridden)</span>
+                        </td>
                       </tr>
                       <tr class="selected">
                         <td></td>
