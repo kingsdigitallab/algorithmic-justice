@@ -81,6 +81,11 @@
       td.greyed {
         color: grey;
       }
+      .edited:before {
+        content: "✎";
+        font-size: larger;
+        margin-right: 0.5em;
+      }
     </style>
   </head>
   <body>
@@ -122,15 +127,14 @@
                           <template v-if="isEditingEffects">
                             <select v-model="userScores[caseKey+question.text]" class="select">
                               <option v-for="effect in sortedEffects" :value="effect.value">
-                                <span v-if="effect.value != question.modelScore">🖉</span>
-                                {{ effect.label }} 
+                                <template v-if="effect.value != question.modelScore">✎</template>
+                                {{ effect.label }}
                                 <template v-if="0 && isAlgorithmExplained">({{effect.value}})</template>
                               </option>
                             </select>
                           </template>
                           <template v-else>
-                            <span v-if="question.userScore != question.modelScore">🖉</span>
-                            {{getEffectLabelFromQuestion(question)}} 
+                            <span :class="{'edited': question.userScore != question.modelScore}">{{getEffectLabelFromQuestion(question)}}</span>
                             <template v-if="0 && isAlgorithmExplained">({{question.userScore}})</template>
                           </template>
                         </td>
@@ -152,7 +156,7 @@
                   </a>
                   <a class="button is-info is-light pull-right" @click.prevent="onToggleEditEffects()">
                     <template v-if="isEditingEffects">Confirm</template>
-                    <template v-else>🖉 Override</template>
+                    <template v-else><span class="edited">Override&nbsp</span></template>
                     effects
                   </a>
                 </p>

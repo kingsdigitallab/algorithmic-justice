@@ -1,19 +1,5 @@
 /*
 TODO:
-question.answer === 'undetermined'
-
-DONE case selection
-DONE show case
-DONE show penalty
-DONE table
-DONE draw LLM responses from cache
-DONE explaination
-DONE highlights
-C summary 
-DONE highlights snippets
-DONE show algorithm
-C polish interface
-
 S dedupe code (with nlpui.js)
 */
 const { createApp, nextTick } = window.Vue;
@@ -62,15 +48,11 @@ createApp({
       isResponding: false,
       isServiceWorking: false,
       questionnaire: {},
-      // modelsList: [],
       areDetailsShown: false,
       isAlgorithmExplained: false,
       isEditingEffects: false,
-      // model: null,
-      // modelSecondary: null,
       hoveredQuestion: null,
       selectedQuestion: null,
-      // maps `${CASEKEY}${QUESTIONTEXT}` to a score given by user (default=score for the LLM answer)
       userScores: {},
     }
   },
@@ -254,20 +236,12 @@ createApp({
       try {
         await this.engine.fetchModels()
         this.isServiceWorking = this.engine.isWorking
-        // this.modelsList = [...this.engine.models]
       } catch (error) {
         this.isServiceWorking = false
         this.setMessage(error.message, 'danger')
       }
       this.isResponding = false
-      // this.updateModelsListFromCachedResponses()
     },
-    // updateModelsListFromCachedResponses() {
-    //   // TODO: deduped this code from nlpui.js
-    //   // even if no model engine is available 
-    //   // we want the user to access the cached responses
-    //   this.modelsList = [...this.modelsList, ...this.engine?.getCachedModels() ?? []]
-    // },
     async selectModel(secondary=false) {
       let models = await this.engine.fetchModels()
       const modelRank = 'model' + (secondary ? 'Secondary' : '')
