@@ -107,7 +107,7 @@
               <a v-if="!areDetailsShown" class="button is-primary" @click.prevent="onClickShowDetails()">Show details</a>
               <template v-else>
                 <div class="box">
-                  <p class="title is-4">Suggested penalty: £{{penalty}}</p>
+                  <p class="title is-4">Suggested penalty: 3 points + £{{penalty}}</p>
                   <p v-if="undeterminedWarningMessage">{{undeterminedWarningMessage}}</p>
                 </div>
                 <table class="table is-striped is-hoverable table-questionnaire">
